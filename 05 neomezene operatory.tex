@@ -1,0 +1,192 @@
+\section{Neomezené operátory}
+Připomeňme, že jsme v úvodní kapitole ukázali charakterizaci spojitých lineárních operátorů: pro $\map T :X \mapsto Y$ lineární platí \begin{align*}
+    \map T \text{ je omezený} \Longleftrightarrow \norm{\map T} < +\infty \Longleftrightarrow \map T \text{ je spojitý} \:.
+\end{align*}
+V této kapitole představíme některé výsledky o lineárních, ale neomezených a tedy nespojitých operátorech. Pro takové operátory už neplatí \begin{align*}
+    x_n \rightarrow x \Rightarrow \map L x_n \rightarrow \map L x \:.
+\end{align*}
+Budeme pracovat pouze na Hilbertových prostorech, kde máme k dispozici vlastnosti skalárního součinu. Ukazuje se, že v případě neomezených operátorů je klíčová otázka definičního oboru nejen u operátoru samotného, ale i u k němu příslušnému adjungovanému.
+
+Namísto $\map L'$ jako označení adjungovaného operátoru zde budeme používat označení $\map L^*$. Často budeme pracovat s prostory funkcí a symbol $\map L'$ by připomínal operaci derivování.
+\subsection{Symetrie a samoadjungovanost}
+\begin{definition}[Adjungovaný operátor]
+Nechť $H$ je Hilbertův prostor, $\mathcal{D}(\map L) \subset H$ je lineární podprostor a $\map L : H \mapsto H$ je lineární operátor.
+\begin{enumerate}
+    \item Symbolem $\mathcal{D}(\map L^*)$ označujeme množinu všech $h \in H$ takových, pro které existuje právě jeden prvek $h^* \in H$ tak, že \begin{align*}
+        (\map L x,y)_H = (x, h^*)_H \quad \text{pro všechna } x \in \mathcal{D}(\map L) \:.
+    \end{align*}
+    \item Je-li $\mathcal{D}(\map L^*)$ neprázdná množina, definujeme adjungovaný operátor $\map L^* : \mathcal{D}(\map L^*) \mapsto H$ předpisem \begin{align*}
+        \map L^* y = h^* \:.
+    \end{align*}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Je-li $\mathcal{D}(\map L^*) \neq \emptyset$, pak z definice ihned dostáváme \begin{align*}
+    (\map L x,y)_H =(y, \map L^* y)_H \quad \text{pro všechna } x \in \mathcal{D}(\map L), y \in \mathcal{D}(\map L*) \:.
+\end{align*}
+Zatímco pro omezené (spojité) operátory je předchozí rovnost důsledkem Rieszovy-Fréchetovy věty (Věta \ref{4.Riesz-Frechet}), pro neomezené operátory je třeba tuto rovnost postulovat.
+\end{remark}
+
+Přirozeně zavádíme i pojem samoadjungovaného operátoru.
+
+\begin{definition}[Samoadjungovaný operátor]
+Operátor $\map L : \mathcal{D}(\map L^*) \mapsto H$ nazveme samoadjungovaný, jestliže \begin{enumerate}
+    \item je množina $\mathcal{D}(\map L^*)$ neprázdná a $\mathcal{D}(\map L^*) = \mathcal{D}(\map L)$,
+    \item platí $\map L^* = \map L$ na $\mathcal{D}(\map L^*)$.
+\end{enumerate}
+\end{definition}
+\begin{remark}
+Rovnost definičních oborů je zde velmi důležitá. Později uvidíme, že pro $\mathcal{D}(\map L^*) \neq \mathcal{D}(\map L)$ a $\map L^* = \map L$ na $\mathcal{D}(\map L^*) \cup \mathcal{D}(\map L)$ dostaneme úplně odlišné spektrální vlastnosti.
+\end{remark}
+Ihned z definice vidíme, že pokud $\map L^*$ existuje, je lineární.
+
+První otázkou, která nás bude zajímat, je, za jakých podmínek je $\mathcal{D}(\map L^*)$ neprázdná množina?
+\begin{theorem}[O existenci adjungovaného operátoru]
+Nechť $H$ je Hilbertův prostor, $\map L$ je lineární operátor s definičním oborem $\mathcal{D}(\map L)$. Pak $\mathcal{D}(\map L^*)$ je neprázdná množina právě tehdy, když $\overline{ \mathcal{D}(\map L) }= H $.
+\end{theorem}
+\begin{proof}
+Lze najít ve skriptech \textsc{Lukeš}.
+\end{proof}
+Přirozeně se hned ptáme, zda není definiční obor hustý v $H$ příliš malá množina a zda nelze volit přímo $ \mathcal{D}(\map L) = H $. Odpověď je překvapivá a negativní. Před její formulací ještě zavedeme pojem symetrického operátoru.
+
+\begin{definition}[Symetrický operátor]
+Nechť $H$ je Hilbertův prostor, $\map L : \mathcal{D}(\map L) \mapsto H$ je lineární operátor, $\overline{\mathcal{D}(\map L)} = H $. Řekneme, že $\map L$ je symetrický, jestliže \begin{align*}
+    (\map L x, y)_H = (x, \map L y)_H \quad \text{pro všechna } x,y \in \mathcal{D}(\map L) \:.
+\end{align*}
+\end{definition}
+
+Nyní si představíme překvapivý výsledek, který celou situaci komplikuje.
+
+\begin{theorem}[O omezenosti symetrického operátoru na celém prostoru]
+Nechť $H$ je Hilbertův prostor, $\map L$ je lineární a symetrický operátor definovaný na celém $H$. Pak je $\map L$ omezený.
+\end{theorem}
+\begin{proof}
+Lze nalézt opět ve skriptech \textsc{Lukeš}.
+\end{proof}
+
+Pro samoadjungované operátory tedy nastává následující situace: $H$ je Hilbertův prostor, $\mathcal{D}(\map L)$ je lineární podprostor v $H$, přičemž  $\mathcal{D}(\map L) \neq H$, ale $\overline{\mathcal{D}(\map L)} = H$. Pak říkáme, že $\map L$ je hustě definovaný na prostoru $H$.
+
+Terminologie používaná v literatuře se bohužel různí. Někteří autoři používají termínů \uv{hermitovský},\uv{samoadjungovaný} a \uv{symetrický} zcela odlišně nebo ve fyzikální literatuře dokonce tyto pojmy splývají. 
+
+\begin{example}[Operátor derivování]
+Zvolme $H = L^2\left( (0,1) \right)$, $\mathcal{D}(\map L) = C^1 \left( [0,1] \right)$. Víme, že definiční obor operátoru $\map L$ je hustý v H. Uvažujme operátor $\map L f = f'$. Zřejmě je lineární a neomezený.
+
+Prozkoumejme možnou symetrii takového operátoru. Zřejmě je \begin{align*}
+    (\map L f,g)_{L^2} =(f',g)_{L^2} = \int_0^1 f'(x) \overline{g}(x) \d x \:, \qquad (f,\map L g)_{L^2} = \int_0^1 f(x) \overline{g}'(x) \d x \:. 
+\end{align*}
+Aplikujeme-li metodu per-partes, dostaneme \begin{align*}
+    \int_0^1 f'(x) \overline{g}(x) \d x = \left[ f \overline {g} \right]_0^1 - \int_0^1 f(x) \overline{g}'(x) \d x \:.
+\end{align*}
+Ani v případě, že se pomocí vhodných okrajových podmínek zbavíme krajních členů, nemůže být operátor $\map L$ nikdy symetrický, tedy ani samoadjungovaný.
+
+Určíme nyní $\mathcal{D}(\map L^*)$, tedy vyšetříme množinu \begin{align*}
+    \left \lbrace g \in C^1 \left( [0,1 ]\right) : \text{ existuje jednoznačné } h^* \in L^2\left( (0,1)\right) \text{ tak, že } (\map L f,g)_{L^2}=(f, h^*)_{L^2} \text{ pro každé } f \in C^1 \left( [0,1 ]\right)  \right \rbrace \:.
+\end{align*}
+Po funkci $h^*$ tedy požadujeme, aby splňovala \begin{align*}
+    \left[ f \overline {g} \right]_0^1 - \int_0^1 f(x) \overline{g}'(x) \d x = \int_0^1 f(x) \overline{h^*}(x) \d x \quad \text{pro každé } f \in C^1\left( [0,1 ]\right) \:.
+\end{align*}
+Volbou speciálních funkcí $f$ zjistíme \begin{enumerate}
+    \item DOKONČIT, obrázky jsou v \textrm{rokyta\_obrazky.nb}
+    \item
+\end{enumerate}
+Odtud vidíme, že \begin{align*}
+    \mathcal{D}(\map L^*) \subset \left \lbrace g \in C^1 \left( [0,1 ]\right) : g(0)=g(1)=0 \right \rbrace
+\end{align*}
+a požadovaná symetrie se redukuje na \begin{align*}
+     -\int_0^1 f \overline{g}' \d x = \int_0^1 f \overline{h^*} \d x 
+\end{align*}
+Po převedení obou integrálů na pravou stranu a s použítím Du-Bois-Reymondova lemmatu dostáváme požadavek \begin{align*}
+    h^* = -g' \quad \text{skoro všude} \:.
+\end{align*}
+(Protože hledáme řešení na třídě $C^1$ a tam patří funkce $g$, uvažujme pouze $h^* \in L^2\left( (0,1)\right) \cap C^1 \left(  [0,1] \right)$.)
+
+Celkově jsme dostali \begin{align*}
+    \mathcal{D}(\map L^*) = \left \lbrace g \in C^1 \L^2\left( (0,1)\right) \cap C^1 \left(  [0,1] \right) :  g(0)=g(1)=0 \text{ a zároveň } \map T^* g=-g^* \right \rbrace \:.
+\end{align*}
+Povšimněme si, že $\map L \neq \map L^* $ a navíc $\mathcal{D}(\map L^*) \subset \mathcal{D}(\map L)$, ale $\mathcal{D}(\map L^*) \subset \mathcal{D}(\map L)$.
+\end{example}
+
+\begin{example}[Modifikovaný operátor derivování]
+Modifikací předchozího příkladu ověříme, že operátor \begin{align*}
+    \map L f = i f' \quad \text{definovaný na } L^2 \left( (0,1) \right)
+\end{align*}
+by mohl splňovat podmínku symetrie.
+Uvažujme tři možné definiční obory \begin{enumerate}
+    \item $\mathcal{D}(\map T_1) = L^2 \left( (0,1) \right) \cap  C^1 \left( [0,1] \right)$,
+    \item $\mathcal{D}(\map T_2) = L^2 \left( (0,1) \right) \cap  C^1 \left( [0,1] \right) \cap \{ f(x): f(0)=f(1)\}$,
+    \item $\mathcal{D}(\map T_3) = L^2 \left( (0,1) \right) \cap  C^1 \left( [0,1] \right) \cap \{ f(x): f(0)=f(1)=0\}$
+\end{enumerate}
+a tři restrikce \begin{align*}
+    \map T_1 = \map T\rvert_{\mathcal{D}(\map T_1)} \:, \qquad \map T_2 = \map T\rvert_{\mathcal{D}(\map T_2)} \:, \qquad \map T_3 = \map T\rvert_{\mathcal{D}(\map T_3)} \:.
+\end{align*}
+DOKONČIT
+\end{example}
+
+\begin{remark}
+Připomeňme kvantověmechanický operátor hybnosti \begin{align*}
+    \hat p = -i \hbar \dd{}{x} \quad \text{definovaný na } L^2(\R) \cap C^1(\R) \:.
+\end{align*}
+Modifikací předchozího příkladu snadno zjistíme, že operátor definovaný na takové množině je symetrický, ale není samoadjungovaný. Pokud bychom se snažili nalézt řešení rovnice \begin{align*}
+    -i \hbar \dd{\psi}{x} = k \psi(x) \:,
+\end{align*}
+zjistili bychom, že vlastní funkce \begin{align*}
+    \psi(x, k) = C e^{\frac{ik}{\hbar} x}
+\end{align*}
+nepatří do $L^2(\R)$. Z hlediska spektrální analýzy tedy nemá operátor hybnosti žádné vlastní vektory.
+\end{remark}
+\subsection{Spektrum neomezených operátorů}
+
+V případě omezených operátorů hrály zásadní roli pro charakter spektra následující třídy operátorů: \begin{itemize}
+    \item samoadjungované operátory, ty jsme zavedli i pro neomezené operátory, avšak komplikovanějším způsobem,
+    \item kompaktní operátory, ovšem ty jsou podmnožinou omezených operátorů, proto je zde zavést nelze. Jejich roli částečně převezme třída uzavřených operátorů.
+\end{itemize}
+
+\begin{definition}[Uzavřený operátor]
+Nechť $H$ je Hilbertův prostor, $\map L : \mathcal{D}(\map L) \mapsto H$ je lineární operátor hustě definovaný na $H$.  Řekneme, že $\map L$ je uzavřený, jestliže platí následující výrok: je-li $\sequence{x_n}{n} \subset \mathcal{D}(\map L) $ taková, že $x_n \rightarrow x$ a zároveň posloupnost $\sequence{\map L x_n}{n} \subset H$ konverguje k nějakému $g \in H$, pak $x \in \mathcal{D}(\map L)$ a $\map L x =g$.
+\end{definition}
+
+\begin{remark}
+O uzavřeném operátoru také někdy říkáme, že má uzavřený graf. Uzavřenost se dá slovně formulovat zhruba takto: \uv{konverguje-li posloupnost vzorů a současně i posloupnost obrazů, pak musí limita obrazu být zobrazenou limitou vzoru.}
+\end{remark}
+
+Dále jsme u omezených operátorů studovali jejich surjektivnost a injektivnost (zda jsou operátory prosté a na). Tato otázka má jistě smysl i u neomezených operátorů. Konečně jsme takové studovali spojitost inverzního zobrazení. Touto otázkou se, celkem překvapivě, má smysl zabývat i v této kapitole. Klíčová pozorování jsou shrnuta v následující větě.
+
+\begin{theorem}[O spektrálních vlastnostech neomezených operátorů]
+Nechť $H$ je Hilbertův prostor, $\map L : \mathcal{D}(\map L) \mapsto H$ je lineární operátor hustě definovaný na $H$. Pak \begin{enumerate}
+    \item Je-li $\overline{\mathcal{R}(\map L)} = H$, pak je $\map L$ prostý a na $\mathcal{R} (\map L)$.
+    \item Je-li $\mathcal{R}(\map L) = H$, pak je $\map L$ prostý a na $H$, $\map L$ je samoadjungovaný, $\map L^{-1}$ je spojitý operátor.
+    \item $\map L^{-1}$ je spojitý operátor právě tehdy, když $\map L$ je prostý a na $H$ a $\map L$ je uzavřený operátor.
+\end{enumerate} 
+\end{theorem}
+
+\begin{definition}[Resolventa, spektrum operátoru]
+Množina $ \left\lbrace x \in \C : \map L_\lambda \text{ je prostý, na, } \map L_\lambda^{-1} \text{ je spojitý} \right\rbrace$ se nazývá resolventa operátoru $\map L$ (značíme $\text{Res}\, \map L$). Spektrem operátoru $\map L$ nazýváme množinu $\sigma(\map L) := \C \setminus \text{Res}\, \map L$.
+\end{definition}
+
+\begin{remark}
+Spektrum neomezeného operátoru může být jakákoli neomezená podmnožina $\C$, včetně celého $\C$.
+\end{remark}
+
+\begin{theorem}[O vlastnostech spektra neomezených operátorů]
+Nechť $H$ je Hilbertův prostor a $\map L$ je lineární operátor na $H$. \begin{enumerate}
+    \item Jestliže je $\map L$ uzavřený, pak $\sigma(\map L)$ je uzavřená množina v $\C$.
+    \item Jestliže je $\map L$ uzavřený a symetrický, pak může nastat právě jedna z následujících situací: \begin{enumerate}
+        \item $\sigma(\map L) = \C$,
+        \item $\sigma(\map L) = \{ \lambda \in \C : \mathrm{Im}\, \lambda \geq 0 \}$,
+         \item $\sigma(\map L) = \{ \lambda \in \C : \mathrm{Im} \, \lambda \leq 0 \}$,
+          \item $\sigma(\map L)$ je uzavřená podmnožina $\R$.
+    \end{enumerate}
+    Pouze v posledním případě pak je $\map L$ samoadjungovaný, jinak je pouze symetrický.
+    \item Je-li $\map L$ symetrický a má reálná vlastní čísla, pak jsou vlastní vektory příslušející různým vlastním číslům na sebe kolmé.
+    \item Je-li $\map L$ uzavřený a samoadjungovaný, pak má pouze reálná vlastní čísla a vlastní vektory příslušející různým vlastním číslům jsou na sebe kolmé.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+\begin{enumerate}
+    \item Druhá část předchozí věty ukazuje velkou odlišnost mezi samoadjungovaným a symetrickým operátorem. Neomezený symetrický operátor může obsahovat prvky z nebodového spektra, které nejsou reálné. U samoadjungovaného operátoru taková situace nemůže nastat.
+    \item Vlastních čísel i vektorů může mít neomezený operátor obecně nespočetně mnoho. Partie matematiky zabývající se touto problematikou se nazývá spojitý funkcionální kalkulus, užívající obecnějšího integrálu namísto sumace při rozkladu prvků do vlastních vektorů.
+    \item V teorii o neomezených operátorech nemáme apriori věty o úplnosti zadaného systému. V konkrétních případech je třeba jejich úplnost dokazovat případ od případu.
+\end{enumerate}
+\end{remark}

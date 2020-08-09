@@ -1,0 +1,108 @@
+% !TEX program = xelatex
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+
+\setcounter{secnumdepth}{2} %aby se \subsubsection nečíslovalo
+
+\usepackage{amsmath}
+\numberwithin{equation}{section} %číslování rovnic
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{xcolor} %barvičky v rovnicích
+\usepackage{mathrsfs} %pro spojité operátory \mathsrc{L}
+\usepackage[shortlabels]{enumitem} %enumerate a),b)..., pokračování v seznamu [resume]
+\usepackage[hidelinks]{hyperref} %hypertextové odkazy
+\usepackage{MnSymbol,wasysym} %smajlíci jsou důležití
+
+
+
+\newcommand{\e}[1]{\const{e}^{#1}}
+\newcommand{\I}{\const{i}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\uu}[1]{\underline{#1}}
+
+\def\ph{\phantom}
+\def\vph{\vphantom}
+\def\hph{\hphantom}
+\def\rzw{\mathrlap}
+\def\lzw{\mathllap}
+\def\czw{\mathclap}
+
+\title{Vybrané partie z funkcionální analýzy}
+\author{Mirko Rokyta (do {\TeX}u přepsal kol.)}
+\date{Srpen 2020}
+
+
+%Věty
+\newtheorem{theorem}{Věta}[section]
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definice}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}{Poznámka}
+\newtheorem{example}{Příklad}
+\newtheorem{corollary}[theorem]{Důsledek}
+\newtheorem{exercise}{Cvičení}
+
+\newcommand{\Priklad}[1]{
+    \fbox{\textbf{Příklad}} \;
+    \parbox[t]{\textwidth - 7em}{#1}
+}
+\newcommand{\Cviceni}[1]{
+    \fbox{\textbf{Cvičení}} \;
+    \parbox[t]{\textwidth - 7em}{#1}
+}
+\newcommand{\Poznamka}{\uu{Pozn.}: }
+
+
+% Konstanty
+\newcommand{\const}[1]{\mathrm{#1}}
+% Norma
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+% Skalární součin a symetrie
+\newcommand{\innerprod}[2]{\big( #1, #2 \big)}
+\newcommand{\symmetry}[2]{\big< #1, #2 \big>}
+% Spojité operátory
+\newcommand{\lin}{\mathscr{L}}
+% Kompaktní operátory
+\newcommand{\comp}{\mathscr{C}}
+% Zobrazení
+\newcommand{\map}[1]{\mathbf{#1}}
+% Posloupnost
+\newcommand{\sequence}[2]{ \left \lbrace #1 \right \rbrace_{#2=1}^\infty}
+
+% Názvy používaných operací
+\newcommand{\arctg}{\operatorname{arctg}\,}
+\newcommand{\Lin}{\operatorname{Lin}\,}
+\newcommand{\Id}{\operatorname{Id}\,}
+\newcommand{\Ker}{\mathrm{ker}\,}
+
+% Diferenciál a derivování
+\renewcommand{\d}[1]{\;\const{d}#1}
+\newcommand{\dd}[2]{\frac{\const{d} #1}{\const{d} #2} \;}
+\newcommand{\pd}[2]{\frac{\partial  #1}{\partial  #2} \;}
+
+\begin{document}
+
+\maketitle
+
+\input{00 znaceni}
+\input{01 operatorova trivia}
+\input{02 zaklady spektralni analyzy}
+\input{03 kompaktni operatory}
+\input{04 dualnost}
+\input{05 neomezene operatory}
+\input{06 linearni diferencialni operatory}
+
+
+\end{document}

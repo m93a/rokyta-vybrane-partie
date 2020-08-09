@@ -1,0 +1,457 @@
+%
+%Několik poznámek ke značení:
+%Pro přehlednost jsem se snažil psát u symbolu normy a skalárního součinu, v jakém prostoru se vlastně norma tvoří. Při učení několika dlouhých operátorových nerovností mi tato drobnost pomohla.
+%Rozhodl jsem se rovněž označit nějakým způsobem lineární operátory a zobrazení. Symbol \lin používám pro označení prostoru spojitých lineárních zobrazení a samotná je označuji \map.
+%V kapitole duální operátor se ovšem těžko rozlišuje mezi prvky prostoru a jeho duálu. Značení ponechávám, ale lze ho kdykoli vylepšit nebo tak něco.
+%Při psaní se držím souboru s originálními poznámkami, ale také svých vlastních poznámek. Některé rozčlenění tyou "Poznámka vs Příklad vs Hlavní text" jsem trochu přizpůsobil k svému obrazu, snad to není na škodu.
+
+
+
+
+
+\section{Duálnost}
+
+\subsection{Duál a dualita}
+
+\begin{definition}[Duál]
+Buď $X$ Banachův prostor. Prostor $X'= \lin(X,\C)$ nazýváme komplexní topologický duál prostoru $X$.
+\end{definition}
+\begin{remark}
+\begin{enumerate}
+    \item Samozřejmě používáme i reálný topologický duál $\lin (X,\R)$.
+    \item Víme, že jsou-li $X,Y$ normované prostory a $Y$ je Banachův, pak i $\lin (X,Y)$ je Banachův. Proto je $X'$ automaticky Banachovým prostorem.
+    \item Je-li $\map T \in X'$, pak jeho norma je přirozeně $\norm{\map T}_{X'} := \sup_{\norm{x}_X \leq 1} |\map Tx|$.
+\end{enumerate}
+\end{remark}
+
+\begin{definition}[Dualita prostorů]
+Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \mapsto \C$ nazveme dualitou prostorů $X$ a $X'$, jestliže splňuje vlastnosti: \begin{enumerate}
+    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z)$, $\map S(z,\alpha x + \beta y) = \alpha^* \map S(z,x) + \beta^* \map S(z,y)$.
+    \item spojitost: \begin{align*}
+        \map S(x_n,y_n) \rightarrow \map S(x,y) \quad \text{kdykoliv } (x_n,y_n) \rightarrow (x,y) \text{ v } X \times X' \:.
+    \end{align*}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v následujícím), pak roli duality hraje skalární součin. Ztotožněním prostorů myslíme následující: píšeme $X \simeq Y$, jestliže existuje zobrazení $D: X \mapsto Y$, které je isometrické a izomorfní, tj. zachovává normu a je bijektivní.
+\end{remark}
+
+\begin{example}
+
+Uvažujme prostor vektorů $\R^n$. Víme, že každá lineární forma $\map T \in \R'$ je reprezentovatelná lineární kombinací (násobení transponovaným vektorem): $\map T \left[ (x_1, \cdots, x_n) \right] = \sum_{j=1}^n \alpha_j x_j$. V určitém smyslu lze tedy psát $\R \simeq \R'$. 
+\end{example}
+
+\begin{theorem}[O ztotožnění sdružených lebesgueovských prostorů]
+Buď $\Omega \in \R^n $ otevřená souvislá množina, $\map T \in L^q(\Omega)'$. Označme $q$ sdružený exponent k $p$, tj. $\frac{1}{p} + \frac{1}{q} =1$. Pak existuje právě jeden prvek $g \in L^p(\Omega)$ takový, že:
+\begin{align*}
+\map T(f) = \int_\Omega f g^* \d x \quad \text{pro každé } f \in L^p(\Omega)
+\end{align*}
+a také \begin{align*}
+    \norm{\map T}_{L^p(\Omega)'} = \norm{g}_{L^q(\Omega)} \:.
+\end{align*}   
+\end{theorem}
+
+\begin{proof}
+Dokázat, že takové zobrazení existuje, nedá příliš práce. Dokázat jeho jednoznačnost je však velmi pracná záležitost.
+\end{proof}
+
+Povšimněme si, že pokud v předchozí větě položíme $p=2=q$, získáme vlastnost $L^2(\Omega)' \simeq L^2(\Omega)$. Je přirozené se ptát, zda se za tímto výsledkem neskrývá něco hlubšího. Odpověď je pozitivní.
+
+\begin{theorem}[Rieszova-Fréchetova o reprezentaci] \label{4.Riesz-Frechet}
+Buď $H$ Hilbertův prostor se skalárním součinem $(\cdot \, , \cdot)_H$, $\map T \in H'$.
+Pak existuje právě jeden prvek $f \in H $ takový, že:
+\begin{enumerate}
+    \item $\map T(x) = (x,f)_H \quad \text{pro každé } x \in H \:, $
+    \item $\norm{\map T}_H'= \norm{f}_H \:.$
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+Pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$.
+\end{corollary}
+
+Jsou-li $X,Y$ Banachovy a platí $X \subset Y$, pak platí $Y' \subset X$. Zde je však důležité dát velký pozor!
+
+\begin{example}[Svéhlavá aplikace inkluze]
+Bezhlavá aplikace předchozí inkluze nás může zahnat do slepých ulic.
+
+Uvažujme prostor $\R \subset \R^2$. Dle předchozího tvrzení můžeme prohlásit $(\R^2)' \subset (\R)'$. Protože jsou oba prostory Hilbertovy, lze psát $(\R^n)' = \R^n $, proto by mělo platit $\R^2 \subset \R$, což je zřejmě nesmysl.
+
+V předchozích úvahách jsme učinili dvě velké chyby. \begin{enumerate}
+    \item Menší chybu jsme učinili tím, že jsme prohlásili $(\R^n)' \simeq \R^n$ za rovnost. PŘEPSAT
+    \item Velkou chybu jsme učinili, když jsme inkluzi $(\R^2)' \subset \R'$ považovali za množinovou inkluzi. Tvrzení je třeba chápat v tomto smyslu:
+    
+    Všechna lineární zobrazení pracující na $\R^2$ lze zúžit tak, aby pracovala na $\R$. Pokud je lineární zobrazení $\map T$ reprezentovatelné dvojicí $(\alpha_1, \alpha_2) \in \R^2$, lze toto zobrazení skutečně zúžit na podprostor tvořený $(\alpha_1, 0)$, který můžeme považovat za prostor $\R$. To je pravý smysl \uv{inkluze} $Y' \in X'$.
+\end{enumerate}
+\end{example}
+
+Duálnost se často projevuje jistým typem symetrie ve vzorcích. Je-li $\map T \in X'$, pak $\norm{\map T}_X' = \sup_{\norm{x}_X \leq 1} |\map T(x)|$. Dále víme, že $|\map T(x) \leq \norm{\map T} \norm{x}_X$. 
+
+Uvažujme nyní funkcionál $\map T \in X'$ takový, že $\norm{\map T}_{X'} \leq 1$. Pak jistě platí $|\map T x| \leq \norm{x}_X$ a po přechodu k supremu i \begin{align*}
+    \sup_{\norm{\map T}_{X'} \leq 1} |\map T(x)| \leq \norm{x}_X \:.
+\end{align*}
+Následující věta ukazuje, že můžeme psát dokonce \begin{align*}
+    \sup_{\norm{\map T}_{X'} \leq 1} |\map T(x)| = \norm{x}_X \:.
+\end{align*}
+
+\begin{theorem}[Hahnova-Banachova]
+Buď $X$ Banachův, $x \in X$ takové, že $x \neq 0$. Pak existuje $\map T \in X'$ s vlastnostmi \begin{align*}
+    \map T(x) = \norm{x}_X \:, \qquad \norm{\map T}_{X'} = 1 \:.
+\end{align*}
+\end{theorem}
+
+\subsection{Duální zobrazení, duální operátor}
+
+\begin{definition}[Duální zobrazení, dualita]
+Nechť $X,Y$ jsou Banachovy prostory, $\map T \in \lin (X,Y)$, $\map T' : Y' \mapsto X'$. Řekneme, že $\map T'$ je duální zobrazení k $\map T$, jestliže \begin{align*}
+    \map T' \circ \map y' = \map y' \circ \map T' \quad \text{pro všechna } \map y' \in Y' \:,
+\end{align*}
+neboli \begin{align*}
+    \underbrace{(\map T' \circ \map y')}_{\in X'} \underbrace{(x)}_{\in X} = \underbrace{\map y'}_{\in Y'} \underbrace{(\map T x)}_{\in Y} \quad \text{pro všechna } \map y' \in Y' \text{ a všechna } x \in X \:.
+\end{align*}
+\end{definition}
+
+V předchozí definici je klíčové uvědomit si příslušnost jednotlivých objektů. \begin{itemize}
+    \item $\map y' \in Y'$ je zobrazení pracující na $Y$,
+    \item $\map T' \map y' \in X'$ je zobrazení pracující na $X$,
+    \item $(\map T \map y')(x)$ je objekt, který přiřazuje prvkům z $X \times X'$ číslo. To odpovídá struktuře duality.
+\end{itemize}
+Duální zobrazení proto často zapisujeme jako \begin{align*}
+    \langle \map T' \map y', x \rangle = \langle \map y', \map T x \rangle \:,
+\end{align*}
+shodně se zobrazením duality. Povšimněme si, že na levé straně máme skutečně zobrazení z $X' \times X$ a na pravé zobrazení z $Y' \times Y$.
+\begin{remark}
+Je-li $T \in \lin (X,Y)$, pak i $\map T' \in \lin(Y', X')$. 
+
+Linearita je zřejmá. Ukažme spojitost.  Zafixujme $\sequence{\map y'_n}{n} \subset Y'$ takovou, že $\map y'_n \rightarrow \map y'$. Ukážeme, že posloupnost $\sequence{\map T \map y_n}{n} \subset X'$ konverguje k $\map T \map y_n$. Platí
+\begin{align*}
+    \norm{\map T' \map y'_n - \map T' \map y'}_{X'} 
+    =&
+    \sup_{\norm{x}_X \leq 1} \norm{\map T' \map y'_n (x)- \map T' \map y' (x)}_X 
+    =
+    \sup_{\norm{x}_X \leq 1} \norm{\map y'  \map T'_n (x)- \map y' \map T' (x)}_X 
+    =
+    \sup_{\norm{x}_X \leq 1} \norm{(\map y'_n-\map y') (\map T x)}_X 
+    \leq \\
+    \leq&
+     \norm{\map y'_n - \map y'} \norm{\map T} \sup_{\norm{x}_X \leq 1} \norm{x}_X 
+    =
+    \norm{\map y'_n -\map y'} \norm{\map T} \rightarrow 0\:,
+\end{align*}
+což jsme chtěli ukázat.
+
+Dá se ukázat, že: $\map T$ je kompaktní operátor právě tehdy, když je $\map T'$ kompaktní operátor (tzv. Schauderova věta).
+\end{remark}
+
+Sami zkuste dokázat, že $\norm{\map T} = \norm{\map T'}$.
+
+V následujícím nás bude zajímat, lze li podobně jako v případě dvou Hilbertových prostorů ztotožnit $\map T$ a $\map T'$. DOKONČIT
+
+Pozitivní výsledky dostaneme opět pro Hilbertovy prostory.
+
+\begin{theorem}[O duálním zobrazení mezi Hilbertovými prostory]
+Nechť $H_1, H_2$ jsou Hilbertovy prostory a $\map T \in \lin(H_1, H_2)$. Pak existuje právě jedno zobrazení $\map T' : H_2 \mapsto H_1$ takové, že 
+\begin{align} \label{eq4.dualHilbert}
+    (\map T x, y)_{H_2} = (x, \map T'y)_{H_1} \quad \text{pro všechna } x \in H_1, y \in H_2 \:.
+\end{align}
+Pro takové zobrazení navíc platí: \begin{enumerate}
+    \item $\map T' \in \lin(H_2, H_1)$,
+    \item $\norm{\map T'} = \norm{\map T}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+Aplikujeme-li komplexní sdružení v rovnici \eqref{eq4.dualHilbert}, dostaneme \begin{align*}
+    \overline{(\map T x,y)}_{H_2} = \overline{(x, \map T' y)}_{H_1} \rightarrow (\map T' y,x)_{H_1} = (y, \map T x)_{H_2} \:.
+\end{align*}
+Na Hilbertových prostorech tedy hraje roli duality skalární součin.
+\end{remark}
+\begin{proof}
+Zafixujme $y \in H_2$ a definujme \begin{align*}
+    \map L_y : x \mapsto (\map T x,y)_{H_2}
+\end{align*}
+Podle Rieszovy-Fréchetovy věty (Věta \ref{4.Riesz-Frechet}) existuje právě jedno $z \in H_1$ takové, že \begin{align*}
+    \map L_y x = (x,z)_{H_1} \:.
+\end{align*}
+Tím jsme zkonstruovali zobrazení \begin{align*}
+    \map T' : y \in H_2 \mapsto z \in H_1
+\end{align*}
+s vlastností \begin{align*}
+    (\map T x, y)_{H_2} = (x,\map T' y)_{H_1} \quad \text{pro libovolné } x\in H_1, y \in H_2 \:.
+\end{align*}
+Tím jsme dokázali první část tvrzení o existenci a jednoznačnosti zobrazení $\map T'$.
+
+Ukažme jeho linearitu. Zřejmě je pro každé $x \in H_1$ splněno \begin{align*}
+    \left( \map T' (\alpha y_1 + \beta y_2) , x \right)_{H_1} =& \left( \alpha y_1 + \beta y_2 , \map T x \right)_{H_2} = \alpha (y_1, \map T x)_{H_2} + \beta (y_2, \map T x)_{H_2} = \\
+    =&
+    \alpha (\map T' y_1, x)_{H_1} + \beta (\map T' y_2, x)_{H_1} = (\alpha \map T' y_1 + \beta \map T' y_2, x)_{H_1}
+\end{align*} a odtud \begin{align*}
+    \map T' (\alpha y_1 + \beta y_2) = \alpha \map T' y_1 + \beta \map T' y_2 \:.
+\end{align*}
+Obdobně bychom dokázali linearitu ve druhé složce.
+
+Ukažme spojitost zobrazení $\map T'$ pomocí omezenosti jeho normy. Podle definice zobrazení $\map T'$ a druhé části Rieszovy-Fréchetovy věty (Věta \ref{4.Riesz-Frechet}) dostáváme \begin{align} \label{eq:4.Vdual1}
+    \norm{\map T' y}_{H_1} = \norm{ z}_{H_1} = \norm{\map L_y} \:.
+\end{align}
+Dále je podle definice $\map L_y$ a Cauchyovy-Schwarzovy nerovnosti \begin{align*}
+    \norm{\map L_y x} = |(\map Tx, y)_{H_2}| \leq \norm{\map Tx}_{H_2} \norm{y}_{H_2} \leq \norm{\map T} \norm{x}_{H_1} \norm{y}_{H_2}
+\end{align*}
+a odtud \begin{align} \label{eq:4.Vdual2}
+    \norm{\map L_y} = \sup_{\norm{x}_{H_1} \leq 1} \norm{\map L_y x}_{H_2} \leq \norm{\map T} \norm{y}_{H_2} \:.
+\end{align}
+S použitím \eqref{eq:4.Vdual1} a \eqref{eq:4.Vdual2} dostáváme \begin{align*}
+    \norm{\map T'} = \sup_{\norm{y}_Y \leq 1} \norm{\map T' y} \leq  \norm{\map T} \sup_{\norm{y} \leq 1} \norm{y}_{H_2} = \norm{\map T} < + \infty \:.
+\end{align*}
+Tím jsme ověřili spojitost a celkově $\map T' \in \lin(H_2, H_1)$.
+
+Zbývá ukázat rovnost norem $\norm{\map T'} = \norm{\map T}$. Za tím účelem definujeme $\map T'' = (\map T')'$. O tomto zobrazení již víme, že $\map T'' \in \lin(H_1, H_2)$, $(\map T'' x,y)_{H_2} = (x, \map T' y)_{H_1}$ a $\norm{\map T''} \leq \norm{\map T'}$. Pak s použitím předchozích částí důkazu dostaneme \begin{align*}
+    (\map T'' x,y)_{H_2} = (x, \map T'y)_{H_1} = \overline{(\map T' y, x)}_{H_1} = \overline{(y, \map T x)}_{H_2} = (\map T x,y)_{H_2} \quad \text{ pro všechna } x \in H_1, y \in H_2 \:,
+\end{align*}
+tedy \begin{align*}
+    \map T'' x= \map T x \quad \text{pro každé } x \in H_1 \:.
+\end{align*}
+Odtud \begin{align*}
+    \norm{\map T} = \norm{\map T''} \leq \norm{\map T'} \leq \norm{\map T} \:,
+\end{align*}
+a proto musí platit v předchozím řetězci všude rovnosti.
+\end{proof}
+\begin{definition}[Hermitovsky sdružený operátor]
+Nechť $H_1, H_2$ jsou Hilbertovy prostory, $\map T \in \lin (H_1, H_2) $. Zobrazení $\map T'$ s vlastnostmi z předchozí věty nazýváme hermitovsky sdružený operátor s $\map T$ (případně adjungovaný operátor k $\map T$).
+\end{definition}
+
+\begin{definition}[Samoadjungovaný (omezený) operátor.]
+Nechť $H$ je Hilbertův prostor. Operátor $\map T \in \lin(H)$ nazveme (omezený) samoadjungovaný  (případně hermitovský), jestliže $\map T = \map T'$.
+\end{definition}
+\begin{remark}
+V předchozí definici jsou oba operátory $\map T, \map T'$ definovány na celém Hilbertově prostoru. Zdůrazňujeme zde, že mluvíme o \uv{omezených samoadjungovaných} operátorech. V případě neomezených operátorů uvidíme, že definiční obor operátorů zcela mění spektrální vlastnosti a definice hermitovskosti a samoadjungovanosti je složitější.
+\end{remark}
+
+\subsection{Vlastnosti samoadjungovaných operátorů}
+
+\begin{lemma}[O vlastních číslech samoadjungovaných operátorů]
+Nechť $\map T \in \lin (H)$ je samoadjungovaný. Pak má pouze reálná vlastní čísla a vlastní vektory příslušející různým vlastním číslům jsou na sebe kolmé.
+\end{lemma}
+\begin{proof}
+První část tvrzení plyne z rovnosti \begin{align*}
+\lambda \norm{x}^2_H = (\lambda x, x)_H = (\map T x,x)_H = (x, \map T x)_H = (x, \lambda x)_H = \overline{\lambda} (x,x)_H = \overline{\lambda} \norm{x}_H ^2 \:.
+\end{align*}
+Nechť jsou $\lambda_1 \neq \lambda_2$ vlastní čísla příslušející vlastním vektorům $y_1,y_2$. Pak z rovnosti \begin{align*}
+    (\lambda_1 - \lambda_2)(y_1,y_2)_H = (\lambda_1 y_1,y_2)_H - (y_1, \lambda_2 y_2)_H = (\map T y_1, y_2)_H - (y_1, \map T y_2)_H = (\map T y_1,y_2)_H - (\map T y_1,y_2)_H = 0
+\end{align*}
+vidíme, že musí platit $(y_1,y_2)=0$.
+\end{proof}
+\begin{remark}
+Samoadjungovaný operátor může mít ovšem i jiné prvky spektra. O nich obecně nevíme nic.
+\end{remark}
+\begin{theorem}[O spektrálních vlastnostech samoadjungovaných operátorů]
+Nechť $H$ je Hilbertův prostor a $\map T \in \lin (H)$ je samoadjungovaný operátor. Označme \begin{align*}
+    m(\map T) = \inf \left \lbrace (\map T x,x)_H : \norm{x}_H = 1 \right \rbrace \qquad M(\map T) = \sup \left \lbrace (\map T x,x)_H : \norm{x}_H = 1 \right \rbrace
+\end{align*} Pak \begin{enumerate}
+    \item Je-li $\lambda \in \sigma(\map T)$, pak $\lambda \in [m(\map T), M(\map T)]$.
+    \item Platí $\rho(\map T) = \norm{\map T}$. Speciálně: alespoň jedna z hodnot $\lambda = \pm \norm{\map T}$ je vlastním číslem $\map T$.
+\end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+Nechť $\mathbb{A} \in \R^{n \times n}$ je reálná symetrická matice, $x \in \R^n$ a $f(x) = (\mathbb{A} x,x) = \sum_{i,j} a_{ij} x_i x_j$. Určete minimum a maximum $f$ za podmínky $\norm{x} =1$.
+\end{exercise}
+
+\subsection{Kompaktní samoadjungované operátory na Hilbertově prostoru}
+
+Nejprve zopakujeme výsledky, které zatím máme o kompaktních samoadjungovaných operátorech. Na Hilbertově prostoru $H$ uvažujme $\map K \in \comp (H)$ takový, že $(\map K x,y)_H = (x, \map K y)_H$ pro všechna $x,y \in H$. Pak platí \begin{enumerate}
+    \item $\map K$ má nejvýše spočetně mnoho vlastních čísel, všechna vlastní čísla jsou reálná.
+    \item Jediným dalším prvkem spektra $\sigma(\map K)$ může být číslo $0$, ta může nebo nemusí být vlastním číslem.
+    \item Ke každému nenulovému vlastnímu číslu existuje nejvýše konečně mnoho lineárně nezávislých vlastních vektorů. Navíc vlastní vektory odpovídající různým vlastním číslům jsou na sebe vždy kolmé.
+\end{enumerate}
+
+Hlavním výsledkem této kapitoly bude Hilbertova-Schmidtova věta, která říká následující: všechny vlastní vektory odpovídající všem vlastním číslům kompaktního samoadjungovaného operátoru tvoří bázi Hilbertova prostoru. Nejprve je však potřeba provést přípravné práce.
+
+První takovou prací je připomenutí ortogonálního doplňku z lineární algebry.
+\begin{definition}[Direktní součet podprostorů]
+Nechť $H$ je lineární vektorový prostor a $A,B$ jsou podprostory $H$. Řekneme, že $H$ je direktním součtem $A$ a $B$ (píšeme $A \oplus B = H$, jestliže \begin{enumerate}
+    \item $A+B=H$, tj. pro každé $h \in H$ existují $a \in A$, $b \in B$ takové, že $a+b=h$,
+    \item $A \cap B = \{0 \}$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Jsou-li $A$ a $B$ dvě různé přímky protínající počátek, pak lze psát $\R^2 = A \oplus B$.
+\end{example}
+
+\begin{definition}[Ortogonální doplněk]
+Nechť $H$ je Hilbertův prostor a $A$ je uzavřený lineární podprostor v $H$. Definujeme ortogonální doplněk $A^\bot \subset H$ předpisem \begin{align*}
+    A^\bot := \left \lbrace y \in H: (x,y)=0 \text{ pro každé } x \in A  \right \rbrace \:.
+\end{align*}
+\end{definition}
+
+\begin{theorem}[O vlastnostech ortogonálního doplňku]
+Nechť $H$ je Hilbertův prostor a $A$ je uzavřený lineární podprostor $H$ a $A^\bot$ je jeho ortogonální doplněk. Pak \begin{enumerate}
+    \item $A^\bot$ je uzavřený lineární podprostor $H$,
+    \item platí $ (A^\bot)^\bot = A$,
+    \item platí $A \oplus A^\bot = H$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+DOKONČIT.
+\end{proof}
+
+Druhou přípravnou prací je zopakování některých výsledků o Fourierových řadách.
+
+Připomeňme, že o metrickém prostoru $X$ říkáme, že je separabilní, jestliže v něm existuje spočetná hustá množina. Ortogonálním systémem v $H$ nazýváme posloupnost $\sequence{e_n}{n} \subset H$ takovou, že pro $i\neq j$ platí $(e_i,e_j)_H =0$. O ortogonálním systému řekneme, že je úplný, právě když \begin{align*}
+    y \in H, (y,e_n)_H =0 \rightarrow y = 0 \:.
+\end{align*}
+
+\begin{theorem}[O Fourierových řadách na Hilbertově prostoru.]
+Nechť $H$ je Hilbertův prostor. Pak jsou následující tvrzení ekvivalentní: \begin{enumerate}
+    \item $H$ je separabilní prostor,
+    \item Existuje úplný spočetný ortogonální systém $\sequence{e_n}{n} \subset H$,
+    \item Pro každé $x \in H$ platí \begin{align*}
+        x = \sum_{n=1}^\infty \dfrac{(x,e_n)_H}{\norm{e_n}^2} e_n \:,
+    \end{align*}
+    \item Pro každé $x \in H$ platí \begin{align*}
+        \norm{x}_H^2 = \sum_{n=1}^\infty \dfrac{(x,e_n)^2_H}{\norm{e_n}^2} \:. \qquad \text{(tzv. Parsevalova rovnost)}
+    \end{align*}
+\end{enumerate}
+\end{theorem}
+
+Nyní jsme připraveni dokázat klíčovou větu této kapitoly.
+\begin{theorem}[Hilbertova-Schmidtova] \label{4.Hilbert-Schmidt}
+Nechť $H$ je Hilbertův prostor, $\map T$ je kompaktní samoadjungovaný operátor na $H$. Označme $\Lambda$ uzavřený poprostor $H$ generovaný všemi vlastními vektory $\map T$, které odpovídají všem nenulovým vlastním číslům $\map T$. Pak \begin{align*}
+    H = \Lambda \oplus \Ker \map T \:.
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+Důkaz věty rozdělíme do několika kroků.
+
+\underline{Krok 1:} Vlastnosti prostoru $\Lambda$. \\
+Díky kompaktnosti a samoadjungovanosti $\map T$ existuje nejvýše spočetná posloupnost $\sequence{\lambda_j}{j}$ vlastních čísel. Označme podprostor příslušející $j$-tému vlastnímu číslu \begin{align*}
+    E_j = \Ker \left( \map T - \lambda_j \map{Id} \right) = \lbrace x \in H : x \neq 0, \map T x = \lambda_j x \rbrace
+\end{align*}
+Díky kompaktnosti $\map T$ je $\dim E_j := n_j < + \infty$. Označme $B_j$ bázi prostoru $E_j$. Můžeme bez újmy na obecnosti předpokládat, že je tato báze ortogonalizovaná (jinak můžeme použít například Gramovu-Schmidtovu ortogonalizaci). Definujme \begin{align*}
+    B = \bigcup_{j=1}^\infty B_j \:.
+\end{align*}
+Pak i $B$ je nejvýše spočetná množina a je tvořena vlastními vektory. Ukažme, že je i ortogonální množina: zvolme $x \neq y \in B$. Pak oba prvky buď patří do stejné $B_j$ a jsou na sebe kolmé díky předpokladu výše, nebo jsou z různých bází $B_i, B_j$ a jsou na sebe kolmé díky samoadjungovanosti $\map T$.
+
+Definujme prostor všech konečných součtů prvků z $B$ předpisem \begin{align*}
+    \Lambda_0 = \left\lbrace z \in H: z = \sum_{j=1}^n \alpha_j e_j, \alpha_j \in \mathbb{C} , e_j \in B \right\rbrace =  \mathrm{span}\, B
+\end{align*}
+a dále prostor všech nejvýše spočetných součtů prvků z $B$ předpisem \begin{align*}
+    \Lambda := \overline{\Lambda_0} = \left\lbrace z \in H: z = \sum_{j=1}^\infty \alpha_j e_j, \alpha_j \in \mathbb{C} , e_j \in B \right\rbrace \:.
+\end{align*}
+Pak $\Lambda$ je uzavřený lineární podprostor $H$, je tedy Hilbertovým prostorem. 
+
+Navíc je $\Lambda$ separabilní. Spočetnou hustou množinu v něm tvoří \begin{align*}
+    \left\lbrace z \in H: z = \sum_{j=1}^N \beta_j e_j, \beta_j \in \Q , e_j \in B, N \in \N \right\rbrace
+\end{align*}
+
+\underline{Krok 2:} Příslušnost množin $\map T(\Lambda)$ a $\map T(\Lambda^\bot)$. \\
+Nejprve ukážeme, že $\map T(\Lambda) \subset \Lambda$. Zvolme $x \in \Lambda$. Pak \begin{align*}
+    \map T x = \map T \left(\sum_{j=1}^\infty \gamma_j e_j \right) = \sum_{j=1}^\infty \gamma_j \map T e_j = \sum_{j=1}^\infty \gamma_j \lambda_j e_j \:,
+\end{align*}
+tedy $\map T x \in \Lambda$. 
+
+Dále ukažme, že $\map T(\Lambda^\bot) \subset \Lambda^\bot$. Zvolme $x \in \Lambda, y \in \Lambda^\bot$. Pak $\map T x \in \Lambda^\bot$ a z rovnosti \begin{align*}
+    (\map T y,x)_H = (y, \map T x)_H =0
+\end{align*}
+vidíme, že musí nutně platit $\map T y \in \Lambda^\bot$. Tím jsme dokázali, že $\map T(\Lambda^\bot) \in \Lambda^{\bot}$. Celkově jsme ukázali, že  $\map T(\Lambda^\bot)$ je také uzavřený podprostor v $H$ a tedy Hilbertův.
+
+\underline{Krok 3:} Platnost tvrzení $\map T(\Lambda^\bot) = \lbrace 0 \rbrace$. \\
+Definujme zúžení operátoru $\map T$ předpisem \begin{align*}
+    \map {\tilde T} := \map T\rvert_{\Lambda^\bot}
+\end{align*}
+Protože $\map T(\Lambda^\bot) \in \Lambda^{\bot}$, platí $\map{\tilde T} : \Lambda^{\bot} \mapsto \Lambda^{\bot}$. Tedy $\map{\tilde T}$ je také kompaktní a samoadjungovaný operátor na $\Lambda^{\bot}$.
+
+Ukážeme sporem, že $\map{\tilde T}$ nemá žádné nenulové vlastní číslo. Nechť platí negace tohoto výroku a existuje vlastní číslo $\lambda \neq 0$ a vlastní vektor $y \in \Lambda^{\bot} , y \neq 0$ takové, že $ \map{\tilde T} y = \lambda y$. Díky samoadjungovanosti je pak \begin{align*}
+    \map T y = \map{\tilde T} y = \lambda y
+\end{align*}
+a tedy $\lambda$ je i vlastní číslo operátoru $\map T$. Podle druhé části důkazu je ale potom $y \in \Lambda$. Tedy $y \in \Lambda \cap \Lambda^\bot$, což implikuje $y=0$ a to je ve sporu s předpoklady.
+
+Celkově jsme zjistili, že $\map{\tilde T}$ je kompaktní operátor, který nemá nenulové vlastní číslo, tedy $\sigma(\map{\tilde T}) \subset \{ 0 \}$. Podle Věty o spektrálních vlastnostech kompaktních operátorů (Věta XY) je $\rho(\map{\tilde T}) = 0$, a tedy  $\norm{\map{\tilde T}} =0$, což je ekvivalentní s $\map{\tilde T} \equiv 0$. Z konstrukce $\map{\tilde T}$ pak snadno nahlédneme, že $\map T(\Lambda^\bot)= \{0 \}$.
+
+\underline{Krok 4:} Dokončení důkazu. \\
+Předchozí část důkazu nám dává $\Lambda^\bot \subset \Ker \map T$. Zjevně platí $\Lambda \oplus \Lambda^\bot = H$, tedy \begin{align*}
+    \Lambda + \Ker \map T = H \:.
+\end{align*}
+Zbývá ukázat, že $\Lambda \cap \Ker \map T = \{0 \}$, tím dokážeme direktnost součtu těchto prostorů.
+
+Zvolme $z \in \Lambda \cap \Ker \map T$. Díky jeho příslušnosti do $\Lambda$ lze psát \begin{align*}
+    0 = \map T z = \map T \left( \sum_{j=1}^\infty \alpha_j e_j \right) =  \sum_{j=1}^\infty \alpha_j \map T e_j =  \sum_{j=1}^\infty \alpha_j \lambda_j e_j \:.
+\end{align*}
+To je Fourierova řada nulového prvku. Z teorie jednoznačnosti Fourierových řad pak vyplývá, že \begin{align*}
+    \alpha_j \lambda_j =0 \quad \text{pro všechna } j \in \N \:.
+\end{align*}
+Díky nenulovosti $\lambda_j$ dostáváme \begin{align}
+    \alpha_j =0 \quad \text{pro všechna } j \in \N
+\end{align}
+a tedy $z = 0$, což jsme chtěli ukázat.
+\end{proof}
+
+\begin{remark}
+\begin{enumerate}
+    \item První část důkazu se vlastně netýká věty samotné, jen osvětluje vlastnosti prostoru $\Lambda$.
+    \item V důkazu nám stačilo pouze ukázat, že $\Lambda^\bot \subset \ker \map T$. Dá se dokonce ukázat, že $\Lambda^\bot = \ker \map T$.
+    
+    Zvolme $z \in \ker \map T \setminus \Lambda^\bot $ takové, že $z \neq 0$. DOKONČIT POZNÁMKU
+\end{enumerate}
+\end{remark}
+
+\begin{corollary}[O rozkladu Hilbertova prostoru pomocí kompaktního samoadjungovaného operátoru] \label{4.rozklad I}
+Nechť $H$ je Hilbertův prostor, $\map T$ je kompaktní samoadjungovaný operátor na $H$, $\sequence{e_j}{j} \subset H$ je ortogonální systém všech vlastních vektorů příslušející všem nenulovým vlastním číslům operátoru $\map T$. Pak pro každý prvek $h \in H$ existuje posloupnost $\sequence{\alpha_j}{j}$ taková, že \begin{align} \label{eq:4.rozklad h}
+    h = \sum_{j=1}^\infty \alpha_j e_j + z \:,
+\end{align}
+přičemž $z \in \Ker \map T$. Dále \begin{align} \label{eq:4.rozklad Th}
+    \map T h = \sum_{j=1}^\infty \alpha_j \lambda_j e_j
+\end{align}
+a platí \begin{align*}
+    \alpha_k = \dfrac{(h, e_k)}{\norm{e_k}^2} \quad \text{pro všechna } k \in \mathbb{N} \:.
+\end{align*}
+\end{corollary}
+
+\begin{remark}
+Hilbertova-Schmidtova věta \ref{4.Hilbert-Schmidt} a důsledek \ref{4.rozklad I} rozšiřuje známou větu ze čtvrtého semestru matematické analýzy na Hilbertovy prostory, které obecně nemusí být separabilní. Neseparabilní část prostoru je právě $\Ker \map T$. Zatímco se v rovnici \eqref{eq:4.rozklad h} objevuje i tato neseparabilní část, v rovnici \eqref{eq:4.rozklad Th} už nevystupuje. Tato vlastnost pak umožňuje využívat vlastností rozkladu do Fourierových řad u kompaktních samoadjungovaných operátorů i na neseparabilních prostorech.
+\end{remark}
+
+Na závěr kapitoly se rozloučíme s větou, která (mimo jiné) umožňuje konstruovat kompaktní operátory na Hilbertových prostorech.
+
+\begin{theorem}[O rozkladu Hilbertova prostoru pomocí omezené posloupnosti] \label{4.rozklad II}
+Nechť $H$ je separabilní Hilbertův prostor, $\sequence{e_j}{j} \subset H$ je úplný ortonormální systém a $\sequence{\alpha_j}{j} \subset \C$ je omezená posloupnost. Označme \begin{align*}
+    M:= \sup_{j \in \N} \{ |\alpha_j|\} < + \infty \:.
+\end{align*}
+Definujme operátor $\map T$ předpisem \begin{align*}
+    \map T h = \sum_{j=1}^\infty (h, e_j)_H \cdot \alpha_j  e_j \:.
+\end{align*}
+Pak \begin{enumerate}
+    \item  $\map T$ je dobře definován na celém $H$, $\map T \in \lin (H)$ a $\norm{\map T} = M$.
+    \item Platí\begin{align*}
+        \map T \text{ je samoadjungovaný } \Longleftrightarrow \alpha_j \in \mathbb{R} \text{ pro všechna } j \in \N \:. 
+    \end{align*}
+    \item Platí \begin{align*}
+        \map T \text{ je kompaktní } \Longleftrightarrow \text{ existuje přerovnání poslopnosti} \sequence{\alpha_j}{j} \text{ tak, že } \lim_{n \rightarrow \infty} \alpha_n = 0 \:.
+    \end{align*}
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+\begin{enumerate}
+    \item Volme posloupnost $\alpha_n=1$. Pak operátor generovaný takovou posloupností je zřejmě $\map{Id}$. Podle druhé a třetí části předchozí věty je $\map{Id}$ samoadjungovaná, ale není kompaktní.
+    \item Volme posloupnost $\alpha_n = \dfrac{1}{n}$. Pak podle předchozí věty generuje tato posloupnost operátor, který je samoadjungovaný a navíc díky $\alpha_n \rightarrow 0$ je kompaktní.
+\end{enumerate}
+\end{example}
+
+\begin{remark}
+V kvantové statistické mechanice se pracuje s tzv. operátorem hustoty $\hat{\rho}$ definovaným předpisem \begin{align*}
+    \hat{\rho} := \sum_{j=1}^\infty p_j \lvert \psi_j \rangle \langle \psi_j \rvert \:, \quad \text{kde } \sequence{\lvert \psi_j \rangle}{j} \in H \text{ jsou takové, že } |\langle \psi_j \lvert \psi_j \rangle |=1 \text{ a } \sum_{j=1}^\infty p_j =1 \:.
+\end{align*}
+Povšimněme si, že v nediracovské notaci bychom takový operátor zapsali předpisem \begin{align*}
+    \boldsymbol \rho (h) = \sum_{j=1}^\infty p_j (\psi_j,h)_H \psi_j \:.
+\end{align*}
+Ke splnění podmínek z předchozí věty mu chybí jen to, že $\sequence{\lvert \psi_j \rangle}{j}$ nemusí (a většinou netvoří) ortonormální posloupnost. Nicméně se dá ukázat, že operátor hustoty je vždy kompaktní a samoadjungovaný. Dokonce patří do speciální třídy kompaktních operátorů, pro které lze definovat tzv. stopu operátoru předpisem \begin{align*}
+    \mathrm{Tr}\, \hat \rho := \sum_{j=1}^\infty \langle \psi_j \rvert \hat \rho \lvert \psi_j \rangle
+\end{align*}
+(tzv. \textit{trace-class} operátory).
+Více lze najít například v knize: \textsc{BLANK, Jiří, Pavel EXNER a Miloslav HAVLÍČEK. Hilbert Space Operators in Quantum Physics Theoretical and Mathematical Physics. Melville, N.Y.: Springer, 2008. ISBN 9781402088698.}
+
+\end{remark}
+

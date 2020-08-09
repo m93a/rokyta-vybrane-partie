@@ -1,0 +1,432 @@
+\section{Základy spektrální analýzy}
+
+\subsection{Motivace: řešení jedné ODR}
+\Priklad 
+
+Uvažujme počáteční úlohu pro ODR
+\begin{equation}
+    \begin{split}
+        y''+y&=f(x) \text{\;\;\;\; na } (0,a), a>0,\\
+        y(0)&=1,\\
+        y'(0)&=0,
+    \end{split}
+    \label{eq:zadani}
+\end{equation}
+kde $f\in \mathcal{C}(\symmetry{0}{a})$. Řešení této úlohy pro $f\equiv 0$ je $y=\cos x$, jak snadno zjistíme například metodou charakteristického polynomu. Pro nalezení jednoho (partikulárního) řešení rovnice s pravou stranou $f$ můžeme použít např. metodu variace konstant. Z tvaru
+\begin{equation}
+    y_p=c_1(x) \cos x+c_2 \sin x
+\end{equation}
+dostaneme rovnice pro $c_1(x)$, $c_2(x)$
+\begin{equation}
+    \begin{split}
+        c_1'\cos x+c_2'\sin x&=0\\
+        -c_1'\sin x+c_2'\cos x&=f(x),
+    \end{split}
+    \label{eq:variacekonst}
+\end{equation}
+odkud plyne
+\begin{equation}
+    \begin{split}
+        c_1'=-f \sin x
+        c_2'=f\cos x,
+    \end{split}
+\end{equation}
+a tedy $ c_1(x) = -\int\limits_0^xf(t)\sin t \d t$, $ c_2(x) = -\int\limits_0^xf(t)\cos t \d t$ jsou jedna z řešení rovnice (\ref{eq:variacekonst}).\footnote{Pozn: Mohli jsme samozřejmě zvolit pro $c_1$ resp. $c_2$ i jiné z primitivních funkcí k $-f(x)\sin x$ resp. $f(x) \cos x$ (lišících se však jen o konst.), tato volba však způsobí, že $y_p$ splňuje počáteční podmínky.}
+
+Dostáváme
+\begin{equation}
+        y_p=\sin x \int\limits_0^xf(t)\cos t\d t-\cos x\int\limits_0^x f(t)\sin t\d t=\int\limits_0^x f(t)\left(\sin x \cos t-\cos x\sin t\right) \d t= \int\limits_0^xf(t) \sin(x-t)\d t,
+\end{equation}
+tedy celkově
+\begin{equation}
+    y(x)=\cos x+\int\limits_0^x f(t)\sin{(x-t)}\d t.
+    \label{eq:celkovereseni}
+\end{equation}
+Dosazení se lze přesvědčit, že funkce $y$ daná předpisem (\ref{eq:celkovereseni}) je řešením úlohy (\ref{eq:zadani}) a z teorie víme, že jediným.
+
+\Poznamka Při dosazení (\ref{eq:celkovereseni} do (\ref{eq:zadani}) se může hodit následující lemma o derivování integrálu jak podle parametru, tak podle mezí:
+
+\lemma\label{lemma:derivacemezi}
+
+Buďte $a,b\in\mathcal{C}^1((\alpha,\beta))$, $a((\alpha,\beta))\subset (A,B)$, $b((\alpha,\beta))\subset (A,B)$, $g\in\mathcal{C}^1((\alpha,\beta)\times(A,B))$, a nechť funkce $a,b,g,\pd{g}{x}$ jsou omezené na svých definičních oborech. Potom
+\begin{equation}
+    \dd{}{x}\int\limits_{a(x)}^{b(x)}g(x,t)\d t = \int\limits\pd{g}{x}(x,t)\d t + g(b(x))b'(x)-g(a(x))a'(x), \quad x\in(\alpha,\beta).
+\end{equation}
+\begin{proof}
+Protože $g$ je spojité ve druhé proměnné, existuje $G\in \mathcal{C}^1((\alpha,\beta)\times(A,B))$ taková, že 
+\begin{equation}
+    \pd{G}{t}(x,t)=g(x,t),\quad (x,t)\in (\alpha,\beta)\times(A,B).
+    \label{eq:predpokladdukazu}
+\end{equation}
+Podle Newton Leibnizovy formule tedy je 
+\begin{equation}
+    \begin{split}
+        \int\limits_{a(x)}^{b(x)}g(x,t)\d t &= G(x,b(x))-G(x,a(x)) \quad \Bigg/ \dd{}{x}\\
+        \dd{}{x}\int\limits_{a(x)}^{b(x)}g(x,t)\d t &= \dd{}{x} \left(G(x,b(x))-G(x,a(x))\right) = \underbrace{\pd{G}{x}(x,b(x))-\pd{G}{x}(x,a(x))}_{\text{derivace pouze dle 1. proměnné}}+\underbrace{\pd{G}{t}(x,b(x))}_{\text{dle (\ref{eq:predpokladdukazu})}}b'(x)-\underbrace{\pd{G}{t}(x,a(x))}_{\text{dle (\ref{eq:predpokladdukazu})}}a'(x),
+    \end{split}
+\end{equation}
+přičemž v poslední rovnosti první dva členy jsou derivací pouze podle 1. proměnné, třetí člen je $g(x,b(x))$ a čtvrtý $g(x,a(x))$ dle (\ref{eq:predpokladdukazu}).
+
+Důkaz se dokončí tím, že se ověří rovnost
+\begin{equation}
+    \pd{G}{x}(x,c)-\pd{G}{x}(x,d)=\int\limits\pd{g}{x}(x,t)\d t.
+\end{equation}
+Skutečně, je-li $G(x,t)$ primitivní ke $g(x,t)$ v proměnné $t$, je $\pd{G}{x}(x,t)$ primitivní ke $\pd{g}{x}(x,t)$ v proměnné $t$ za uvedených předpokladů. Proveďte podrobně.
+\end{proof}
+
+Uvažme nyní modifiaci úlohy (\ref{eq:zadani}), a sice 
+\begin{equation}
+    \begin{split}
+        y''+y&=f(x)\textcolor{blue}{y(x)} \text{\;\;\;\; na } (0,a), a>0,\\
+        y(0)&=1,\\
+        y'(0)&=0.
+    \end{split}
+    \label{eq:zadani_y(x)_vpravo}
+\end{equation}
+Na pravé straně rovnice máme tedy ve zdvojeném členu jakousi \uv{zpětnou vazbu}. Pouze na základě analogie s první úlohou si troufneme vyslovit následující hypotézu.
+
+Pokud existuje funkce $y\in\mathcal{C}(\langle 0,a\rangle)$, která splňuje vztah
+\begin{equation}
+    y(x) = \cos x + \int\limits_0^x f(t)\sin(x-t)\textcolor{blue}{y(t)}\d t,
+    \label{eq:tipreseni_y(x)}
+\end{equation}
+pak je tato funkce třídy $\mathcal{C}^2(\langle0,a\rangle)$ a řeší úlohu (\ref{eq:zadani_y(x)_vpravo}).
+
+Tuto hypotézu ověříme využitím lemmatu (\ref{lemma:derivacemezi}). Především platí, že pokud je $y\in \mathcal{C}(\langle 0,\rangle a)$, je integrand v (\ref{eq:tipreseni_y(x)}) spojitý, tedy je $y\in\mathcal{C}^1(\langle 0,a\rangle )$ a máme
+\begin{equation}
+    y'(x) = -\sin x + \int\limits_0^x f(t)\cos(x-t)y(t)\d t + 0,
+\end{equation}
+odkud stejnou úvahou máme $y'(x)\in\mathcal{C}^1(\langle 0,a\rangle)$, tedy $y\in\mathcal{C}^2(\langle 0,a\rangle )$, a 
+\begin{equation}
+    y''(x) = -\cos x -\int\limits_0^x f(x) \sin(x-t)y(t)\d t + f(x)y(x).
+\end{equation}
+Z posledních tří vztahů dostaneme $y''+y=f(x)y(x)$, stejně jako $y(0)=1$, $y'(0)=0$.
+
+Ověřili jsme tedy, že
+\begin{figure}[h!]
+    \centering
+    \framebox{Pokud existuje $y\in\mathcal{C}(\langle 0,a\rangle)$ taková, že platí (\ref{eq:tipreseni_y(x)}), je tato funkce kanonickým řešením úlohy (\ref{eq:zadani_y(x)_vpravo}).}   
+\end{figure}
+Zatím jsme úlohu (\ref{eq:zadani_y(x)_vpravo}) nevyřešili, pouze jsme ji přeformulovali. Ukážeme však, že vhodným pohledem na toto přeformulování budeme schopni na otázku existence (i jednoznačnosti) řešení odpovědět.
+
+Pišme 
+\begin{equation}
+    y(x)=\underbrace{\cos x}_{\eqqcolon u(x)} + \int\limits_0^x \underbrace{\sin(x-t)f(t)}_{K(x,t)\hdots \text{integrační faktor}} y(t) \d t ,
+\end{equation}
+tj. 
+\begin{equation}
+    y(x) = u(x) + \int\limits_0^xK(x,t)y(t)\d t,
+    \label{eq:zadani_preformulovano}
+\end{equation}
+což je předormulování úlohy (\ref{eq:zadani_y(x)_vpravo}) na obecnější integrální rovnici.
+
+Využijeme však ještě obecnější formulaci. Označíme
+\begin{equation}
+    Ty(x)\coloneqq \int_0^x K(x,t)y(t)\d t=\int\limits\sin(x-t)f(t)y(t)\d t,
+    \label{eq:obesnejsiformulaceTy}
+\end{equation}
+kde $T: \mathcal{C}(\langle 0,a\rangle )\rightarrow \mathcal{C}(\langle 0,a\rangle )$ je (evidentně) lineární operátor. Úkolu (\ref{eq:zadani_y(x)_vpravo}) resp. (\ref{eq:zadani_preformulovano}) pak lze chápat jako rovnici
+\begin{equation}
+    y=u+Ty
+\end{equation}
+na Banachově prostoru $\mathcal{C}(\langle 0,a\rangle)$. Tuto rovnici lze také psát ve tvaru
+\begin{equation}
+    (\Id-T)y=u,
+\end{equation}
+kde $\Id$ je identický operátor na $\mathcal{C}(\langle 0,a\rangle)$, nebo (nyní ovšem zcela formálně, protože nevíme, zda něco jako \uv{inverzní operátor k $\Id-T$} existuje)
+\begin{equation}
+    y = (\Id-T)^{-1}u.
+    \label{eq:inverzniformulace}
+\end{equation}
+Formulace (\ref{eq:inverzniformulace}) nás docedla až k těmto otázkám:
+\begin{itemize}
+    \item Jaké jsou vlastnosti operátoru $T$ z (\ref{eq:inverzniformulace})?
+    \item Za jaých podmínek existuje operátor inverzní k $\Id-T$ a jaké má vlastnosti?
+    \item Je $y$ \uv{definované} pomocí (\ref{eq:inverzniformulace}) řešením naší úlohy?
+\end{itemize}
+Nejprve odpovíme na první otázku. $T$ je lineární a omezený, tedy spojitý operátor na $\mathcal{C}(\langle0,a\rangle)$, tedy $T\in\mathscr{L}(\mathcal{C}(\langle0,a\rangle))$.
+
+Připomeňme, že normou na $\mathcal{C}(\langle0,a\rangle)$: $||y||_{\mathcal{C}(\langle0,a\rangle)} = \underset{\langle 0,a\rangle}{\sup} |y(x)| \quad \big(\eqqcolon ||y||_\infty\big)$.
+
+\begin{proof}
+Linearita je zřejmá, pro omezenost určíme nejprve
+\begin{equation}
+    ||Ty||_\infty = \underset{x\in\langle0,a\rangle}{\sup}\Big|\int\limits_0^x\sin(x-t)f(t)y(t)\d t\Big|\leq \underset{x\in\langle0,a\rangle}{\sup}\int\limits_0^x|f(t)||y(t)|\d t\leq a||f||_\infty||y||_\infty.
+\end{equation}
+Protože  
+\begin{equation}
+    ||T||_{\mathscr{L}(\mathcal{C}(\langle0,a\rangle)} = \underset{||y||_\infty\leq1}{\sup}||Ty||_\infty\leq \underset{||y||_\infty\leq1}{\sup} a ||f||_\infty ||y||_\infty\leq a||f||_\infty<\infty,
+    \label{eq:omezeniOperatoru}
+\end{equation}
+jde tedy (pokud je interval $\langle0,a\rangle$ omezený) o omezený operátor.
+\end{proof}
+
+Pro odpověď na další otázky máme přichystanou následující větu. Všimněme si, že její velká abstrakce je pouze zdánlivá. V podstatě jde o popis naší úlohy v operátorové verzi.
+
+
+\begin{theorem}[O von Neumannově řadě operátoru]
+\label{veta1}
+Buď $X$ Banachův prostor, $T\in\mathscr{L}(X)$. Definujme $T^0\equiv \Id$, $T^{j+1}y=T(T^jy)$ tzv. iterovaný operátor. Dále nechť je splněna alespoň jedna z následujících tří podmínek:
+\begin{enumerate}[(a)]
+    \item $||T||_{\mathscr{L}(X)}<1$,
+    \item $\sum\limits_{j=0}^\infty||T^j||_{\mathscr{L}(X)}<\infty$,
+    \item $\sum\limits_{j=0}^\infty||T^jy||_X<\infty \forall y\in X$.
+\end{enumerate}
+Potom
+\begin{enumerate}
+    \item $\forall u \in X$ \uu{existují jediné} $y\in X$ takové, že $(\Id-T)y=u$.
+    \item Definujeme-li zobrazení $"u\mapsto y"$ z předchozího bodu a označíme-li jej $(\Id-T)^{-1}$, platí:
+    \begin{equation}
+        (\Id-T)^{-1}(\Id-T) = (\Id-T)(\Id-T)^{-1}=\Id,
+    \end{equation}
+    a navíc
+    \begin{equation}
+        (\Id-T)^{-1}=\sum\limits_{j=0}^\infty T^j \quad \left(\coloneqq \underset{n\rightarrow\infty}{\lim} \sum\limits_{j=0}^{n} T^j\right)
+        \label{eq:Neumann}
+    \end{equation}
+\end{enumerate}
+ve smyslu konvergence v $\mathscr{L}(X)$.
+\end{theorem} 
+
+\Poznamka
+
+\begin{enumerate}
+    \item Řadě (\ref{eq:Neumann}) se říká von Neumannova řada operátoru $T$
+    \item V následujícím ukážeme řetězec podmínek (a)$\Rightarrow$(b)$\Rightarrow$(c).
+    
+    Platí $||T^2y||_X = ||T(Ty)||_X\leq||T||_{\mathcal{L}(X)}||Ty||_X\leq||T||^2_{\mathscr{L}(X)}||y||_X$, odkud $||T^2||=\underset{||y||_X\leq 1}{\sup}||T^2y||_X\leq||T||^2$ a indukcí snadno
+    \begin{equation}
+        ||T^j||_{\mathscr{L}(X)}\leq ||T||^j_{\mathscr{L}(X)}.
+    \end{equation}
+\end{enumerate}
+
+Pokud tedy platí (a), je $\sum_{j=0}^n||T^j||\leq\sum_{j=0}^n||T||^j\leq \sum_{j=0}^\infty||T||^j<\infty$ a limitní přechod $n\rightarrow \infty$ vlevo dává (b). Pokud platí (b), je $\sum_{j=0}^n||T^jy||\leq||y||\sum_{j=0}^n||T^j||\leq||||y||\sum_{j=0}^\infty||T^j||<\infty$, odkud (c).
+
+Skutečně tedy (a)$\Rightarrow$(b)$\Rightarrow$(c) a bude stačit ukázat, že podmínka (c) implikuje tvrzení věty. \footnote{Jsme však vděčni za to, že máme tři různé podmínky: různé operátory mohou splňovat (a), (b), nebo (c), viz dále.}
+\item Ještě než větu dokážeme, přesvědčme se, že operátor $T$ definovaný v (\ref{eq:obesnejsiformulaceTy}), splňuje její předpoklady: $\mathcal{C}$ je Banachův prostor a $T\in\mathscr{L}(\mathcal{C}(\langle0,a\rangle))$. V (\ref{eq:omezeniOperatoru}) jsme navíc ukázali, že $||T||_{\mathscr{L}}\leq a||f||_\infty.$
+
+Odtud ihned dostáváme, že pro každé $f\in\mathcal{C}(\langle0,b\rangle)$ existuje takové $a\in(0,b), že ||T||<1$. Z tvrzení věty pak dostaneme \uu{existenci a jednoznačnost} řešení úlohy (\ref{eq:tipreseni_y(x)}), tedy i (\ref{eq:zadani_y(x)_vpravo}) na příslušném \uu{zkráceném} intervalu $\langle0,a\rangle$ tak, aby $a||f||_\infty<1$. Toto je typický představitel tzv. vět o \uu{lokální} existenci řešení diferenciální rovnice. Nevýhoda tohoto tvrzení spočívá v tom, že tento interval existence řešení závisí na velikosti pravé strany $f$.
+
+Toto pozorování nám zároveň bude sloužit i jako poučení. Ukážeme nyní, že $T$ splňuje podmínku (c) bez jakýchkoli požadavků na velikost a. jen uděláme naše požadavky jemněji. Je 
+$$|Ty(x)|\leq \int\limits_0^x|f(t)||y(t)|\d t\leq x||f||_\infty||y||_\infty,$$
+kde si všimněme, že nehledáme $\subset{x\in\langle0,a\rangle}{\sup}$. Dále
+$$|T^2y(x)|\leq\int\limits_0^x|f(t)||Ty(t)|\d t\leq ||f||^2_\infty||y||_\infty\int\limits_0^xt\d t = \frac{x^2}{2}||f||^2_\infty||y||_\infty,$$
+odkud dostaneme indukcí
+$$|T^jy(x)|\leq\frac{x^j}{j'}||f||^j_\infty||y||_\infty.$$
+Až nyní provedeme $\subset{x\in\langle0,a\rangle}{\sup}$ a dostaneme 
+$$||T^jy||\leq\frac{a^j}{j!||f||^j_\infty||y||\infty}$$ a tedy 
+$$||T^j||=\subset{||y||_\infty\leq 1}{\sup}||T^jy||\leq\frac{a^j}{j'}||f||^j_\infty.$$
+Odtud $$\sum\limits_{j=0}^\infty||T^j||\leq\exp(a||f||_\infty)<\infty.$$
+Podmínka (b) je tedy splněna a my jsme dospěli k závěru, že pokud dokážeme Větu \ref{veta1}, ukázali jsme zároveň existenci a jednoznačnost (klasického) řešení úlohy \ref{eq:zadani_y(x)_vpravo} pro libovolný (ale omezen) interval $\langle0,a\rangle$, a pro libovolnou $f\in\mathcal{C}(\langle0,a\rangle)$.
+
+\begin{proof}[Důkaz Věty \ref{veta1}]
+Podle bodu 2 předchozí poznámky stačí ukázat, že tvrzení věty plyne  z předpokladu (c).
+
+Definujme následující posloupnost prvků $y_n\in X$ (tzv. \uv{iterační proces})
+\begin{equation*}
+    \begin{split}
+    y_0&\in X \text{ libovolný}\\
+    y_{n+1}&\coloneqq u+Ty_n.
+    \end{split}
+\end{equation*}
+Máme 
+\begin{equation*}
+    \begin{split}
+    y_1=u+Ty_0\\
+    y_2=u+Ty_1=u+Tu+T^2y_0,
+    \end{split}
+\end{equation*}
+indukcí snadno plyne
+\begin{equation}
+    y_n=\sum\limits_{j=0}^{n-1}T^ju+T^ny_0.    \label{eq:yn_suma}
+\end{equation}
+Ukážeme, že posloupnost $y_n$ má v $X$ limitu. Protože $X$ je Banachův, a tedy úplný, stačí pro konvergenci $y_n$ ukázat, že $\{y_n\}$ je Cauchyovská posloupnost. Zvolme tedy $\epsilon>0$, uvažujme $n>m$ a počítejme
+$$y_n-y_m=\sum\limits_{j=m}^{n-1}T^ju+T^ny_0-T^my_0,$$
+tedy $$||y_n-y_m||\leq \sum\limits_{j=M}^{n-1}||T^ju||+||T^ny_0||+||T^my_0||.$$
+Protože platí poznámka (c), je první člen menší než $\epsilon$ pro dostatečně velká $n>m$. Stejně tak členy $||T^ny_n||$, $||T^my_0||$ jsou (jako n-tý resp. m-tý člen konvergentní řady tvaru (c)) menší než $\epsilon$ pro dostatečně velká $n,m$. 
+
+Posloupnost $\{y_n\}$ je tedy Cauchyovská v Banachově prostoru $X$, proto je konvergentní v $X$, tedy existuje $y\in X$ takové, že $y_n\xrightarrow{X} y$. Protože $T$ je spojitý, je $Ty_n\xrightarrow{X}Ty$, tedy platí i 
+\begin{equation*}
+    \begin{split}
+        \underset{\big\downarrow}{y_{*n+1}}&=u+T\underset{\big\downarrow }{y_n}\\
+        y\quad&=u+Ty
+    \end{split}
+\end{equation*}
+a $y$ je řešením rovnice $y=u+Ty$ (pro libovolné $u\in X$). Ukažme, že toto řešení je jediné. Nechť tedy jsou dvě, $y$ a $z$, tedy nechť platí 
+\begin{equation*}
+    \begin{split}
+        y&=u+Ty\\
+        z&=u+Tz.
+    \end{split}
+\end{equation*}
+Odečtením těchto rovnic a označením $w=y-z$ získáme vztah $w=Tw$. 
+
+Odtud ovšem indukcí plyne $w=Tw=T^2w=\dots =T^jw \;\; \forall j\in \N$. Tedy $||w||=||T^jw||\;\; \foral j\in \N$. Řada $\sum_{j=0}^\infty||T^j w||$ je ovšem konveergentní řada typu (c), tedy 
+$$||w||=\lim\limits_{j\rightarrow\infty}||T^jw||=0,$$
+odkud $w=0$, a tedy $y=z$.
+
+Úloha $y=u+Ty$ má tedy $\forall u\in X$ právě jedno řešení $y\in X$. Jinak řečeno: Víme \begin{equation*}
+    \begin{split}
+        \left.
+    \begin{array}{ll}
+        &\Id-T \text{ je lineární a spojité} \\
+        &\forall u\in X\;\;\exists ! y\in X, (\Id-t)y=u
+    \end{array}
+        \right \}=\Id-T \text{ je \uu{na} a \uu{prosté}}
+    \end{split}
+\end{equation*}
+Zobrazení $u\mapsto y$ je tedy dobře definované zobrazení z $X$ do $X$. Označme je $(\id -T)^{-1}$, tj $y=(\Id-T)^{-1}$, $\forall u\in X$. Je lineární a prosté, nevíme nic o jeho spojitosti.
+Z \ref{eq:yn_suma} dostaneme 
+\begin{equation*}
+    \begin{split}
+        \underset{\big\downarrow}{y_n} &= \sum\limits_{j=0}^{n-1}T^ju+\underset{\big\downarrow}{T^ny_0}\\
+        y\;&=\sum\limits_{j=0}^\infty T^ju+\;\;\;0,
+    \end{split}
+\end{equation*}
+tedy máme pro všechna $u\in X: (\Id-T)^{-1}u=\sum\limits_{j=0}^\infty T^ju$ neboli $(\Id-T)^{-1}=\sum_{j=0}^\infty T^j$ ve smyslu rovnosti operátorů.
+
+Konečně, označme
+$$S_N\coloneqq \sum\limits_{j=0}^N T^j.$$
+Pak 
+$$S_N\circ(\Id-T)=\sum\limits_{j=0}^N T^j-\sum\limits_{j=0}^{N+1} T^j = T^0-T^{N+1}=\Id-\underset{0}{\underset{\big\downarrow}{T^{N+1}}}$$
+a podobně pro $(\Id-T)\circ S_N$
+\end{proof}
+
+\Poznamka
+Časem uvidíme, že platí: je-li operátor $T:X\mapsto X$ lineární, omezený, prostý a na, pak jeho \uu{inverze} $T^{-1}$ (která existuje) je také \uu{lineární} a \uu{omezená}, tj. spojitá. To vnáší do naší úlohy tzv. prvek \uu{stability}. Je-li totiž inverzní operátor (v našem případě $(\Id-T)^{-1}$ spojitý, pak to znamená, že pro 
+$$u_n\xrightarrow{X}u\Rightarrow \underset{\quad\; y_n\;\;\;\xrightarrow{X}y}{\underbrace{(\Id-T)^{-1}u_n}\xrightarrow{X}}(\Id-T)^{-1}u,$$
+jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$} odpovídají \uv{blízká řešení}, či \uv{malé změny na pravé straně rovnice způsobují malé změny řešení}. Právě tomuto se říká \uu{stabilita řešení}.
+
+\Priklad
+
+Uvažujme
+\begin{equation*}
+    \begin{split}
+        y''+y&=x^2y\\
+        y(0)&=1\\
+        y'(0)&=0.
+    \end{split}
+\end{equation*}
+ÚLoha má dle předchozí teorie na libovolném $\langle 0,a\rangle$ jediné řešení. Můžeme ověřit, že funkce $y(x)=e^{-x^2/2}$ je tímto řešením.
+
+Důkaz předchozí věty však také ukazuje, že toto řešení je možné získat formou iterací /tj. lze se k němu libovolě přiblížit). Uvažujme $y_0\equiv 0$ a napišme prvních pár iterací. Zdá se vám, že konverguje k $e^{-x^2/2}$? Určitě z toho plyne nějaké zajímavé poučení.\smiley{}
+
+Při $y_0=0$ dostáváme pro $y_5$
+\begin{equation*}
+    \begin{split}
+        y_5(x) =&\cos  x  +\frac{164925}{2048} x \sin  x   - \frac{164925}{2048} x^2 \cos  x   -\frac{54975}{1024} x^3 \sin  x   +\frac{165437}{6144} x^4 \cos  x   +\frac{32383}{3072}  x^5 \sin  x-\frac{154871}{46080}  x^6 \cos  x   \\  &-\frac{143131 }{161280}x^7 \sin  x    +\frac{126481 }{645120}x^8 \cos  x    +\frac{12983}{362880}  x^9 \sin  x -\frac{18889 }{3628800}x^{10} \cos  x-\frac{7}{12960} x^{11} \sin  x+\frac{1}{31104}x^{12} \cos  x
+    \end{split}
+\end{equation*}
+\begin{figure}[h!]
+    \centering
+    \includegraphics{img/exp_reseni.pdf}
+    \caption{Srovnání přesného řešení a páté iterace $y_5$.}
+\end{figure}
+
+
+
+
+\subsection{Základní pojmy spektrální analýzy}
+
+Budeme zkoumat operátorovou rovnici pro neznámé $x\in X$
+\begin{equation}
+    (T-\lambda \Id)x=u\quad,\lambda\in \C,\; T\in \mathscr{L}(x),\;u\in X \text{ Banachův prostor}
+    \label{eq:zadani_vlCisla}
+\end{equation}
+Motivací k tomu je předchozí paragraf. Označme $T_\lambda\coloneqq T-\lambda\Id$, pak $T_\lambda\in \mathscr{L}(X)\Leftrightarrow T\in \mathscr{L}(X)$.
+
+Označme obor hodnot (range) operátoru $T_\lambda$
+$$ \mathcal{R}(T_\lambda)\coloneqq \{y\in X,\; \exists x\in X,\;T_\lambda x=y\}\quad (=T_\lambda (X)).$$
+
+Otázky řešitelnosti rovnice (\ref{eq:zadani_vlCisla}) lze přeformulovat v řeči operátoru $T_\lambda$ následovně.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c|c}
+         V řeči rovnic& V řeči operátoru  \\ \hline\hline
+         $\exists$ řešení pro libovolnou pravou stranu $u\in X$? & Je $T_\lambda$ \uu{na}, tj je $ \mathcal{R}(T_\lambda)=X$?\\ \hline
+         Pokud řešení pro dané $u\in X$ existuje, je určeno jednoznačně? & Je $T_\lambda$ \uu{prostý} na $X$?\\ \hline
+         Pokud $\forall u \in \mathcal{R}(T_\lambda)\exists! x\in X;\; T_\lambda x=u$, \\je toto řešení \uu{stabilní}? (viz porn. níže)& Je-li $T_\lambda$ prostý, je potom $T_\lambda^{-1}$ spojitý na $\mathcal{R}(T_\lambda)$?
+    \end{tabular}
+\end{table}
+
+\Poznamka 
+
+Pod pojmem \uu{stabilní řešení} míníme (zjednodušeně) situaci, kdy v rovnici $T_\lambda x=u$, která má jednoznačně určená řešení pro $\forall u\in \mathcal{U}(u_0)$ platí, že \uv{malé změny $u\in \mathcal{U}(u_0)$} mají za následek \uv{malé změny řešení}. To přesně odpovídá situaci, kdy je inverzní zobrazení $T_\lambda^{-1}$ spojité na $\mathcal{U}(u_0)$. Tato vlastnost je velmi důležitá při hledání přibližného řešení. Při něm často aproximujeme pravou stranu $u$ nějakou \uv{jí blízkou pravou stranou} $\overline{u}$ a doufáme, že i řešení $\overline{x}$, které odpovídá pravé straně $\overline{u}$, bude blízké řešení $x$, odpovídajícímu pravé straně $u$. Pro \uu{nestabilní} operátory to však nemusí být pravda.
+
+\subsubsection{Podívejme se nejprve na situaci pro $\dim X=n\in \N$.}
+
+V konečné dimenzi je $T\in \mathscr{L}(X)\Leftrightarrow \exists$ matice $M\in \mathcal{M}^{n\times m}$ taková, že $T(x)=Mx \;\;\forall x \in X$ (v $X$ volíme jednu pevnou bázi).
+
+Potom platí 
+$$
+\begin{split}
+T \text{ je prostý } &\Leftrightarrow  T \text{ je \uu{na} } \;\;\Leftrightarrow \;\;\; \underbrace{M \text{ reprezentující T \text{ je regulární.}}}_{ \Updownarrow}  \\  
+T^{-1} \text{ je prostý } &\Leftrightarrow T^{-1} \text{ je na} \Leftrightarrow \overbrace{M^{-1} \text{ je regulární a reprezentuje } T^{-1} }\text{ (tj } T^{-1} \text{ je lin. )}
+\end{split}
+$$
+
+
+Protože v konečné dimenzi je každý lineární operátor spojitý, je i $T^{-1}\in\mathscr{L}(X)$.
+
+V konečné dimenzi tedy platí \uv{všechno nebo nic}, tzn konečně dimenzionální Fredholmova alternativa pro $T\in\mathscr{L}(X);\;\dim X=n$.
+
+platí právě jedna z násludujících situací:
+\begin{enumerate}
+    \item $T$ je prostý, na a má spojitou inverzi
+    \item $T$ není prostý, není na a nemá spojitou inverzi
+\end{enumerate}
+\uu{V nekonečné dimenzi} není obecně žádný vztah mezi \uu{prostotou} a zobrazením \uu{na}.
+
+\Priklad
+
+Definujme prostor posloupností $l_2$
+$$L_2\coloneqq \Big\{ \{x_n\}_{n=1}^\infty,\; x_n\in\C;\;\sum\limits_{n=1}^\infty|x_n|^2<\infty\Big\}$$
+
+Lze ukázat, že $l_2$ s normou $||\{x_n\}||^2_{l_2}\coloneqq \sum_{n=1}^\infty|x_n|^2$ je Banachův prostor (je dokonce Hilbertův, více později). Na $l_2$ definujme dva tzv. \uu{operátory posunu} (\uv{shift operators})
+\begin{equation*}
+\begin{split}
+  A_1&: (x_1,x_2,x_3,\dots)\mapsto (0,x_1,x_2,x_3,\dots)\\
+  A_2&: (x_1,x_2,x_3,\dots)\mapsto (x_2,x_3,x_4,\dots).
+\end{split}
+\end{equation*}
+
+Evidentně
+\begin{equation*}
+\begin{split}
+  ||A_1x||_{l_2}=||x||_{l_2}&\Rightarrow ||A_1||=\sup\limits_{||x||\leq1}||A_1 x||=1\\
+  ||A_2x||_{l_2}=||x||_{l_2}&\Rightarrow ||A_2||\leq1,
+\end{split}
+\end{equation*}
+tedy oa jsou omezené, tedy spojité, tedy $A_1,A_2\in \mathscr{L}(L_2)$.
+
+Přitom \begin{itemize}
+    \item $A_1$ je \uu{prosté} (různým prvkům přiřadí různé prvky, ale není \uu{na} (nic se nezobrazí např. na $(1,0,0,\dots)$
+    \item $A_2$ je \uu{na}, ale \uu{není prostý} (rozmyslete).
+\end{itemize}
+
+Nicméně, co se týče \uu{stability}, tak i v nekonečné dimenzi platí tato hluboká věta:
+\begin{theorem}
+$A\in \mathscr{L}(X)$ Banachův, nechť $A$ je \uu{prosté} a \uu{na}. Potom $A^{-1}\in \mathscr{L}(X)$, tj. $A^{-1}$ je spojitý.
+\end{theorem}
+
+\begin{proof}
+    Tímto se zdá, že problém \uu{stability} řešení je vyřešen: stačí \uu{prostora} a \uu{na}. Ano, pro lineární omezené (tj. spojité operátory tomu tak je. Ale např, pro lineární a nespojité, nebo pro nelineární operátory není situace tak jednoduchá.
+\end{proof}
+
+\subsubsection{Možné stavy operátoru}
+Buď $T\in\mathscr{L}(X)$, $X$ je Banachův, $\lambda\in\C,\; T_\lambda\coloneqq T-\lambda\Id \in\mathscr{L}(X)$. Pak v závislosti na $\lambda\in\C$ může operátor $T_\lambda$ mít různé vlastnosti z hlediska jeho prostoty, spojitosti inverze a velikosti $\mathcal{R}(T_\lambda)$. Následující tabulka shrnuje všechny možnosti, přičemž dvě z nich nemohou nastat: ta, která je vyloučena větou \ref{veta1} (označeno \uv{V1}) a ta, která je vyloučena lemmatem \ref{lemma1}, které zformulujeme a dokážeme za níže (označeno \uv{L1}).
+
+Tabulku je nutno chápat tak, že pomocí ní definujeme různé kategorie, do kterých může patřit parametr $\lambda\in\C$. Tedy např. levý horní roh tabulky je nutno číst takto: \uv{$\lambda\in\C$ je regulárním bodem $T$, pokud $T_\lambda$ je prosté, $T_\lambda^{-1} $ spojité a $\matcal{R}(T_\lambda)=X$}.
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak

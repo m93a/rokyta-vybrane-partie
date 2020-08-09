@@ -1,0 +1,60 @@
+\section{Kompaktní operátory}
+
+\begin{definition}[Kompaktní operátor]
+Nechť $X,Y$ jsou Banachovy prostory, $\map T: X \mapsto Y$ je lineární operátor. Řekneme, že $\map K$ je kompaktní, jestliže pro každou omezenou množinu $A \subset X$ platí, že $\overline{\map K(A)} \subset Y$ je kompatkní množina. Množinu všech kompaktních operátorů zapisujeme jako $\comp(X,Y)$ a zavádíme $\comp(X) := \comp(X,X)$.
+\end{definition}
+
+\begin{remark}
+\begin{enumerate}
+    \item Platí, že $\comp(X,Y) \subset \lin(X,Y)$. Je-li totiž $A \subset X$ omezená, pak $\overline{\map K(A)} \subset Y$ je kompaktní a podle nutné podmínky kompaktnosti musí být $\overline{\map T(A)} $ omezená a uzavřená množina.
+    \item Připomeňme, že omezenost a uzavřenost nejsou v nekonečné dimenzi postačující podmínky pro kompaktnost. V konečné dimenzi tomu tak ovšem je.
+\end{enumerate}
+\end{remark}
+Pro kompaktní množiny můžeme používat weierstrassovské vybírání podposloupnosti.
+\begin{theorem}[O charakterizaci kompaktního operátoru pomocí posloupnosti]
+Operátor $\map K :X \mapsto Y$ je kompaktní právě tehdy, když pro každou omezenou posloupnost $\sequence {x_n}{n} \subset X$ existuje vybraná podposloupnost $\sequence{x_{n_k}}{k} $ a prvek $y \in Y$ takové, že $\map K ( x_{n_k}) \rightarrow y $.
+\end{theorem}
+
+V následujícím budeme diskutovat tuto úvahu: pokud by celý prostor $Y$ měl vlastnost, že z každé omezené posloupnosti v $Y$ se dá vybrat konvergentní podposloupnost, pak by platilo \begin{align*}
+    \lin(X,Y) = \comp (X,Y) \:.
+\end{align*}
+Tuto úvahu zdůvodníme následovně. Stačí ukázat, že 
+\begin{align*}
+    \lin(X,Y) \subset \comp (X,Y) \:,
+\end{align*}
+opačnou implikaci jsme již vyřešili. Buď tedy $\map T \in \lin(X,Y)$ a $\sequence{x_n}{n} \subset X$ omezená posloupnost.
+Díky spojitosti $\map T$ je posloupnost $ \sequence{ \map T x_n}{n}$ omezená. Pokud bychom zaručili, že z každé takové posloupnosti už můžeme vybrat konvergentní podposloupnost, dokázali bychom tím kompaktnost každého spojitého operátoru. Takovou vlastnost jistě nemůže mít každý metrický prostor. Na počest Bolzanovy-Weierstrassovy věty platné v $\R$ ji nazveme \uv{B-W vlastností}.
+
+\begin{lemma}[O nutné podmínce pro B-W vlastnost]
+Nechť $Y$ je Banachův prostor. Pak $Y$ má B-W vlastnost právě tehdy, když má konečnou dimenzi.
+\end{lemma}
+\begin{proof}[Náznak důkazu:]
+\uv{$\Leftarrow$} Na $\R$ můžeme používat Bolzanovu-Weierstrassovu větu z prvního semestru. V prostoru $\R^N$ můžeme provést postupné výběry po složkách. Nyní v každém konečnědimenzionálním prostoru $Y$ můžeme najít bázi a každému prvku $y \in Y$ přiřadit $n$-tici souřadnic vzhledem k této bázi. 
+
+\uv{$\Rightarrow$} Nechť je $Y$ nekonečnědimenzionální. Zvolme $y_1 \in Y$ a poté indukcí vybíráme prvky $y_{k+1} \in Y$ tak, aby vzdálenost prvku $y_{k+1}$ od prvku $y_k$ byla větší nebo rovna jedné. Po přechodu k libovolné posloupnosti dostaneme stále posloupnost, která má prvky vzdálené od sebe více než o jedničku a proto nemůže splňovat B-C podmínku.
+\end{proof}
+
+\begin{lemma}[O kompaktnosti identity]
+Nechť $Y$ je konečněrozměrný Banachův prostor. Pak má $Y$ B-W vlastnost právě tehdy, jestliže je $\map{Id} : Y \mapsto Y$ kompaktní operátor.
+\end{lemma}
+\begin{proof}
+Zřejmé.
+\end{proof}
+
+Z předchozích dvou lemmat ovšem dostáváme poměrně překvapivé zjištění: v nekonečnědimenzionálních prostorech není identita kompaktní operátor.
+
+\begin{remark}
+V teorii parciálních diferenciálních rovnic se uplatňuje proces \uv{kompaktního vnoření} jednoho prostoru do druhého. V uvedené situaci uvažujeme dva prostory $ X \subset Y$, ovšem opatřené různými normami $\norm{\cdot}_X, \norm{\cdot}_Y$. Zobrazení $\map{Id} : X \mapsto Y$ v takovém případě může být kompaktní. Je to ovšem způsobeno právě růzností norem, které na nekonečnědimenzionálních prostorech nejsou ekvivalentní.
+
+Příkladem takového procesu může být tzv. Rellichova věta:
+
+Nechť $\Omega \subset \R^n$ je otevřená omezená množina s hladkou hranicí. Definujme Sobolevův prostor \begin{align*}
+    W^{1,2}(\Omega) := \left \lbrace f: \Omega \mapsto \R : \norm{f}_{W^{1,2}} := \left[ \int_\Omega \left( |f|^2 + |\nabla f|^2 \right) \d x \right]^{1/2} < + \infty \right \rbrace \:.
+\end{align*}
+Pak platí $W^{1,2}(\Omega) \subset L^2(\Omega)$ a navíc $\map{Id} : W^{1,2}(\Omega) \mapsto L^2(\Omega)$ je kompaktní operátor.
+
+Praktické použití této věty je právě ve vybírání konvergentní podposloupnosti v $L^2$ z omezené posloupnosti v $W^{1,2}$.
+\end{remark}
+
+\subsection{Vlastnosti kompaktních operátorů}
+V tomto oddíle formulujeme sedm klíčových vlastností, které značně zjednodušují problematiku spektrální analýzy pro kompaktní operátory.
