@@ -20,7 +20,7 @@ Buď $X$ Banachův prostor. Prostor $X' \coloneqq \lin(X,\C)$ \hspace{0.5em} (re
 \begin{remark} \ph{.}
 \begin{itemize}
     \item Prostor $X'$ je tedy tvořen všemi spojitými lineárními funkcionály, spojitost uvažujeme ve smyslu \begin{align*}
-        x_n \xrightarrow{X} x \implies T x_n \to T x \quad \text{pro všechna } \map T \in X' \:.
+        x_n \xrightarrow{X} x \implies \map T x_n \to \map T x \quad \text{pro všechna } \map T \in X' \:.
     \end{align*}
     \item Víme, že jsou-li $X,Y$ normované prostory a $Y$ je Banachův, pak i $\lin (X,Y)$ je Banachův. Proto je $X'$ automaticky Banachovým prostorem.
     \item Je-li $\map T \in X'$, pak jeho norma je přirozeně $\norm{\map T}_{X'} := \underset{\norm{x}_X \leq 1}{\sup} |\map Tx|$.
@@ -31,7 +31,7 @@ Buď $X$ Banachův prostor. Prostor $X' \coloneqq \lin(X,\C)$ \hspace{0.5em} (re
 
 \begin{definition}[Dualita]
 Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \mapsto \C$ nazveme dualitou, jestliže splňuje vlastnosti: \begin{enumerate}
-    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z), \;\; \map S(z,\alpha x + \beta y) = \overline{\alpha} \map S(z,x) + \overline{\beta} \map S(z,y)$.
+    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z), \;\; \map S(z,\alpha x + \beta y) = \conj{\alpha} \map S(z,x) + \conj{\beta} \map S(z,y)$.
     
     \item spojitost: $\map S(x_n,y_n) \rightarrow \map S(x,y) \quad \text{kdykoliv } (x_n,y_n) \rightarrow (x,y) \text{ v } X \times X'$.
 \end{enumerate}
@@ -44,39 +44,51 @@ Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v n�
 
 \begin{example}
 
-Uvažujme prostor vektorů $\R^n$. Víme, že každá lineární forma $\map T \in \R'$ je reprezentovatelná lineární kombinací (násobení transponovaným vektorem): $\map T \left[ (x_1, \cdots, x_n) \right] = \sum_{j=1}^n \alpha_j x_j$. V určitém smyslu lze tedy psát $\R \simeq \R'$. 
+Uvažujme prostor vektorů $\R^n$. Víme, že každá lineární forma $\map T \in {\R^n}'$ je reprezentovatelná lineární kombinací (násobení transponovaným vektorem): $\map T \left[ (x_1, \cdots, x_n) \right] = \sum_{j=1}^n \alpha_j x_j$. Transponování je izometrické a izomorfní zobrazení, lze tedy psát $\R^n \simeq {\R^n}'$. Dualitou na takovém prostoru je například \textit{skalární součin} na $\R^n$. Později uvidíme, že podobně lze uvažovat i v jakémkoliv Hilbertově prostoru – v tomto smyslu je dualita zobecněním skalárního součinu.
 \end{example}
 
 \begin{theorem}[O ztotožnění sdružených Lebesgueových prostorů]
-Buď $\Omega \in \R^n $ otevřená souvislá množina, $\map T \in L^q(\Omega)'$. Označme $q$ sdružený exponent k $p$, tj. $\frac{1}{p} + \frac{1}{q} =1$. Pak existuje právě jeden prvek $g \in L^p(\Omega)$ takový, že:
-\begin{align*}
-\map T(f) = \int_\Omega f g^* \d x \quad \text{pro každé } f \in L^p(\Omega)
-\end{align*}
-a také \begin{align*}
-    \norm{\map T}_{L^p(\Omega)'} = \norm{g}_{L^q(\Omega)} \:.
-\end{align*}   
+Buď $\Omega \subseteq \R^n $ otevřená souvislá množina, $\map T \in L^q(\Omega)'$. Nechť pro $p \in (1, \infty)$ platí $\frac{1}{p} + \frac{1}{q} =1$ ($p$ je tzv. sdružený exponent ke $q$). Pak existuje právě jeden prvek $g \in L^p(\Omega)$ takový,~že:
+$$
+\map T(f) = \int_\Omega f \conj{g} \d x \quad \forall f \in L^p(\Omega)
+\quad \text{a zároveň} \quad
+\norm{\map T}_{L^p(\Omega)'} = \norm{g}_{L^q(\Omega)} \:.
+$$
+
 \end{theorem}
 
 \begin{proof}
 Dokázat, že takové zobrazení existuje, nedá příliš práce. Dokázat jeho jednoznačnost je však velmi pracná záležitost.
 \end{proof}
 
-Povšimněme si, že pokud v předchozí větě položíme $p=2=q$, získáme vlastnost $L^2(\Omega)' \simeq L^2(\Omega)$. Je přirozené se ptát, zda se za tímto výsledkem neskrývá něco hlubšího. Odpověď je pozitivní.
+Předchozí věta ukazuje, že platí $L^p(\Omega)' \simeq L^q(\Omega)$. V tomto smyslu ztotožňujeme $\map T$ a $g$, a dualitu $\duality{f}{\map T} \mapsto \map T(f)$ ztotožňujeme s dualitou
+\begin{equation}
+    \duality{f}{g} \mapsto \int_\Omega f \conj g, \quad f \in L^p, \, g \in L^q \: .
+    \label{eq:4.Dualita Lebesgue}
+\end{equation}
+Povšimněme si, že pokud v předchozí větě položíme $p=q=2$, získáme vlastnost $L^2(\Omega)' \simeq L^2(\Omega)$ a dualita \eqref{eq:4.Dualita Lebesgue} má stejný tvar jako skalární součin na $L^2(\Omega), \; \duality{f}{g} \equiv \innerprod{f}{g}_{L^2}$. Je přirozené se ptát, zda se za tímto výsledkem skrývá něco hlubšího. Odpověď je pozitivní.
 
 \begin{theorem}[Rieszova-Fréchetova o reprezentaci] \label{4.Riesz-Frechet}
 Buď $H$ Hilbertův prostor se skalárním součinem $(\cdot \, , \cdot)_H$, $\map T \in H'$.
-Pak existuje právě jeden prvek $f \in H $ takový, že:
+Pak existuje právě jeden prvek $f \in H $ takový, že plátí následující:
 \begin{enumerate}
-    \item $\map T(x) = (x,f)_H \quad \text{pro každé } x \in H \:, $
-    \item $\norm{\map T}_H'= \norm{f}_H \:.$
+    \item $\map T(x) = \innerprod{x}{f}_H \quad \text{pro každé } x \in H \:, $
+    \item $\norm{\map T}_{H'} = \norm{f}_H \:.$
 \end{enumerate}
 \end{theorem}
+\begin{proof}
+viz Lukeš 2.9
+\end{proof}
 
 \begin{corollary}
-Pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$.
+Zobrazení $\map T \mapsto f$ je izometrický izomorfismus (zachovává normu a je bijektivní). Proto pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$.
 \end{corollary}
 
-Jsou-li $X,Y$ Banachovy a platí $X \subset Y$, pak platí $Y' \subset X$. Zde je však důležité dát velký pozor!
+\begin{remark}
+V prvním tvrzení věty \ref{4.Riesz-Frechet} by mohlo ekvivalentně být $\map T(x) = \innerprod{f}{x}_H$. Skutečně: položme $S(x) = T(x)$
+\end{remark}
+
+Jsou-li $X,Y$ Banachovy a platí $X \subset Y$, pak platí $Y' \subset X'$. Zde je však důležité dát velký pozor!
 
 \begin{example}[Svéhlavá aplikace inkluze]
 Bezhlavá aplikace předchozí inkluze nás může zahnat do slepých ulic.
@@ -127,7 +139,7 @@ Duální zobrazení proto často zapisujeme jako \begin{align*}
 \end{align*}
 shodně se zobrazením duality. Povšimněme si, že na levé straně máme skutečně zobrazení z $X' \times X$ a na pravé zobrazení z $Y' \times Y$.
 \begin{remark}
-Je-li $T \in \lin (X,Y)$, pak i $\map T' \in \lin(Y', X')$. 
+Je-li $\map T \in \lin (X,Y)$, pak i $\map T' \in \lin(Y', X')$. 
 
 Linearita je zřejmá. Ukažme spojitost.  Zafixujme $\sequence{\map y'_n}{n} \subset Y'$ takovou, že $\map y'_n \rightarrow \map y'$. Ukážeme, že posloupnost $\sequence{\map T \map y_n}{n} \subset X'$ konverguje k $\map T \map y_n$. Platí
 \begin{align*}
@@ -168,7 +180,7 @@ Pro takové zobrazení navíc platí: \begin{enumerate}
 
 \begin{remark}
 Aplikujeme-li komplexní sdružení v rovnici \eqref{eq4.dualHilbert}, dostaneme \begin{align*}
-    \overline{(\map T x,y)}_{H_2} = \overline{(x, \map T' y)}_{H_1} \rightarrow (\map T' y,x)_{H_1} = (y, \map T x)_{H_2} \:.
+    \conj{(\map T x,y)}_{H_2} = \conj{(x, \map T' y)}_{H_1} \rightarrow (\map T' y,x)_{H_1} = (y, \map T x)_{H_2} \:.
 \end{align*}
 Na Hilbertových prostorech tedy hraje roli duality skalární součin.
 \end{remark}
@@ -211,7 +223,7 @@ S použitím \eqref{eq:4.Vdual1} a \eqref{eq:4.Vdual2} dostáváme \begin{align*
 Tím jsme ověřili spojitost a celkově $\map T' \in \lin(H_2, H_1)$.
 
 Zbývá ukázat rovnost norem $\norm{\map T'} = \norm{\map T}$. Za tím účelem definujeme $\map T'' = (\map T')'$. O tomto zobrazení již víme, že $\map T'' \in \lin(H_1, H_2)$, $(\map T'' x,y)_{H_2} = (x, \map T' y)_{H_1}$ a $\norm{\map T''} \leq \norm{\map T'}$. Pak s použitím předchozích částí důkazu dostaneme \begin{align*}
-    (\map T'' x,y)_{H_2} = (x, \map T'y)_{H_1} = \overline{(\map T' y, x)}_{H_1} = \overline{(y, \map T x)}_{H_2} = (\map T x,y)_{H_2} \quad \text{ pro všechna } x \in H_1, y \in H_2 \:,
+    (\map T'' x,y)_{H_2} = (x, \map T'y)_{H_1} = \conj{(\map T' y, x)}_{H_1} = \conj{(y, \map T x)}_{H_2} = (\map T x,y)_{H_2} \quad \text{ pro všechna } x \in H_1, y \in H_2 \:,
 \end{align*}
 tedy \begin{align*}
     \map T'' x= \map T x \quad \text{pro každé } x \in H_1 \:.
@@ -239,7 +251,7 @@ Nechť $\map T \in \lin (H)$ je samoadjungovaný. Pak má pouze reálná vlastn�
 \end{lemma}
 \begin{proof}
 První část tvrzení plyne z rovnosti \begin{align*}
-\lambda \norm{x}^2_H = (\lambda x, x)_H = (\map T x,x)_H = (x, \map T x)_H = (x, \lambda x)_H = \overline{\lambda} (x,x)_H = \overline{\lambda} \norm{x}_H ^2 \:.
+\lambda \norm{x}^2_H = (\lambda x, x)_H = (\map T x,x)_H = (x, \map T x)_H = (x, \lambda x)_H = \conj{\lambda} (x,x)_H = \conj{\lambda} \norm{x}_H ^2 \:.
 \end{align*}
 Nechť jsou $\lambda_1 \neq \lambda_2$ vlastní čísla příslušející vlastním vektorům $y_1,y_2$. Pak z rovnosti \begin{align*}
     (\lambda_1 - \lambda_2)(y_1,y_2)_H = (\lambda_1 y_1,y_2)_H - (y_1, \lambda_2 y_2)_H = (\map T y_1, y_2)_H - (y_1, \map T y_2)_H = (\map T y_1,y_2)_H - (\map T y_1,y_2)_H = 0
@@ -343,7 +355,7 @@ Definujme prostor všech konečných součtů prvků z $B$ předpisem \begin{ali
     \Lambda_0 = \left\lbrace z \in H: z = \sum_{j=1}^n \alpha_j e_j, \alpha_j \in \mathbb{C} , e_j \in B \right\rbrace =  \mathrm{span}\, B
 \end{align*}
 a dále prostor všech nejvýše spočetných součtů prvků z $B$ předpisem \begin{align*}
-    \Lambda := \overline{\Lambda_0} = \left\lbrace z \in H: z = \sum_{j=1}^\infty \alpha_j e_j, \alpha_j \in \mathbb{C} , e_j \in B \right\rbrace \:.
+    \Lambda := \conj{\Lambda_0} = \left\lbrace z \in H: z = \sum_{j=1}^\infty \alpha_j e_j, \alpha_j \in \mathbb{C} , e_j \in B \right\rbrace \:.
 \end{align*}
 Pak $\Lambda$ je uzavřený lineární podprostor $H$, je tedy Hilbertovým prostorem. 
 

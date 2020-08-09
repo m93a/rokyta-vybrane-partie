@@ -1,1 +1,75 @@
 \section{Lineární diferenciální operátory}
+
+V této kapitole zavedeme speciální případ lineárních neomezených operátorů, lineární diferenciální operátory, k nimž budeme generovat báze v polynomiálním tvaru.
+
+\subsection{Výrazy v samoadjungovaném tvaru}
+
+\begin{definition}[Lineární diferenciální výraz n-tého řádu]
+Mějme $-\infty \leq a < b \leq \infty$, $y \in \mathcal{C}^n ([a, b])$, 
+Lineárním diferenciálním výrazem n-tého řádu nazveme výraz
+\begin{equation}
+    l(y) = \sum_{k=0}^{n} p_k (x) y^{(k)},
+\end{equation}
+kde $p_k(x) \in \mathcal{C}(a, b)$ a platí $p_n \not\equiv 0$ na $(a, b)$.
+\end{definition}
+
+\begin{remark}
+    Ještě se nejedná o lineární diferenciální operátor. K definici lineárního diferenciálního operátoru potřebujeme navíc definiční obor.
+\end{remark}
+
+\begin{definition}[Lineární diferenciální operátor]
+Pojmem lineární diferenciální operátor n-tého řádu $\map L$ myslíme příslušný lineární
+diferenciální výraz $l(y)$ na určitém definičním oboru, tedy
+\begin{align*}
+    \map L = l \rvert_{\mathcal{D}(\map L)}
+\end{align*}
+\end{definition}
+
+Budeme chtít aby $\map L$ byl hustě definovaný v Hilbertově prostoru $H$, tedy $\mathcal{D}(\map L) \neq H$, $\overline{\mathcal{D}(\map L)} = H$.
+Typicky budeme mít $\mathcal{D}(\map L) = \left(H \cap \mathcal{C}^n (a,b)\right)$.
+
+Víme, že symetrie je nutnou podmínkou k samoadjungovanosti. Dále budeme hledat další
+nutné podmínky samoadjungovanosti, resp. symetrie a budeme pracovat na mnohem menším prostoru $\mathcal{C}^{\infty}_{cpt} (a,b)$, tedy nekonečněkrát diferencovatelné funkce
+s kompaktním nosičem.
+\begin{remark}
+    Díky tomuto přístupu se při provádění per partes nemusíme zabývat okrajovými členy
+    jelikož všechny funkce z uvažovaného prostoru $\mathcal{C}^{\infty}_{cpt} (a,b)$ (a jejich derivace) jsou na nějákém okolí krajních bodů nulové. Toto zjednodušení si můžeme dovolit protože hledáme nutné podmínky samoadjungovanosti, resp. symetrie. Pokud operátor nebude splňovat podmínky pro takto "hezké" funkce, nemůže je splňovat pro žádný jiný definičný obor.
+\end{remark}
+
+\begin{definition}[Adjungovaný výraz k $l(y)$]
+Adjungovaný výraz k výrazu $l(y)$ značíme $l^*(y)$ a definujeme jej jako
+\begin{equation}
+    l^*(y) = \sum_{k=0}^{n} (-1)^{k} \left(\overline{p_k(y)} ~ y\right)^{(k)}
+\end{equation}
+\end{definition}
+
+\begin{lemma}
+K danému $l$ je $l^*$ jediný lineární diferenciální operátor pro který
+\begin{align*}
+    \left(l(y), z\right) = \left(y, l^*(z)\right)~ ~ ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+Nejprve dokážeme pomocí per partes rovnost
+\begin{align*}
+\begin{split}
+    \left(l(y), z\right) =& \sum_{k=0}^{n} \int_a^b p_k(x) y^{(k)}(x) \overline{z(x)} =
+    \sum_{k=0}^{n} (-1) \int_a^b \left(p_k(x) \overline{z(x)}\right)' y^{(k-1)} = \\
+    =& \sum_{k=0}^{n} (-1)^{k} \int_a^b \left(p_k(x) \overline{z(x)}\right)^{k} y =
+    \left(y, l^*(z)\right).
+\end{split}
+\end{align*}
+Poslední rovnost platí díky $\left(p_k(x) \overline{z(x)}\right) = \overline{\left(\overline{p_k(x)} z(x)\right)}$.
+
+Jednoznačnost dokážeme sporem, předpokládejme že existují dva adjungované operátory $l^*$ a $\tilde{l}$ splňující rovnost. Pak
+\begin{align*}
+    \left(l(y), z\right) = \left(y, l^*(z)\right) = \left(y, \tilde{l}(z)\right) ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
+\end{align*}
+Pak ale nutně z poslední rovnosti, která musí platit pro všechna $y$,
+dostáváme
+\begin{align*}
+    l^*(z) = \tilde{l}(z) ~ ~ ~ ~ ~ ~ \forall z \in \mathcal{C}^{\infty}_{cpt} (a,b),
+\end{align*}
+pokud si totiž zvolíme pevné $z$, pak je 
+\end{proof}

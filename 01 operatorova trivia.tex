@@ -2,27 +2,31 @@
 
 Co budeme považovat za známé:
 \begin{itemize}
-    \item \uu{Vektorový prostor} $X$ nad $\underbrace{\R\text{ nebo }\C}_{\text{skaláry}}$ (ale existují i skaláry z $\mathbb{Q}$). Tam, kde nebude důležité, jestli jde o $\R$ nebo o $\C$, budeme někdy používat značení $\K$ (znamenající tedy „buď $\R$ nebo $\C$“). Kromě termínu „vektorový prostor“ (VP) se používá i termín „lineární prostor“ (LP), případně „lineární vektorový prostor“ (LVP).
+    \item \uu{Vektorový prostor} $X$ nad\footnote{%
+    Zde $X$ je množina a~$\K$ je těleso.}
+    $\underbrace{\R\text{ nebo }\C}_{\text{skaláry}}$ (ale existují i skaláry z $\mathbb{Q}$). Tam, kde nebude důležité, jestli jde o~$\R$ nebo o~$\C$, budeme někdy používat značení $\K$ (znamenající tedy „buď $\R$ nebo $\C$“). Kromě termínu „vektorový prostor“ (VP) se používá i termín „lineární prostor“ (LP), případně „lineární vektorový prostor“ (LVP).
     
-    \item \uu{Lineárně nezávislá} (LN) \uu{množina} ve VP: $M \subset X$ je LN, pokud $a_1 x_1 + \dots + a_n x_n = 0 \implies a_1 = a_2 = \dots = a_n = 0$ pro všechny možné n-tice $(x_1, \dots x_n) \subset M$ a všechny skaláry $a_j \in \K$.
+    \item \uu{Lineárně nezávislá} (LN) \uu{množina} ve VP: $M \subseteq X$ je LN, pokud $a_1 x_1 + \dots + a_n x_n = 0 \implies a_1 = a_2 = \dots = a_n = 0$ pro všechny možné n-tice $(x_1, \dots x_n) \subseteq M$ a všechny skaláry $a_j \in \K$.
+    %V poznámkách na webu \subseteq a ne \subset. -J
     \\[5pt]
-    \Poznamka I v případě, že $M$ je nekonečná, uvažujeme pouze konečné součty (tj. všechny možné „libovolně dlouhé, ale konečné“ součty). Je totiž potřeba si uvědomit, že v obecném VP není definován pojem konvergence, a tedy samotný pojem nekonečného součtu nemá v obecném VP smysl.
+    \Poznamka I v případě, že $M$ je nekonečná, uvažujeme pouze konečné součty (tj. všechny možné „libovolně dlouhé, ale konečné“ součty). Je totiž potřeba si uvědomit, že v~obecném VP není definován pojem konvergence, a~tedy samotný pojem nekonečného součtu nemá v~obecném VP smysl.
     \\[5pt]
     „Konečné součty patří do algebry, nekonečné do analýzy.“
     
     \item \uu{Báze $X$} ($X \neq \emptyset$, $X \neq \{0\}$):
     \begin{enumerate}
-        \item Pokud existuje \uu{konečná} LN množina $B$ v $X$ taková, že její lineární obal
+        \item Pokud existuje \uu{konečná} LN množina $B$ v~$X$ taková, že její lineární obal
         $$ \Lin(B) \coloneqq \big\{ \sum_{j=1}^n a_j x_j, \;  x_j \in B, a_j \in \K, n \in \N \big\} $$
-        je roven $X$ (říkáme, že $B$ \uu{generuje} $X$), pak takovou množinu nazvu \uu{bází $X$}. Její mohutnost je pak určena jednoznačně (lze ukázat), tomuto číslu pak říkáme \uu{dimenze $X$}: $\dim X \coloneqq \operatorname{moh}(B) \in \N$
+        je roven $X$ (říkáme, že $B$ \uu{generuje} $X$), pak takovou množinu nazvu \uu{bází $X$}.
+        Její mohutnost je pak určena jednoznačně (lze ukázat),tomuto číslu pak říkáme \uu{dimenze $X$}: $\dim X \coloneqq \operatorname{moh}(B) \in \N$.
         \item Pokud v $X$ $\forall n \in \N$ existuje LN množina o $n$ prvcích, říkáme, že $\dim X = \infty$. V tomto případě je pojem báze striktnější: bází $X$ nad $\K$ je v tomto případě taková \uu{nekonečná množina} $B$, která splňuje:
         \begin{enumerate}
-            \item $B$ je LN (ve smyslu všech konečných lin. kombinací – viz výše)
+            \item $B$ je LN (ve smyslu všech konečných lin. kombinací – viz výše).
             \item $\forall x \in X \; \exists n(x) \in \N$ a odpovídající \uu{konečný počet} prvků báze $x_1, \dots x_{n(x)}$ a koeficientů $a_j \in \K$, že
-            $$ x = \sum_{j=1}^{n(x)} a_j x_j. $$
+            $$ x = \sum_{j=1}^{n(x)} a_j x_j \,. $$
         \end{enumerate}
         
-        \Poznamka I zde tedy jde principiálně o konečné součty prvků, vybíraných z nekonečné množiny (pro různá $x$ může jít o různé sety prvků báze). Této nekonečné bázi se říká \uu{Hammelova báze $X$ nad $\K$}. Otázka zní, zda každý VP $X$ (který není konečné dimenze) má Hammelovu bázi. Odpověď \textit{ano} je důsledkem \uu{axiomu výběru} (kdo jej tedy neuznává, pro něj by odpověď byla \textit{ne}).
+        \Poznamka I zde tedy jde principiálně o konečné součty prvků, vybíraných z nekonečné množiny (pro různá $x$ může jít o různé sady prvků báze). Této nekonečné bázi se říká \uu{Hammelova báze $X$ nad $\K$}. Otázka zní, zda každý VP $X$ (který není konečné dimenze) má Hammelovu bázi. Odpověď \textit{ano} je důsledkem \uu{axiomu výběru} (kdo jej tedy neuznává, pro něj by odpověď byla \textit{ne}).
     \end{enumerate}
 \end{itemize}
 
@@ -31,8 +35,10 @@ Co budeme považovat za známé:
     \\ \\
     $\underbrace{\R^n}_{\text{VP}}$ nad $\underbrace{\R}_{\text{skaláry}}$ má dimenzi $n$.
     \\ \\
-    $\underbrace{\R}_{\text{VP}}$ nad $\underbrace{\Q}_{\text{skaláry}}$ má dimenzi $\infty$: totiž každá konečná báze reálných čísel generuje pomocí spočetné množiny koeficientů ($\Q$) jen spočetně mnoho prvků, a $\R$ je nespočetná. Tím je vyřešen problém dimenze $\R$ nad $\Q$. Všimněte si, že dimenzi $\infty$ lze určit i bez znalosti odpovědi na otázku existence báze, tj. bez nutnosti axiomu výběru. Pokud však připustíme axiom výběru, pak existuje Hammelova báze $\R$ nad $\Q$, tj. $\exists B \subset \R$, že $B$ je LN ve smyslu výše uvedené definice a
-    $
+    $\underbrace{\R}_{\text{VP}}$ nad $\underbrace{\Q}_{\text{skaláry}}$ má dimenzi $\infty$: totiž každá konečná báze reálných čísel generuje pomocí spočetné množiny koeficientů ($\Q$) jen spočetně mnoho prvků, a $\R$ je nespočetná.
+
+    
+    Tím je vyřešen problém dimenze $\R$ nad $\Q$. Všimněte si, že dimenzi $\infty$ lze určit i bez znalosti odpovědi na otázku existence báze, tj. bez nutnosti axiomu výběru. Pokud však připustíme axiom výběru, pak existuje Hammelova báze $\R$ nad $\Q$, tj. $\exists B \subset \R$, že $B$ je LN ve smyslu výše uvedené definice a~$
     \forall x \in \R \;
     \exists n(x) \in \N \;
     \exists b_1, \dots b_{n(x)} \in B \;
@@ -40,7 +46,8 @@ Co budeme považovat za známé:
     $,
     že $x = \sum_{j=1}^{n(x)} q_j b_j$.
     Rozmyslete si, že B je nutně nespočetná (jinak vygeneruji jen spočetně mnoho prvků).
-}
+    }
+
 
 \begin{itemize}
     \item \uu{Norma na LP}: \hspace{1em}
@@ -72,43 +79,43 @@ Co budeme považovat za známé:
     a \uu{úplnost $X$ v normě}:
     $$
         (X, \norm{\cdot}) \text{ je úplný v normě } \norm{\cdot}
-        \xLeftrightarrow{def}
+        \Leftrightarrow{def}
         \left(
         \{ x_n \} \text{ cauchyovská }
         \implies
         \exists x \in X \; x_n \to x
-        \right)
+        \right)\,.
     $$
     Je-li $(X, \norm{\cdot})$ úplný v normě $\norm{\cdot}$, nazývá se \uu{Banachův} prostor (B-prostor).
     
     \item Za známé dále považujeme, že pokud $\dim X < \infty$, pak všechny normy na něm jsou \uu{ekvivalentní}. Normy $\norm{\cdot}_1$ a $\norm{\cdot}_2$ nazveme ekvivalentní, pokud $\exists c_1, c_2 > 0$, že
     $c_1 \norm{x}_1 \leq \norm{x}_2 \leq c_2 \norm{x}_1 \; \forall x \in X$.
     
-    \item Ekvivalentní normy zachovávají pojem konvergence ($x_n \xrightarrow{\norm{\cdot}_1} x \iff x_n \xrightarrow{\norm{\cdot}_2} x$) i cauchyovskosti, a tedy i úplnosti. Speciálně, je-li konečnědimenzionální prostor $X$ úplný v $\norm{\cdot}$, je úplný i ve všechn jiných možných normách na $X$.
+    \item Ekvivalentní normy zachovávají pojem konvergence ($x_n \xrightarrow{\norm{\cdot}_1} x \iff x_n \xrightarrow{\norm{\cdot}_2} x$) i~cauchyovskosti, a~tedy i~úplnosti. Speciálně, je-li konečnědimenzionální prostor $X$ úplný v $\norm{\cdot}$, je úplný i~ve všechn jiných možných normách na $X$.
     
-    To neplatí v nekonečné dimenzi, např $\mathcal{C}([-1, 1])$ je úplný v maximové normě $\norm{f}_\infty \coloneqq \max_{[-1, 1]} |f(x)|$, ale není úplný v integrální normě $\norm{f}_1 \coloneqq \int_{-1}^1 |f|$. $\big(\arctg nx \to \frac{\pi}{2} \sign x$ v $\norm{\cdot}_1\big)$
+    To neplatí v nekonečné dimenzi, např $\mathcal{C}([-1, 1])$ je úplný v maximové normě $\norm{f}_\infty \coloneqq \max_{[-1, 1]} |f(x)|$, ale není úplný v integrální normě $\norm{f}_1 \coloneqq \int_{-1}^1 |f|$. $\big(\arctg nx \to \frac{\pi}{2} \sgn x$ v $\norm{\cdot}_1\big)$
     
     \item \uu{Skalární součin na LP}: \hspace{1em} $\innerprod{\cdot}{\cdot}: X \times X \to \K \;$ (je-li $X$ nad $\C$, má tedy skalární součin komplexní hodnoty), je takové zobrazení, že $\forall x, y, z \in X$ platí:
     \begin{gather*}
-        \innerprod{x}{y} = \overline{\innerprod{y}{x}}
+        \innerprod{x}{y} = \conj{\innerprod{y}{x}},
         \\[3pt]
-        \innerprod{x+y}{z} = \innerprod{x}{z} + \innerprod{y}{z}
+        \innerprod{x+y}{z} = \innerprod{x}{z} + \innerprod{y}{z},
         \\[3pt]
         \innerprod{x}{x} \geq 0,
-        \text{ přičemž }
+        \text{, přičemž }
         \innerprod{x}{x} = 0
-        \iff x = 0
+        \iff x = 0,
         \\[3pt]
         \innerprod{\alpha x}{y} =
         \alpha \, \innerprod{x}{y}
-        \;\; \forall \alpha \in \K
+        \;\; \forall \alpha \in \K.
     \end{gather*}
     
     \item Prostor $\big(X, \innerprod{\cdot}{\cdot}\big)$ obdařený skalárním součinem se zve LP skalárním součinem, někdy též \uu{unitární prostor}.
     
     \item Snadno lze ukázat, že výraz $\norm{x} = \sqrt{\innerprod{x}{x}}$ má všechny vlastnosti normy, a tedy:
     
-    $X$ je unitární $\implies$ $X$ je NLP (v tzv. „normě generované skalárním součinem)
+    $X$ je unitární $\implies$ $X$ je NLP (v~tzv. \uv{normě generované skalárním součinem})
     
     \item Pokud je $X$ \uu{úplný v normě generované skalárním součinem}, říká se mu \uu{Hilbertův prostor} (H-prostor), tedy:
     
@@ -121,7 +128,7 @@ Co budeme považovat za známé:
         |\innerprod{x}{y}| \leq \norm{x} \cdot \norm{y},
         \hspace{2em}
         \text{kde }
-        \norm{x} = \sqrt{\innerprod{x}{x}}
+        \norm{x} = \sqrt{\innerprod{x}{x}}.
     $$
     
     \item $X$ unitární, řekneme, že $x,y \in X, \; x \neq 0, \; y \neq 0$ jsou \uu{kolmé} v $X$ (v odpovídajícím sk. součinu), pokud $\innerprod{x}{y} = 0$. Značíme $x \perp y$.
@@ -130,10 +137,12 @@ Co budeme považovat za známé:
 \Priklad{
     $L^2,\, L^2_\rho,\, \ell_2,\, W^{1,2},\, W^{k,2},\, W^{k,2}_\rho$ jsou Hilbertovy.
     \\
-    $\mathcal{C}(K),\, L^p$ pro $p \neq 2$ jsou Banachovy a nejsou Hilbertovy.
+    $\mathcal{C}(\K),\, L^p$ pro $p \neq 2$ jsou Banachovy a nejsou Hilbertovy.
     \\ \\
     Existence normy (sk. součinu, příp. metriky) definuje na LP tzv. geometrické vlastnosti (vzdálenost, konvergence, pro sk. součin i kolmost).
 }
+
+\phantom{.}
 
 Nyní připomeneme různé pojmy a vlastnosti související se \uu{zobrazeními} na vektorových prostorech.
 \begin{enumerate}
@@ -150,7 +159,7 @@ Nyní připomeneme různé pojmy a vlastnosti související se \uu{zobrazeními}
         \item \uu{nelineární}: není lineární
     \end{itemize}
     
-    \Poznamka z linearity $T$ plyne, že $T(0) = 0$ (volte $a=b=0$)
+    \Poznamka z linearity $T$ plyne, že $T(0) = 0$ (volte $a=b=0$).
     
     \item $X$, $Y$ NLP, $T: X \to Y$ je
     \begin{itemize}
@@ -191,7 +200,7 @@ $$
 Platí i pro $\norm{T} = \infty$, $\forall x \neq 0$. Pokud $\norm{T} < \infty$, pak obě strany jsou konečné a  nerovnost platí $\forall x \in X$ (tj. včetně $x = 0$).
 \\
 \Poznamka připustili jsme $\norm{T} = \infty$, abychom měli tuto ekvivalenci:
-\begin{lemma}
+\begin{lemma}[O charakterizaci omezenosti]
 Pro lin. operátory máme:
 $$
     T \text{ omezený}
@@ -206,7 +215,7 @@ Implikace „$\Rightarrow$“: $T$ omezený: ($\operatorname{vol} K = 1: \; \exi
 Implikace „$\Leftarrow$“: $\norm{T} < \infty$: $\norm{Tx} \leq \norm{T} \cdot \norm{x} \; \forall x \in X$, tj. $\norm{x} \leq K \implies \norm{Tx} \leq K \norm{T}$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[O ekvivalenci spojitosti a omezenosti operátoru]
 Buďte $X,Y$ Banachovy. Pokud je $T: X \to Y$ \uu{lineární} operátor, pak
 $$
     \overset{(1)}{T \text{ omezený}}
@@ -225,6 +234,7 @@ $(2) \Rightarrow (1)$: Ze spojitosti plyne mj., že pokud $x_n \to 0$, pak $Tx_n
 \end{proof}
 
 \begin{definition}[Prostor omezených lineárních operátorů]
+
 $$
     \lin(X, Y)
     \coloneqq
@@ -244,7 +254,7 @@ Další používané značení:
 \end{definition}
 
 \begin{theorem}[Vliv konečné a nekonečné dimenze]
-Buď $T: X \to Y$, $X,Y$ Banachovy, $T$ lineární, \uu{$\dim T < \infty$}. Potom $T$ je omezený a tedy i spojitý.
+Buď $T: X \to Y$, $X,Y$ Banachovy, $T$ lineární, \uu{$\dim T < \infty$}. Potom $T$ je omezený, a tedy i spojitý.
 \end{theorem}
 \begin{proof}
 $$
@@ -269,7 +279,7 @@ $$
     \leq
     \Tilde{c} \norm{x}
 $$
-kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{manhattanská norma}, jedna z možných norem $X$, a poslední nerovnost plyne z ekvivalence všech norem pro $\dim X < \infty$.
+kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{Manhattanská norma}, jedna z možných norem $X$, a poslední nerovnost plyne z ekvivalence všech norem pro $\dim X < \infty$.
 \end{proof}
 
 \Poznamka V konečné dimenzi jsou tedy všechny lineární operátory už spojité. Přirozená otázka: platí to i pro $\dim X = \infty$? Ne: $X, Y$ NLP, $\dim X = \infty$, pak $\exists T: X \to Y$ lineární a neomezený. (V případě $X,Y$ Banachovy tedy i nespojitý).
@@ -287,14 +297,14 @@ kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{manhattanská norma}, jedna z mož
 \Cviceni{
     $\dim X = \infty$, $Y$ Banachův. Vezměte $\{ x_1, x_2, \dots \}$ LN spočetně nekonečnou množinu nenulových prvků v $X$. BÚNO $\norm{x_j} = 1$ (Jinak místo nich vezmeme $\frac{x_j}{\norm{x_j}}$.)
     
-    Každou LN množinu lze podle tzv. \textit{Zornova lemmatu} (je ekvivalentní s axiomem výběru) doplnit na bázi LP. Doplňme ji tedy prvky $\{z_\alpha\}_{\alpha \in A}$, $A$ je tzv. \textit{ideová množina}.
+    Každou LN množinu lze podle tzv. \textit{Zornova lemmatu} (je ekvivalentní s axiomem výběru) doplnit na bázi LP. Doplňme ji tedy prvky $\{z_\alpha\}_{\alpha \in A}$, $A$ je tzv. \textit{indexová množina}.
     
     Potom dle vlastností báze $B \coloneqq \sequence{x_j}{j} \cup \{z_\alpha\}_{\alpha \in A}$ platí \hspace{0.5em}
     $\forall x \in X \; \exists n(x), m(x) \in \N \; \exists a_j, b_j \text{ skaláry}$, že
     $$
         x = \sum_{j=1}^{n(x)} a_j x_j + \sum_{k=1}^{m(x)} b_k z_k.
     $$
-    Definujeme $Tx \coloneqq \sum_{j=1}^{n(x)} a_j T x_j + \sum_{k=1}^{m(x)} b_k T z_k$ pro takové $x \in X$.
+    Definujeme $\displaystyle Tx \coloneqq \sum_{j=1}^{n(x)} a_j T x_j + \sum_{k=1}^{m(x)} b_k T z_k$ pro takové $x \in X$.
     \\ \\
     Tím je definován $T$ na celém $X$, pokud definujeme $Tx_j$ a $Tz_\alpha$. Definujeme je takto:
     \begin{align*}

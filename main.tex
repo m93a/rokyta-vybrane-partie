@@ -2,6 +2,8 @@
 
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[czech]{babel}
 \usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
 
@@ -17,10 +19,11 @@
 \usepackage{xcolor} % barvičky v rovnicích
 \usepackage{mathrsfs} % pro spojité operátory \mathsrc{L}
 \usepackage[shortlabels]{enumitem} % enumerate a),b)..., pokračování v seznamu [resume]
-\usepackage[hidelinks]{hyperref} % hypertextové odkazy
 \usepackage{MnSymbol,wasysym} % smajlíci jsou důležití
 \usepackage{diagbox} %škrtání políček v tabulce \diagbox{$a_i$}{$b_j$}
-
+\usepackage[hidelinks]{hyperref} %Dobrá praxe tento balíček nahrát jako poslední.
+\usepackage{tikz}
+\usepackage{enumitem}
 \newcommand{\e}[1]{\const{e}^{#1}}
 \newcommand{\I}{\const{i}}
 
@@ -74,6 +77,8 @@
 \newcommand{\const}[1]{\mathrm{#1}}
 % Norma
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+% Komplexní sdružení
+\newcommand{\conj}[1]{\overline{#1}}
 % Skalární součin a symetrie
 \newcommand{\innerprod}[2]{\big( #1, #2 \big)}
 \newcommand{\duality}[2]{\big< #1, #2 \big>}
@@ -88,6 +93,7 @@
 
 % Názvy používaných operací
 \newcommand{\arctg}{\operatorname{arctg}\,}
+\newcommand{\sgn}{\operatorname{sgn}\,}
 \newcommand{\Lin}{\operatorname{Lin}\,}
 \newcommand{\Id}{\operatorname{Id}\,}
 \newcommand{\Ker}{\mathrm{ker}\,}
@@ -96,6 +102,11 @@
 \renewcommand{\d}[1]{\;\const{d}#1}
 \newcommand{\dd}[2]{\frac{\const{d} #1}{\const{d} #2} \;}
 \newcommand{\pd}[2]{\frac{\partial  #1}{\partial  #2} \;}
+
+%random pomůcky
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
 
 \begin{document}
 

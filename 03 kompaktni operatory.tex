@@ -79,7 +79,7 @@ Předpokládejme, že $0$ nepatří do $\sigma(\map K)$. Pak podle Věty XY exis
 \begin{lemma}[O uzavřenosti obrazu kompaktního operátoru a Fredholmova alternativa]
 Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$. Pak \begin{enumerate}
     \item Obor hodnot operátoru $\mathcal{R}(\map K - \lambda \map{Id})$ je uzavřená množina.
-    \item $\map K$ je na (tj. $\mathcal{R}(\map K - \lambda \map{Id} )=X$) právě tehdy, když je $\map K - \lambda \map{Id}$ prostý.
+    \item $\map K$ je na (tj. platí $\mathcal{R}(\map K - \lambda \map{Id} )=X$) právě tehdy, když je $\map K - \lambda \map{Id}$ prostý.
 \end{enumerate}
 \end{lemma}
 \begin{remark}
@@ -103,5 +103,13 @@ Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a
 Podle předchozí věty tedy platí, že každé nenulové vlastní číslo má konečnou násobnost - dimenze prostoru vlastních vektorů, které přísluší jednomu nenulovému vlastnímu číslu, je konečná.
 
 \begin{lemma}[O hromadných bodech spektra kompaktního operátoru]
-Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor. 
+Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor. Pak je pro každé $\varepsilon>0$ množina \begin{align*}
+    \sigma(\map K) \cap \left \lbrace \lambda \in \C : |\lambda| > \varepsilon \right \rbrace
+\end{align*}
+konečná.
 \end{lemma}
+
+\begin{corollary}
+Spektrum kompaktního operátoru je vždy nejvýše spočetné. Má-li spektrum hromadný bod, může jím být pouze číslo nula.
+\end{corollary}
+
