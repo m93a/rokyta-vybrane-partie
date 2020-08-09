@@ -5,20 +5,21 @@
 \usepackage[czech]{babel}
 \usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
 
-\setcounter{secnumdepth}{2} %aby se \subsubsection nečíslovalo
+\renewcommand{\baselinestretch}{1.2} % výška řádku
+
+\setcounter{secnumdepth}{2} % aby se \subsubsection nečíslovalo
 
 \usepackage{amsmath}
-\numberwithin{equation}{section} %číslování rovnic
+\numberwithin{equation}{section} % číslování rovnic
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
-\usepackage{xcolor} %barvičky v rovnicích
-\usepackage{mathrsfs} %pro spojité operátory \mathsrc{L}
-\usepackage[shortlabels]{enumitem} %enumerate a),b)..., pokračování v seznamu [resume]
-\usepackage[hidelinks]{hyperref} %hypertextové odkazy
-\usepackage{MnSymbol,wasysym} %smajlíci jsou důležití
-
-
+\usepackage{xcolor} % barvičky v rovnicích
+\usepackage{mathrsfs} % pro spojité operátory \mathsrc{L}
+\usepackage[shortlabels]{enumitem} % enumerate a),b)..., pokračování v seznamu [resume]
+\usepackage[hidelinks]{hyperref} % hypertextové odkazy
+\usepackage{MnSymbol,wasysym} % smajlíci jsou důležití
+\usepackage{diagbox} %škrtání políček v tabulce \diagbox{$a_i$}{$b_j$}
 
 \newcommand{\e}[1]{\const{e}^{#1}}
 \newcommand{\I}{\const{i}}
@@ -29,6 +30,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\K}{\mathbb{K}}
+\newcommand{\Sp}{\reflectbox{S}}
 
 \newcommand{\uu}[1]{\underline{#1}}
 
@@ -49,20 +51,23 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definice}
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{remark}{Poznámka}
-\newtheorem{example}{Příklad}
+\newtheorem*{remark}{Poznámka}
+\newtheorem*{example}{Příklad}
 \newtheorem{corollary}[theorem]{Důsledek}
-\newtheorem{exercise}{Cvičení}
+\newtheorem*{exercise}{Cvičení}
 
 \newcommand{\Priklad}[1]{
+    \noindent
     \fbox{\textbf{Příklad}} \;
     \parbox[t]{\textwidth - 7em}{#1}
 }
 \newcommand{\Cviceni}[1]{
+    \noindent
     \fbox{\textbf{Cvičení}} \;
     \parbox[t]{\textwidth - 7em}{#1}
 }
-\newcommand{\Poznamka}{\uu{Pozn.}: }
+\newcommand{\Poznamka}{
+\noindent\uu{Pozn.}: }
 
 
 % Konstanty
@@ -71,13 +76,13 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 % Skalární součin a symetrie
 \newcommand{\innerprod}[2]{\big( #1, #2 \big)}
-\newcommand{\symmetry}[2]{\big< #1, #2 \big>}
+\newcommand{\duality}[2]{\big< #1, #2 \big>}
 % Spojité operátory
 \newcommand{\lin}{\mathscr{L}}
 % Kompaktní operátory
 \newcommand{\comp}{\mathscr{C}}
 % Zobrazení
-\newcommand{\map}[1]{\mathbf{#1}}
+\newcommand{\map}[1]{\boldsymbol{#1}}
 % Posloupnost
 \newcommand{\sequence}[2]{ \left \lbrace #1 \right \rbrace_{#2=1}^\infty}
 

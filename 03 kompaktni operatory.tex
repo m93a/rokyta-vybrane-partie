@@ -34,7 +34,7 @@ Nechť $Y$ je Banachův prostor. Pak $Y$ má B-W vlastnost právě tehdy, když 
 \uv{$\Rightarrow$} Nechť je $Y$ nekonečnědimenzionální. Zvolme $y_1 \in Y$ a poté indukcí vybíráme prvky $y_{k+1} \in Y$ tak, aby vzdálenost prvku $y_{k+1}$ od prvku $y_k$ byla větší nebo rovna jedné. Po přechodu k libovolné posloupnosti dostaneme stále posloupnost, která má prvky vzdálené od sebe více než o jedničku a proto nemůže splňovat B-C podmínku.
 \end{proof}
 
-\begin{lemma}[O kompaktnosti identity]
+\begin{lemma}[O kompaktnosti identity] \label{3.kompaktnost identity}
 Nechť $Y$ je konečněrozměrný Banachův prostor. Pak má $Y$ B-W vlastnost právě tehdy, jestliže je $\map{Id} : Y \mapsto Y$ kompaktní operátor.
 \end{lemma}
 \begin{proof}
@@ -58,3 +58,50 @@ Praktické použití této věty je právě ve vybírání konvergentní podposl
 
 \subsection{Vlastnosti kompaktních operátorů}
 V tomto oddíle formulujeme sedm klíčových vlastností, které značně zjednodušují problematiku spektrální analýzy pro kompaktní operátory.
+
+\begin{lemma}[O skládání spojitého a kompaktního operátoru] \label{3.skladani}
+Nechť $X$ je Banachův, $\map S \in \lin (X)$ a $\map K \in \comp(X)$. Pak jsou operátory $ \map S \circ \map K$ a $\map K \circ \map S$ kompaktní.
+\end{lemma}
+
+\begin{proof}
+Zvolme omezenou posloupnost $\sequence{x_n}{n} \subset X$. Pak posloupnost $\sequence{\map S x_n}{n}$ je omezená a díky kompaktnosti $\map K$ můžeme z posloupnosti $\sequence{(\map K \circ \map S) x_n}{n}$ vybrat konvergentní podposloupnost, proto je $\map K \circ \map S$ kompaktní. Dále, z  posloupnosti $\sequence{\map K x_n}{n}$ můžeme vybrat konvergentní $\sequence{\map K x_{n_k}}{k}$ a díky spojitosti operátoru $\map S$ je i podposloupnost $\sequence{(\map S \circ \map K) x_{n_k}}{k}$ konvergentní, proto je $\map S \circ \map K$ kompaktní.
+
+\end{proof}
+
+\begin{lemma}[O příslušnosti nuly do spektra kompaktního operátoru]
+Nechť $X$ je nekonečnědimenzionální Banachův prostor, $\map K \in \comp(X)$. Pak číslo $0$ náleží spektru $\sigma(\map K)$.
+\end{lemma}
+
+\begin{proof}
+Předpokládejme, že $0$ nepatří do $\sigma(\map K)$. Pak podle Věty XY existuje inverzní operátor $ \map K^{-1} \in \lin(X)$. Pak ale díky Lemmatu o skládání kompaktního a spojitého operátoru (Lemma \ref{3.skladani}) dostáváme, že $\map{Id} = \map K \circ \map K^{-1}$ je kompaktní operátor. To je ovšem ve sporu s tvrzením o kompaktnosti identity (Lemma \ref{3.kompaktnost identity}).
+\end{proof}
+
+\begin{lemma}[O uzavřenosti obrazu kompaktního operátoru a Fredholmova alternativa]
+Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$. Pak \begin{enumerate}
+    \item Obor hodnot operátoru $\mathcal{R}(\map K - \lambda \map{Id})$ je uzavřená množina.
+    \item $\map K$ je na (tj. $\mathcal{R}(\map K - \lambda \map{Id} )=X$) právě tehdy, když je $\map K - \lambda \map{Id}$ prostý.
+\end{enumerate}
+\end{lemma}
+\begin{remark}
+Druhé části předchozího lemmatu se říká "Fredholmova alternativa v nekonečné dimenzi".
+\end{remark}
+
+Dosavadní výsledky nám umožňují zjednodušit spektrální tabulku pro kompaktní operátory. DŮSLEDKY, TABULKA, DOPSAT.
+
+\begin{lemma}[O nenulových prvcích spektra kompaktního operátoru]
+Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$ je prvkem $\sigma(\map K)$. Pak \begin{enumerate}
+    \item $\lambda$ je vlastní číslo,
+    \item $\mathrm{dim} \,(\map K - \lambda \map{Id} ) < + \infty$,
+    \item Prostor všech vektorů příslušejících vlastnímu číslu $\lambda$ , $\Ker (\map K - \lambda \map{Id} )$ je uzavřený podprostor $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}[Násobnost vlastního čísla]
+Číslo $\mathrm{dim} \, \Ker (\map K - \lambda \map{Id} )$ nazýváme násobností vlastního čísla $\lambda$.
+\end{definition}
+
+Podle předchozí věty tedy platí, že každé nenulové vlastní číslo má konečnou násobnost - dimenze prostoru vlastních vektorů, které přísluší jednomu nenulovému vlastnímu číslu, je konečná.
+
+\begin{lemma}[O hromadných bodech spektra kompaktního operátoru]
+Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor. 
+\end{lemma}

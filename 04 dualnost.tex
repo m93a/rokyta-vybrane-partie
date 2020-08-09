@@ -14,27 +14,32 @@
 \subsection{Duál a dualita}
 
 \begin{definition}[Duál]
-Buď $X$ Banachův prostor. Prostor $X'= \lin(X,\C)$ nazýváme komplexní topologický duál prostoru $X$.
+Buď $X$ Banachův prostor. Prostor $X' \coloneqq \lin(X,\C)$ \hspace{0.5em} (resp. $\lin(X, \R)$) nazýváme topologickým duálem k $X$.
 \end{definition}
-\begin{remark}
-\begin{enumerate}
-    \item Samozřejmě používáme i reálný topologický duál $\lin (X,\R)$.
+
+\begin{remark} \ph{.}
+\begin{itemize}
+    \item Prostor $X'$ je tedy tvořen všemi spojitými lineárními funkcionály, spojitost uvažujeme ve smyslu \begin{align*}
+        x_n \xrightarrow{X} x \implies T x_n \to T x \quad \text{pro všechna } \map T \in X' \:.
+    \end{align*}
     \item Víme, že jsou-li $X,Y$ normované prostory a $Y$ je Banachův, pak i $\lin (X,Y)$ je Banachův. Proto je $X'$ automaticky Banachovým prostorem.
-    \item Je-li $\map T \in X'$, pak jeho norma je přirozeně $\norm{\map T}_{X'} := \sup_{\norm{x}_X \leq 1} |\map Tx|$.
-\end{enumerate}
+    \item Je-li $\map T \in X'$, pak jeho norma je přirozeně $\norm{\map T}_{X'} := \underset{\norm{x}_X \leq 1}{\sup} |\map Tx|$.
+    \item Topologický duál není totéž, co \uu{vektorový duál} (pouze lineární zobrazení $X \to \C$ ($\R$), nevyžaduje spojitost). Prvků vektorového duálu je víc (o ony „nespojité“). V konečné dimenzi pro $X$ Banachův je vektorový duál vždy topologickým duálem.
+\end{itemize}
 \end{remark}
 
-\begin{definition}[Dualita prostorů]
-Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \mapsto \C$ nazveme dualitou prostorů $X$ a $X'$, jestliže splňuje vlastnosti: \begin{enumerate}
-    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z)$, $\map S(z,\alpha x + \beta y) = \alpha^* \map S(z,x) + \beta^* \map S(z,y)$.
-    \item spojitost: \begin{align*}
-        \map S(x_n,y_n) \rightarrow \map S(x,y) \quad \text{kdykoliv } (x_n,y_n) \rightarrow (x,y) \text{ v } X \times X' \:.
-    \end{align*}
+
+\begin{definition}[Dualita]
+Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \mapsto \C$ nazveme dualitou, jestliže splňuje vlastnosti: \begin{enumerate}
+    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z), \;\; \map S(z,\alpha x + \beta y) = \overline{\alpha} \map S(z,x) + \overline{\beta} \map S(z,y)$.
+    
+    \item spojitost: $\map S(x_n,y_n) \rightarrow \map S(x,y) \quad \text{kdykoliv } (x_n,y_n) \rightarrow (x,y) \text{ v } X \times X'$.
 \end{enumerate}
+Někdy píšeme $\map S(x, \map T) = \duality{x}{\map T}$. Obecně je často $\duality{\cdot}{\cdot}$ symbolem duality.
 \end{definition}
 
 \begin{remark}
-Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v následujícím), pak roli duality hraje skalární součin. Ztotožněním prostorů myslíme následující: píšeme $X \simeq Y$, jestliže existuje zobrazení $D: X \mapsto Y$, které je isometrické a izomorfní, tj. zachovává normu a je bijektivní.
+Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v následujícím), pak roli duality hraje skalární součin. Ztotožněním prostorů myslíme následující: píšeme $X \simeq Y$, jestliže existuje zobrazení $\map D: X \mapsto Y$, které je izometrické a izomorfní, tj. zachovává normu a je bijektivní.
 \end{remark}
 
 \begin{example}
@@ -42,7 +47,7 @@ Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v n�
 Uvažujme prostor vektorů $\R^n$. Víme, že každá lineární forma $\map T \in \R'$ je reprezentovatelná lineární kombinací (násobení transponovaným vektorem): $\map T \left[ (x_1, \cdots, x_n) \right] = \sum_{j=1}^n \alpha_j x_j$. V určitém smyslu lze tedy psát $\R \simeq \R'$. 
 \end{example}
 
-\begin{theorem}[O ztotožnění sdružených lebesgueovských prostorů]
+\begin{theorem}[O ztotožnění sdružených Lebesgueových prostorů]
 Buď $\Omega \in \R^n $ otevřená souvislá množina, $\map T \in L^q(\Omega)'$. Označme $q$ sdružený exponent k $p$, tj. $\frac{1}{p} + \frac{1}{q} =1$. Pak existuje právě jeden prvek $g \in L^p(\Omega)$ takový, že:
 \begin{align*}
 \map T(f) = \int_\Omega f g^* \d x \quad \text{pro každé } f \in L^p(\Omega)
@@ -251,13 +256,13 @@ Nechť $H$ je Hilbertův prostor a $\map T \in \lin (H)$ je samoadjungovaný ope
     \item Je-li $\lambda \in \sigma(\map T)$, pak $\lambda \in [m(\map T), M(\map T)]$.
     \item Platí $\rho(\map T) = \norm{\map T}$. Speciálně: alespoň jedna z hodnot $\lambda = \pm \norm{\map T}$ je vlastním číslem $\map T$.
 \end{enumerate}
-\end{theorem}
+\end{theorem} 
 
 \begin{exercise}
 Nechť $\mathbb{A} \in \R^{n \times n}$ je reálná symetrická matice, $x \in \R^n$ a $f(x) = (\mathbb{A} x,x) = \sum_{i,j} a_{ij} x_i x_j$. Určete minimum a maximum $f$ za podmínky $\norm{x} =1$.
 \end{exercise}
 
-\subsection{Kompaktní samoadjungované operátory na Hilbertově prostoru}
+\subsection{Kompaktní samoadjungované operátory na Hilbertových prostorech}
 
 Nejprve zopakujeme výsledky, které zatím máme o kompaktních samoadjungovaných operátorech. Na Hilbertově prostoru $H$ uvažujme $\map K \in \comp (H)$ takový, že $(\map K x,y)_H = (x, \map K y)_H$ pro všechna $x,y \in H$. Pak platí \begin{enumerate}
     \item $\map K$ má nejvýše spočetně mnoho vlastních čísel, všechna vlastní čísla jsou reálná.

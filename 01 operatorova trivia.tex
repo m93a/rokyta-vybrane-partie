@@ -86,7 +86,7 @@ Co budeme považovat za známé:
     
     \item Ekvivalentní normy zachovávají pojem konvergence ($x_n \xrightarrow{\norm{\cdot}_1} x \iff x_n \xrightarrow{\norm{\cdot}_2} x$) i cauchyovskosti, a tedy i úplnosti. Speciálně, je-li konečnědimenzionální prostor $X$ úplný v $\norm{\cdot}$, je úplný i ve všechn jiných možných normách na $X$.
     
-    To neplatí v nekonečné dimenzi, např $\mathcal{C}([-1, 1])$ je úplný v maximové normě $\norm{f}_\infty \coloneqq \max_{[-1, 1]} |f(x)|$, ale není úplný v integrální normě $\norm{f}_1 \coloneqq \int_{-1}^1 |f|$. \big($\arctg nx \to \frac{\pi}{2} \sign x$ v $\norm{\cdot}_1$\big)
+    To neplatí v nekonečné dimenzi, např $\mathcal{C}([-1, 1])$ je úplný v maximové normě $\norm{f}_\infty \coloneqq \max_{[-1, 1]} |f(x)|$, ale není úplný v integrální normě $\norm{f}_1 \coloneqq \int_{-1}^1 |f|$. $\big(\arctg nx \to \frac{\pi}{2} \sign x$ v $\norm{\cdot}_1\big)$
     
     \item \uu{Skalární součin na LP}: \hspace{1em} $\innerprod{\cdot}{\cdot}: X \times X \to \K \;$ (je-li $X$ nad $\C$, má tedy skalární součin komplexní hodnoty), je takové zobrazení, že $\forall x, y, z \in X$ platí:
     \begin{gather*}
@@ -289,7 +289,19 @@ kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{manhattanská norma}, jedna z mož
     
     Každou LN množinu lze podle tzv. \textit{Zornova lemmatu} (je ekvivalentní s axiomem výběru) doplnit na bázi LP. Doplňme ji tedy prvky $\{z_\alpha\}_{\alpha \in A}$, $A$ je tzv. \textit{ideová množina}.
     
-    Potom dle vlastností báze $B \coloneqq \series{x}{j}$
+    Potom dle vlastností báze $B \coloneqq \sequence{x_j}{j} \cup \{z_\alpha\}_{\alpha \in A}$ platí \hspace{0.5em}
+    $\forall x \in X \; \exists n(x), m(x) \in \N \; \exists a_j, b_j \text{ skaláry}$, že
+    $$
+        x = \sum_{j=1}^{n(x)} a_j x_j + \sum_{k=1}^{m(x)} b_k z_k.
+    $$
+    Definujeme $Tx \coloneqq \sum_{j=1}^{n(x)} a_j T x_j + \sum_{k=1}^{m(x)} b_k T z_k$ pro takové $x \in X$.
+    \\ \\
+    Tím je definován $T$ na celém $X$, pokud definujeme $Tx_j$ a $Tz_\alpha$. Definujeme je takto:
+    \begin{align*}
+        T x_j &= j \;\; \forall j \in \N \\
+        T z_\alpha &= 0 \;\; \forall z_\alpha, \; \alpha \in A
+    \end{align*}
+    Potom $T$ je lineární na $X$ (ověřte), přičemž $\norm{x_n} = 1$, ale $\norm{T x_n} = n \;\; \forall x_n$.
 }
 
 
