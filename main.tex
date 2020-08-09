@@ -6,6 +6,7 @@
 \usepackage{lmodern}
 \usepackage[czech]{babel}
 \usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
+\usepackage{calc} % pro \mask
 
 \renewcommand{\baselinestretch}{1.2} % výška řádku
 
@@ -44,6 +45,10 @@
 \def\lzw{\mathllap}
 \def\czw{\mathclap}
 
+\newcommand*{\mask}[2]{%
+    \mathord{\makebox[\widthof{\(#1\)}]{\(#2\)}}%
+}
+
 \title{Vybrané partie z funkcionální analýzy}
 \author{Mirko Rokyta (do {\TeX}u přepsal kol.)}
 \date{Srpen 2020}
@@ -59,11 +64,17 @@
 \newtheorem{corollary}[theorem]{Důsledek}
 \newtheorem*{exercise}{Cvičení}
 
+\newcommand{\lboxed}[1]{\begin{tabular}{|l}#1\end{tabular}}
+
 \newcommand{\Priklad}[1]{
     \noindent
+    \lboxed{
     \fbox{\textbf{Příklad}} \;
     \parbox[t]{\textwidth - 7em}{#1}
+    }
 }
+
+
 \newcommand{\Cviceni}[1]{
     \noindent
     \fbox{\textbf{Cvičení}} \;

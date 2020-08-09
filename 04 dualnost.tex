@@ -84,31 +84,63 @@ viz Lukeš 2.9
 Zobrazení $\map T \mapsto f$ je izometrický izomorfismus (zachovává normu a je bijektivní). Proto pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$.
 \end{corollary}
 
-\begin{remark}
-V prvním tvrzení věty \ref{4.Riesz-Frechet} by mohlo ekvivalentně být $\map T(x) = \innerprod{f}{x}_H$. Skutečně: položme $S(x) = T(x)$
-\end{remark}
+% ALERT ALERT TOHLE JE V POZNÁMKÁCH ŠPATNĚ
+% T(x) BY NEBYLO LINEÁRÍ, ALE ANTILINEÁRNÍ ZOBRAZENÍ
+%\begin{remark}
+%V prvním tvrzení věty \ref{4.Riesz-Frechet} by mohlo ekvivalentně být $\map T(x) = \innerprod{f}{x}_H$. Skutečně: položme $\map S(x) = \conj{\map T(x)}$, pak podle Riesz-Fréchetovy věty nalezneme $g \in H$ takové, že $\map S(x) = \innerprod{x}{g}_H$. Potom $\map T(x) = \conj{\map S(x)} = \conj{\innerprod{x}{g}} = \innerprod{g}{x}$.
+%\end{remark}
 
-Jsou-li $X,Y$ Banachovy a platí $X \subset Y$, pak platí $Y' \subset X'$. Zde je však důležité dát velký pozor!
+\begin{lemma}[O inkluzi duálních prostorů]
+    Nechť jsou $X,Y$ Banachovy a platí $X \subset Y$ a $\norm{x}_Y = \norm{x}_X \; \forall x \in X$. Potom platí $Y' \subset X'$ ve smyslu zúžení zobrazení (restrikce). Zde je však důležité dát velký pozor, je snadné tento výsledek špatně interpretovat!
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+    \text{Mějme } \map T \in Y'
+    &\implies
+    \map T \text{ spojité a lineární (na prvcích z $Y$) }
+    \\
+    &\implies
+    \map T|_X \text{ spojité a lineární (na prvcích z $X$)}
+    \implies
+    \map T|_X \in X'
+    \end{align*}
+\end{proof}
 
-\begin{example}[Svéhlavá aplikace inkluze]
+\begin{example}
 Bezhlavá aplikace předchozí inkluze nás může zahnat do slepých ulic.
+\\
+Uvažujme prostor $\R \subset \R^2$. Dle předchozího tvrzení můžeme prohlásit $(\R^2)' \subset (\R)'$. Protože jsou oba prostory Hilbertovy, lze je ztotožnit $(\R^n)' = \R^n $, proto by mělo platit $\R^2 \subset \R$, což je zřejmě nesmysl. Kde je ale chyba?
 
-Uvažujme prostor $\R \subset \R^2$. Dle předchozího tvrzení můžeme prohlásit $(\R^2)' \subset (\R)'$. Protože jsou oba prostory Hilbertovy, lze psát $(\R^n)' = \R^n $, proto by mělo platit $\R^2 \subset \R$, což je zřejmě nesmysl.
-
-V předchozích úvahách jsme učinili dvě velké chyby. \begin{enumerate}
-    \item Menší chybu jsme učinili tím, že jsme prohlásili $(\R^n)' \simeq \R^n$ za rovnost. PŘEPSAT
+\begin{align*}
+    \hspace{-3em}
+    \R \subset \R^2 \quad \implies \quad
+    (\R^2)' &\subset \R' \\[-5pt]
+    \mask{(\R^2)'}{\rotatebox[origin=c]{90}{=}} &\ph{\subset} \;\; \mask{\R'}{\rotatebox[origin=c]{90}{=}} \\[-5pt]\mask{(\R^2)'}{\R^2} &\subset \mask{\R'}{\R}
+\end{align*}
+V předchozích úvahách jsme učinili dvě chyby: jednu větší, ️jednu menší. \begin{enumerate}
+    \item Menší chybu jsme učinili tím, že jsme $(\R^n)' \simeq \R^n$ považovali rovnost, ve skutečnosti je to \textit{ztotožnění}. Každé lineární zobrazení na $\R^n$ má tvar $$\map T(x) = \sum_{j=1}^n \alpha_j x_j$$ a ztotožňuje se s $n$-ticí koeficientů $$T \simeq (\alpha_1, \dots \alpha_n) \in \R^n \text{ reprezentuje } (\R^n)' \: .$$ Na ono reprezentující $\R^n$ je tedy třeba nahlížet opravdu jako na prostor prvků, které reprezentují lineární zobrazení.
     \item Velkou chybu jsme učinili, když jsme inkluzi $(\R^2)' \subset \R'$ považovali za množinovou inkluzi. Tvrzení je třeba chápat v tomto smyslu:
     
-    Všechna lineární zobrazení pracující na $\R^2$ lze zúžit tak, aby pracovala na $\R$. Pokud je lineární zobrazení $\map T$ reprezentovatelné dvojicí $(\alpha_1, \alpha_2) \in \R^2$, lze toto zobrazení skutečně zúžit na podprostor tvořený $(\alpha_1, 0)$, který můžeme považovat za prostor $\R$. To je pravý smysl \uv{inkluze} $Y' \in X'$.
+    \begin{center}
+    „Všechna lineární zobrazení pracující na $\R^2$ lze zúžit tak, aby pracovala na $\R$.“
+    \end{center}
+    
+    Pokud je lineární zobrazení $\map T \in (\R^2)'$ reprezentovatelné dvojicí $(\alpha_1, \alpha_2) \in \R^2$, lze toto zobrazení skutečně zúžit na $\map T|_\R$ reprezentované $(\alpha_1, 0)$, který můžeme považovat za prostor $\R$. To je pravý smysl \uv{inkluze} $Y' \subset X'$.
 \end{enumerate}
 \end{example}
 
-Duálnost se často projevuje jistým typem symetrie ve vzorcích. Je-li $\map T \in X'$, pak $\norm{\map T}_X' = \sup_{\norm{x}_X \leq 1} |\map T(x)|$. Dále víme, že $|\map T(x) \leq \norm{\map T} \norm{x}_X$. 
+\bigskip
+
+\begin{remark}
+\uv{Duálnost} se často projevuje tím, že vzorce obsahující prvky $X$ a $X'$ vykazují jisté symetrie. Například víme, že
+$$\norm{\map T}_{X'} = \sup_{\norm{x}_X \leq 1} |\map T(x)|.$$
+Dále víme, že $|\map T(x)| \leq \norm{\map T} \norm{x}_X$. 
+\end{remark}
 
 Uvažujme nyní funkcionál $\map T \in X'$ takový, že $\norm{\map T}_{X'} \leq 1$. Pak jistě platí $|\map T x| \leq \norm{x}_X$ a po přechodu k supremu i \begin{align*}
     \sup_{\norm{\map T}_{X'} \leq 1} |\map T(x)| \leq \norm{x}_X \:.
 \end{align*}
-Následující věta ukazuje, že můžeme psát dokonce \begin{align*}
+Následující věta ukazuje, že platí dokonce \textit{rovnost}: \begin{align*}
     \sup_{\norm{\map T}_{X'} \leq 1} |\map T(x)| = \norm{x}_X \:.
 \end{align*}
 
@@ -120,7 +152,7 @@ Buď $X$ Banachův, $x \in X$ takové, že $x \neq 0$. Pak existuje $\map T \in 
 
 \subsection{Duální zobrazení, duální operátor}
 
-\begin{definition}[Duální zobrazení, dualita]
+\begin{definition}[Duální zobrazení]
 Nechť $X,Y$ jsou Banachovy prostory, $\map T \in \lin (X,Y)$, $\map T' : Y' \mapsto X'$. Řekneme, že $\map T'$ je duální zobrazení k $\map T$, jestliže \begin{align*}
     \map T' \circ \map y' = \map y' \circ \map T' \quad \text{pro všechna } \map y' \in Y' \:,
 \end{align*}
@@ -134,34 +166,35 @@ V předchozí definici je klíčové uvědomit si příslušnost jednotlivých o
     \item $\map T' \map y' \in X'$ je zobrazení pracující na $X$,
     \item $(\map T \map y')(x)$ je objekt, který přiřazuje prvkům z $X \times X'$ číslo. To odpovídá struktuře duality.
 \end{itemize}
-Duální zobrazení proto často zapisujeme jako \begin{align*}
-    \langle \map T' \map y', x \rangle = \langle \map y', \map T x \rangle \:,
+S použitím tzv. \textit{kanonické} duality $\duality{\map F}{g} = \map F(g)$ můžeme zapsat definici duálního zobrazení v symetrickém tvaru:
+\begin{align*}
+    \duality{\map T' \map y'}{x} = \duality{\map y'}{\map T x} \: .
 \end{align*}
-shodně se zobrazením duality. Povšimněme si, že na levé straně máme skutečně zobrazení z $X' \times X$ a na pravé zobrazení z $Y' \times Y$.
-\begin{remark}
-Je-li $\map T \in \lin (X,Y)$, pak i $\map T' \in \lin(Y', X')$. 
+Povšimněme si, že na levé straně máme zobrazení $X' \times X \to \C$ a na pravé zobrazení $Y' \times Y \to \C$.
 
-Linearita je zřejmá. Ukažme spojitost.  Zafixujme $\sequence{\map y'_n}{n} \subset Y'$ takovou, že $\map y'_n \rightarrow \map y'$. Ukážeme, že posloupnost $\sequence{\map T \map y_n}{n} \subset X'$ konverguje k $\map T \map y_n$. Platí
+\begin{lemma}
+Je-li $\map T \in \lin (X,Y)$, pak i $\map T' \in \lin(Y', X')$. 
+\end{lemma}
+\begin{proof}
+Linearita je zřejmá. Ukažme spojitost.  Zafixujme $\sequence{\map y'_n}{n} \subset Y'$ takovou, že $\map y'_n \rightarrow \map y'$. Ukážeme, že posloupnost $\sequence{\map T \map y}{n} \subset X'$ konverguje k $\map T \map y_n$. Platí
 \begin{align*}
     \norm{\map T' \map y'_n - \map T' \map y'}_{X'} 
     =&
-    \sup_{\norm{x}_X \leq 1} \norm{\map T' \map y'_n (x)- \map T' \map y' (x)}_X 
+    \sup_{\norm{x} \leq 1} \norm{\map T' \map y'_n (x)- \map T' \map y' (x)}_X 
     =
-    \sup_{\norm{x}_X \leq 1} \norm{\map y'  \map T'_n (x)- \map y' \map T' (x)}_X 
+    \sup_{\norm{x} \leq 1} \norm{\map y'_n  (\map T x)- \map y' (\map T x)}_X 
     =
-    \sup_{\norm{x}_X \leq 1} \norm{(\map y'_n-\map y') (\map T x)}_X 
+    \sup_{\norm{x} \leq 1} \norm{(\map y'_n-\map y') (\map T x)}_X 
     \leq \\
     \leq&
-     \norm{\map y'_n - \map y'} \norm{\map T} \sup_{\norm{x}_X \leq 1} \norm{x}_X 
+     \sup_{\norm{x} \leq 1} \norm{\map y'_n - \map y'} \norm{\map T} \norm{x}
     =
     \norm{\map y'_n -\map y'} \norm{\map T} \rightarrow 0\:,
 \end{align*}
 což jsme chtěli ukázat.
+\end{proof}
 
-Dá se ukázat, že: $\map T$ je kompaktní operátor právě tehdy, když je $\map T'$ kompaktní operátor (tzv. Schauderova věta).
-\end{remark}
-
-Sami zkuste dokázat, že $\norm{\map T} = \norm{\map T'}$.
+Dá se ukázat, že: $\map T$ je kompaktní operátor právě tehdy, když je $\map T'$ kompaktní operátor (tzv. Schauderova věta). Sami zkuste dokázat, že $\norm{\map T} = \norm{\map T'}$.
 
 V následujícím nás bude zajímat, lze li podobně jako v případě dvou Hilbertových prostorů ztotožnit $\map T$ a $\map T'$. DOKONČIT
 
@@ -310,16 +343,32 @@ Nechť $H$ je Hilbertův prostor a $A$ je uzavřený lineární podprostor $H$ a
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-DOKONČIT.
+\begin{enumerate}
+    \item Linearita je zřejmá. Uzavřenost plyne ze spojitosti skalárního součinu. Pro konvergentní posloupnost $ \sequence{y_n}{n} : y_n \rightarrow y$ totiž máme \begin{align*}
+        0 = \innerprod{x}{y_n}_H \rightarrow \innerprod{x}{y}_H = 0 \:.
+    \end{align*}
+    \item Druhou část ponecháváme čtenáři jako jednoduché cvičení.
+    \item Třetí část lze nejlépe nahlédnout v kontextu tvrzení o kolmé projekci.
+    
+    Je-li $A$ lineární podprostor $H$, pak pro každé $x \in H \setminus A$ existuje prvek $ Px \in A $ takový, že \begin{align*}
+        \innerprod{x - Px}{y} = 0 \quad \text{pro všechna } y \in A \:,
+    \end{align*}
+    neboli $x-Px \in A^\bot$.
+    
+    Nyní už je tvrzení zřejmé. Pro $x \in A$ máme $x = x+ 0 $. Pro $x \in H \setminus A$ můžeme psát \begin{align*}
+        x = \underbrace{(x -Px)}_{\in A} + \underbrace{Px}_{\in A^\bot} \:.
+    \end{align*}
+    Navíc pro $ v \in A \cap A^\bot $ máme $\innerprod{v}{v} = 0$, odtud $v =0$. Tím jsme dokázali direktnost součtu.
+\end{enumerate}
 \end{proof}
 
 Druhou přípravnou prací je zopakování některých výsledků o Fourierových řadách.
 
 Připomeňme, že o metrickém prostoru $X$ říkáme, že je separabilní, jestliže v něm existuje spočetná hustá množina. Ortogonálním systémem v $H$ nazýváme posloupnost $\sequence{e_n}{n} \subset H$ takovou, že pro $i\neq j$ platí $(e_i,e_j)_H =0$. O ortogonálním systému řekneme, že je úplný, právě když \begin{align*}
-    y \in H, (y,e_n)_H =0 \rightarrow y = 0 \:.
+    y \in H, (y,e_n)_H =0 \implies y = 0 \:.
 \end{align*}
 
-\begin{theorem}[O Fourierových řadách na Hilbertově prostoru.]
+\begin{theorem}[O Fourierových řadách na Hilbertově prostoru.] \label{4.fourier}
 Nechť $H$ je Hilbertův prostor. Pak jsou následující tvrzení ekvivalentní: \begin{enumerate}
     \item $H$ je separabilní prostor,
     \item Existuje úplný spočetný ortogonální systém $\sequence{e_n}{n} \subset H$,
@@ -410,7 +459,10 @@ a tedy $z = 0$, což jsme chtěli ukázat.
     \item První část důkazu se vlastně netýká věty samotné, jen osvětluje vlastnosti prostoru $\Lambda$.
     \item V důkazu nám stačilo pouze ukázat, že $\Lambda^\bot \subset \ker \map T$. Dá se dokonce ukázat, že $\Lambda^\bot = \ker \map T$.
     
-    Zvolme $z \in \ker \map T \setminus \Lambda^\bot $ takové, že $z \neq 0$. DOKONČIT POZNÁMKU
+    Zvolme $z \in \ker \map T \setminus \Lambda^\bot $ takové, že $z \neq 0$. Pak existuje $n \in \N$ takové, že $\innerprod{z}{e_n} \neq 0$. (Skutečně, jinak by platilo $\innerprod{z}{\sum_{j=1}^\infty \beta_n e_n} =0 $ a odtud $z \in \Lambda^\bot$.) Pak ale platí $\map T z =0$, neboť $z \in \Ker \map T$. Odtud dostáváme pro všechna $n \n \N$ \begin{align*}
+        0 = \innerprod{\map T z}{e_n} = \innerprod{z}{\map T e_n} = \innerprod{z}{\lambda_n e_n} = \lambda_n \innerprod{z}{e_n} \:,
+    \end{align*}
+    což je ve sporu s $\lambda_n \neq 0$. Tím jsme ověřili, že $\Lambda^\bot \subset \ker \map T$.
 \end{enumerate}
 \end{remark}
 
@@ -427,7 +479,7 @@ a platí \begin{align*}
 \end{corollary}
 
 \begin{remark}
-Hilbertova-Schmidtova věta \ref{4.Hilbert-Schmidt} a důsledek \ref{4.rozklad I} rozšiřuje známou větu ze čtvrtého semestru matematické analýzy na Hilbertovy prostory, které obecně nemusí být separabilní. Neseparabilní část prostoru je právě $\Ker \map T$. Zatímco se v rovnici \eqref{eq:4.rozklad h} objevuje i tato neseparabilní část, v rovnici \eqref{eq:4.rozklad Th} už nevystupuje. Tato vlastnost pak umožňuje využívat vlastností rozkladu do Fourierových řad u kompaktních samoadjungovaných operátorů i na neseparabilních prostorech.
+Hilbertova-Schmidtova věta \ref{4.Hilbert-Schmidt} a důsledek \ref{4.rozklad I} rozšiřuje známou větu ze čtvrtého semestru matematické analýzy (Věta \ref{4.fourier}) i na Hilbertovy prostory, které nejsou separabilní. Neseparabilní část prostoru je právě $\Ker \map T$. Zatímco se v rovnici \eqref{eq:4.rozklad h} objevuje i tato neseparabilní část, v rovnici \eqref{eq:4.rozklad Th} už nevystupuje. Tato vlastnost pak umožňuje využívat vlastností rozkladu do Fourierových řad u kompaktních samoadjungovaných operátorů i na neseparabilních prostorech.
 \end{remark}
 
 Na závěr kapitoly se rozloučíme s větou, která (mimo jiné) umožňuje konstruovat kompaktní operátory na Hilbertových prostorech.

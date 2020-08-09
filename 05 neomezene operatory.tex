@@ -70,7 +70,7 @@ Pro samoadjungované operátory tedy nastává následující situace: $H$ je Hi
 Terminologie používaná v literatuře se bohužel různí. Někteří autoři používají termínů \uv{hermitovský},\uv{samoadjungovaný} a \uv{symetrický} zcela odlišně nebo ve fyzikální literatuře dokonce tyto pojmy splývají. 
 
 \begin{example}[Operátor derivování]
-Zvolme $H = L^2\left( (0,1) \right)$, $\mathcal{D}(\map L) = C^1 \left( [0,1] \right)$. Víme, že definiční obor operátoru $\map L$ je hustý v H. Uvažujme operátor $\map L f = f'$. Zřejmě je lineární a neomezený.
+Zvolme $H = L^2 \left( (0,1) \right)$ a na něm definujme operátor $\map L f = f'$ s definičním oborem $\mathcal{D}(\map L) = C^1 \left( [0,1] \right)$. Víme, že definiční obor operátoru $\map L$ je hustý v $H$.  Zřejmě je lineární a neomezený.
 
 Prozkoumejme možnou symetrii takového operátoru. Zřejmě je \begin{align*}
     (\map L f,g)_{L^2} =(f',g)_{L^2} = \int_0^1 f'(x) \overline{g}(x) \d x \:, \qquad (f,\map L g)_{L^2} = \int_0^1 f(x) \overline{g}'(x) \d x \:. 
@@ -86,9 +86,11 @@ Určíme nyní $\mathcal{D}(\map L^*)$, tedy vyšetříme množinu \begin{align*
 Po funkci $h^*$ tedy požadujeme, aby splňovala \begin{align*}
     \left[ f \overline {g} \right]_0^1 - \int_0^1 f(x) \overline{g}'(x) \d x = \int_0^1 f(x) \overline{h^*}(x) \d x \quad \text{pro každé } f \in C^1\left( [0,1 ]\right) \:.
 \end{align*}
-Volbou speciálních funkcí $f$ zjistíme \begin{enumerate}
+Volbou speciálních funkcí $f$ zjistíme nutné podmínky. \begin{enumerate}
     \item DOKONČIT, obrázky jsou v \textrm{rokyta\_obrazky.nb}
-    \item
+    
+    Volbou $f_\varepsilon(x)$ dostaneme podmínku $[\overline{g}]_0^1=0$.
+    \item Volbou $f_\delta(x)$ dostaneme podmínku $g(0)=g(1)=0$.
 \end{enumerate}
 Odtud vidíme, že \begin{align*}
     \mathcal{D}(\map L^*) \subset \left \lbrace g \in C^1 \left( [0,1 ]\right) : g(0)=g(1)=0 \right \rbrace
@@ -102,7 +104,7 @@ Po převedení obou integrálů na pravou stranu a s použítím Du-Bois-Reymond
 (Protože hledáme řešení na třídě $C^1$ a tam patří funkce $g$, uvažujme pouze $h^* \in L^2\left( (0,1)\right) \cap C^1 \left(  [0,1] \right)$.)
 
 Celkově jsme dostali \begin{align*}
-    \mathcal{D}(\map L^*) = \left \lbrace g \in C^1 \L^2\left( (0,1)\right) \cap C^1 \left(  [0,1] \right) :  g(0)=g(1)=0 \text{ a zároveň } \map T^* g=-g^* \right \rbrace \:.
+    \mathcal{D}(\map L^*) = \left \lbrace g \in C^1 \left( (0,1)\right) \cap C^1 \left(  [0,1] \right) :  g(0)=g(1)=0 \text{ a zároveň } \map T^* g=-g^* \right \rbrace \:.
 \end{align*}
 Povšimněme si, že $\map L \neq \map L^* $ a navíc $\mathcal{D}(\map L^*) \subset \mathcal{D}(\map L)$, ale $\mathcal{D}(\map L^*) \subset \mathcal{D}(\map L)$.
 \end{example}
