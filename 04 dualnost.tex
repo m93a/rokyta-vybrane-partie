@@ -117,7 +117,7 @@ Uvažujme prostor $\R \subset \R^2$. Dle předchozího tvrzení můžeme prohlá
     (\R^2)' &\subset \R' \\[-5pt]
     \mask{(\R^2)'}{\rotatebox[origin=c]{90}{=}} &\ph{\subset} \;\; \mask{\R'}{\rotatebox[origin=c]{90}{=}} \\[-5pt]\mask{(\R^2)'}{\R^2} &\subset \mask{\R'}{\R}
 \end{align*}
-V předchozích úvahách jsme učinili dvě chyby: jednu větší, ️jednu menší. \begin{enumerate}
+V předchozích úvahách jsme učinili dvě chyby: jednu větší, jednu menší. \begin{enumerate}
     \item Menší chybu jsme učinili tím, že jsme $(\R^n)' \simeq \R^n$ považovali rovnost, ve skutečnosti je to \textit{ztotožnění}. Každé lineární zobrazení na $\R^n$ má tvar $$\map T(x) = \sum_{j=1}^n \alpha_j x_j$$ a ztotožňuje se s $n$-ticí koeficientů $$T \simeq (\alpha_1, \dots \alpha_n) \in \R^n \text{ reprezentuje } (\R^n)' \: .$$ Na ono reprezentující $\R^n$ je tedy třeba nahlížet opravdu jako na prostor prvků, které reprezentují lineární zobrazení.
     \item Velkou chybu jsme učinili, když jsme inkluzi $(\R^2)' \subset \R'$ považovali za množinovou inkluzi. Tvrzení je třeba chápat v tomto smyslu:
     
@@ -317,7 +317,7 @@ Samoadjungovaný operátor může mít ovšem i jiné prvky spektra. O nich obec
 Nechť $H$ je Hilbertův prostor a $\map T \in \lin (H)$ je samoadjungovaný operátor. Označme \begin{align*}
     m(\map T) = \inf \left \lbrace (\map T x,x)_H : \norm{x}_H = 1 \right \rbrace \qquad M(\map T) = \sup \left \lbrace (\map T x,x)_H : \norm{x}_H = 1 \right \rbrace
 \end{align*} Pak \begin{enumerate}
-    \item Je-li $\lambda \in \sigma(\map T)$, pak $\lambda \in [m(\map T), M(\map T)]$.
+    \item Je-li $\lambda \in \Sp(\map T)$, pak $\lambda \in [m(\map T), M(\map T)]$.
     \item Platí $\rho(\map T) = \norm{\map T}$. Speciálně: alespoň jedna z hodnot $\lambda = \pm \norm{\map T}$ je vlastním číslem $\map T$.
 \end{enumerate}
 \end{theorem} 
@@ -330,7 +330,7 @@ Nechť $\mathbb{A} \in \R^{n \times n}$ je reálná symetrická matice, $x \in \
 
 Nejprve zopakujeme výsledky, které zatím máme o kompaktních samoadjungovaných operátorech. Na Hilbertově prostoru $H$ uvažujme $\map K \in \comp (H)$ takový, že $(\map K x,y)_H = (x, \map K y)_H$ pro všechna $x,y \in H$. Pak platí \begin{enumerate}
     \item $\map K$ má nejvýše spočetně mnoho vlastních čísel, všechna vlastní čísla jsou reálná.
-    \item Jediným dalším prvkem spektra $\sigma(\map K)$ může být číslo $0$, ta může nebo nemusí být vlastním číslem.
+    \item Jediným dalším prvkem spektra $\Sp(\map K)$ může být číslo $0$, ta může nebo nemusí být vlastním číslem.
     \item Ke každému nenulovému vlastnímu číslu existuje nejvýše konečně mnoho lineárně nezávislých vlastních vektorů. Navíc vlastní vektory odpovídající různým vlastním číslům jsou na sebe vždy kolmé.
 \end{enumerate}
 
@@ -453,7 +453,7 @@ Ukážeme sporem, že $\map{\tilde T}$ nemá žádné nenulové vlastní číslo
 \end{align*}
 a tedy $\lambda$ je i vlastní číslo operátoru $\map T$. Podle druhé části důkazu je ale potom $y \in \Lambda$. Tedy $y \in \Lambda \cap \Lambda^\bot$, což implikuje $y=0$ a to je ve sporu s předpoklady.
 
-Celkově jsme zjistili, že $\map{\tilde T}$ je kompaktní operátor, který nemá nenulové vlastní číslo, tedy $\sigma(\map{\tilde T}) \subset \{ 0 \}$. Podle Věty o spektrálních vlastnostech kompaktních operátorů (Věta XY) je $\rho(\map{\tilde T}) = 0$, a tedy  $\norm{\map{\tilde T}} =0$, což je ekvivalentní s $\map{\tilde T} \equiv 0$. Z konstrukce $\map{\tilde T}$ pak snadno nahlédneme, že $\map T(\Lambda^\bot)= \{0 \}$.
+Celkově jsme zjistili, že $\map{\tilde T}$ je kompaktní operátor, který nemá nenulové vlastní číslo, tedy $\Sp(\map{\tilde T}) \subset \{ 0 \}$. Podle Věty o spektrálních vlastnostech kompaktních operátorů (Věta XY) je $\rho(\map{\tilde T}) = 0$, a tedy  $\norm{\map{\tilde T}} =0$, což je ekvivalentní s $\map{\tilde T} \equiv 0$. Z konstrukce $\map{\tilde T}$ pak snadno nahlédneme, že $\map T(\Lambda^\bot)= \{0 \}$.
 
 \underline{Krok 4:} Dokončení důkazu. \\
 Předchozí část důkazu nám dává $\Lambda^\bot \subset \Ker \map T$. Zjevně platí $\Lambda \oplus \Lambda^\bot = H$, tedy \begin{align*}
@@ -478,7 +478,7 @@ a tedy $z = 0$, což jsme chtěli ukázat.
     \item První část důkazu se vlastně netýká věty samotné, jen osvětluje vlastnosti prostoru $\Lambda$.
     \item V důkazu nám stačilo pouze ukázat, že $\Lambda^\bot \subset \ker \map T$. Dá se dokonce ukázat, že $\Lambda^\bot = \ker \map T$.
     
-    Zvolme $z \in \ker \map T \setminus \Lambda^\bot $ takové, že $z \neq 0$. Pak existuje $n \in \N$ takové, že $\innerprod{z}{e_n} \neq 0$. (Skutečně, jinak by platilo $\innerprod{z}{\sum_{j=1}^\infty \beta_n e_n} =0 $ a odtud $z \in \Lambda^\bot$.) Pak ale platí $\map T z =0$, neboť $z \in \Ker \map T$. Odtud dostáváme pro všechna $n \n \N$ \begin{align*}
+    Zvolme $z \in \ker \map T \setminus \Lambda^\bot $ takové, že $z \neq 0$. Pak existuje $n \in \N$ takové, že $\innerprod{z}{e_n} \neq 0$. (Skutečně, jinak by platilo $\innerprod{z}{\sum_{j=1}^\infty \beta_n e_n} =0 $ a odtud $z \in \Lambda^\bot$.) Pak ale platí $\map T z =0$, neboť $z \in \Ker \map T$. Odtud dostáváme pro všechna $n \in \N$ \begin{align*}
         0 = \innerprod{\map T z}{e_n} = \innerprod{z}{\map T e_n} = \innerprod{z}{\lambda_n e_n} = \lambda_n \innerprod{z}{e_n} \:,
     \end{align*}
     což je ve sporu s $\lambda_n \neq 0$. Tím jsme ověřili, že $\Lambda^\bot \subset \ker \map T$.

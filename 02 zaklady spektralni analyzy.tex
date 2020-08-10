@@ -12,7 +12,7 @@ Uvažujme počáteční úlohu pro ODR
     \end{split}
     \label{eq:zadani}
 \end{equation}
-kde $f\in \mathcal{C}( \langle 0, a \rangle )$. Řešení této úlohy pro $f\equiv 0$ je $y=\cos x$, jak snadno zjistíme například metodou charakteristického polynomu. Pro nalezení jednoho (partikulárního) řešení rovnice s pravou stranou $f$ můžeme použít např. metodu variace konstant. Z tvaru
+kde $f\in \mathcal{C}( [0, a] )$. Řešení této úlohy pro $f\equiv 0$ je $y=\cos x$, jak snadno zjistíme například metodou charakteristického polynomu. Pro nalezení jednoho (partikulárního) řešení rovnice s pravou stranou $f$ můžeme použít např. metodu variace konstant. Z tvaru
 \begin{equation}
     y_p=c_1(x) \cos x+c_2 \sin x
 \end{equation}
@@ -44,7 +44,9 @@ tedy celkově
 \end{equation}
 Dosazení se lze přesvědčit, že funkce $y$ daná předpisem (\ref{eq:celkovereseni}) je řešením úlohy (\ref{eq:zadani}) a z teorie víme, že jediným.
 
-\Poznamka Při dosazení (\ref{eq:celkovereseni} do (\ref{eq:zadani}) se může hodit následující lemma o derivování integrálu jak podle parametru, tak podle mezí:
+\begin{remark}
+Při dosazení (\ref{eq:celkovereseni} do (\ref{eq:zadani}) se může hodit následující lemma o derivování integrálu jak podle parametru, tak podle mezí:
+\end{remark}
 
 \lemma\label{lemma:derivacemezi}
 
@@ -85,18 +87,18 @@ Uvažme nyní modifiaci úlohy (\ref{eq:zadani}), a sice
 \end{equation}
 Na pravé straně rovnice máme tedy ve zdvojeném členu jakousi \uv{zpětnou vazbu}. Pouze na základě analogie s první úlohou si troufneme vyslovit následující hypotézu.
 
-Pokud existuje funkce $y\in\mathcal{C}(\langle 0,a\rangle)$, která splňuje vztah
+Pokud existuje funkce $y\in\mathcal{C}( [0,a] )$, která splňuje vztah
 \begin{equation}
     y(x) = \cos x + \int\limits_0^x f(t)\sin(x-t)\textcolor{blue}{y(t)}\d t,
     \label{eq:tipreseni_y(x)}
 \end{equation}
-pak je tato funkce třídy $\mathcal{C}^2(\langle0,a\rangle)$ a řeší úlohu (\ref{eq:zadani_y(x)_vpravo}).
+pak je tato funkce třídy $\mathcal{C}^2( [0,a] )$ a řeší úlohu (\ref{eq:zadani_y(x)_vpravo}).
 
-Tuto hypotézu ověříme využitím lemmatu (\ref{lemma:derivacemezi}). Především platí, že pokud je $y\in \mathcal{C}(\langle 0,\rangle a)$, je integrand v (\ref{eq:tipreseni_y(x)}) spojitý, tedy je $y\in\mathcal{C}^1(\langle 0,a\rangle )$ a máme
+Tuto hypotézu ověříme využitím lemmatu (\ref{lemma:derivacemezi}). Především platí, že pokud je $y\in \mathcal{C}([0,a])$, je integrand v (\ref{eq:tipreseni_y(x)}) spojitý, tedy je $y\in\mathcal{C}^1([0,a])$ a máme
 \begin{equation}
     y'(x) = -\sin x + \int\limits_0^x f(t)\cos(x-t)y(t)\d t + 0,
 \end{equation}
-odkud stejnou úvahou máme $y'(x)\in\mathcal{C}^1(\langle 0,a\rangle)$, tedy $y\in\mathcal{C}^2(\langle 0,a\rangle )$, a 
+odkud stejnou úvahou máme $y'(x)\in\mathcal{C}^1([0,a])$, tedy $y\in\mathcal{C}^2([0,a])$, a 
 \begin{equation}
     y''(x) = -\cos x -\int\limits_0^x f(x) \sin(x-t)y(t)\d t + f(x)y(x).
 \end{equation}
@@ -105,7 +107,7 @@ Z posledních tří vztahů dostaneme $y''+y=f(x)y(x)$, stejně jako $y(0)=1$, $
 Ověřili jsme tedy, že
 \begin{figure}[h!]
     \centering
-    \framebox{Pokud existuje $y\in\mathcal{C}(\langle 0,a\rangle)$ taková, že platí (\ref{eq:tipreseni_y(x)}), je tato funkce kanonickým řešením úlohy (\ref{eq:zadani_y(x)_vpravo}).}   
+    \framebox{Pokud existuje $y\in\mathcal{C}([0,a])$ taková, že platí (\ref{eq:tipreseni_y(x)}), je tato funkce kanonickým řešením úlohy (\ref{eq:zadani_y(x)_vpravo}).}   
 \end{figure}
 Zatím jsme úlohu (\ref{eq:zadani_y(x)_vpravo}) nevyřešili, pouze jsme ji přeformulovali. Ukážeme však, že vhodným pohledem na toto přeformulování budeme schopni na otázku existence (i jednoznačnosti) řešení odpovědět.
 
@@ -125,40 +127,40 @@ Využijeme však ještě obecnější formulaci. Označíme
      \map T y(x)\coloneqq \int_0^x K(x,t)y(t)\d t=\int\limits\sin(x-t)f(t)y(t)\d t,
     \label{eq:obesnejsiformulaceTy}
 \end{equation}
-kde $ \map T : \mathcal{C}(\langle 0,a\rangle )\rightarrow \mathcal{C}(\langle 0,a\rangle )$ je (evidentně) lineární operátor. Úkolu (\ref{eq:zadani_y(x)_vpravo}) resp. (\ref{eq:zadani_preformulovano}) pak lze chápat jako rovnici
+kde $ \map T : \mathcal{C}([0,a])\rightarrow \mathcal{C}([0,a])$ je (evidentně) lineární operátor. Úkolu (\ref{eq:zadani_y(x)_vpravo}) resp. (\ref{eq:zadani_preformulovano}) pak lze chápat jako rovnici
 \begin{equation}
     y=u+ \map T y
 \end{equation}
-na Banachově prostoru $\mathcal{C}(\langle 0,a\rangle)$. Tuto rovnici lze také psát ve tvaru
+na Banachově prostoru $\mathcal{C}([0,a])$. Tuto rovnici lze také psát ve tvaru
 \begin{equation}
-    (\Id- \map T )y=u,
+    (\Id - \map T )y=u,
 \end{equation}
-kde $\Id$ je identický operátor na $\mathcal{C}(\langle 0,a\rangle)$, nebo (nyní ovšem zcela formálně, protože nevíme, zda něco jako \uv{inverzní operátor k $\Id- \map T $} existuje)
+kde $\Id$ je identický operátor na $\mathcal{C}([0,a])$, nebo (nyní ovšem zcela formálně, protože nevíme, zda něco jako \uv{inverzní operátor k $\Id- \map T $} existuje)
 \begin{equation}
-    y = (\Id- \map T )^{-1}u.
+    y = (\Id - \map T )^{-1}u.
     \label{eq:inverzniformulace}
 \end{equation}
 Formulace (\ref{eq:inverzniformulace}) nás docedla až k těmto otázkám:
 \begin{itemize}
     \item Jaké jsou vlastnosti operátoru $ \map T $ z (\ref{eq:inverzniformulace})?
-    \item Za jakých podmínek existuje operátor inverzní k $\Id- \map T $ a jaké má vlastnosti?
+    \item Za jakých podmínek existuje operátor inverzní k $\Id - \map T $ a jaké má vlastnosti?
     \item Je $y$ \uv{definované} pomocí (\ref{eq:inverzniformulace}) řešením naší úlohy?
 \end{itemize}
-Nejprve odpovíme na první otázku. $ \map T $ je lineární a omezený, tedy spojitý operátor na $\mathcal{C}(\langle0,a\rangle)$, tedy $ \map T \in\lin(\mathcal{C}(\langle0,a\rangle))$.
+Nejprve odpovíme na první otázku. $ \map T $ je lineární a omezený, tedy spojitý operátor na $\mathcal{C}([0,a])$, tedy $ \map T \in\lin(\mathcal{C}([0,a]))$.
 
-Připomeňme, že normou na $\mathcal{C}(\langle0,a\rangle)$: $\norm{y}_{\mathcal{C}(\langle0,a\rangle)} = \underset{\langle 0,a\rangle}{\sup} |y(x)| \quad \big(\eqqcolon \norm{y}_\infty\big)$.
+Připomeňme, že normou na $\mathcal{C}([0,a])$: $\norm{y}_{\mathcal{C}([0,a])} = \underset{[0,a]}{\sup} |y(x)| \quad \big(\eqqcolon \norm{y}_\infty\big)$.
 
 \begin{proof}
 Linearita je zřejmá, pro omezenost určíme nejprve
 \begin{equation}
-    || \map T y||_\infty = \underset{x\in\langle0,a\rangle}{\sup}\Big|\int\limits_0^x\sin(x-t)f(t)y(t)\d t\Big|\leq \underset{x\in\langle0,a\rangle}{\sup}\int\limits_0^x|f(t)||y(t)|\d t\leq a\norm{f}_\infty\norm{y}_\infty.
+    || \map T y||_\infty = \underset{x\in[0,a]}{\sup}\Big|\int\limits_0^x\sin(x-t)f(t)y(t)\d t\Big|\leq \underset{x\in[0,a]}{\sup}\int\limits_0^x|f(t)||y(t)|\d t\leq a\norm{f}_\infty\norm{y}_\infty.
 \end{equation}
 Protože  
 \begin{equation}
-    || \map T ||_{\lin(\mathcal{C}(\langle0,a\rangle)} = \underset{\norm{y}_\infty\leq1}{\sup}|| \map T y||_\infty\leq \underset{\norm{y}_\infty\leq1}{\sup} a \norm{f}_\infty \norm{y}_\infty\leq a \norm{f}_\infty<\infty,
+    || \map T ||_{\lin(\mathcal{C}([0,a])} = \underset{\norm{y}_\infty\leq1}{\sup}|| \map T y||_\infty\leq \underset{\norm{y}_\infty\leq1}{\sup} a \norm{f}_\infty \norm{y}_\infty\leq a \norm{f}_\infty<\infty,
     \label{eq:omezeniOperatoru}
 \end{equation}
-jde tedy (pokud je interval $\langle0,a\rangle$ omezený) o omezený operátor.
+jde tedy (pokud je interval $[0,a]$ omezený) o omezený operátor.
 \end{proof}
 
 Pro odpověď na další otázky máme přichystanou následující větu. Všimněme si, že její velká abstrakce je pouze zdánlivá. V podstatě jde o popis naší úlohy v operátorové verzi.
@@ -188,8 +190,7 @@ Potom
 ve smyslu konvergence v $\lin(X)$.
 \end{theorem} 
 
-\Poznamka
-
+\begin{remark} \ph{.}
 \begin{enumerate}
     \item Řadě (\ref{eq:Neumann}) se říká von Neumannova řada operátoru $ \map T $
     \item V následujícím ukážeme řetězec podmínek (a)$\Rightarrow$(b)$\Rightarrow$(c).
@@ -199,28 +200,29 @@ ve smyslu konvergence v $\lin(X)$.
         || \map T ^j||_{\lin(X)}\leq || \map T ||^j_{\lin(X)}.
     \end{equation}
 \end{enumerate}
+\end{remark}
 
 Pokud tedy platí (a), je $\sum_{j=0}^n|| \map T ^j||\leq\sum_{j=0}^n|| \map T ||^j\leq \sum_{j=0}^\infty|| \map T ||^j<\infty$ a limitní přechod $n\rightarrow \infty$ vlevo dává (b). Pokud platí (b), je $\sum_{j=0}^n|| \map T ^jy||\leq\norm{y}\sum_{j=0}^n|| \map T ^j||\leq||\norm{y}\sum_{j=0}^\infty|| \map T ^j||<\infty$, odkud (c).
 
 Skutečně tedy (a)$\Rightarrow$(b)$\Rightarrow$(c) a bude stačit ukázat, že podmínka (c) implikuje tvrzení věty. \footnote{Jsme však vděčni za to, že máme tři různé podmínky: různé operátory mohou splňovat (a), (b), nebo (c), viz dále.}
-\item Ještě než větu dokážeme, přesvědčme se, že operátor $ \map T $ definovaný v (\ref{eq:obesnejsiformulaceTy}), splňuje její předpoklady: $\mathcal{C}$ je Banachův prostor a $ \map T \in\lin(\mathcal{C}(\langle0,a\rangle))$. V (\ref{eq:omezeniOperatoru}) jsme navíc ukázali, že $|| \map T ||_{\lin}\leq a\norm{f}_\infty.$
+\item Ještě než větu dokážeme, přesvědčme se, že operátor $ \map T $ definovaný v (\ref{eq:obesnejsiformulaceTy}), splňuje její předpoklady: $\mathcal{C}$ je Banachův prostor a $ \map T \in\lin(\mathcal{C}([0,a]))$. V (\ref{eq:omezeniOperatoru}) jsme navíc ukázali, že $|| \map T ||_{\lin}\leq a\norm{f}_\infty.$
 
-Odtud ihned dostáváme, že pro každé $f\in\mathcal{C}(\langle 0,b \rangle )$ existuje takové
+Odtud ihned dostáváme, že pro každé $f\in\mathcal{C}([0,b])$ existuje takové
 $a\in (0,b)$, že $|| \map T ||<1$.
-Z tvrzení věty pak dostaneme \uv{existenci a jednoznačnost} řešení úlohy (\ref{eq:tipreseni_y(x)}), tedy i (\ref{eq:zadani_y(x)_vpravo}) na příslušném \uu{zkráceném} intervalu $\langle 0,a\rangle$
+Z tvrzení věty pak dostaneme \uv{existenci a jednoznačnost} řešení úlohy (\ref{eq:tipreseni_y(x)}), tedy i (\ref{eq:zadani_y(x)_vpravo}) na příslušném \uu{zkráceném} intervalu $[0,a]$
 tak, aby $a\norm{f}_\infty<1$. Toto je typický představitel tzv. vět o \uv{lokální} existenci řešení diferenciální rovnice. Nevýhoda tohoto tvrzení spočívá v tom, že tento interval existence řešení závisí na velikosti pravé strany $f$.
 
 Toto pozorování nám zároveň bude sloužit i jako poučení. Ukážeme nyní, že $ \map T $ splňuje podmínku (c) bez jakýchkoli požadavků na velikost a. jen uděláme naše požadavky jemněji. Je 
 $$| \map T y(x)|\leq \int\limits_0^x|f(t)||y(t)|\d t\leq x\norm{f}_\infty\norm{y}_\infty,$$
-kde si všimněme, že nehledáme $\subset{x\in\langle0,a\rangle}{\sup}$. Dále
+kde si všimněme, že nehledáme $\subset{x\in[0,a]}{\sup}$. Dále
 $$| \map T ^2y(x)|\leq\int\limits_0^x|f(t)|| \map T y(t)|\d t\leq \norm{f}^2_\infty\norm{y}_\infty\int\limits_0^xt\d t = \frac{x^2}{2}\norm{f}^2_\infty\norm{y}_\infty,$$
 odkud dostaneme indukcí
 $$| \map T ^jy(x)|\leq\frac{x^j}{j'}\norm{f}^j_\infty\norm{y}_\infty.$$
-Až nyní provedeme $\subset{x\in\langle0,a\rangle}{\sup}$ a dostaneme 
+Až nyní provedeme $\subset{x\in[0,a]}{\sup}$ a dostaneme 
 $$|| \map T ^jy||\leq\frac{a^j}{j!\norm{f}^j_\infty\norm{y}\infty}$$ a tedy 
 $$|| \map T ^j||=\subset{\norm{y}_\infty\leq 1}{\sup}|| \map T ^jy||\leq\frac{a^j}{j'}\norm{f}^j_\infty.$$
 Odtud $$\sum\limits_{j=0}^\infty|| \map T ^j||\leq\exp(a\norm{f}_\infty)<\infty.$$
-Podmínka (b) je tedy splněna a my jsme dospěli k závěru, že pokud dokážeme Větu \ref{theorem:str14}, ukázali jsme zároveň existenci a jednoznačnost (klasického) řešení úlohy \ref{eq:zadani_y(x)_vpravo} pro libovolný (ale omezen) interval $\langle0,a\rangle$, a pro libovolnou $f\in\mathcal{C}(\langle0,a\rangle)$.
+Podmínka (b) je tedy splněna a my jsme dospěli k závěru, že pokud dokážeme Větu \ref{theorem:str14}, ukázali jsme zároveň existenci a jednoznačnost (klasického) řešení úlohy \ref{eq:zadani_y(x)_vpravo} pro libovolný (ale omezen) interval $[0,a]$, a pro libovolnou $f\in\mathcal{C}([0,a])$.
 
 \begin{proof}[Důkaz Věty \ref{theorem:str14}]
 Podle bodu 2 předchozí poznámky stačí ukázat, že tvrzení věty plyne  z předpokladu (c).
@@ -295,37 +297,37 @@ $$S_N\circ(\Id- \map T )=\sum\limits_{j=0}^N  \map T ^j-\sum\limits_{j=0}^{N+1} 
 a podobně pro $(\Id- \map T )\circ S_N$
 \end{proof}
 
-\Poznamka
+\begin{remark}
 Časem uvidíme, že platí: je-li operátor $ \map T :X\mapsto X$ lineární, omezený, prostý a na, pak jeho \uu{inverze} $ \map T ^{-1}$ (která existuje) je také \uu{lineární} a \uu{omezená}, tj. spojitá. To vnáší do naší úlohy tzv. prvek \uu{stability}. Je-li totiž inverzní operátor (v našem případě $(\Id- \map T )^{-1}$ spojitý, pak to znamená, že pro 
 $$u_n\xrightarrow{X}u\Rightarrow \underset{\quad\; y_n\;\;\;\xrightarrow{X}y}{\underbrace{(\Id- \map T )^{-1}u_n}\xrightarrow{X}}(\Id- \map T )^{-1}u,$$
 jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$} odpovídají \uv{blízká řešení}, či \uv{malé změny na pravé straně rovnice způsobují malé změny řešení}. Právě tomuto se říká \uu{stabilita řešení}.
+\end{remark}
 
-\Priklad
-
-Uvažujme
-\begin{equation*}
-    \begin{split}
-        y''+y&=x^2y\\
-        y(0)&=1\\
-        y'(0)&=0.
-    \end{split}
-\end{equation*}
-ÚLoha má dle předchozí teorie na libovolném $\langle 0,a\rangle$ jediné řešení. Můžeme ověřit, že funkce $y(x)=e^{-x^2/2}$ je tímto řešením.
-
-Důkaz předchozí věty však také ukazuje, že toto řešení je možné získat formou iterací /tj. lze se k němu libovolě přiblížit). Uvažujme $y_0\equiv 0$ a napišme prvních pár iterací. Zdá se vám, že konverguje k $e^{-x^2/2}$? Určitě z toho plyne nějaké zajímavé poučení.\smiley{}
-
-Při $y_0=0$ dostáváme pro $y_5$
-\begin{equation*}
-    \begin{split}
-        y_5(x) =&\cos  x  +\frac{164925}{2048} x \sin  x   - \frac{164925}{2048} x^2 \cos  x   -\frac{54975}{1024} x^3 \sin  x   +\frac{165437}{6144} x^4 \cos  x   +\frac{32383}{3072}  x^5 \sin  x-\frac{154871}{46080}  x^6 \cos  x   \\  &-\frac{143131 }{161280}x^7 \sin  x    +\frac{126481 }{645120}x^8 \cos  x    +\frac{12983}{362880}  x^9 \sin  x -\frac{18889 }{3628800}x^{10} \cos  x-\frac{7}{12960} x^{11} \sin  x+\frac{1}{31104}x^{12} \cos  x
-    \end{split}
-\end{equation*}
+\Priklad{
+    Uvažujme
+    \begin{equation*}
+        \begin{split}
+            y''+y&=x^2y\\
+            y(0)&=1\\
+            y'(0)&=0.
+        \end{split}
+    \end{equation*}
+    Úloha má dle předchozí teorie na libovolném $[0,a]$ jediné řešení. Můžeme ověřit, že funkce $y(x)=e^{-x^2/2}$ je tímto řešením.
+    
+    Důkaz předchozí věty však také ukazuje, že toto řešení je možné získat formou iterací /tj. lze se k němu libovolě přiblížit). Uvažujme $y_0\equiv 0$ a napišme prvních pár iterací. Zdá se vám, že konverguje k $e^{-x^2/2}$? Určitě z toho plyne nějaké zajímavé poučení. \smiley{}
+    
+    Při $y_0=0$ dostáváme pro $y_5$
+    \begin{equation*}
+        \begin{split}
+            y_5(x) =&\cos  x  +\tfrac{164925}{2048} x \sin  x   - \tfrac{164925}{2048} x^2 \cos  x   -\tfrac{54975}{1024} x^3 \sin  x   +\tfrac{165437}{6144} x^4 \cos  x   +\tfrac{32383}{3072}  x^5 \sin  x-\tfrac{154871}{46080}  x^6 \cos  x   \\  &-\tfrac{143131 }{161280}x^7 \sin  x    +\tfrac{126481 }{645120}x^8 \cos  x    +\tfrac{12983}{362880}  x^9 \sin  x -\tfrac{18889 }{3628800}x^{10} \cos  x-\tfrac{7}{12960} x^{11} \sin  x+\tfrac{1}{31104}x^{12} \cos  x
+        \end{split}
+    \end{equation*}
+}
 \begin{figure}[h!]
     \centering
     \includegraphics{img/exp_reseni.pdf}
     \caption{Srovnání přesného řešení a páté iterace $y_5$.}
 \end{figure}
-
 
 
 
@@ -352,9 +354,9 @@ Otázky řešitelnosti rovnice (\ref{eq:zadani_vlCisla}) lze přeformulovat v ř
     \end{tabular}
 \end{table}
 
-\Poznamka 
-
+\begin{remark}
 Pod pojmem \uu{stabilní řešení} míníme (zjednodušeně) situaci, kdy v rovnici $ \map T_\lambda x=u$, která má jednoznačně určená řešení pro $\forall u\in \mathcal{U}(u_0)$ platí, že \uv{malé změny $u\in \mathcal{U}(u_0)$} mají za následek \uv{malé změny řešení}. To přesně odpovídá situaci, kdy je inverzní zobrazení $ \map T_\lambda^{-1}$ spojité na $\mathcal{U}(u_0)$. Tato vlastnost je velmi důležitá při hledání přibližného řešení. Při něm často aproximujeme pravou stranu $u$ nějakou \uv{jí blízkou pravou stranou} $\overline{u}$ a doufáme, že i řešení $\overline{x}$, které odpovídá pravé straně $\overline{u}$, bude blízké řešení $x$, odpovídajícímu pravé straně $u$. Pro \uu{nestabilní} operátory to však nemusí být pravda.
+\end{remark}
 
 \subsubsection{Podívejme se nejprve na situaci pro $\dim X=n\in \N$.}
 
@@ -549,10 +551,12 @@ Následující věta ukazuje, že $\rho(\map T)$ je pro $\map T \in \lin(X)$ vž
 \end{align*}
 \end{theorem}
 
-\Poznamka \begin{itemize}
+\begin{remark} \ph{.}
+\begin{itemize}
     \item Z \circled{A} ihned plyne $\rho(\map T) \leq ||T||$.
     \item Řada v \circled{B} se nazývá von Neumannova řada operátoru $\map T-\lambda \Id)$
 \end{itemize}
+\end{remark}
 \begin{proof}
     Je-li $|\lambda|>||\map T||$, pak ještě $\lambda\neq0$. Položme $\map A\coloneqq\frac{1}{\lambda}\map T$. Potom $||\map A||=\frac{1}{|\lambda|}||\map T||<1$ a na $\map A$ můžeme použít větu \ref{theorem:str14}. To nám dá, že:
     \begin{enumerate}[label*=.]
@@ -615,7 +619,7 @@ Protože $\map T_\lambda$ je lineární a $(1,0,0,\dots)\notin \mathcal{R}(\map 
 
 Pohybujeme se tedy v posledním sloupci tabulky \ref{tab:spektra}, $\forall \lambda \neq0,\; |\lambda|\leq1$. Protože však současně žádné takové $\lambda$ není vlastním číslem, je $\lambda \in \Sp_R(\map T)$ pro všechna taková $\lambda$. \footnote{To by šlo také nezávisle ukázat tak, že bychom ukázali prostotu $\map T_\lambda$. Zkuste si.)}
 
-\cc{Závěr}: Pro toto $\map T$ platí $\Sp(\map T)=\Sp_R(\map T)=\{ \lambda\in\C,|\lambda|\leq1\}$. Spektrum je tedy právě celý jednotkový kruh, je tedy nespočetně mnoho prvků spektra (a přitom žádný z nich není vl. číslem). Takový operátor je tedy \uv{poměrně nehezký}, ale přitom negeneruje žádné vl. vektory.
+\uu{Závěr}: Pro toto $\map T$ platí $\Sp(\map T)=\Sp_R(\map T)=\{ \lambda\in\C,|\lambda|\leq1\}$. Spektrum je tedy právě celý jednotkový kruh, je tedy nespočetně mnoho prvků spektra (a přitom žádný z nich není vl. číslem). Takový operátor je tedy \uv{poměrně nehezký}, ale přitom negeneruje žádné vl. vektory.
 
 \Cviceni
 

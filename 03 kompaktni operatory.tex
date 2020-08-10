@@ -69,11 +69,11 @@ Zvolme omezenou posloupnost $\sequence{x_n}{n} \subset X$. Pak posloupnost $\seq
 \end{proof}
 
 \begin{lemma}[O příslušnosti nuly do spektra kompaktního operátoru]
-Nechť $X$ je nekonečnědimenzionální Banachův prostor, $\map K \in \comp(X)$. Pak číslo $0$ náleží spektru $\sigma(\map K)$.
+Nechť $X$ je nekonečnědimenzionální Banachův prostor, $\map K \in \comp(X)$. Pak číslo $0$ náleží spektru $\Sp(\map K)$.
 \end{lemma}
 
 \begin{proof}
-Předpokládejme, že $0$ nepatří do $\sigma(\map K)$. Pak podle Věty XY existuje inverzní operátor $ \map K^{-1} \in \lin(X)$. Pak ale díky Lemmatu o skládání kompaktního a spojitého operátoru (Lemma \ref{3.skladani}) dostáváme, že $\map{Id} = \map K \circ \map K^{-1}$ je kompaktní operátor. To je ovšem ve sporu s tvrzením o kompaktnosti identity (Lemma \ref{3.kompaktnost identity}).
+Předpokládejme, že $0$ nepatří do $\Sp(\map K)$. Pak podle Věty XY existuje inverzní operátor $ \map K^{-1} \in \lin(X)$. Pak ale díky Lemmatu o skládání kompaktního a spojitého operátoru (Lemma \ref{3.skladani}) dostáváme, že $\map{Id} = \map K \circ \map K^{-1}$ je kompaktní operátor. To je ovšem ve sporu s tvrzením o kompaktnosti identity (Lemma \ref{3.kompaktnost identity}).
 \end{proof}
 
 \begin{lemma}[O uzavřenosti obrazu kompaktního operátoru a Fredholmova alternativa]
@@ -89,7 +89,7 @@ Druhé části předchozího lemmatu se říká "Fredholmova alternativa v nekon
 Dosavadní výsledky nám umožňují zjednodušit spektrální tabulku pro kompaktní operátory. DŮSLEDKY, TABULKA, DOPSAT.
 
 \begin{lemma}[O nenulových prvcích spektra kompaktního operátoru]
-Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$ je prvkem $\sigma(\map K)$. Pak \begin{enumerate}
+Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$ je prvkem $\Sp(\map K)$. Pak \begin{enumerate}
     \item $\lambda$ je vlastní číslo,
     \item $\mathrm{dim} \,(\map K - \lambda \map{Id} ) < + \infty$,
     \item Prostor všech vektorů příslušejících vlastnímu číslu $\lambda$ , $\Ker (\map K - \lambda \map{Id} )$ je uzavřený podprostor $X$.
@@ -104,7 +104,7 @@ Podle předchozí věty tedy platí, že každé nenulové vlastní číslo má 
 
 \begin{lemma}[O hromadných bodech spektra kompaktního operátoru]
 Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor. Pak je pro každé $\varepsilon>0$ množina \begin{align*}
-    \sigma(\map K) \cap \left \lbrace \lambda \in \C : |\lambda| > \varepsilon \right \rbrace
+    \Sp(\map K) \cap \left \lbrace \lambda \in \C : |\lambda| > \varepsilon \right \rbrace
 \end{align*}
 konečná.
 \end{lemma}
