@@ -5,7 +5,7 @@ V této kapitole zavedeme speciální případ lineárních neomezených operát
 \subsection{Výrazy v samoadjungovaném tvaru}
 
 \begin{definition}[Lineární diferenciální výraz n-tého řádu]
-Mějme $-\infty \leq a < b \leq \infty$, $y \in \mathcal{C}^n ([a, b])$, 
+Mějme $-\infty \leq a < b \leq \infty$, $y \in \mathcal{C}^n (a, b)$, 
 Lineárním diferenciálním výrazem n-tého řádu nazveme výraz
 \begin{equation}
     l(y) = \sum_{k=0}^{n} p_k (x) y^{(k)},
@@ -44,7 +44,7 @@ Adjungovaný výraz k výrazu $l(y)$ značíme $l^*(y)$ a definujeme jej jako
 \end{definition}
 
 \begin{lemma}
-K danému $l$ je $l^*$ jediný lineární diferenciální operátor pro který
+K danému $l$ je $l^*$ jediný lineární diferenciální výraz pro který
 \begin{align*}
     \left(l(y), z\right) = \left(y, l^*(z)\right)~ ~ ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
 \end{align*}
@@ -54,17 +54,17 @@ K danému $l$ je $l^*$ jediný lineární diferenciální operátor pro který
 Nejprve dokážeme pomocí per partes rovnost
 \begin{align*}
 \begin{split}
-    \left(l(y), z\right) =& \sum_{k=0}^{n} \int_a^b p_k(x) y^{(k)}(x) \overline{z(x)} =
+    \innerprod{l(y)}{z} =& \sum_{k=0}^{n} \int_a^b p_k(x) y^{(k)}(x) \overline{z(x)} =
     \sum_{k=0}^{n} (-1) \int_a^b \left(p_k(x) \overline{z(x)}\right)' y^{(k-1)} = \\
-    =& \sum_{k=0}^{n} (-1)^{k} \int_a^b \left(p_k(x) \overline{z(x)}\right)^{k} y =
-    \left(y, l^*(z)\right).
+    =& \sum_{k=0}^{n} (-1)^{(k)} \int_a^b \left(p_k(x) \overline{z(x)}\right)^{(k)} y =
+    \innerprod{y}{l^*(z)}.
 \end{split}
 \end{align*}
 Poslední rovnost platí díky $\left(p_k(x) \overline{z(x)}\right) = \overline{\left(\overline{p_k(x)} z(x)\right)}$.
 
 Jednoznačnost dokážeme sporem, předpokládejme že existují dva adjungované operátory $l^*$ a $\tilde{l}$ splňující rovnost. Pak
 \begin{align*}
-    \left(l(y), z\right) = \left(y, l^*(z)\right) = \left(y, \tilde{l}(z)\right) ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
+    \innerprod{l(y)}{z} = \innerprod{y}{l^*(z)} = \innerprod{y}{\tilde{l}(z)} ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
 \end{align*}
 Pak ale nutně z poslední rovnosti, která musí platit pro všechna $y$ z husté podmnožiny v $L^2$, dostáváme
 \begin{align*}
@@ -75,4 +75,71 @@ pokud si totiž zvolíme pevné $z$, pak ze spojitosti skalárního součinu mus
     l^* = \tilde{l}.
 \end{align*}
 \end{proof}
+Další podmínkou kterou pro samoadjungovanost potřebujeme je $l = l^*$, což klade podmínku na tvar jednotlivých koeficientů $p_k$
+\begin{align*}
+    \sum_{k=0}^{n} p_k ~ y^{(k)} = \sum_{k=0}^{n} (-1)^{k} \left(\overline{p_k} ~ y\right)^{(k)} = \sum_{k=0}^{n} (-1)^{k} \sum_{j=0}^{k} {k \choose j} ~ \overline{p_k}^{(k-j)} y^{(j)}.
+\end{align*}
+Srovnejme koeficienty u $y^{(n)}$
+\begin{align*}
+    \begin{split}
+        &p_n = (-1)^{n} \overline{p_n} \\
+        &\text{$n$ sudé} : p_n = \overline{p_n} \implies \text{$p_n$ je reálný} \\
+        &\text{$n$ liché} : p_n = - \overline{p_n} \implies p_n + \overline{p_n} = 2 Re (p_n) = 0 \implies \text{$p_n$ je ryze imaginární}
+    \end{split}
+\end{align*}
+a dále postupujeme stejně. Nyní definujeme \uu{elementární diferenciální výrazy}, pomocí kterých lineární diferenciální výraz $l = l^*$ následně zapíšeme.
+\begin{definition}[Elementární diferenciální výraz]
+    Elementárním diferenciální výrazem nazveme LDV ve tvaru
+    \begin{equation}
+        \begin{split}
+            E_{2k} &= (-1)^{k} \left(p ~ y^{(k)}\right)^{(k)} \\
+            E_{2k-1} &= \frac{i}{2} \left[ \left(p ~ y^{(k-1)}\right)^{(k)} + \left(p ~ y^{(k)}\right)^{(k-1)} \right],
+        \end{split}
+    \end{equation}
+kde $p$ je reálná funkce.
+\end{definition}
 
+\begin{theorem}[Čihák, str. 210]
+    $l(y) = l^{*}(y) ~ \forall y \in \mathcal{C}^{\infty}_{cpt} \iff l(y)$ je konečnou lineární kombinací elementárních diferenciálních výrazů  $E_{2k}$ a $E_{2k-1}$.
+\end{theorem}
+
+\Priklad{
+    Podívejme se, jak elementární diferenciální výraz výjde pro $k=1$ a $k=2$.
+    \begin{equation*}
+        \begin{split}
+            E_1 &= \frac{i}{2}\left((p~y)' + p~y'\right) = \frac{i}{2} (p'~y + 2 p ~ y') = ip~y' + \frac{i}{2}p' ~ y. ~ \text{ Pro $p=1$ dostáváme }iy'. \\
+            E_2 &= -(p~y')' \dots \text{ \uu{tzv. diferenciální výraz 2. řádu v samoadjungovaném tvaru}}.
+        \end{split}
+    \end{equation*}
+}
+
+\begin{remark}
+    Pokud bychom pracovali ve vyšší dimenzi, bude $E_2$ odpovídat základnímu tvaru pro rovnici druhého řádu
+    \begin{equation*}
+        - \text{div} (p \nabla y).
+    \end{equation*}
+    Pro $p=1$ pak dostáváme Laplaceův operátor (při omezení na příslušný definiční obor)
+    \begin{equation*}
+        -\Delta y
+    \end{equation*}
+\end{remark}
+
+\subsection{Ortogonální báze v $L^{2}_{\rho}$ složené z polynomů}
+Budeme uvažovat prostor
+\begin{align*}
+    H = L^{2}_{\rho} (a, b) \equiv \left\{ f : (a, b) \to \C ; \int_a^b \rho \left|f\right|^2 < \infty, \text{ kde } \rho : (a, b) \to \R \text{ je tzv. \uu{váha} splňující } \rho > 0, \rho \in \mathcal{C}, \rho \in L^1 \right\}.
+\end{align*}
+\begin{remark}
+    $\rho \in \mathcal{C}$ se někdy nevyžaduje.
+\end{remark}
+Lze ukázat, že $L^{2}_{\rho}(a, b)$ je Hilbertův prostor se skalárním součinem
+\begin{align*}
+    \innerprod{y}{z}_{2, \rho} \equiv \int_a^b \rho y \overline{z}
+\end{align*}
+a normou
+\begin{align*}
+    \norm{y}_{2, \rho} = \int_{a}^{b} \rho \left|y\right|^2.
+\end{align*}
+\begin{remark}
+    Prostor $L^2_{\rho}$ 
+\end{remark}
