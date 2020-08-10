@@ -193,53 +193,71 @@ Linearita je zřejmá. Ukažme spojitost.  Zafixujme $\sequence{\map y'_n}{n} \s
 \end{align*}
 což jsme chtěli ukázat.
 \end{proof}
-
+\begin{remark}
 Dá se ukázat, že: $\map T$ je kompaktní operátor právě tehdy, když je $\map T'$ kompaktní operátor (tzv. Schauderova věta). Sami zkuste dokázat, že $\norm{\map T} = \norm{\map T'}$.
+\end{remark}
 
-V následujícím nás bude zajímat, lze li podobně jako v případě dvou Hilbertových prostorů ztotožnit $\map T$ a $\map T'$. DOKONČIT
+\bigskip
 
-Pozitivní výsledky dostaneme opět pro Hilbertovy prostory.
+Dále nás bude zajímat, lze-li ztotožnit $\map T$ a $\map T'$ (podobně jako ztotožňujeme Hilbertův prostor s vlastním duálem). To by znamenalo:
+$$
+    \underbrace{\map T}_{X \to Y} \;\simeq \underbrace{\map T'}_{Y' \to X'}
+$$
+Muselo by tedy platit něco ve smyslu
+$$ X \simeq Y' \quad \text{a} \quad Y \simeq X' \: , $$
+vezmeme-li nyní duál předchozích výrazů, dostaneme
+$$ X' \simeq Y'' \quad \text{a} \quad Y' \simeq X'' \: . $$
+Zkombinováním obou „rovnic“ získáme s trochou \textit{máchání rukami} výraz
+$$ X \simeq X'' \quad \text{a} \quad Y \simeq Y'' \: . $$
+To by mohlo platit pro Hilbertovy prostory, kde je dokonce už i $X' \simeq X$. Obecně k danému $\map T$ nemusí vždy existovat $\map T'$, výše uvedené vlastnosti platí pouze v případě, že existuje. Ale v Hilbertově prostoru je opět vše lepší:
 
 \begin{theorem}[O duálním zobrazení mezi Hilbertovými prostory]
 Nechť $H_1, H_2$ jsou Hilbertovy prostory a $\map T \in \lin(H_1, H_2)$. Pak existuje právě jedno zobrazení $\map T' : H_2 \mapsto H_1$ takové, že 
 \begin{align} \label{eq4.dualHilbert}
-    (\map T x, y)_{H_2} = (x, \map T'y)_{H_1} \quad \text{pro všechna } x \in H_1, y \in H_2 \:.
+    (\map T x, y)_{H_2} = (x, \map T'y)_{H_1} \quad \text{pro všechna } x \in H_1, \; y \in H_2 \:.
 \end{align}
 Pro takové zobrazení navíc platí: \begin{enumerate}
     \item $\map T' \in \lin(H_2, H_1)$,
-    \item $\norm{\map T'} = \norm{\map T}$.
+    \item $\norm{\map T'} = \norm{\map T \vph{\map T'}}$.
 \end{enumerate}
 \end{theorem}
 
 \begin{remark}
-Aplikujeme-li komplexní sdružení v rovnici \eqref{eq4.dualHilbert}, dostaneme \begin{align*}
-    \conj{(\map T x,y)}_{H_2} = \conj{(x, \map T' y)}_{H_1} \rightarrow (\map T' y,x)_{H_1} = (y, \map T x)_{H_2} \:.
+Aplikujeme-li komplexní sdružení na rovnici \eqref{eq4.dualHilbert}, dostaneme \begin{align*}
+    \conj{\innerprod{\map T x}{y}}_{H_2} = \conj{\innerprod{x}{\map T' y}}_{H_1} \rightarrow \innerprod{\map T' y}{x}_{H_1} = \innerprod{y}{\map T x}_{H_2} \:.
 \end{align*}
 Na Hilbertových prostorech tedy hraje roli duality skalární součin.
 \end{remark}
 \begin{proof}
-Zafixujme $y \in H_2$ a definujme \begin{align*}
-    \map L_y : x \mapsto (\map T x,y)_{H_2}
-\end{align*}
+Zafixujme $y \in H_2$ a definujme
+\begin{gather*}
+    \map L_y \in \lin(X, \C) \: ,\\
+    \map L_y(x) \coloneqq \innerprod{\map T x}{y}_{H_2} \: .
+\end{gather*}
 Podle Rieszovy-Fréchetovy věty (Věta \ref{4.Riesz-Frechet}) existuje právě jedno $z \in H_1$ takové, že \begin{align*}
-    \map L_y x = (x,z)_{H_1} \:.
+    \map L_y(x) = \innerprod{x}{z}_{H_1} \:.
 \end{align*}
-Tím jsme zkonstruovali zobrazení \begin{align*}
-    \map T' : y \in H_2 \mapsto z \in H_1
-\end{align*}
-s vlastností \begin{align*}
+Nyní definujeme zobrazení:
+\begin{gather*}
+    \map T': H_2 \to H_1 \: ,\\
+    \map T'(y) \coloneqq  z \: .
+\end{gather*}
+Toto zobrazení má vlastnost
+$$
     (\map T x, y)_{H_2} = (x,\map T' y)_{H_1} \quad \text{pro libovolné } x\in H_1, y \in H_2 \:.
-\end{align*}
+$$
 Tím jsme dokázali první část tvrzení o existenci a jednoznačnosti zobrazení $\map T'$.
 
-Ukažme jeho linearitu. Zřejmě je pro každé $x \in H_1$ splněno \begin{align*}
+Ukažme jeho linearitu. Zřejmě je pro každé $x \in H_1$ splněno
+\begin{align*}
     \left( \map T' (\alpha y_1 + \beta y_2) , x \right)_{H_1} =& \left( \alpha y_1 + \beta y_2 , \map T x \right)_{H_2} = \alpha (y_1, \map T x)_{H_2} + \beta (y_2, \map T x)_{H_2} = \\
     =&
     \alpha (\map T' y_1, x)_{H_1} + \beta (\map T' y_2, x)_{H_1} = (\alpha \map T' y_1 + \beta \map T' y_2, x)_{H_1}
-\end{align*} a odtud \begin{align*}
+\end{align*}
+a odtud
+\begin{align*}
     \map T' (\alpha y_1 + \beta y_2) = \alpha \map T' y_1 + \beta \map T' y_2 \:.
 \end{align*}
-Obdobně bychom dokázali linearitu ve druhé složce.
 
 Ukažme spojitost zobrazení $\map T'$ pomocí omezenosti jeho normy. Podle definice zobrazení $\map T'$ a druhé části Rieszovy-Fréchetovy věty (Věta \ref{4.Riesz-Frechet}) dostáváme \begin{align} \label{eq:4.Vdual1}
     \norm{\map T' y}_{H_1} = \norm{ z}_{H_1} = \norm{\map L_y} \:.
@@ -247,10 +265,11 @@ Ukažme spojitost zobrazení $\map T'$ pomocí omezenosti jeho normy. Podle defi
 Dále je podle definice $\map L_y$ a Cauchyovy-Schwarzovy nerovnosti \begin{align*}
     \norm{\map L_y x} = |(\map Tx, y)_{H_2}| \leq \norm{\map Tx}_{H_2} \norm{y}_{H_2} \leq \norm{\map T} \norm{x}_{H_1} \norm{y}_{H_2}
 \end{align*}
-a odtud \begin{align} \label{eq:4.Vdual2}
-    \norm{\map L_y} = \sup_{\norm{x}_{H_1} \leq 1} \norm{\map L_y x}_{H_2} \leq \norm{\map T} \norm{y}_{H_2} \:.
-\end{align}
-S použitím \eqref{eq:4.Vdual1} a \eqref{eq:4.Vdual2} dostáváme \begin{align*}
+a odtud s použitím \eqref{eq:4.Vdual1} plyne
+\begin{align*}
+    \norm{\map T' y}_{H_1} = \norm{\map L_y} = \sup_{\norm{x}_{H_1} \leq 1} \norm{\map L_y x}_{H_2} \leq \norm{\map T} \norm{y}_{H_2} \:.
+\end{align*}
+\begin{align*}
     \norm{\map T'} = \sup_{\norm{y}_Y \leq 1} \norm{\map T' y} \leq  \norm{\map T} \sup_{\norm{y} \leq 1} \norm{y}_{H_2} = \norm{\map T} < + \infty \:.
 \end{align*}
 Tím jsme ověřili spojitost a celkově $\map T' \in \lin(H_2, H_1)$.
@@ -267,7 +286,7 @@ Odtud \begin{align*}
 a proto musí platit v předchozím řetězci všude rovnosti.
 \end{proof}
 \begin{definition}[Hermitovsky sdružený operátor]
-Nechť $H_1, H_2$ jsou Hilbertovy prostory, $\map T \in \lin (H_1, H_2) $. Zobrazení $\map T'$ s vlastnostmi z předchozí věty nazýváme hermitovsky sdružený operátor s $\map T$ (případně adjungovaný operátor k $\map T$).
+Nechť $H_1, H_2$ jsou Hilbertovy prostory, $\map T \in \lin (H_1, H_2) $. Zobrazení $\map T'$ s vlastnostmi z předchozí věty nazýváme hermitovsky sdružený operátor s $\map T$ (případně adjungovaný operátor~k~$\map T$).
 \end{definition}
 
 \begin{definition}[Samoadjungovaný (omezený) operátor.]

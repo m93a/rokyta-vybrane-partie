@@ -148,31 +148,31 @@ Nyní připomeneme různé pojmy a vlastnosti související se \uu{zobrazeními}
 \begin{enumerate}
     \item Buďte $X,Y$ LP (tj. nepotřebuji geometrii).
     \begin{itemize}
-        \item \uu{operátor}: $T: X \to Y$
-        \item \uu{funkcionál}: $T: X \to \K$
+        \item \uu{operátor}: $\map T: X \to Y$
+        \item \uu{funkcionál}: $\map T: X \to \K$
     \end{itemize}
     Každý funkcionál je i operátor. Budeme tedy BÚNO definovat další vlastnosti pro operátory.
     
-    \item Operátor $T: X \to Y$ je
+    \item Operátor $\map T: X \to Y$ je
     \begin{itemize}
-        \item \uu{lineární}: $T(ax + by) = a T(x) + b T(y) \hspace{2em} \forall x,y \in X \; \forall a,b \in \K$
+        \item \uu{lineární}: $\map T(ax + by) = a \map T(x) + b \map T(y) \hspace{2em} \forall x,y \in X \; \forall a,b \in \K$
         \item \uu{nelineární}: není lineární
     \end{itemize}
     
-    \Poznamka z linearity $T$ plyne, že $T(0) = 0$ (volte $a=b=0$).
+    \Poznamka z linearity $\map T$ plyne, že $\map T(0) = 0$ (volte $a=b=0$).
     
-    \item $X$, $Y$ NLP, $T: X \to Y$ je
+    \item $X$, $Y$ NLP, $\map T: X \to Y$ je
     \begin{itemize}
-        \item \uu{omezený}: $\forall K>0 \; \exists C>0 \;\; \norm{x} \leq K \implies \norm{Tx} \leq C$ (zobrazuje se „omezená množina na omezené“),
+        \item \uu{omezený}: $\forall K>0 \; \exists C>0 \;\; \norm{x}_X \leq K \implies \norm{\map Tx}_Y \leq C$ (zobrazuje se „omezená množina na omezené“),
         
-        ekvivalentně $\exists C>0 \; \forall x \in X \;\; \norm{Tx} \leq C \norm{x} $.
+        ekvivalentně $\exists C>0 \; \forall x \in X \;\; \norm{\map Tx}_Y \leq C \norm{x}_X $.
         
-        \item \uu{neomezený}: není omezený, tj. $\exists K>0 \; \forall C>0 \; \exists x_C \in X \;\; \norm{x_C} \leq K \And \norm{Tx} > C$
+        \item \uu{neomezený}: není omezený, tj. $\exists K>0 \; \forall C>0 \; \exists x_C \in X \;\; \norm{x_C} \leq K \wedge \norm{\map Tx} > C$
     \end{itemize}
     
     \item $X$, $Y$ Banachovy, $T: X \to Y$ je
     \begin{itemize}
-        \item \uu{spojitý}: $x_n \to x \implies T x_n \to T x$ (tzv. „Heineova definice“)
+        \item \uu{spojitý}: $x_n \to x \implies \map T x_n \to \map T x$ (tzv. „Heineova definice“)
         
         \item \uu{nespojitý}: není spojitý
     \end{itemize}
@@ -182,55 +182,55 @@ Dále již budeme uvažovat pouze Banachovy (případně Hilbertovy) prostory, t
 
 \begin{definition}[Norma operátoru]
 \label{1.Norma operatoru}
-Mějme lineární operátor $T: X \to Y$. Definujeme číslo
+Mějme lineární operátor $\map T: X \to Y$. Definujeme číslo
 $$
-  \norm{T}_{\lin(X, Y)} \coloneqq \underset{\norm{x}_X \leq 1}{\sup} \norm{Tx}_Y.
+  \norm{\map T}_{\lin(X, Y)} \coloneqq \underset{\norm{x}_X \leq 1}{\sup} \norm{\map Tx}_Y.
 $$
 \end{definition}
 Toto číslo může vyjít i nekonečno (např. po vhodně neomezený operátor). Pro lin. operátor však vidíme:
 $$
   x \neq 0 \implies
-  \norm{T\Big(\frac{x}{\norm{x}_X}\Big)}_Y \leq \norm{T}_{\lin(X, Y)}
+  \norm{\map T\Big(\frac{x}{\norm{x}_X}\Big)}_Y \leq \norm{\map T}_{\lin(X, Y)}
   \hspace{2em}
-  \text{($\norm{T}$ je supremem takových)}
+  \text{($\norm{\map T}$ je supremem takových)}
 $$
 $$
-    \norm{Tx}_Y \leq \norm{T}_{\lin(X, Y)} \cdot \norm{x}_X
+    \norm{\map Tx}_Y \leq \norm{\map T}_{\lin(X, Y)} \cdot \norm{x}_X
 $$
-Platí i pro $\norm{T} = \infty$, $\forall x \neq 0$. Pokud $\norm{T} < \infty$, pak obě strany jsou konečné a  nerovnost platí $\forall x \in X$ (tj. včetně $x = 0$).
+Platí i pro $\norm{\map T} = \infty$, $\forall x \neq 0$. Pokud $\norm{\map T} < \infty$, pak obě strany jsou konečné a  nerovnost platí $\forall x \in X$ (tj. včetně $x = 0$).
 \\
-\Poznamka připustili jsme $\norm{T} = \infty$, abychom měli tuto ekvivalenci:
+\Poznamka připustili jsme $\norm{\map T} = \infty$, abychom měli tuto ekvivalenci:
 \begin{lemma}[O charakterizaci omezenosti]
 Pro lin. operátory máme:
 $$
-    T \text{ omezený}
+    \map T \text{ omezený}
     \iff
-    \norm{T} < \infty
+    \norm{\map T} < \infty
 $$
-a v tom případě má $\norm{T}$ vlastnosti normy (ověřte sami).
+a v tom případě má $\norm{\map T}$ vlastnosti normy (ověřte sami).
 \end{lemma}
 \begin{proof}
-Implikace „$\Rightarrow$“: $T$ omezený: ($\operatorname{vol} K = 1: \; \exists C \; \forall \norm{x} \leq 1 \; \norm{Tx} \leq C$) $\implies$ $\norm{T} \leq C$.
+Implikace „$\Rightarrow$“: $\map T$ omezený: ($\operatorname{vol} K = 1: \; \exists C \; \forall \norm{x} \leq 1 \; \norm{\map Tx} \leq C$) $\implies$ $\norm{\map T} \leq C$.
 \\[5pt]
-Implikace „$\Leftarrow$“: $\norm{T} < \infty$: $\norm{Tx} \leq \norm{T} \cdot \norm{x} \; \forall x \in X$, tj. $\norm{x} \leq K \implies \norm{Tx} \leq K \norm{T}$.
+Implikace „$\Leftarrow$“: $\norm{\map T} < \infty$: $\norm{\map Tx} \leq \norm{\map T} \cdot \norm{x} \; \forall x \in X$, tj. $\norm{x} \leq K \implies \norm{\map Tx} \leq K \norm{\map T}$.
 \end{proof}
 
 \begin{lemma}[O ekvivalenci spojitosti a omezenosti operátoru]
-Buďte $X,Y$ Banachovy. Pokud je $T: X \to Y$ \uu{lineární} operátor, pak
+Buďte $X,Y$ Banachovy. Pokud je $\map T: X \to Y$ \uu{lineární} operátor, pak
 $$
-    \overset{(1)}{T \text{ omezený}}
+    \overset{(1)}{\map T \text{ omezený}}
     \iff
-    \overset{(2)}{T \text{ spojitý}}
+    \overset{(2)}{\map T \text{ spojitý}}
     \iff
-    \overset{(3)}{\norm{T} < \infty.}
+    \overset{(3)}{\norm{\map T} < \infty.}
 $$
 \end{lemma}
 \begin{proof}
 Ekvivalenci $(1)$ a $(2)$ už jsme dokázali. Ukážeme:
 \\[5pt]
-$(3) \Rightarrow (2)$: Je-li $T$ omezený, pak $\norm{T (x_n - x)} \leq C \norm{x_n - x}, \; C = \norm{T}, \;$ z linearity $\norm{Tx_n - Tx} \leq C \norm{x_n - x}$. Pokud $x_n \to x$, pak odsud máme $Tx_n \to Tx$.
+$(3) \Rightarrow (2)$: Je-li $\map T$ omezený, pak $\norm{\map T (x_n - x)} \leq C \norm{x_n - x}, \; C = \norm{\map T}, \;$ z linearity $\norm{\map Tx_n - \map Tx} \leq C \norm{x_n - x}$. Pokud $x_n \to x$, pak odsud máme $\map Tx_n \to \map Tx$.
 \\[5pt]
-$(2) \Rightarrow (1)$: Ze spojitosti plyne mj., že pokud $x_n \to 0$, pak $Tx_n \to 0$ ($\forall x_n$). Proto $\forall \varepsilon$ (např. pro $\varepsilon = 1$) $\exists \delta>0$, že $\norm{x_n} < \delta \Rightarrow \norm{Tx_n} < \varepsilon = 1$. Buď nyní $\norm{x} < K$, pak $\norm{\frac{x}{K} \delta} < \delta \Rightarrow \norm{\frac{Tx}{K} \delta} < 1 \implies \norm{Tx} < \frac{K}{\delta} \eqqcolon C$.
+$(2) \Rightarrow (1)$: Ze spojitosti plyne mj., že pokud $x_n \to 0$, pak $\map Tx_n \to 0$ ($\forall x_n$). Proto $\forall \varepsilon$ (např. pro $\varepsilon = 1$) $\exists \delta>0$, že $\norm{x_n} < \delta \Rightarrow \norm{\map Tx_n} < \varepsilon = 1$. Buď nyní $\norm{x} < K$, pak $\norm{\frac{x}{K} \delta} < \delta \Rightarrow \norm{\frac{\map Tx}{K} \delta} < 1 \implies \norm{\map Tx} < \frac{K}{\delta} \eqqcolon C$.
 \end{proof}
 
 \begin{definition}[Prostor omezených lineárních operátorů]
@@ -239,9 +239,9 @@ $$
     \lin(X, Y)
     \coloneqq
     \{
-        T: X \to Y, \;
+        \map T: X \to Y, \;
         X,Y \text{ NLP}, \;
-        T \text{ lineární omezený}
+        \map T \text{ lineární omezený}
     \}.
 $$
 Lze ukázat, že $\lin(X, Y)$ sám o sobě je NLP s normou $\norm{\cdot}_{\lin(X,Y)}$ definovanou pomocí \ref{1.Norma operatoru}. Navíc, pokud $Y$ je Banachův, pak i $\lin(X, Y)$ je úplný v normě $\norm{\cdot}_{\lin(X,Y)}$, a tedy Banachův. Speciálně prostory operátorů $\lin(X, \R)$, $\lin(X, \C)$ jsou vždy Banachovy.
@@ -254,7 +254,7 @@ Další používané značení:
 \end{definition}
 
 \begin{theorem}[Vliv konečné a nekonečné dimenze]
-Buď $T: X \to Y$, $X,Y$ Banachovy, $T$ lineární, \uu{$\dim T < \infty$}. Potom $T$ je omezený, a tedy i spojitý.
+Buď $\map T: X \to Y$, $X,Y$ Banachovy, $T$ lineární, \uu{$\dim X < \infty$}. Potom $\map T$ je omezený, a tedy i spojitý.
 \end{theorem}
 \begin{proof}
 $$
@@ -262,15 +262,15 @@ $$
     \implies
     x = \sum_{j=1}^n \alpha_j x_j, \text{ kde } n = \dim X, \text{ } \{ x_j \}_{j=1}^n \text{ báze } X
     \implies
-    Tx = \sum_{j=1}^n \alpha_j T x_j
+    \map Tx = \sum_{j=1}^n \alpha_j T x_j
 $$
 $$
-    \norm{Tx}
+    \norm{\map Tx}
     \leq
-    \sum_{j=1}^n |\alpha_j| \norm{Tx_j}
+    \sum_{j=1}^n |\alpha_j| \norm{\map Tx_j}
     \leq
     \underbrace{
-        \underset{j=1,\dots n}{\max} \norm{Tx_j}
+        \underset{j=1,\dots n}{\max} \norm{\map Tx_j}
     }_{c}
     \; \cdot \;
     \sum_{j=1}^n |\alpha_j|
@@ -282,7 +282,7 @@ $$
 kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{Manhattanská norma}, jedna z možných norem $X$, a poslední nerovnost plyne z ekvivalence všech norem pro $\dim X < \infty$.
 \end{proof}
 
-\Poznamka V konečné dimenzi jsou tedy všechny lineární operátory už spojité. Přirozená otázka: platí to i pro $\dim X = \infty$? Ne: $X, Y$ NLP, $\dim X = \infty$, pak $\exists T: X \to Y$ lineární a neomezený. (V případě $X,Y$ Banachovy tedy i nespojitý).
+\Poznamka V konečné dimenzi jsou tedy všechny lineární operátory už spojité. Přirozená otázka: platí to i pro $\dim X = \infty$? Ne: $X, Y$ NLP, $\dim X = \infty$, pak $\exists \map T: X \to Y$ lineární a neomezený. (V případě $X,Y$ Banachovy tedy i nespojitý).
 \\ \\
 \Priklad{
     $X = \mathcal{C}^1([a,b])$ s normou $\norm{f} = \underset{[a,b]}{\sup} |f(x)|$. (V této normě není $X$ úplný, proč?)
@@ -304,14 +304,14 @@ kde $\norm{a}_1 = \sum |a_j|$ je tzv. \textit{Manhattanská norma}, jedna z mož
     $$
         x = \sum_{j=1}^{n(x)} a_j x_j + \sum_{k=1}^{m(x)} b_k z_k.
     $$
-    Definujeme $\displaystyle Tx \coloneqq \sum_{j=1}^{n(x)} a_j T x_j + \sum_{k=1}^{m(x)} b_k T z_k$ pro takové $x \in X$.
+    Definujeme $\displaystyle \map Tx \coloneqq \sum_{j=1}^{n(x)} a_j \map T x_j + \sum_{k=1}^{m(x)} b_k \map T z_k$ pro takové $x \in X$.
     \\ \\
-    Tím je definován $T$ na celém $X$, pokud definujeme $Tx_j$ a $Tz_\alpha$. Definujeme je takto:
+    Tím je definován $\map T$ na celém $X$, pokud definujeme $Tx_j$ a $Tz_\alpha$. Definujeme je takto:
     \begin{align*}
         T x_j &= j \;\; \forall j \in \N \\
         T z_\alpha &= 0 \;\; \forall z_\alpha, \; \alpha \in A
     \end{align*}
-    Potom $T$ je lineární na $X$ (ověřte), přičemž $\norm{x_n} = 1$, ale $\norm{T x_n} = n \;\; \forall x_n$.
+    Potom $\map T$ je lineární na $X$ (ověřte), přičemž $\norm{x_n} = 1$, ale $\norm{\map T x_n} = n \;\; \forall x_n$.
 }
 
 
