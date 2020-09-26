@@ -5,7 +5,7 @@
 \section{Základy spektrální analýzy}
 
 \subsection{Motivace: řešení jedné ODR}
-\Priklad
+\Priklad{
 
 Uvažujme obyčejnou diferenciální rovnici s počáteční podmínkou:
 \begin{equation}
@@ -17,10 +17,11 @@ Uvažujme obyčejnou diferenciální rovnici s počáteční podmínkou:
     \label{eq:2.zadani}
 \end{equation}
 kde $f\in C \left( [0, a] \right)$. 
+}
 
-Řešení této úlohy pro $f\equiv 0$ je $y=\cos x$, jak snadno zjistíme například metodou charakteristického polynomu. Pro nalezení jednoho (partikulárního) řešení rovnice s pravou stranou $f(x)$ můžeme použít např. metodu variace konstant. Z tvaru
+Řešení této úlohy pro $f\equiv 0$ je $y_H=\cos x$, jak snadno zjistíme například metodou charakteristického polynomu. Pro nalezení jednoho (partikulárního) řešení rovnice s pravou stranou $f(x)$ můžeme použít např. metodu variace konstant. Z tvaru
 \begin{equation}
-    y_p=c_1(x) \cos x+c_2 \sin x
+    y_P=c_1(x) \cos x+c_2(x) \sin x
 \end{equation}
 dostaneme rovnice pro $c_1(x)$, $c_2(x)$
 \begin{equation}
@@ -33,19 +34,19 @@ dostaneme rovnice pro $c_1(x)$, $c_2(x)$
 odkud plyne
 \begin{equation}
     \begin{split}
-        c_1'=-f \sin x
+        c_1'=-f \sin x, \\
         c_2'=f\cos x.
     \end{split}
 \end{equation}
-Tedy funkce $ c_1(x) = -\int\limits_0^xf(t)\sin t \d t$, $ c_2(x) = -\int\limits_0^xf(t)\cos t \d t$ řeší rovnice (\ref{eq:2.variacekonst}).\footnote{Pozn: Mohli jsme samozřejmě zvolit pro $c_1$ resp. $c_2$ i jiné z primitivních funkcí k $-f(x)\sin x$ resp. $f(x) \cos x$ (lišících se však jen o konstantu). Tato volba však zaručí, že $y_p$ splňuje počáteční podmínky.}
+Tedy funkce $ c_1(x) = -\int\limits_0^xf(t)\sin t \d t$, $ c_2(x) = \int\limits_0^xf(t)\cos t \d t$ řeší rovnice (\ref{eq:2.variacekonst}).\footnote{Pozn: Mohli jsme samozřejmě zvolit pro $c_1$ resp. $c_2$ i jiné z primitivních funkcí k $-f(x)\sin x$ resp. $f(x) \cos x$ (lišících se však jen o konstantu). Tato volba však zaručí, že $y_p$ splňuje počáteční podmínky.}
 
 Dostáváme
 \begin{equation}
-        y_p=\sin x \int\limits_0^xf(t)\cos t\d t-\cos x\int\limits_0^x f(t)\sin t\d t=\int\limits_0^x f(t)\left(\sin x \cos t-\cos x\sin t\right) \d t= \int\limits_0^xf(t) \sin(x-t)\d t,
+        y_P=-\cos x\int\limits_0^x f(t)\sin t\d t + \sin x \int\limits_0^xf(t)\cos t\d t =\int\limits_0^x f(t)\left(\sin x \cos t-\cos x\sin t\right) \d t= \int\limits_0^xf(t) \sin(x-t)\d t,
 \end{equation}
 tedy celkově
 \begin{equation}
-    y(x)=\cos x+\int\limits_0^x f(t)\sin{(x-t)}\d t.
+    y(x)=y_H + y_P = \cos x+\int\limits_0^x f(t)\sin{(x-t)}\d t.
     \label{eq:2.celkovereseni}
 \end{equation}
 Dosazení se lze přesvědčit, že funkce $y(x)$ daná předpisem \eqref{eq:2.celkovereseni} je řešením úlohy \eqref{eq:2.zadani}. Picardova-Lindelöfova věta a lipschitzovskost levé strany zaručuje, že je jediným řešením.
@@ -55,7 +56,7 @@ Při dosazení \eqref{eq:2.celkovereseni} do \eqref{eq:2.zadani} se může hodit
 \end{remark}
 \begin{lemma}[O derivování integrálu dle parametru a mezí]
 \label{lemma:2.derivacemezi}
-Buďte $a,b\in\mathcal{C}^1((\alpha,\beta))$, $a((\alpha,\beta))\subset (A,B)$, $b((\alpha,\beta))\subset (A,B)$, $g\in\mathcal{C}^1((\alpha,\beta)\times(A,B))$. Nechť jsou dále funkce $a,b,g,\pd{g}{x}$ omezené na svých definičních oborech. Pak
+Buďte $a,b\in\mathcal{C}^1((\alpha,\beta))$, $a((\alpha,\beta))\subset (A,B)$,\\ $b((\alpha,\beta))\subset (A,B)$, $g\in\mathcal{C}^1((\alpha,\beta)\times(A,B))$. Nechť jsou dále funkce $a,b,g,\pd{g}{x}$ omezené na svých definičních oborech. Pak
 \begin{align}
     \dd{}{x}\int\limits_{a(x)}^{b(x)} g(x,t)\d t = \int\limits_{a(x)}^{b(x)} \pd{g}{x}(x,t)\d t + g \left( b(x) \right) b'(x)-g \left( a(x) \right) a'(x) \quad \text{pro každé } x\in(\alpha,\beta) \:.
 \end{align}
@@ -94,16 +95,16 @@ Uvažme nyní modifiaci úlohy \eqref{eq:2.zadani}:
     \end{split}
     \label{eq:2.zadani_y(x)_vpravo}
 \end{equation}
-Na pravé straně rovnice máme tedy ve zdvojeném členu jakousi \uv{zpětnou vazbu}. Pouze na základě analogie s první úlohou si troufneme vyslovit následující hypotézu:
+Na pravé straně rovnice máme tedy ve zdvojeném členu jakousi \uv{zpětnou vazbu}. Pouze na základě analogie s první úlohou si troufneme vyslovit následující tvrzení:
 
 Pokud existuje funkce $y\in \mathcal{C} \left( [0,a] \right)$, která splňuje vztah
 \begin{equation}
     y(x) = \cos x + \int\limits_0^x f(t)\sin(x-t)\textcolor{blue}{y(t)}\d t,
     \label{eq:2.tipreseni_y(x)}
 \end{equation}
-pak je tato funkce třídy $\mathcal{C}^2 \mathcal{C} \left([0,a] \right)$ a řeší úlohu \eqref{eq:2.zadani_y(x)_vpravo}.
+pak je tato funkce třídy $\mathcal{C}^2 \left([0,a] \right)$ a řeší úlohu %TODO tady je možná špatně C^2 \eqref{eq:2.zadani_y(x)_vpravo}.
 
-Tuto hypotézu ověříme využitím lemmatu (\ref{lemma:2.derivacemezi}). Především platí, že pokud je $y\in \mathcal{C} \left([0,a] \right)$, je integrand v (\ref{eq:2.tipreseni_y(x)}) spojitý, tedy je $y\in\mathcal{C}^1([0,a])$ a máme
+Tohle tvrzení ověříme využitím lemmatu (\ref{lemma:2.derivacemezi}). Především platí, že pokud je $y\in \mathcal{C} \left([0,a] \right)$, je integrand v~rovnici (\ref{eq:2.tipreseni_y(x)}) spojitý, tedy je $y\in\mathcal{C}^1([0,a])$ a~máme
 \begin{equation}
     y'(x) = -\sin x + \int\limits_0^x f(t)\cos(x-t)y(t)\d t + 0,
 \end{equation}
@@ -114,7 +115,7 @@ odkud stejnou úvahou máme $y'(x)\in\mathcal{C}^1([0,a])$, tedy $y\in\mathcal{C
 Z posledních tří vztahů dostaneme $y''+y=f(x)y(x)$, stejně jako $y(0)=1$, $y'(0)=0$.
 
 Ověřili jsme tedy, že
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \framebox{Pokud existuje $y\in\mathcal{C}([0,a])$ taková, že platí (\ref{eq:2.tipreseni_y(x)}), je tato funkce kanonickým řešením úlohy (\ref{eq:2.zadani_y(x)_vpravo}).}   
 \end{figure}
@@ -165,14 +166,14 @@ Připomeňme standartně používanou normu na $\mathcal{C}([0,a])$: $\norm{y}_{
 \begin{proof}
 Linearita je zřejmá, pro omezenost určíme nejprve
 \begin{equation}
-    || \map T y||_\infty = \underset{x\in[0,a]}{\sup}\Big|\int\limits_0^x\sin(x-t)f(t)y(t)\d t\Big|\leq \underset{x\in[0,a]}{\sup}\int\limits_0^x|f(t)||y(t)|\d t\leq a\norm{f}_\infty\norm{y}_\infty.
+    || \map T y||_\infty = \underset{x\in[0,a]}{\sup}\Big|\int\limits_0^x\sin(x-t)f(t)y(t)\d t\Big|\leq \underset{x\in[0,a]}{\sup}\int\limits_0^x|f(t)||y(t)|\d t\leq a\norm{f}_\infty\norm{y}_\infty,
 \end{equation}
-Protože  
+kde $\norm{f}_\infty = \underset{[0,a]}{\max} |f(x)|$ a $\norm{y}_\infty = \underset{[0,a]}{\max} |y(x)|$. Protože  
 \begin{equation}
     \norm{\map T}_{\lin \left( \mathcal{C}\left([0,a]\right) \right) } = \underset{\norm{y}_\infty\leq1}{\sup}|| \map T y||_\infty\leq \underset{\norm{y}_\infty\leq1}{\sup} a \norm{f}_\infty \norm{y}_\infty\leq a \norm{f}_\infty<\infty,
     \label{eq:omezeniOperatoru}
 \end{equation}
-jde tedy (pokud je interval $[0,a]$ omezený) o omezený operátor.
+jde tedy (pokud je interval $[0,a]$ omezený) $\map T$ omezený operátor.
 \end{proof}
 
 Pro odpověď na další otázky máme přichystanou následující větu. Všimněme si, že její velká abstrakce je pouze zdánlivá. V podstatě jde o popis naší úlohy v operátorové verzi.
@@ -180,16 +181,16 @@ Pro odpověď na další otázky máme přichystanou následující větu. Všim
 
 \begin{theorem}[O von Neumannově řadě operátoru]
 \label{theorem:str14}
-Buď $X$ Banachův prostor, $ \map T \in\lin(X)$. Definujme $ \map T ^0\equiv \map{Id}$, $ \map T ^{j+1}y= \map T ( \map T ^jy)$ tzv. iterovaný operátor. Dále nechť je splněna alespoň jedna z následujících tří podmínek:
-\begin{enumerate}[(a)]
+Buď $X$ Banachův prostor, $ \map T \in\lin(X)$. Definujme $ \map T ^0\equiv \map{Id}$,\\ $ \map T ^{j+1}y= \map T ( \map T ^jy)$ tzv. iterovaný operátor. Dále nechť je splněna alespoň jedna z následujících tří podmínek:
+\begin{enumerate}[a)]
     \item $|| \map T ||_{\lin(X)}<1$,
     \item $\sum\limits_{j=0}^\infty|| \map T ^j||_{\lin(X)}<\infty$,
     \item $\sum\limits_{j=0}^\infty|| \map T ^jy||_X<\infty \;\;\forall y\in X$.
 \end{enumerate}
 Potom
 \begin{enumerate}
-    \item $\forall u \in X$ \uu{existuje jediné} $y\in X$ takové, že $(\map{Id}- \map T )y=u$.
-    \item Definujeme-li zobrazení $"u\mapsto y"$ z předchozího bodu a označíme-li jej $(\map{Id}- \map T )^{-1}$, platí:
+    \item $\forall u \in X$ existuje jediné $y\in X$ takové, že $(\map{Id}- \map T )y=u$.
+    \item Definujeme-li zobrazení \uv{$u\mapsto y$} z předchozího bodu a označíme-li jej $(\map{Id}- \map T )^{-1}$, platí:
     \begin{equation}
         (\map{Id}- \map T )^{-1}(\map{Id}- \map T ) = (\map{Id}- \map T )(\map{Id}- \map T )^{-1}=\map{Id},
     \end{equation}
@@ -199,7 +200,7 @@ Potom
         \label{eq:Neumann}
     \end{equation}
 \end{enumerate}
-kde sumu chápeme jako $\lim\limits_{n\rightarrow\infty} \sum\limits_{j=0}^{n}$ ve smyslu konvergence v $\lin(X)$.
+kde sumu $sumu \sum\limits_{j=0}^\infty$ chápeme jako $\lim\limits_{n\rightarrow\infty} \sum\limits_{j=0}^{n}$ ve smyslu konvergence v $\lin(X)$.
 \end{theorem} 
 
 \begin{remark} \ph{.}
@@ -222,12 +223,12 @@ Ještě než větu dokážeme, přesvědčme se, že operátor $ \map T $ defino
 
 Odtud ihned dostáváme, že pro každé $f\in\mathcal{C}([0,b])$ existuje takové
 $a\in (0,b)$, že $|| \map T ||<1$.
-Z tvrzení věty pak dostaneme \uv{existenci a jednoznačnost} řešení úlohy (\ref{eq:2.tipreseni_y(x)}), tedy i (\ref{eq:zadani_y(x)_vpravo}) na příslušném \uu{zkráceném} intervalu $[0,a]$
+Z tvrzení věty pak dostaneme \uv{existenci a jednoznačnost} řešení úlohy (\ref{eq:2.tipreseni_y(x)}), tedy i (\ref{eq:zadani_y(x)_vpravo}) na příslušném \emph{zkráceném} intervalu $[0,a]$
 tak, aby $a\norm{f}_\infty<1$. Toto je typický představitel tzv. vět o \uv{lokální} existenci řešení diferenciální rovnice. Nevýhoda tohoto tvrzení spočívá v tom, že tento interval existence řešení závisí na velikosti pravé strany $f$.
 
 Toto pozorování nám zároveň bude sloužit i jako poučení. Ukážeme nyní, že $ \map T $ splňuje podmínku (c) bez jakýchkoli požadavků na velikost $a$. Stačí nerovnosti zavést jemněji. Je 
 $$| \map T y(x)|\leq \int\limits_0^x|f(t)||y(t)|\d t\leq x\norm{f}_\infty\norm{y}_\infty,$$
-kde si všimněme, že zatím nehledáme $\sup\limits_{x\in[0,a]}$. Dále
+kde $\norm{f}_\infty = \underset{[0,x]}{\max} |f(t)|$ a $\norm{y}_\infty = \underset{[0,x]}{\max} |y(t)|$. Všimněme si, že zatím nehledáme $\sup\limits_{x\in[0,a]}$. Dále
 $$| \map T ^2y(x)|\leq\int\limits_0^x|f(t)|| \map T y(t)|\d t\leq \norm{f}^2_\infty\norm{y}_\infty\int\limits_0^xt\d t = \frac{x^2}{2}\norm{f}^2_\infty\norm{y}_\infty,$$
 odkud dostaneme indukcí
 $$| \map T ^jy(x)|\leq\frac{x^j}{j!}\norm{f}^j_\infty\norm{y}_\infty.$$
@@ -235,7 +236,7 @@ Až nyní nalezneme supremum a dostaneme
 $$\norm{ \map T ^jy}\leq\frac{a^j}{j!\norm{f}^j_\infty\norm{y}_\infty},$$ a tedy 
 $$\norm{ \map T ^j}=\sup\limits_{\norm{y}_\infty\leq 1}\norm{ \map T ^jy}\leq\frac{a^j}{j!}\norm{f}^j_\infty.$$
 Odtud $$\sum\limits_{j=0}^\infty\norm{ \map T ^j}\leq\exp(a\norm{f}_\infty)<\infty.$$
-Podmínka (b) je tedy splněna a my jsme dospěli k závěru, že pokud dokážeme Větu \ref{theorem:str14}, ukázali jsme zároveň existenci a jednoznačnost (klasického) řešení úlohy \ref{eq:zadani_y(x)_vpravo} pro libovolný (ale omezený) interval $[0,a]$, a pro libovolnou $f\in\mathcal{C}([0,a])$.
+Podmínka (b) je tedy splněna a my jsme dospěli k závěru, že pokud dokážeme Větu \ref{theorem:str14}, ukázali jsme zároveň existenci a jednoznačnost (klasického) řešení úlohy (\ref{eq:2.zadani_y(x)_vpravo}) pro libovolný (ale omezený) interval $[0,a]$, a pro libovolnou $f\in\mathcal{C}([0,a])$.
 
 \begin{proof}[Důkaz Věty \ref{theorem:str14}]
 Podle bodu 2 předchozí poznámky stačí ukázat, že tvrzení věty plyne  z předpokladu (c).
@@ -290,10 +291,10 @@ odkud $w=0$, a tedy $y=z$.
         &\map{Id}- \map T  \text{ je lineární a spojité} \\
         &\forall u\in X\;\;\exists ! y\in X, (\map{Id}-\map T)y=u
     \end{array}
-        \right \}=\map{Id}- \map T  \text{ je \uu{na} a \uu{prosté}}
+        \right \}=\map{Id}- \map T  \text{ je \emph{na} a \emph{prosté}}
     \end{split}
 \end{equation*}
-Zobrazení $u\mapsto y$ je tedy dobře definované zobrazení z $X$ do $X$. Označme jej $(\map{Id} - \map T )^{-1}$, tj $y=(\map{Id}- \map T )^{-1}$, $\forall u\in X$. Je lineární a prosté, nevíme nic o jeho spojitosti.
+Zobrazení $u\mapsto y$ je tedy dobře definované zobrazení z $X$ do $X$. Označme jej $(\map{Id} - \map T )^{-1}$, tj $y=(\map{Id}- \map T )^{-1} u$, $\forall u\in X$. Je lineární a prosté, nevíme nic o jeho spojitosti.
 Z \ref{eq:yn_suma} dostaneme 
 \begin{equation*}
     \begin{split}
@@ -304,16 +305,16 @@ Z \ref{eq:yn_suma} dostaneme
 tedy máme pro všechna $u\in X: (\map{Id}- \map T )^{-1}u=\sum_{j=0}^\infty  \map T ^ju$ neboli $(\map{Id}- \map T )^{-1}=\sum_{j=0}^\infty  \map T ^j$ ve smyslu rovnosti operátorů.
 
 Konečně, označme
-$$S_N\coloneqq \sum\limits_{j=0}^N  \map T ^j.$$
+$$S_N \circ \map T \coloneqq \sum\limits_{j=0}^N  \map T ^j.$$
 Pak 
-$$S_N\circ(\map{Id}- \map T )=\sum\limits_{j=0}^N  \map T ^j-\sum\limits_{j=0}^{N+1}  \map T ^j =  \map T ^0- \map T ^{N+1}=\map{Id}-\underset{0}{\underbrace{ \map T ^{N+1}}_{\big\downarrow}}$$
+$$S_N\circ(\map{Id}- \map T )=\sum\limits_{j=0}^N  \map T ^j-\sum\limits_{j=1}^{N+1}  \map T ^j =  \map T ^0- \map T ^{N+1}=\map{Id}-\underset{0}{\underbrace{ \map T ^{N+1}}_{\big\downarrow}}$$
 a podobně pro $(\map{Id}- \map T )\circ S_N$
 \end{proof}
 
 \begin{remark}
-Časem uvidíme, že platí: je-li operátor $ \map T :X\mapsto X$ lineární, omezený, prostý a na, pak jeho \uu{inverze} $ \map T ^{-1}$ (která existuje) je také \uu{lineární} a \uu{omezená}, tj. spojitá. To vnáší do naší úlohy tzv. prvek \uu{stability}. Je-li totiž inverzní operátor (v našem případě $(\map{Id}- \map T )^{-1}$ spojitý, pak to znamená, že pro 
+Časem uvidíme, že platí: je-li operátor $ \map T :X\mapsto X$ lineární, omezený, prostý a na, pak jeho \emph{inverze} $ \map T ^{-1}$ (která existuje) je také \emph{lineární} a \emph{omezená}, tj. spojitá. To vnáší do naší úlohy tzv. \emph{prvek stability}. Je-li totiž inverzní operátor (v našem případě $(\map{Id}- \map T )^{-1}$ spojitý, pak to znamená, že pro 
 $$u_n\xrightarrow{X}u\;\Rightarrow\; \underset{\quad\; y_n\;\xrightarrow{X}\;y}{\underbrace{(\map{Id}- \map T )^{-1}u_n}\xrightarrow{X}}(\map{Id}- \map T )^{-1}u,$$
-jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$} odpovídají \uv{blízká řešení}, či \uv{malé změny na pravé straně rovnice způsobují malé změny řešení}. Právě tomuto se říká \uu{stabilita řešení}.
+jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$ odpovídají blízká řešení}, či \uv{malé změny na pravé straně rovnice způsobují malé změny řešení}. Právě tomuto se říká \emph{stabilita řešení}.
 \end{remark}
 
 \Priklad{
@@ -327,12 +328,12 @@ jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$} odpovídají \uv{b
     \end{equation*}
     Úloha má dle předchozí teorie na libovolném $[0,a]$ jediné řešení. Můžeme ověřit, že funkce $y(x)=e^{-x^2/2}$ je tímto řešením.
     
-    Důkaz předchozí věty však také ukazuje, že toto řešení je možné získat formou iterací /tj. lze se k němu libovolě přiblížit). Uvažujme $y_0\equiv 0$ a napišme prvních pár iterací. Zdá se vám, že konverguje k $e^{-x^2/2}$? Určitě z toho plyne nějaké zajímavé poučení. \smiley{}
+    Důkaz předchozí věty však také ukazuje, že toto řešení je možné získat formou iterací (tj. lze se k~němu libovolě přiblížit). Uvažujme $y_0\equiv 0$ a napišme prvních pár iterací. Zdá se vám, že konverguje k $e^{-x^2/2}$? Určitě z toho plyne nějaké zajímavé poučení. \smiley{}
     
     Při $y_0=0$ dostáváme pro $y_5$
     \begin{equation*}
         \begin{split}
-            y_5(x) =&\cos  x  +\tfrac{164925}{2048} x \sin  x   - \tfrac{164925}{2048} x^2 \cos  x   -\tfrac{54975}{1024} x^3 \sin  x   +\tfrac{165437}{6144} x^4 \cos  x   +\tfrac{32383}{3072}  x^5 \sin  x-\tfrac{154871}{46080}  x^6 \cos  x   \\  &-\tfrac{143131 }{161280}x^7 \sin  x    +\tfrac{126481 }{645120}x^8 \cos  x    +\tfrac{12983}{362880}  x^9 \sin  x -\tfrac{18889 }{3628800}x^{10} \cos  x-\tfrac{7}{12960} x^{11} \sin  x+\tfrac{1}{31104}x^{12} \cos  x
+            y_5(x) =&\cos  x  +\tfrac{164925}{2048} x \sin  x   - \tfrac{164925}{2048} x^2 \cos  x   -\tfrac{54975}{1024} x^3 \sin  x   +\tfrac{165437}{6144} x^4 \cos  x   +\tfrac{32383}{3072}  x^5 \sin  x \\  &-\tfrac{154871}{46080}  x^6 \cos  x  -\tfrac{143131 }{161280}x^7 \sin  x    +\tfrac{126481 }{645120}x^8 \cos  x    +\tfrac{12983}{362880}  x^9 \sin  x -\tfrac{18889 }{3628800}x^{10} \cos  x \\&-\tfrac{7}{12960} x^{11} \sin  x+\tfrac{1}{31104}x^{12} \cos  x
         \end{split}
     \end{equation*}
 }
@@ -348,7 +349,7 @@ jinak řečeno, \uv{blízkým pravým stranám rovnice $u_n$} odpovídají \uv{b
 
 Budeme zkoumat operátorovou rovnici pro neznámé $x\in X$
 \begin{equation}
-    ( \map T -\lambda \map{Id})x=u\quad,\lambda\in \C,\;  \map T \in \lin(x),\;u\in X \text{ Banachův prostor}
+    ( \map T -\lambda \map{Id})x=u, \quad \lambda\in \C,\;  \map T \in \lin(x),\;u\in X \text{ Banachův prostor}
     \label{eq:zadani_vlCisla}
 \end{equation}
 Motivací k tomu je předchozí paragraf. Označme $ \map T_\lambda\coloneqq  \map T -\lambda\map{Id}$, pak $ \map T_\lambda\in \lin(X)\Leftrightarrow  \map T \in \lin(X)$.
@@ -361,14 +362,14 @@ Otázky řešitelnosti rovnice (\ref{eq:zadani_vlCisla}) lze přeformulovat v ř
     \centering
     \begin{tabular}{c|c}
          V řeči rovnic& V řeči operátoru  \\ \hline\hline
-         $\exists$ řešení pro libovolnou pravou stranu $u\in X$? & Je $ \map T_\lambda$ \uu{na}, tj je $ \mathcal{R}( \map T_\lambda)=X$?\\ \hline
-         Pokud řešení pro dané $u\in X$ existuje, je určeno jednoznačně? & Je $ \map T_\lambda$ \uu{prostý} na $X$?\\ \hline
-         Pokud $\forall u \in \mathcal{R}( \map T_\lambda)\exists! x\in X;\;  \map T_\lambda x=u$, \\je toto řešení \uu{stabilní}? (viz porn. níže)& Je-li $ \map T_\lambda$ prostý, je potom $ \map T_\lambda^{-1}$ spojitý na $\mathcal{R}( \map T_\lambda)$?
+         $\exists$ řešení pro libovolnou pravou stranu $u\in X$? & Je $ \map T_\lambda$ \emph{na}, tj je $ \mathcal{R}( \map T_\lambda)=X$?\\ \hline
+         Pokud řešení pro dané $u\in X$ existuje, je určeno jednoznačně? & Je $ \map T_\lambda$ \emph{prostý} na $X$?\\ \hline
+         Pokud $\forall u \in \mathcal{R}( \map T_\lambda)\:\exists! x\in X;\;  \map T_\lambda x=u$, \\je toto řešení \emph{stabilní}? (viz pozn. níže)& Je-li $ \map T_\lambda$ prostý, je potom $ \map T_\lambda^{-1}$ spojitý na $\mathcal{R}( \map T_\lambda)$?
     \end{tabular}
 \end{table}
 
 \begin{remark}
-Pod pojmem \uu{stabilní řešení} míníme (zjednodušeně) situaci, kdy v rovnici $ \map T_\lambda x=u$, která má jednoznačně určená řešení pro $\forall u\in \mathcal{U}(u_0)$ platí, že \uv{malé změny $u\in \mathcal{U}(u_0)$} mají za následek \uv{malé změny řešení}. To přesně odpovídá situaci, kdy je inverzní zobrazení $ \map T_\lambda^{-1}$ spojité na $\mathcal{U}(u_0)$. Tato vlastnost je velmi důležitá při hledání přibližného řešení. Při něm často aproximujeme pravou stranu $u$ nějakou \uv{jí blízkou pravou stranou} $\overline{u}$ a doufáme, že i řešení $\overline{x}$, které odpovídá pravé straně $\overline{u}$, bude blízké řešení $x$, odpovídajícímu pravé straně $u$. Pro \uu{nestabilní} operátory to však nemusí být pravda.
+Pod pojmem \emph{stabilní řešení} míníme (zjednodušeně) situaci, kdy v rovnici $ \map T_\lambda x=u$, která má jednoznačně určená řešení pro $\forall u\in \mathcal{U}(u_0)$ platí, že \uv{malé změny $u\in \mathcal{U}(u_0)$} mají za následek \uv{malé změny řešení}. To přesně odpovídá situaci, kdy je inverzní zobrazení $ \map T_\lambda^{-1}$ spojité na $\mathcal{U}(u_0)$. Tato vlastnost je velmi důležitá při hledání přibližného řešení. Při něm často aproximujeme pravou stranu $u$ nějakou \uv{jí blízkou pravou stranou} $\overline{u}$ a doufáme, že i řešení $\overline{x}$, které odpovídá pravé straně $\overline{u}$, bude blízké řešení $x$, odpovídajícímu pravé straně $u$. Pro \emph{nestabilní} operátory to však nemusí být pravda.
 \end{remark}
 
 \subsubsection{Podívejme se nejprve na situaci pro $\dim X=n\in \N$.}
@@ -376,13 +377,10 @@ Pod pojmem \uu{stabilní řešení} míníme (zjednodušeně) situaci, kdy v rov
 V konečné dimenzi je $ \map T \in \lin(X)\Leftrightarrow \exists$ matice $M\in \mathcal{M}^{n\times m}$ taková, že $ \map T (x)=Mx \;\;\forall x \in X$ (v $X$ volíme jednu pevnou bázi).
 
 Potom platí 
-%$$ Tady je někde chyba! Když se spustí, nekompiluje se
-%\begin{split}
-% \map T  \text{ je prostý } &\Leftrightarrow   \map T  \text{ je \uu{na} } \;\;\Leftrightarrow \;\;\; \underbrace{M \text{ reprezentující  \map T  \text{ je regulární.}}}_{ \Updownarrow}  \\  
-% \map T ^{-1} \text{ je prostý } &\Leftrightarrow  \map T ^{-1} \text{ je na} \Leftrightarrow \overbrace{M^{-1} \text{ je regulární a reprezentuje }  \map T ^{-1} }\text{ (tj }  \map T ^{-1} \text{ je lin. )}
-%\end{split}
-%$$
-
+\begin{align}
+\map T  \text{ je prostý } &\Leftrightarrow   \map T  \text{ je na } \;\;\Leftrightarrow \;\;\;\;\, \underbrace{M \text{ reprezentující }  \map T  \text{ je regulární.}}_{ \Updownarrow}  \\  
+ \map T ^{-1} \text{ je prostý } &\Leftrightarrow  \map T ^{-1} \text{ je na} \Leftrightarrow \overbrace{M^{-1} \text{ je regulární a reprezentuje }  \map T ^{-1} }\text{ (tj }  \map T ^{-1} \text{ je lin. )}
+\end{align}
 
 Protože v konečné dimenzi je každý lineární operátor spojitý, je i $ \map T ^{-1}\in\lin(X)$.
 
@@ -393,13 +391,13 @@ platí právě jedna z násludujících situací:
     \item $ \map T $ je prostý, na a má spojitou inverzi
     \item $ \map T $ není prostý, není na a nemá spojitou inverzi
 \end{enumerate}
-\uu{V nekonečné dimenzi} není obecně žádný vztah mezi \uu{prostotou} a zobrazením \uu{na}.
+V nekonečné dimenzi není obecně žádný vztah mezi prostotou a zobrazením na.
 
 \Priklad{
-Definujme prostor posloupností $l_2$
-$$L_2\coloneqq \Big\{ \{x_n\}_{n=1}^\infty,\; x_n\in\C;\;\sum\limits_{n=1}^\infty|x_n|^2<\infty\Big\}$$
+Definujme prostor posloupností $\ell_2$
+$$\ell_2\coloneqq \Big\{ \{x_n\}_{n=1}^\infty,\; x_n\in\C;\;\sum\limits_{n=1}^\infty|x_n|^2<\infty\Big\}$$
 
-Lze ukázat, že $l_2$ s normou $||\{x_n\}||^2_{l_2}\coloneqq \sum_{n=1}^\infty|x_n|^2$ je Banachův prostor (je dokonce Hilbertův, více později). Na $l_2$ definujme dva tzv. \uu{operátory posunu} (\uv{shift operators})
+Lze ukázat, že $\ell_2$ s normou $||\{x_n\}||^2_{\ell_2}\coloneqq \sum_{n=1}^\infty|x_n|^2$ je Banachův prostor (je dokonce Hilbertův, více později). Na $\ell_2$ definujme dva tzv. \emph{operátory posunu} (\uv{shift operators})
 \begin{equation*}
 \begin{split}
   A_1&: (x_1,x_2,x_3,\dots)\mapsto (0,x_1,x_2,x_3,\dots)\\
@@ -410,51 +408,72 @@ Lze ukázat, že $l_2$ s normou $||\{x_n\}||^2_{l_2}\coloneqq \sum_{n=1}^\infty|
 Evidentně
 \begin{equation*}
 \begin{split}
-  ||A_1x||_{l_2}=||x||_{l_2}&\Rightarrow ||A_1||=\sup\limits_{||x||\leq1}||A_1 x||=1\\
-  ||A_2x||_{l_2}=||x||_{l_2}&\Rightarrow ||A_2||\leq1,
+  ||A_1x||_{\ell_2}=||x||_{\ell_2}&\Rightarrow ||A_1||=\sup\limits_{||x||\leq1}||A_1 x||=1\\
+  ||A_2x||_{\ell_2}=||x||_{\ell_2}&\Rightarrow ||A_2||\leq1,
 \end{split}
 \end{equation*}
-tedy oa jsou omezené, tedy spojité, tedy $A_1,A_2\in \lin(L_2)$.
+tedy oba jsou omezené, tedy spojité, tedy $A_1,A_2\in \lin(\ell_2)$.
 
 Přitom \begin{itemize}
-    \item $A_1$ je \uu{prosté} (různým prvkům přiřadí různé prvky, ale není \uu{na} (nic se nezobrazí např. na $(1,0,0,\dots)$
-    \item $A_2$ je \uu{na}, ale \uu{není prostý} (rozmyslete).
+    \item $A_1$ je prosté, tedy různým prvkům přiřadí různé prvky, ale není na (nic se nezobrazí např. na $(1,0,0,\dots)$
+    \item $A_2$ je na, ale není prostý (rozmyslete).
 \end{itemize}
 }
-Nicméně, co se týče \uu{stability}, tak i v nekonečné dimenzi platí následující hluboká věta.
+\\
+Nicméně, co se týče stability, tak i v nekonečné dimenzi platí následující hluboká věta.
 \begin{theorem}[O spojitosti inverze bijektivního zobrazení]
 \label{theorem:str23}
-Nechť $X$ je Banachův prostor, $\map A\in \lin (X)$ je \uu{prosté} a \uu{na}. Potom $\map A^{-1}\in \lin (X)$, speciálně  $\map A^{-1}$ je spojité.
+Nechť $X$ je Banachův prostor, $\map A\in \lin (X)$ je prosté a na. Potom $\map A^{-1}\in \lin (X)$, speciálně  $\map A^{-1}$ je spojité.
 \end{theorem}
 
 \begin{proof}
 Plyne z věty o otevřeném zobrazení. Viz \textsc{Lukeš 4.13-4.16}.
 \end{proof}
 
-%Tímto se zdá, že problém \uu{stability} řešení je vyřešen: stačí \uu{prostora} a \uu{na}. Ano, pro lineární omezené (tj. spojité operátory tomu tak je. Ale např, pro lineární a nespojité, nebo pro nelineární operátory není situace tak jednoduchá.
+Tímto se zdá, že problém stability řešení je vyřešen: stačí prostota a na. Ano, pro lineární omezené (tj. spojité operátory tomu tak je. Ale např, pro lineární a nespojité, nebo pro nelineární operátory není situace tak jednoduchá.
     
 \subsubsection{Možné stavy operátoru}
-Buď $ \map T \in\lin(X)$, $X$ je Banachův, $\lambda\in\C,\;  \map T_\lambda\coloneqq  \map T -\lambda\map{Id} \in\lin(X)$. Pak v závislosti na $\lambda\in\C$ může operátor $ \map T_\lambda$ mít různé vlastnosti z hlediska jeho prostoty, spojitosti inverze a velikosti $\mathcal{R}( \map T_\lambda)$. Následující tabulka shrnuje všechny možnosti, přičemž dvě z nich nemohou nastat: ta, která je vyloučena větou \ref{theorem:str14} (označeno \uv{V1}) a ta, která je vyloučena lemmatem \ref{lemma1}, které zformulujeme a dokážeme za níže (označeno \uv{L1}).
+Buď $ \map T \in\lin(X)$, $X$ je Banachův, $\lambda\in\C,\;  \map T_\lambda\coloneqq  \map T -\lambda\map{Id} \in\lin(X)$. Pak v závislosti na $\lambda\in\C$ může operátor $ \map T_\lambda$ mít různé vlastnosti z hlediska jeho prostoty, spojitosti inverze a velikosti $\mathcal{R}( \map T_\lambda)$. Následující tabulka shrnuje všechny možnosti, přičemž dvě z nich nemohou nastat: ta, která je vyloučena větou \ref{theorem:str23} (označeno \uv{V1}) a ta, která je vyloučena lemmatem \ref{lemma1}, které zformulujeme a dokážeme za níže (označeno \uv{L1}).
 
 Tabulku je nutno chápat tak, že pomocí ní definujeme různé kategorie, do kterých může patřit parametr $\lambda\in\C$. Tedy např. levý horní roh tabulky je nutno číst takto: \uv{$\lambda\in\C$ je regulárním bodem $ \map T $, pokud $ \map T_\lambda$ je prosté, $ \map T_\lambda^{-1} $ spojité a $\mathcal{R}( \map T_\lambda)=X$}.
 
 \begin{table}[h!]
     \centering
-    \begin{tabular}{c||c|c|c}
-         & $\overbrace{\mathcal{R}( \map T_\lambda)=X}^{ \map T_\lambda \text{ je \uv{na}}}$   &  $\overbrace{\mathcal{R}( \map T_\lambda)\neq X,\; \overline{\mathcal{R}( \map T_\lambda)}=X}^{ \map T_\lambda \text{ není \uv{na} }}$ &  $\overbrace{\overline{\mathcal{R}( \map T_\lambda)}\neq X}^{ \map T_\lambda \text{ není \uv{na} }}$ \\ \hline\hline
-         $ \map T_\lambda \text{ prostý} \big\{ \exists  \map T_\lambda^{-1}$ a je spojitý & $\lambda$ je regulární bod $ \map T $ &  \diagbox{$L1$} &$\lambda\in\Sp_R( \map T )$ \\ \hline
-         $ \map T_\lambda \text{ prostý}\big\{\exists  \map T_\lambda^{-1}$ a není spoj. & \diagbox{$V1$} &  $\lambda\in \Sp_C( \map T )$ &$\lambda\in\Sp_R( \map T )$  \\ \hline
-         $ \map T_\lambda \text{ není prostý}\big\{\nexists  \map T_\lambda^{-1}$ & $\lambda\in\Sp_P( \map T )$ &  $\lambda\in\Sp_P( \map T )$ &$\lambda\in\Sp_P( \map T )$  \\
-    \end{tabular}
+    \begin{tabu}{c||c|c|c}
+         &
+         $\overbrace{\mathcal{R}( \map T_\lambda)=X}^{ \map T_\lambda \text{ je \uv{na}}}$
+         &
+         $\overbrace{\mathcal{R}( \map T_\lambda)\neq X,\; \overline{\mathcal{R}( \map T_\lambda)}=X}^{ \map T_\lambda \text{ není \uv{na} }}$
+         &
+         $\overbrace{\overline{\mathcal{R}( \map T_\lambda)}\neq X}^{ \map T_\lambda \text{ není \uv{na} }}$
+         \\
+         \hline\hline
+         $ \map T_\lambda \text{ prostý } \big( \exists  \map T_\lambda^{-1} \big)$ a je spojitý
+         & $\lambda$ je regulární bod $ \map T $
+         & \strike{|[0pt]c|}{L1}
+         & $\lambda\in\SpR( \map T )$
+         \\
+         \hline
+         $ \map T_\lambda \text{ prostý }\big(\exists  \map T_\lambda^{-1}\big)$ a není spoj.
+         & \strike{|[0pt]c|}{V1}
+         &  $\lambda\in \SpC( \map T )$
+         & $\lambda\in\SpR( \map T )$ 
+         \\
+         \hline
+         $ \map T_\lambda \text{ není prostý }\big(\nexists  \map T_\lambda^{-1}\big)$
+         & $\lambda\in\SpP( \map T )$
+         &  $\lambda\in\SpP( \map T )$
+         & $\lambda\in\SpP( \map T )$  \\
+    \end{tabu}
     \caption{Spektrální tabulka pro lineární omezené operátory v nekonečné dimenzi.}
     \label{tab:spektra}
 \end{table}
 
 \begin{remark}
 \begin{itemize}
-    \item $\Sp_C(\map T)$ \dots tzv. \uu{spojité spektrum} operátoru $ \map T $. Pokud $\lambda\in \Sp_C(\map T)$, tak rovnice $\map T_\lambda y=u$ nemá řešení pro každou pravou stranu $u\in X$ a každému $\epsilon>0$ existuje $u_\epsilon\in X$, $||u_epsilon-u||_X<\epsilon$ a přitom existuje řešení rovnice $\map T_\lambda y=u_\epsilon\in X$ (to je důsledek toho, že $\overline{\mathcal{R}( \map T_\lambda)}=X$). Někdy se jim říká \uv{skorořešení}. Zároveň však $ \map T_\lambda$ je nestabilní ($ \map T_\lambda^{-1}$ je nespojitý), takže nedává dobrý smysl se bavit o tom, co se děje s řešeními, když trochu měníme pravé strany $u_\epsilon$.
-    \item $\Sp_R( \map T )$ \dots tzv. \uu{reziduální spektrum}  $\map T$ . Protože $\overline{\mathcal{R}(\map T_\lambda)}\neq X$, nejsou k dispozici řešení pro velkou část $u\in X$
-    \item $\S_P$ \dots tzv. \uu{bodové spektrum} $ \map T $. $ \map T_\lambda$ není prostý, tj. 
+    \item $\SpC(\map T)$ \dots tzv. \emph{spojité spektrum} operátoru $ \map T $. Pokud $\lambda\in \SpC(\map T)$, tak rovnice $\map T_\lambda y=u$ nemá řešení pro každou pravou  $u\in X$, nicméně ke každému $\epsilon>0$ existuje $u_\epsilon\in X$, $\norm{u_\epsilon-u}_X<\epsilon$ a přitom existuje řešení rovnice $\map T_\lambda y=u_\epsilon\in X$ (to je důsledek toho, že $\overline{\mathcal{R}( \map T_\lambda)}=X$). Někdy se jim říká \uv{skorořešení}. Zároveň však $ \map T_\lambda$ je nestabilní ($ \map T_\lambda^{-1}$ je nespojitý), takže nedává dobrý smysl se bavit o tom, co se děje s řešeními, když trochu měníme pravé strany $u_\epsilon$.
+    \item $\SpR( \map T )$ \dots tzv. \emph{reziduální spektrum}  $\map T$ . Protože $\overline{\mathcal{R}(\map T_\lambda)}\neq X$, nejsou k dispozici řešení pro velkou část $u\in X$
+    \item $\SpP$ \dots tzv. \emph{bodové spektrum} $ \map T $. $ \map T_\lambda$ není prostý, tj. 
     $$\exists x_1\neq x_2,\;  \map T_\lambda x_1= \map T_\lambda x_2 $$
     def. $x\coloneqq x_1-x_2\neq 0$, tj. $\exists x\neq 0$ tak, že 
     \begin{equation*}
@@ -479,7 +498,7 @@ Nechť $X$ je Banachův prostor a $\map T \in \lin(X)$. Množinu $$ \Sp(\map T)\
 \uu{Pozorování:}
 \begin{itemize}
     \item $\lambda\in \Sp(\map T)\Leftrightarrow \map T_\lambda$ není prostý nebo není na
-    \item $\lambda$ regulární $\Leftrightarrow \map T_\lambda$ prostý, na (a pak už $\map T_\lambda^{-1}$ spojitý
+    \item $\lambda$ regulární $\Leftrightarrow \map T_\lambda$ prostý, na (a pak už $\map T_\lambda^{-1}$ spojitý)
     \item Ne každý prvek spektra $T$ je vlastním číslem.
 \end{itemize}
 
@@ -493,13 +512,14 @@ Konečně se dostáváme ke slíbenému lemmatu ze spektrální tabulky.
 \begin{lemma}[O nespojitosti inverze hustě definovaného injektivního operátoru]
 Nechť $X$ je Banachův prostor, $\map A \in \lin (X)$. Nechť dále platí \begin{enumerate}
     \item $\mathcal{R}(\map A)\neq X$, $\overline{\mathcal{R}(\map A)}=X$,
-    \item existuje $\map A^{-1}$ a $\mathcal{R}(\map A^{-1}) \mapsto X$ (tj. $\map A$ je prostý na $X$).
+    \item existuje $\map A^{-1}: \mathcal{R}(\map A) \to X$ (tj. $\map A$ je prostý na $X$). %TODO má tady být \to nebo \mapsto?
+    \label{lemma1}
 \end{enumerate}
 Pak $\map A^{-1}$ není spojitý.
 \end{lemma}
 
 \begin{proof}
-    Pro spor předpokládejme, že $\map A^{-1}$ je spojitý na $\mathcal{R}(\map A)$. Díky vlastnosti $\mathcal{R}(\map A) \neq X$ můžeme zvolit $y\in X\backslash \mathcal{R}(\map A) $ a díky vlastnosti $\overline{\mathcal{R}(\map A)}=X$ existuje posloupnost $\sequence{y_n}{n} \subset \mathcal{R}(\map A)$ taková, že $y_n \rightarrow y$. Navíc díky $\overline{\mathcal{R}(\map A)}=X$ umíme najít i posloupnost $\sequence{x_n}{n} \subset \mathcal{R}(\map A)$ takovou, že $\map A x_n = y_n$, což lze díky existenci inverze psát jako $x_n = \map A^{-1} y_n$. Díky spojitosti $\map A^{-1}$ a cauchoyvskosti $\sequence{y_n}{n}$ je posloupnost $\sequence{x_n}{n}$ cauchyovská. Díky úplnosti prostoru $X$ tato posloupnost konverguje, označme limitní prvek $x$. Pak díky linearitě a spojitosti $\map A$ můžeme psát \begin{align*}
+    Pro spor předpokládejme, že operátor $\map A^{-1}$ je spojitý na $\mathcal{R}(\map A)$. Díky vlastnosti $\mathcal{R}(\map A) \neq X$ můžeme zvolit $y\in X\backslash \mathcal{R}(\map A) $ a díky vlastnosti $\overline{\mathcal{R}(\map A)}=X$ existuje posloupnost $\sequence{y_n}{n} \subset \mathcal{R}(\map A)$ taková, že $y_n \rightarrow y$. Navíc díky $\overline{\mathcal{R}(\map A)}=X$ umíme najít i posloupnost $\sequence{x_n}{n} \subset \mathcal{R}(\map A)$ takovou, že $\map A x_n = y_n$, což lze díky existenci inverze psát jako $x_n = \map A^{-1} y_n$. Díky spojitosti $\map A^{-1}$ a cauchoyvskosti $\sequence{y_n}{n}$ je posloupnost $\sequence{x_n}{n}$ cauchyovská. Díky úplnosti prostoru $X$ tato posloupnost konverguje, označme limitní prvek $x$. Pak díky linearitě a spojitosti $\map A$ můžeme psát \begin{align*}
         \map Ax=A(\lim\limits_{n\rightarrow \infty} x_n)\overset{\map A \text{ spoj.}}{=} \lim\limits_{n\rightarrow \infty} \map A x_n = \lim\limits_{n\rightarrow \infty} y_n= y
     \end{align*}
     Protože $\exists x\in X,\; \map Ax=y$, je $y\in\mathcal{R}(\map A)$, což je spor s prvním (podtrženým) bodem.
@@ -509,8 +529,9 @@ Pak $\map A^{-1}$ není spojitý.
         \item $y_n\in\mathcal{R}(\map A) \Rightarrow \exists x_n\in X, \;\map A(x_n)=y_n \Rightarrow x_n=\map A^{-1}(y_n)$
        \item $y_n\in\mathcal{R}(\map A)\Rightarrow \exists x_n\in X,\; \map A(x_n)=y_n \Rightarrow x_n=\map A^{-1}(y_n)$
         \item $y_n$ konverguje v $X \Rightarrow y_n$ je Cauchyovská v $X \xRightarrow{A^{-1} \text{ spoj.}} x_n \text{ je Cauchyovská v } X \xRightarrow{X \text{ úplný}} \exists x\in X$, že  $x_n\rightarrow x$.
-        \item Potom ale
+        \item Potom ale $\map A x = \map A(\lim x_n)\overset{A \text{ spoj.}}{\;\;=\;\;} \lim \underbrace{\map A x_n}_{y_n} = \lim y_n = y$
     \end{itemize}
+Protože $\exists x\in X$ takové, že $\map A x=y$, je $y\in\mathcal{R}(\map A)$. Tím jsme dostali spor s prvním bodem výše.
 \end{proof}
 
 \begin{remark}[Tabulka \ref{tab:spektra} v konečné dimenzi]
@@ -520,7 +541,7 @@ Víme, že $\map T\in \lin(X);\; \dim X=n\in \N$ je reprezentován maticí $M\in
 Potom platí:
 \begin{equation*}
 \begin{split}
-    \map T \text{ je prostý }&\Leftrightarrow \map T \text{ je \uu{na} }\quad \Leftrightarrow\quad \;\; \underbrace{M \text{ je regulární}}_{\Updownarrow} \text{ a reprodukuje } \map T \\
+    \map T \text{ je prostý }&\Leftrightarrow \map T \text{ je na }\quad \Leftrightarrow\quad \;\; \underbrace{M \text{ je regulární}}_{\Updownarrow} \text{ a reprodukuje } \map T \\
    \map T^{-1}\text{ je prostý }&\Leftrightarrow \map T^{-1} \text{ je na }\Leftrightarrow M^{-1} \overbrace{\text{ je regulární}} \text{ a reprezentuje }\map T^{-1}
 \end{split}
 \end{equation*} 
@@ -546,35 +567,37 @@ Tabulku \ref{tab:spektra} tedy lze schematicky upravit do tvaru
         \item $\Sp(\map T)=\{ \lambda\in\C,\lambda$ je vlastní číslo $\map T\}=\{\lambda\in\C;\;\lambda$ je vl. číslo $M \}$.
     \end{enumerate}
 \item Nemůže obecně nastat
-\item Tento sloupec popisuje situaci $\mathcal{R}(\map T_\lambda)\neq X,\; \overline{\mathcal{R}(\map T_\lambda)}=X$. Ta však v konečné dimenzi nastat nemůže, protože v ní platí $\mathcal{R}(\map T_\lambda) = \overline{\mathcal{R}(\map T_\lambda)}$
-\item Fourth item
+\item Tento sloupec popisuje situaci $\mathcal{R}(\map T_\lambda)\neq X,\; \overline{\mathcal{R}(\map T_\lambda)}=X$. Ta však v konečné dimenzi nastat nemůže, protože v~ní platí $\mathcal{R}(\map T_\lambda) = \overline{\mathcal{R}(\map T_\lambda)}$
+\item Namůže nastat, jelikož pro $\dim X=n$ je $\map T$ je prostý $\Leftrightarrow \map T_\lambda$ je na.
 \end{enumerate}
 
 \end{remark}
 
 Následující věta ukazuje, že $\rho(\map T)$ je pro $\map T \in \lin(X)$ vždy konečný.
 \begin{theorem}
+\label{veta_neumanovarada}
 \label{theorem:str26}
     $X$ Banachův, $T\in \lin(X)$ (tj. $||T||<\infty$). Potom pro $|\lambda|>||\map T||$ platí
 
 \begin{align*}
-        &\circled{A}:\;\; \lambda \in \Sp(\map T)\text{, tj. } \lambda \text{ je regulární}  \\
-        &\circled{B}:\;\; (T-\lambda\map{Id})^{-1}=T_\lambda^{-1}=-\sum\limits_{k=0}^\infty\frac{T^k}{\lambda^{k+1}}\in\lin(X) 
+        &a):\;\; \lambda \notin \Sp(\map T)\text{, tj. } \lambda \text{ je regulární}  \\
+        &b):\;\; (T-\lambda\map{Id})^{-1}=T_\lambda^{-1}=-\sum\limits_{k=0}^\infty\frac{T^k}{\lambda^{k+1}}\in\lin(X) 
 \end{align*}
 \end{theorem}
 
 \begin{remark} \ph{.}
 \begin{itemize}
-    \item Z \circled{A} ihned plyne $\rho(\map T) \leq ||T||$.
-    \item Řada v \circled{B} se nazývá von Neumannova řada operátoru $\map T-\lambda \map{Id})$
+    \item Z a) ihned plyne $\rho(\map T) \leq ||T||$.
+    \item Řada v b) se nazývá von Neumannova řada operátoru $(\map T-\lambda \map{Id})$ %TODO co je to von Neumannova řada? Byla definovaná už předtím, trochu ale jinak.
 \end{itemize}
 \end{remark}
 \begin{proof}
-    Je-li $|\lambda|>||\map T||$, pak ještě $\lambda\neq0$. Položme $\map A\coloneqq\frac{1}{\lambda}\map T$. Potom $||\map A||=\frac{1}{|\lambda|}||\map T||<1$ a na $\map A$ můžeme použít větu \ref{theorem:str14}. To nám dá, že:
+    Je-li $|\lambda|>||\map T||$, pak jistě $\lambda\neq0$. Položme $\map A\coloneqq\frac{1}{\lambda}\map T$. Potom $||\map A||=\frac{1}{|\lambda|}||\map T||<1$ a na $\map A$ můžeme použít větu \ref{theorem:str14}. To nám dá, že:
     \begin{enumerate}[label*=.]
-        \item[\circled{A}] $\map{Id}-\map A$ je prostý a na $\Rightarrow \map T-\lambda\map{Id}=(-\lambda)(\map{Id}-\map A$ je prostý a na $\xRightarrow{\text{ věta \ref{theorem:str14}}} (\map T-\lambda\map{Id} )^{-1}$ je spojitý. Odtud je $\lambda$ regulární atd.
-        \item[\circled{B}] Věta \ref{theorem:str14} dá i 
+        \item[a)] $\map{Id}-\map A$ je prostý a na $\Rightarrow \map T-\lambda\map{Id}=(-\lambda)(\map{Id}-\map A)$ je prostý a na $\xRightarrow{\text{ věta \ref{theorem:str14}}} (\map T-\lambda\map{Id} )^{-1}$ je spojitý. Odtud je $\lambda$ regulární atd.
+        \item[b)] Věta \ref{theorem:str14} dá i 
         \begin{align*}
+            \\[-4em]
             (\map{Id}-\map A)^{-1}&=\sum_{k=0}^\infty \map A^k\\
             (\map{Id}-\frac{1}{\lambda} \map T)^{-1}&=\sum_{k=0}^\infty\frac{\map T^k}{\lambda^k} \Big/ \cdot (-1)\\
             \left(\frac{1}{\lambda}\map T-\map{Id} \right)^{-1}&=-\sum_{k=0}^\infty\frac{\map T^k}{\lambda^k} \Big/\cdot \frac{1}{\lambda} \quad pozor!\footnotemark\\
@@ -583,24 +606,23 @@ Následující věta ukazuje, že $\rho(\map T)$ je pro $\map T \in \lin(X)$ vž
       \end{enumerate}
     \footnotetext{Inverzní zobrazení k y=3x je y=x/3, tedy inverzní robrazení má hodnotu koeficientu převrácenou. Na levé straně rovnosti lze tedy (alternativně) postupovat:
            $$ \left( \frac{1}{\lambda} \map T-\map{Id} \right)^{-1}=\lambda (T-\lambda \map{Id})^{-1} \,, $$
-           a pak je jasné, proč musíme rovnici dělit $lambda$.}
+           a pak je jasné, proč musíme rovnici dělit $\lambda$.}
 \end{proof}
-
 \Priklad{
-Uvažujme $l_2\coloneqq \left \{ \{x_n\}_{n=1}^\infty,\; x_n\in\C,\;\sum\limits_{n=1}^\infty|x_n|^2<\infty \right \}$ prostor všech komplexních posloupností, které jsou tzv. \uv{sčítatelné s kvadrátem}. Platí, že $l_2$ se skalárním součinem $\innerprod{\{x_n\}}{\{y_n}\}_{l_2}=\sum\limits_{n=1}^\infty x_n\conj{y_n}$ (který indukuje normu $||\{x_n\}_{l_2}=\sqrt{\sum_{n=1}^\infty}|x_n|^2$) je úplný, a tedy Hilbertův (tj. i Banachův) prostor.
+Uvažujme $\ell_2\coloneqq \left \{ \{x_n\}_{n=1}^\infty,\; x_n\in\C,\;\sum\limits_{n=1}^\infty|x_n|^2<\infty \right \}$ prostor všech komplexních posloupností, které jsou tzv. \uv{sčítatelné s kvadrátem}. Platí, že $\ell_2$ se skalárním součinem $\innerprod{\{x_n\}}{\{y_n}\}_{\ell_2}=\sum\limits_{n=1}^\infty x_n\conj{y_n}$ (který indukuje normu $||\{x_n\}_{\ell_2}=\sqrt{\sum_{n=1}^\infty}|x_n|^2$) je úplný, a tedy Hilbertův (tj. i Banachův) prostor.
 
 Uvažujme operátor 
 \vspace*{-0.3cm}
 \begin{align*}
-    \map T&:l_2\rightarrow l_2\\
+    \map T&:\ell_2\rightarrow \ell_2\\
     \map T&:(x_1,x_2\dots,x_k,x_{k+1},\dots)\mapsto (0,x_1,x_2,\dots,x_{k-1},x_k,\dots).
 \end{align*}
-Protože $||\map T x ||_{l_2}=||x||_{l_2}$, je $||\map T||=\sup\limits_{||x||\leq1}||\map Tx||=\sup\limits_{||x||\leq1}||x||=1$.
+Protože $||\map T x ||_{\ell_2}=||x||_{\ell_2}$, je $||\map T||=\sup\limits_{||x||\leq1}||\map Tx||=\sup\limits_{||x||\leq1}||x||=1$.
 
 Tedy $\rho(\map T)\leq ||T||=1$, a proto $|\lambda|>1\Rightarrow \lambda$ je regulární. Celé spektrum $\map T$ tedy leží v jednotkovém kruhu v $\C$.
 
 \begin{itemize}
-    \item $\lambda=0$: Už víme, že $\map T$ \uu{není na}, je prostý. Zároveň je vidět, že žádný prvek z $l_2$ se pomocí $\map T$ nezobrazí na $(a,0,0,\dots)$, $a\in\C,\; a\neq 0$. Nelze tedy žádnou posloupností z $\mathcal{R}(\map T)$ dokonvergovat např. k prvku $(1,0,0,\dots$). Proto $\overline{\mathcal{R}(\map T)}\neq l_2$, odkud plyne $0\in \Sp_R(\map T)$ (plyne z tabulky \ref{tab:spektra}). 
+    \item $\lambda=0$: Už víme, že $\map T$ \uu{není na}, je prostý. Zároveň je vidět, že žádný prvek z $\ell_2$ se pomocí $\map T$ nezobrazí na $(a,0,0,\dots)$, $a\in\C,\; a\neq 0$. Nelze tedy žádnou posloupností z $\mathcal{R}(\map T)$ dokonvergovat např. k prvku $(1,0,0,\dots$). Proto $\overline{\mathcal{R}(\map T)}\neq \ell_2$, odkud plyne $0\in \Sp_R(\map T)$ (plyne z tabulky \ref{tab:spektra}). 
     \item $|\lambda|\leq 1,\; \lambda\neq 0$
 \end{itemize}
 
@@ -617,7 +639,7 @@ Tedy $\rho(\map T)\leq ||T||=1$, a proto $|\lambda|>1\Rightarrow \lambda$ je reg
         \item[ii)] $\lambda x_k=x_{k-1} \quad \forall k=2,3,4,\dots$
     \end{enumerate}
     Z i) plyne $x_1=0$ (neboť $\lambda\neq 0$), z ii) pak indukcí plyne $x_2=x_3=\dots=0$. Tedy $x=0$, což je však spor s tím, že by to měl výt vlastní vektor $\map T$.
-    \item Ukážeme, že $\map T_\lambda$ \uu{není na}, speciálně, že žádné $x\in l_2$ se nezobrazí na $(1,0,0,\dots)$. Nechť takové $x\in l_2$ existuje. Pak tedy
+    \item Ukážeme, že $\map T_\lambda$ \uu{není na}, speciálně, že žádné $x\in \ell_2$ se nezobrazí na $(1,0,0,\dots)$. Nechť takové $x\in \ell_2$ existuje. Pak tedy
     \vspace*{-0.5cm}
     \begin{align*}
         \underset{\rotatebox[origin=c]{90}{=}}{\map T_\lambda x} &= (1,0,0,\dots),\\[-7pt]
@@ -630,11 +652,10 @@ tedy $1=-\lambda x_1 \Rightarrow x_1=-\frac{1}{\lambda}$
 \begin{align*}
     k=1,2,3,\dots \quad x_k-\lambda x_{k+1}=0 \;\Rightarrow\; x_{k+1}=\frac{x_k}{\lambda} \;\Rightarrow\; x=\left(-\frac{1}{\lambda},-\frac{1}{\lambda^2},-\frac{1}{\lambda^3},\dots\right)\\
 \end{align*}
-\vspace*{-0.8cm}
 Zdánlivě jsme tedy takové $x$ našli, ale
-$$ ||x||_{l_2}^2=\sum\limits_{k=1}^\infty\frac{1}{\lambda^{2k}}=\infty,$$
+ $||x||_{\ell_2}^2=\sum\limits_{k=1}^\infty\frac{1}{\lambda^{2k}}=\infty,$
 neb jde o geometrickou řadu s kvocientem $1/\lambda^2$, pro který $|\lambda|\leq 1 \Rightarrow |1/\lambda^2|\geq 1$.
-Protože $\map T_\lambda$ je lineární a $(1,0,0,\dots)\notin \mathcal{R}(\map T_\lambda)$, tak platí také $(a,0,0,\dots \notin \mathcal{R}(\map T_\lambda)\; \forall a \in \C,\;a\neq0\;\Rightarrow\;\overline{\mathcal{R}(\map T_\lambda)}\neq l_2$.
+Protože $\map T_\lambda$ je lineární a $(1,0,0,\dots)\notin \mathcal{R}(\map T_\lambda)$, tak platí také $(a,0,0,\dots \notin \mathcal{R}(\map T_\lambda)\; \forall a \in \C,\;a\neq0\;\Rightarrow\;\overline{\mathcal{R}(\map T_\lambda)}\neq \ell_2$.
 
 Pohybujeme se tedy v posledním sloupci tabulky \ref{tab:spektra}, $\forall \lambda \neq0,\; |\lambda|\leq1$. Protože však současně žádné takové $\lambda$ není vlastním číslem, je $\lambda \in \Sp_R(\map T)$ pro všechna taková $\lambda$. \footnote{To by šlo také nezávisle ukázat tak, že bychom ukázali prostotu $\map T_\lambda$. Zkuste si.)}
 
@@ -646,21 +667,21 @@ Pohybujeme se tedy v posledním sloupci tabulky \ref{tab:spektra}, $\forall \lam
 
 Zkuste spektrálně analyzovat
 \begin{enumerate}[a)]
-\item Mějme operátor $\map T: l_2\rightarrow l_2$
+\item Mějme operátor $\map T: \ell_2\rightarrow \ell_2$
 
       $\quad\qquad (x_1,x_2,x_3,\dots)\mapsto \left(x_2,\frac{x_3}{2},\frac{x_4}{3},\frac{x_5}{4},\dots\right)$
       Zkuste navíc rozmyslet, jaká je $||T||$.
       
       
-    \textcolor{gray}{\uu{Řešení:} $\map T\in \lin(l_2), \; \Sp(\map T)=\Sp_P(\map T=\{0\},\; \Sp_R(\map T)=\emptyset,\; \Sp_C(\map T)=\emptyset $}
+    \textcolor{gray}{\uu{Řešení:} $\map T\in \lin(\ell_2), \; \Sp(\map T)=\Sp_P(\map T=\{0\},\; \Sp_R(\map T)=\emptyset,\; \Sp_C(\map T)=\emptyset $}
    
-   \item Mějme operátor $\map T: l_2\rightarrow l_2$
+   \item Mějme operátor $\map T: \ell_2\rightarrow \ell_2$
 
       $\quad\qquad (x_1,x_2,x_3,\dots)\mapsto \left(0,x_1,\frac{x_2}{2},\frac{x_3}{3},\frac{x_4}{4},\dots\right)$
 Zkuste navíc rozmyslet, jaká je $||T||$ a zda $0\in \Sp_C(\map T)$, nebo $0\in \Sp_R(\map T)$.
       
       
-    \textcolor{gray}{\uu{Řešení:} $\map T\in \lin(l_2), \; \Sp(\map T)=\{0\},\; \Sp_P(\map T)=\emptyset,\; \Sp_C(\map T)=\emptyset $}
+    \textcolor{gray}{\uu{Řešení:} $\map T\in \lin(\ell_2), \; \Sp(\map T)=\{0\},\; \Sp_P(\map T)=\emptyset,\; \Sp_C(\map T)=\emptyset $}
 \end{enumerate}
 
 

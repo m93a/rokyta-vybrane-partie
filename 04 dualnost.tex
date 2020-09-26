@@ -14,24 +14,27 @@
 \subsection{Duál a dualita}
 
 \begin{definition}[Duál]
-Buď $X$ Banachův prostor. Prostor $X' \coloneqq \lin(X,\C)$ \hspace{0.5em} (resp. $\lin(X, \R)$) nazýváme topologickým duálem k $X$.
+Buď $X$ Banachův prostor. Prostor $X' \coloneqq \lin(X,\K)$ %\hspace{0.5em}
+nazýváme topologickým duálem k $X$.
+%Nechápu, proč tady byl hspace? -J
+
 \end{definition}
 
 \begin{remark} \ph{.}
 \begin{itemize}
-    \item Prostor $X'$ je tedy tvořen všemi spojitými lineárními funkcionály, spojitost uvažujeme ve smyslu \begin{align*}
+    \item Prostor $X'$ je tedy tvořen všemi spojitými lineárními funkcionály, přičemž spojitost uvažujeme ve smyslu \begin{align*}
         x_n \xrightarrow{X} x \implies \map T x_n \to \map T x \quad \text{pro všechna } \map T \in X' \:.
     \end{align*}
     \item Víme, že jsou-li $X,Y$ normované prostory a $Y$ je Banachův, pak i $\lin (X,Y)$ je Banachův. Proto je $X'$ automaticky Banachovým prostorem.
     \item Je-li $\map T \in X'$, pak jeho norma je přirozeně $\norm{\map T}_{X'} := \underset{\norm{x}_X \leq 1}{\sup} |\map Tx|$.
-    \item Topologický duál není totéž, co \uu{vektorový duál} (pouze lineární zobrazení $X \to \C$ ($\R$), nevyžaduje spojitost). Prvků vektorového duálu je víc (o ony „nespojité“). V konečné dimenzi pro $X$ Banachův je vektorový duál vždy topologickým duálem.
+    \item Topologický duál není totéž, co \uu{vektorový duál} (pouze lineární zobrazení $X \to \K$, nevyžaduje spojitost). Prvků vektorového duálu je víc (o ony „nespojité“). V konečné dimenzi pro $X$ Banachův je vektorový duál vždy topologickým duálem.
 \end{itemize}
 \end{remark}
 
 
 \begin{definition}[Dualita]
-Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \mapsto \C$ nazveme dualitou, jestliže splňuje vlastnosti: \begin{enumerate}
-    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z), \;\; \map S(z,\alpha x + \beta y) = \conj{\alpha} \map S(z,x) + \conj{\beta} \map S(z,y)$.
+Nechť $X$ je Banachův a $X'$ jeho duál. Zobrazení $\map S : X \times X' \to \C$ nazveme dualitou, jestliže splňuje vlastnosti: \begin{enumerate}
+    \item sekvilinearita: $\map S(\alpha x + \beta y, z) = \alpha \map S(x,z) + \beta \map S(y,z), \;\; \map S(z,\alpha x + \beta y) = \conj{\alpha} \map S(z,x) + \conj{\beta} \map S(z,y)$,
     
     \item spojitost: $\map S(x_n,y_n) \rightarrow \map S(x,y) \quad \text{kdykoliv } (x_n,y_n) \rightarrow (x,y) \text{ v } X \times X'$.
 \end{enumerate}
@@ -39,7 +42,7 @@ Někdy píšeme $\map S(x, \map T) = \duality{x}{\map T}$. Obecně je často $\d
 \end{definition}
 
 \begin{remark}
-Jsme-li v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v následujícím), pak roli duality hraje skalární součin. Ztotožněním prostorů myslíme následující: píšeme $X \simeq Y$, jestliže existuje zobrazení $\map D: X \mapsto Y$, které je izometrické a izomorfní, tj. zachovává normu a je bijektivní.
+Pokud se nám podaří v nějakém smyslu schopni ztotožnit prostory $X$ a $X'$ (uvidíme v následujícím), pak roli duality hraje skalární součin. Ztotožněním prostorů myslíme následující: píšeme $X \simeq Y$, jestliže existuje zobrazení $\map D: X \to Y$, které je izometrické a izomorfní, tj. zachovává normu a je bijektivní.
 \end{remark}
 
 \begin{example}
@@ -81,7 +84,7 @@ viz Lukeš 2.9
 \end{proof}
 
 \begin{corollary}
-Zobrazení $\map T \mapsto f$ je izometrický izomorfismus (zachovává normu a je bijektivní). Proto pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$.
+Zobrazení $\map T: x \mapsto f$ je izometrický izomorfismus (zachovává normu a je bijektivní). Proto pro všechny Hilbertovy prostory $H$ můžeme provést ztotožnění $H' \simeq H$. %TODO tento odstavec je možná špatně
 \end{corollary}
 
 % ALERT ALERT TOHLE JE V POZNÁMKÁCH ŠPATNĚ
@@ -137,7 +140,8 @@ $$\norm{\map T}_{X'} = \sup_{\norm{x}_X \leq 1} |\map T(x)|.$$
 Dále víme, že $|\map T(x)| \leq \norm{\map T} \norm{x}_X$. 
 \end{remark}
 
-Uvažujme nyní funkcionál $\map T \in X'$ takový, že $\norm{\map T}_{X'} \leq 1$. Pak jistě platí $|\map T x| \leq \norm{x}_X$ a po přechodu k supremu i \begin{align*}
+Uvažujme nyní funkcionál $\map T \in X'$ takový, že $\norm{\map T}_{X'} \leq 1$. Pak jistě platí $|\map T x| \leq \norm{x}_X$ a po přechodu k supremu i
+\begin{align*}
     \sup_{\norm{\map T}_{X'} \leq 1} |\map T(x)| \leq \norm{x}_X \:.
 \end{align*}
 Následující věta ukazuje, že platí dokonce \textit{rovnost}: \begin{align*}
@@ -156,7 +160,7 @@ viz Taylor, str. 181
 \subsection{Duální zobrazení, duální operátor}
 
 \begin{definition}[Duální zobrazení]
-Nechť $X,Y$ jsou Banachovy prostory, $\map T \in \lin (X,Y)$, $\map T' : Y' \mapsto X'$. Řekneme, že $\map T'$ je duální zobrazení k $\map T$, jestliže \begin{align*}
+Nechť $X,Y$ jsou Banachovy prostory, $\map T \in \lin (X,Y)$, $\map T' : Y' \to X'$. Řekneme, že $\map T'$ je duální zobrazení k $\map T$, jestliže \begin{align*}
     \map T' \circ \map y' = \map y' \circ \map T' \quad \text{pro všechna } \map y' \in Y' \:,
 \end{align*}
 neboli \begin{align*}
@@ -215,7 +219,7 @@ $$ X \simeq X'' \quad \text{a} \quad Y \simeq Y'' \: . $$
 To by mohlo platit pro Hilbertovy prostory, kde je dokonce už i $X' \simeq X$. Obecně k danému $\map T$ nemusí vždy existovat $\map T'$, výše uvedené vlastnosti platí pouze v případě, že existuje. Ale v  Hilbertově prostoru je opět situace příznivější.
 
 \begin{theorem}[O duálním zobrazení mezi Hilbertovými prostory]
-Nechť $H_1, H_2$ jsou Hilbertovy prostory a $\map T \in \lin(H_1, H_2)$. Pak existuje právě jedno zobrazení $\map T' : H_2 \mapsto H_1$ takové, že 
+Nechť $H_1, H_2$ jsou Hilbertovy prostory\\ a~$\map T \in \lin(H_1, H_2)$. Pak existuje právě jedno zobrazení $\map T' : H_2 \to H_1$ takové, že 
 \begin{align} \label{eq4.dualHilbert}
     (\map T x, y)_{H_2} = (x, \map T'y)_{H_1} \quad \text{pro všechna } x \in H_1, \; y \in H_2 \:.
 \end{align}
@@ -328,9 +332,9 @@ Nechť $H$ je Hilbertův prostor a $\map T \in \lin (H)$ je samoadjungovaný ope
 \end{theorem} 
 
 % tohle v Rokytovi není
-\begin{exercise}
-Nechť $\mathbb{A} \in \R^{n \times n}$ je reálná symetrická matice, $x \in \R^n$ a $f(x) = (\mathbb{A} x,x) = \sum_{i,j} a_{ij} x_i x_j$. Určete minimum a maximum $f$ za podmínky $\norm{x} =1$.
-\end{exercise}
+\Cviceni{
+Nechť $\mathbb{A} \in \R^{n \times n}$ je reálná symetrická matice, $x \in \R^n$ a $f(x) = (\mathbb{A} x,x) = \sum_{i,j} a_{ij} x_i x_j$. Určete minimum a~maximum $f$ za podmínky $\norm{x} =1$.
+}
 
 \subsection{Kompaktní samoadjungované operátory na Hilbertových prostorech}
 
@@ -414,7 +418,7 @@ Nechť $H$ je Hilbertův prostor. Pak jsou následující tvrzení ekvivalentní
 
 Nyní jsme připraveni dokázat klíčovou větu této kapitoly.
 \begin{theorem}[Hilbertova-Schmidtova] \label{4.Hilbert-Schmidt}
-Nechť $H$ je Hilbertův prostor, $\map K$ je kompaktní samoadjungovaný operátor na $H$. Označme $\Lambda$ uzavřený podprostor $H$ generovaný všemi vlastními vektory $\map K$, které odpovídají všem nenulovým vlastním číslům $\map K$. Pak \begin{align*}
+Nechť $H$ je Hilbertův prostor, $\map K$ je kompaktní samoadjungovaný operátor na~$H$. Označme $\Lambda$ uzavřený podprostor $H$ generovaný všemi vlastními vektory $\map K$, které odpovídají všem nenulovým vlastním číslům $\map K$. Pak \begin{align*}
     H = \Lambda \oplus \Ker \map K \:.
 \end{align*}
 \end{theorem}
@@ -469,10 +473,11 @@ vidíme, že musí nutně platit $\map K y \in \Lambda^\bot$. Tím jsme dokázal
 Definujme zúžení operátoru $\map K$ předpisem \begin{align*}
     \map{\tilde K} := \map K|_{\Lambda^\bot}
 \end{align*}
-Protože $\map K(\Lambda^\bot) \subset \Lambda^{\bot}$, platí $\map{\tilde K} : \Lambda^{\bot} \mapsto \Lambda^{\bot}$. Tedy $\map{\tilde K}$ je také kompaktní a samoadjungovaný operátor na $\Lambda^{\bot}$.
+Protože $\map K(\Lambda^\bot) \subset \Lambda^{\bot}$, platí $\map{\tilde K} : \Lambda^{\bot} \to \Lambda^{\bot}$. Tedy $\map{\tilde K}$ je také kompaktní a samoadjungovaný operátor na $\Lambda^{\bot}$.
 
-Ukážeme sporem, že $\map{\tilde K}$ nemá žádné nenulové vlastní číslo. Nechť platí negace tohoto výroku a existuje vlastní číslo $\lambda \neq 0$ a vlastní vektor $y \in \Lambda^{\bot} , y \neq 0$ takové, že $ \map{\tilde K} y = \lambda y$. Díky samoadjungovanosti je pak \begin{align*}
-    \map K y = \map{\tilde K} y = \lambda y
+Ukážeme sporem, že $\map{\tilde K}$ nemá žádné nenulové vlastní číslo. Nechť platí negace tohoto výroku a existuje vlastní číslo $\lambda \neq 0$ a vlastní vektor $y \in \Lambda^{\bot} , y \neq 0$ takové, že $ \map{\tilde K} y = \lambda y$. Díky samoadjungovanosti je pak
+\begin{align*}
+    \map K y = \map{\tilde K} y = \lambda y\:,
 \end{align*}
 a tedy $\lambda$ je i vlastní číslo operátoru $\map K$. Podle druhé části důkazu je ale potom $y \in \Lambda$. Tedy $y \in \Lambda \cap \Lambda^\bot$, což implikuje $y=0$ a to je ve sporu s předpoklady.
 

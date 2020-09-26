@@ -1,4 +1,5 @@
 % !TEX program = xelatex
+% progress: https://docs.google.com/spreadsheets/d/1RxT90tklx9YeIIiCuYHCz9O3ZGvlkwxPVEEbBDLG_yc/edit#gid=0
 
 \documentclass{article}
 \usepackage[utf8]{inputenc}
@@ -8,21 +9,30 @@
 \usepackage[top = 2cm, bottom = 2cm, left = 2cm, right = 2cm]{geometry}
 \usepackage{calc} % pro \mask
 
+\usepackage{hyperref}
+\usepackage{float} % pozice obr.
+
+%odstraní ošklivou tečku: Poznámka místo Poznámka., nedestruktivně koliduje s \usepackage[hidelinks]{hyperref}, tak jsem to zakomentoval
+\usepackage{xpatch}
+\makeatletter
+\AtBeginDocument{\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}}
+\makeatother
+
 \renewcommand{\baselinestretch}{1.2} % výška řádku
 
 \setcounter{secnumdepth}{2} % aby se \subsubsection nečíslovalo
 
 \usepackage{amsmath}
 \numberwithin{equation}{section} % číslování rovnic
+%\usepackage{MnSymbol} %Odstranil jsem tento balíček, neboť s ním je symbol pro prázdnou množinu stejný jako symbol pro průměr (https://mirrors.nic.cz/tex-archive/fonts/mnsymbol/MnSymbol.pdf dokumentace)
 \usepackage{amssymb}
-\usepackage{mathtools}
 \usepackage{amsthm}
+\usepackage{mathtools}
 \usepackage{xcolor} % barvičky v rovnicích
 \usepackage{mathrsfs} % pro spojité operátory \mathsrc{L}
 \usepackage[shortlabels]{enumitem} % enumerate a),b)..., pokračování v seznamu [resume]
-\usepackage{MnSymbol,wasysym} % smajlíci jsou důležití
-\usepackage{diagbox} %škrtání políček v tabulce \diagbox{$a_i$}{$b_j$}
-\usepackage[hidelinks]{hyperref} %Dobrá praxe tento balíček nahrát jako poslední.
+\usepackage{wasysym} % smajlíci jsou důležití
+%\usepackage[hidelinks]{hyperref} %Dobrá praxe tento balíček nahrát jako poslední.
 \usepackage{tikz}
 \usepackage{enumitem}
 \newcommand{\e}[1]{\const{e}^{#1}}
@@ -54,7 +64,7 @@
     \mathord{\makebox[\widthof{\(#1\)}]{\(#2\)}}%
 }
 
-\title{Vybrané partie z funkcionální analýzy}
+\title{Funkcionální analýza z rychlíku}
 \author{Mirko Rokyta (do {\TeX}u přepsal kol.)}
 \date{Srpen 2020}
 
@@ -69,6 +79,7 @@
 \newtheorem{corollary}[theorem]{Důsledek}
 \newtheorem*{exercise}{Cvičení}
 
+
 \newcommand{\lboxed}[1]{\begin{tabular}{|l}#1\end{tabular}}
 
 \newcommand{\Priklad}[1]{
@@ -76,6 +87,15 @@
     \noindent
     \lboxed{
     \fbox{\textbf{Příklad}} \;
+    \parbox[t]{\textwidth - 7em}{#1}
+    }
+    \bigskip
+}
+\newcommand{\Bonus}[1]{
+    \bigskip
+    \noindent
+    \lboxed{
+    \fbox{\textbf{Bonus}} \;
     \parbox[t]{\textwidth - 7em}{#1}
     }
     \bigskip
@@ -91,6 +111,7 @@
 \noindent\uu{Pozn.}: }
 
 
+
 % Konstanty
 \newcommand{\const}[1]{\mathrm{#1}}
 % Norma
@@ -100,10 +121,13 @@
 % Skalární součin a symetrie
 \newcommand{\innerprod}[2]{\big( #1, #2 \big)}
 \newcommand{\duality}[2]{\big< #1, #2 \big>}
+% obor hodnot (range) operátoru
+% definiční obor operátoru
+\newcommand{\domain}{\mathcal{D}}
 % Spojité operátory
 \newcommand{\lin}{\mathscr{L}}
 % Kompaktní operátory
-\newcommand{\comp}{\mathscr{C}}
+\newcommand{\comp}{\mathscr{K}}
 % Zobrazení
 \newcommand{\map}[1]{\boldsymbol{#1}}
 % Posloupnost
@@ -115,6 +139,10 @@
 \newcommand{\Lin}{\operatorname{Lin}\,}
 \newcommand{\Ker}{\operatorname{Ker}\,}
 \newcommand{\Res}{\operatorname{Res}\,}
+\newcommand{\Span}{\operatorname{Span}\,}
+\newcommand{\GRR}{\operatorname{GRR}}
+\newcommand{\st}{\operatorname{st}\,} %stupeň
+\newcommand{\erf}{\operatorname{erf}\,}
 \newcommand{\Id}{\mathrm{Id}}
 
 % Diferenciál a derivování
@@ -122,9 +150,50 @@
 \newcommand{\dd}[2]{\frac{\const{d} #1}{\const{d} #2} \;}
 \newcommand{\pd}[2]{\frac{\partial  #1}{\partial  #2} \;}
 
-%random pomůcky
+%%random pomůcky
+%písmeno v kružnici
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+%boxíky na zdůraznění rovnic, pokud to nebude vypadat dobře, tak můžem využít \Aboxed{rovnice} (\boxed zlobí v \align
+\usepackage{empheq}
+\usepackage{xcolor}
+\definecolor{lightgreen}{HTML}{f2f2f2}
+\newcommand{\coloredeq}[2]{\begin{empheq}[box=\colorbox{lightgreen}]{align}\label{#1}#2\end{empheq}}
+
+
+%škrtání políček v tabulkách, je třeba používat tabu místo tabular, pak funguje \strike{|[0pt]c|}{b)}
+\usetikzlibrary{calc}
+\usepackage{zref-savepos}
+\usepackage{tabu}
+
+\newcounter{NoTableEntry}
+\renewcommand*{\theNoTableEntry}{NTE-\the\value{NoTableEntry}}
+
+\newcommand*{\strike}[2]{%
+  \multicolumn{1}{#1}{%
+    \stepcounter{NoTableEntry}%
+    \vadjust pre{\zsavepos{\theNoTableEntry t}}% top
+    \vadjust{\zsavepos{\theNoTableEntry b}}% bottom
+    \zsavepos{\theNoTableEntry l}% left
+    \hspace{0pt plus 1filll}%
+    #2% content
+    \hspace{0pt plus 1filll}%
+    \zsavepos{\theNoTableEntry r}% right
+    \tikz[overlay]{%
+      \draw
+        let
+          \n{llx}={\zposx{\theNoTableEntry l}sp-\zposx{\theNoTableEntry r}sp-\tabcolsep},
+          \n{urx}={\tabcolsep},
+          \n{lly}={\zposy{\theNoTableEntry b}sp-\zposy{\theNoTableEntry r}sp},
+          \n{ury}={\zposy{\theNoTableEntry t}sp-\zposy{\theNoTableEntry r}sp}
+        in
+        (\n{llx}, \n{lly}) -- (\n{urx}, \n{ury})
+      ;
+    }% 
+  }%
+}
+
+
 
 
 \begin{document}
@@ -132,6 +201,8 @@
 \maketitle
 
 \input{00 znaceni}
+\tableofcontents
+\newpage
 \input{01 operatorova trivia}
 \input{02 zaklady spektralni analyzy}
 \input{03 kompaktni operatory}
@@ -139,5 +210,12 @@
 \input{05 neomezene operatory}
 \input{06 linearni diferencialni operatory}
 
+%TODO nahradit hermitovský slovem hermiteovský?
+
 
 \end{document}
+
+%Typo konvence:
+%-Mezera za rovnicí je \:, nikoliv \,.
+%-Seznamy se berou jako pokračování věty, pokud to dává smysl. Pokud se jedná o výčet nezapadající do věty (jako např. tento seznam), tak jednotlivé věty končí na tečku, kde to jen jde. Sice na tečku končit nemusí, ale zas by bylo divné mít bod, u kterého jen koncová věta nemá tečku, a pak se musí tečka psát už všude.
+%chtělo by to místo  \uu používat \emph, kde to jen jde. Nebo nezvýrazňovat vůbec

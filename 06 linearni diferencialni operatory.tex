@@ -1,16 +1,16 @@
 \section{Lineární diferenciální operátory}
 
-V této kapitole zavedeme speciální případ lineárních neomezených operátorů, lineární diferenciální operátory, k nimž budeme generovat báze v polynomiálním tvaru.
+V této kapitole zavedeme speciální případ lineárních neomezených operátorů, lineární diferenciální operátory, k~nimž budeme generovat báze v polynomiálním tvaru.
 
 \subsection{Výrazy v samoadjungovaném tvaru}
 
 \begin{definition}[Lineární diferenciální výraz n-tého řádu]
-Mějme $-\infty \leq a < b \leq \infty$, $y \in \mathcal{C}^n (a, b)$, 
+Mějme $-\infty \leq a < b \leq \infty$, $y \in \mathcal{C}^n (a, b)$.
 Lineárním diferenciálním výrazem n-tého řádu nazveme výraz
 \begin{equation}
     l(y) = \sum_{k=0}^{n} p_k (x) y^{(k)},
 \end{equation}
-kde $p_k(x) \in \mathcal{C}(a, b)$ a platí $p_n \not\equiv 0$ na $(a, b)$.
+kde $\forall k$ je $p_k \in \mathcal{C}(a, b)$ a platí $p_n \not\equiv 0$ na $(a, b)$.
 \end{definition}
 
 \begin{remark}
@@ -18,22 +18,22 @@ kde $p_k(x) \in \mathcal{C}(a, b)$ a platí $p_n \not\equiv 0$ na $(a, b)$.
 \end{remark}
 
 \begin{definition}[Lineární diferenciální operátor]
-Pojmem lineární diferenciální operátor n-tého řádu $\map L$ myslíme příslušný lineární
+Pojmem lineární diferenciální operátor $\map L$ n-tého řádu myslíme příslušný lineární
 diferenciální výraz $l(y)$ na určitém definičním oboru, tedy
 \begin{align*}
-    \map L = l \rvert_{\mathcal{D}(\map L)}
+    \map L = l \rvert_{\domain(\map L)}
 \end{align*}
 \end{definition}
 
-Budeme chtít aby $\map L$ byl hustě definovaný v Hilbertově prostoru $H$, tedy $\mathcal{D}(\map L) \neq H$, $\overline{\mathcal{D}(\map L)} = H$.
-Typicky budeme mít $\mathcal{D}(\map L) = \left(H \cap \mathcal{C}^n (a,b)\right)$.
+Budeme chtít aby $\map L$ byl hustě definovaný v Hilbertově prostoru $H$, tedy $\domain(\map L) \neq H$, $\overline{\domain(\map L)} = H$.
+Typicky budeme mít $\domain(\map L) = \left(H \cap \mathcal{C}^n (a,b)\right)$.
 
 Víme, že symetrie je nutnou podmínkou k samoadjungovanosti. Dále budeme hledat další
 nutné podmínky samoadjungovanosti, resp. symetrie a budeme pracovat na mnohem menším prostoru $\mathcal{C}^{\infty}_{cpt} (a,b)$, tedy nekonečněkrát diferencovatelné funkce
 s kompaktním nosičem.
 \begin{remark}
     Díky tomuto přístupu se při provádění per partes nemusíme zabývat okrajovými členy
-    jelikož všechny funkce z uvažovaného prostoru $\mathcal{C}^{\infty}_{cpt} (a,b)$ (a jejich derivace) jsou na nějákém okolí krajních bodů nulové. Toto zjednodušení si můžeme dovolit protože hledáme nutné podmínky samoadjungovanosti, resp. symetrie. Pokud operátor nebude splňovat podmínky pro takto "hezké" funkce, nemůže je splňovat pro žádný jiný definičný obor.
+    jelikož všechny funkce z uvažovaného prostoru $\mathcal{C}^{\infty}_{cpt} (a,b)$ (a jejich derivace) jsou na nějakém okolí krajních bodů nulové. Toto zjednodušení si můžeme dovolit, jelikož hledáme nutné podmínky samoadjungovanosti, resp. symetrie. Pokud operátor nebude splňovat podmínky pro takto \uv{hezké} funkce, nemůže je splňovat pro žádný jiný definičný obor.
 \end{remark}
 
 \begin{definition}[Adjungovaný výraz k $l(y)$]
@@ -60,9 +60,9 @@ Nejprve dokážeme pomocí per partes rovnost
     \innerprod{y}{l^*(z)}.
 \end{split}
 \end{align*}
-Poslední rovnost platí díky $\left(p_k(x) \overline{z(x)}\right) = \overline{\left(\overline{p_k(x)} z(x)\right)}$.
+Poslední rovnost platí díky $p_k(x) \overline{z(x)}= \overline{\overline{p_k(x)} z(x)}$.
 
-Jednoznačnost dokážeme sporem, předpokládejme že existují dva adjungované operátory $l^*$ a $\tilde{l}$ splňující rovnost. Pak
+Jednoznačnost dokážeme sporem, předpokládejme že existují dva adjungované operátory $l^*$ a $\tilde{l}$ splňující rovnost. Máme
 \begin{align*}
     \innerprod{l(y)}{z} = \innerprod{y}{l^*(z)} = \innerprod{y}{\tilde{l}(z)} ~ ~ ~ ~ ~ \forall y, z \in \mathcal{C}^{\infty}_{cpt} (a,b).
 \end{align*}
@@ -87,7 +87,7 @@ Srovnejme koeficienty u $y^{(n)}$
         &\text{$n$ liché} : p_n = - \overline{p_n} \implies p_n + \overline{p_n} = 2 Re (p_n) = 0 \implies \text{$p_n$ je ryze imaginární}
     \end{split}
 \end{align*}
-a dále postupujeme stejně. Nyní definujeme \uu{elementární diferenciální výrazy}, pomocí kterých lineární diferenciální výraz $l = l^*$ následně zapíšeme.
+a dále postupujeme stejně. Nyní definujeme elementární diferenciální výrazy, pomocí kterých lineární diferenciální výraz $l = l^*$ následně zapíšeme.
 \begin{definition}[Elementární diferenciální výraz]
     Elementárním diferenciální výrazem nazveme LDV ve tvaru
     \begin{equation}
@@ -99,16 +99,16 @@ a dále postupujeme stejně. Nyní definujeme \uu{elementární diferenciální 
 kde $p$ je reálná funkce.
 \end{definition}
 
-\begin{theorem}[Čihák, str. 210]
-    $l(y) = l^{*}(y) ~ \forall y \in \mathcal{C}^{\infty}_{cpt} \iff l(y)$ je konečnou lineární kombinací elementárních diferenciálních výrazů  $E_{2k}$ a $E_{2k-1}$.
+\begin{theorem}[O kombinaci elementárních diferenciálních výrazů]
+    $l(y) = l^{*}(y) ~ \forall y \in \mathcal{C}^{\infty}_{cpt} \iff l(y)$ je konečnou lineární kombinací elementárních diferenciálních výrazů  $E_{2k}$ a $E_{2k-1}$. Více viz \textsc{Čihák}, str. 210.
 \end{theorem}
 
 \Priklad{
-    Podívejme se, jak elementární diferenciální výraz výjde pro $k=1$ a $k=2$.
+    Podívejme se, jak elementární diferenciální výraz vYjde pro $k=1$ a $k=2$.
     \begin{equation*}
         \begin{split}
             E_1 &= \frac{i}{2}\left((p~y)' + p~y'\right) = \frac{i}{2} (p'~y + 2 p ~ y') = ip~y' + \frac{i}{2}p' ~ y. ~ \text{ Pro $p=1$ dostáváme }iy'. \\
-            E_2 &= -(p~y')' \dots \text{ \uu{tzv. diferenciální výraz 2. řádu v samoadjungovaném tvaru}}.
+            E_2 &= -(p~y')' \dots \text{ tzv. diferenciální výraz 2. řádu v samoadjungovaném tvaru}.
         \end{split}
     \end{equation*}
 }
@@ -129,9 +129,11 @@ Budeme uvažovat prostor
 \begin{align*}
     H = L^{2}_{\rho} (a, b) \equiv \left\{ f : (a, b) \to \C ; \int_a^b \rho \left|f\right|^2 < \infty, \text{ kde } \rho : (a, b) \to \R \text{ je tzv. \uu{váha} splňující } \rho > 0, \rho \in \mathcal{C}, \rho \in L^1 \right\}.
 \end{align*}
+
 \begin{remark}
-    $\rho \in \mathcal{C}$ se někdy nevyžaduje.
+    Často se uvažuje obecnější váha než $\rho \in \mathcal{C}$.
 \end{remark}
+
 Lze ukázat, že $L^{2}_{\rho}(a, b)$ je Hilbertův prostor se skalárním součinem
 \begin{align*}
     \innerprod{y}{z}_{2, \rho} \equiv \int_a^b \rho y \overline{z}
@@ -141,5 +143,463 @@ a normou
     \norm{y}_{2, \rho} = \int_{a}^{b} \rho \left|y\right|^2.
 \end{align*}
 \begin{remark}
-    Prostor $L^2_{\rho}$ 
+    Prostor $L^2_{\rho}$ uvažujeme např. proto, že chceme pracovat s polynomy na $\R$. Přitom žádný polynom $P$ není prvkem $L^2(\R)$ ale všechny polynomy jsou prvkem $L^2_{e^{-x^2}}$.
 \end{remark}
+
+Uvažujme nyní $\map T : \domain(\map T) \to L^2_{\rho}$, symetrický na $\domain(\map T)$, přitom nechť $\domain(\map T)$ je takové, že $\domain(\map T)\subsetneqq L_\rho^2$, $\overline{\domain(\map T)}=L_\rho^2$ a $\domain(\map T) \subset L^2_{\rho} \cap L^2$.
+
+\begin{definition}[Vlastní číslo a vlastní funkce s vahou $\rho$]
+    $\map T$ je hustě definovaný na $\domain(\map T)$. Číslo $\lambda$ nazveme vlastním číslem s vahou $\rho$, pokud $\exists y \neq 0, y \in L^2_{\rho}$ takové, že
+    \begin{equation}
+        \map T y = \lambda \rho y
+    \end{equation}
+\end{definition}
+
+Uvažme skalární součin \uu{bez váhy}, tj. i samoadjungovanost \uu{bez váhy}:
+\begin{align*}
+    &\underset{\rotatebox[origin=c]{90}{=}}{\innerprod{\map Ty}{y}_2 }= \innerprod{\lambda y\rho}{y}_2 = \lambda \innerprod{\rho y}{y}_2 = \lambda \int\limits_a^b\rho |y|^2=\lambda \norm{y}_{2,\rho}^2 \\[-5pt]
+    &\innerprod{y}{\map Ty}_2 = \dots = \conj{\lambda}\norm{y}_{2,\rho}^2.
+\end{align*}
+Pokud je tedy $y\in\domain(\map T)$, je $\lambda \in \R$.
+
+Dále pro $\map Ty_j=\lambda_j\rho y_j$, $j=1,2\dots$, $\lambda_1\neq\lambda_2$, máme
+\begin{equation}
+    \lambda_1\innerprod{y_1}{y_2}_{2,\rho}= \lambda_1\innerprod{y_1\rho}{y_2}_2 = \innerprod{\map Ty_1}{y_2}_2 = \innerprod{y_1}{\map Ty_2} = \dots = \lambda_2\innerprod{y_1}{y_2}_{2,\rho}.
+    \label{eq:ortogonalita}
+\end{equation}Jelikož máme různá vlastní čísla $\lambda_1\neq \lambda_2$, dostáváme kolmost v $L_\rho^2$: $\innerprod{y_1}{y_2}_{2,\rho}=0$.
+
+\uu{Závěr:} Uvažujme vl. čísla s vahou a \uv{skalárním součinem bez váhy}. Vlastní vektory pak tvoří ortogonální systém v $L_\rho^2$. Obecně v tomto případě \uu{není k dispozici}
+\begin{itemize}
+    \item výrok o spočetnosti systému OG funkcí,
+    \item výrok o úplnosti báze (musí se dokazovat pro jednotlivé případy zvlášť).
+\end{itemize}
+
+Víme však, že generujeme OG množiny, a také máme k dispozici Weistrassovu větu o tom, že polynomy jsou husté v $\comp(K)$ (pro $K$ kompakt). Jelikož $\comp(K)$ je hustá v $L_\rho^2(K)$, zdá se rozumné zabývat systémy OG polynomů v $L_\rho^2$. Pro $L_\rho^2(K)$ pak plyne úplnost OG množiny z Weistrassovy věty. Na nekompaktech se úplnost OG množiny dokazuje obtížněji.
+
+\begin{theorem}[Věta o rekurentním vzorci]
+    Mějme prostor $L^2_{\rho}(a,b)$, $-\infty \leq a < b \leq +\infty$, $\rho$ takové, že $\norm{P}_{2,\rho} < \infty ~ \forall$ polynomy $P$. Buď $\varphi_n$ systém reálných OG polynomů v $L^2_{\rho}$, stupeň$(\varphi_n) = n$, $n = 0, 1, 2, 3,\dots$
+    Potom $\forall n \in \N ~ \exists A_n, B_n, C_n \in \R$, že
+    \begin{equation}
+        x \varphi_n = A_n \varphi_{n+1} + C_n \varphi_{n} + B_n \varphi_{n-1}.
+    \end{equation}
+\end{theorem}
+
+\begin{remark}
+    \begin{align*}
+        n=0 \implies \varphi_0 = c \neq 0\text{, potom } x \varphi_0 = cx = \frac{c}{a}\underbrace{(ax + b)}_{\;\;\;\varphi_1,\; a\neq0} - \frac{b}{a} \underbrace{c}_{\varphi_0} \implies x \varphi_0 = \frac{c}{a} \varphi_1 - \frac{b}{a} \varphi_0
+    \end{align*}
+\end{remark}
+
+\begin{proof}
+    $n \in \N$ : stupeň$(x \varphi_n) = n+1 \implies ~ \exists \gamma_{n,k} \in \R$, že
+   $$
+        x \varphi_n = \sum_{k=0}^{n+1} \gamma_{n,k} \varphi_k \quad (\text{obecně polynomy nemusí být OG, postačující podmínkou je st.}(\varphi_n)=n
+   $$
+    (Toto platí obecně pro jakékoliv polynomy, stupeň$ \varphi_n = n$, nemusí být OG)
+    Nyní provedeme skalární součin \uv{s vahou}: $\innerprod{\bullet}{\varphi_j}_{2,\rho} ~ \forall j=0,1,\dots$ a dostaneme
+    \begin{align}
+        \innerprod{x \varphi_n}{\varphi_j}_{2, \rho} &= \sum_{k=0}^{n+1} \gamma_{n,k}\\ \underbrace{\innerprod{\varphi_k}{\varphi_j}_{2,\rho}}_{\delta_{kj}\norm{\varphi_k}_{2,\rho}^2} &= \begin{cases}
+        &\gamma_{n,j} \norm{\varphi_j}^2_{2,\rho} \quad j\leq n+1\\
+        &0 \qquad\qquad\quad\;\text{ jinde},
+        \end{cases}
+    \end{align}
+    jelikož $\gamma_{n,j} = 0$ pro $j > n+1$ (suma je rovna nule pro $j>n+1$ protože $\varphi_k \bot \varphi_j$ pro $k \in \{0, \dots, n+1\}$ a $j > n+1$). Alternativně lze definovat $\gamma_{n,k} = 0$ pro $k>n+1$ a sumu psát ve tvaru $\sum_0^\infty$.
+
+Kvůli reálnosti $\varphi_n$ je
+$$\innerprod{x\varphi_n}{\varphi_j}{2,\rho} = \innerprod{\varphi_n}{x\varphi_j}{2,\rho} = \innerprod{\varphi_n}{\sum\limits_{p=0}^{j+1}\gamma_{j,p}\varphi_p}{2,\rho} = \sum\limits_{j=0}^{j+1}\gamma_{j,p}\innerprod{\varphi_n}{\varphi_p}_{2,\rho},
+$$
+což je dle předchozí rovnosti rovno $\gamma_{n,j}\norm{\varphi_j}_{2,\rho}^2$ pro $n>j+1$ a $0$ jinde, tedy $\gamma_{n,j}=0\;\forall j<n-1$.
+
+Celkem $\gamma_{n,j}=0\;\forall j\neq n-1,n,n+1$, z čehož plyne 
+$$x\varphi_n = \underbrace{\gamma_{n,n-1}}_{\eqqcolon B_n}\varphi_{n-1} + \underbrace{\gamma_{n,n}}_{\eqqcolon C_n}\varphi_n + \underbrace{\gamma_{n,n+1}}_{\eqqcolon A_n}\varphi_{n+1}.$$
+
+\end{proof}
+
+
+\begin{remark}
+    Navíc lze ukázat, že pro $a=-b$, $\rho$ sudá na intervalu $(a,b)$ je $C_n=0 \;\forall n\in\N$.
+\end{remark}
+Tento rekurentní vzorec lze např. využít pro vypočet systémů OG polynomů a výpočet jejich norem. Ukažme si to následovně:
+$$x\varphi_n=A_n\varphi_{n+1} + C_n\varphi_n + B_n\varphi_{n-1}\quad,n=1,2,3,\dots.$$
+Pak lze vypozorovat, že
+\begin{itemize}
+    \item $A_n\neq0$, jinak je stupeň polynomu vpravo roven $n$.
+    \item Projekcí na $\phi_{n+1}$, resp. $\phi_{n-1}$ dostaneme 
+        \begin{align*}
+            &\innerprod{x\varphi_n}{\varphi_{n+1}}=A_n\norm{\varphi_{n+1}}_{2,\rho}^2\\
+            &\underset{\rotatebox[origin=c]{90}{=}}{\innerprod{x\varphi_n}{\varphi_{n-1}}}=A_n\norm{\varphi_{n-1}}_{2,\rho}^2\\[-6pt]
+            &\innerprod{x\varphi_{n-1}}{\varphi_n}=A_{n-1}\norm{\varphi_n}_{2,\rho}^2
+        \end{align*}
+        a z posledních dvou řádků plyne $A_{n-1}\norm{\varphi_n}_{2,\rho}^2=B_n\norm{\varphi_{n-1}}_{2,\rho}^2$ a uvážíme-li $A_n\neq0\;\forall n\in\N\implies B_n\neq0\;\forall n\in 2,3,4,\dots$, dostaneme rekurentní vztah pro normy
+        $$\norm{\varphi_{n+1}}_{2,\rho}^2=\frac{B_{n+1}}{A_n}\norm{\varphi_n}_{2,\rho}^2\quad n=1,2,3,\dots$$
+        $\norm{\varphi_0}$ a $\norm{\varphi_1}$ samozřejmě musíme znát.
+\end{itemize}
+Více o neomezených operátorech lze nalézt např. v \textsc{Kreyszig}: Introductory FA with applications. %přidat citace všude KREYSZIG, E. (1978). Introductory functional analysis with applications. New York, N.Y., Wiley. 
+
+\Bonus{
+Důkaz poslední poznámky lze provést vyšetřením vlastností polynomů. Máme
+$$\varphi_n(-x)=\sum\limits_{k=0}^n\beta_{n,k}\varphi_k(x) \quad\Big/\innerprod{\bullet}{\varphi_j(x)}_{2,\rho} \text{ pro } j=0,\dots,n\text{, jinak je součin } 0$$
+\begin{align*}
+    \innerprod{\varphi_n(-x)}{\varphi_j(x)}_{2,\rho} &= \beta_{n,j}\norm{\varphi_j}_{2,\rho}^2\\
+     \int\limits_{-a}^a\varphi_n(-x)\varphi_j(x)\rho(x)\d x &\overset{ t\coloneqq-x}{\;\;=\;\;} -\int\limits_a^{-a}\varphi_n(t)\varphi_j(-t)\rho(t)\d t \\
+     = \innerprod{\varphi_n(x)}{\varphi_j(-x)}_{2,\rho} &=\innerprod{\varphi_n(x)}{\sum\limits_{m=0}^j\beta_{j,m}\varphi_m(x)}=0 \text{ pro }n>j.
+\end{align*}
+Máme tedy $\varphi_n(-x)=\beta_{n,n}\varphi_n(x)$. Nyní srovnejme koeficienty u $x^n$ v polynomu $\varphi$:
+$$a_n(-x)^n=\beta_{n,n}a_nx^n\implies\beta_{n,n}=(-1)^n.$$
+Proto $\varphi_n(-x)=(-1)^n\varphi_n(x)\implies (\varphi_n(-x))^2=(\varphi_n(x))^2$, tj. $|\varphi_n|^2$ je \uu{sudá}.
+
+Závěrem máme
+\begin{align*}
+    x\varphi_n &=A_n\varphi_{n+1}+C_n\varphi_n+B_n\varphi_{n-1}\quad \Big/\innerprod{\bullet}{\varphi_n}_{2,\rho}\\
+    \underbrace{\innerprod{x\varphi_n}{\varphi_n}}_{\rotatebox[origin=c]{90}{=}} &= C_n\norm{\varphi_n}_{2,\rho}^2\\[-25pt]
+\end{align*}
+$$ \overbrace{\int\limits_{-a}^ax|\varphi_n|^2\rho(x)} =0, \quad \text{ neboť } x \text{ jsou lichá a }|\varphi_n|^2_\rho \text{ sudá,}\qquad$$
+z čehož plyne $C_n=0$.
+}
+
+\subsection{Gaussova redukovaná rovnice a ortogonální systémy polynomů}
+
+Uvažujme tzv. Gaussovu redukovanou rovnici (GRR)
+$$\boxed{xy''+(s+1-x)y'- \alpha y=0},\quad x\neq0 ; \;\alpha\in\C ; \;s\neq -1,-2,-3,\dots \text{ (bez spoilerů, důvod brzy poznáme).}$$
+
+\begin{enumerate}
+
+\item Nejprve ukážeme, že tuto rovnici lze psát ve tvaru \uv{vlastní vektor a vlastní číslo s vahou}, tj. ve tvaru 
+$$\map Ty=\lambda\rho y\quad \text{pro }\lambda\in\C\text{ s vhodnou vahou }\rho,$$
+přičemž $\map Ty$ má tvar diferenciálního výrazu v samoadjungovaném tvaru, tj. $\map Ty=(-py')'$. Tedy
+\begin{align*}
+    (-py')' &=\lambda\rho y,\quad  p \not \equiv 0\\
+    -p'y'-py''-\lambda\rho y&=0\\
+    \Aboxed{y''+\frac{p'}{p}y+\lambda\frac{\rho}{p}y&=0}
+\end{align*}
+Porovnáním poslední rovnosti se zadáním GRR a úpravou pro $x\neq0$ dostaneme
+$$y''+\left(\frac{s+1}{x}-1\right)y'-\frac{\alpha}{x}y=0.$$
+Jelikož nám stačí nalézt libovolné, netriviální řešení, můžeme psát
+\begin{align*}
+    \frac{p'}{p}&=\frac{s+1}{x}-1 \\
+    \big(\ln|p|\big)' &= (s+1)\big(\ln|x|\big)'-1\\
+    |p| &= |x|^{s+1}e^{-x}K\:,\quad K\in\R\\
+    p&=x^{s+1}e^{-x}\:,\quad \text{zvolili jsme větev }x>0.
+\end{align*}
+Pro $x>0$ vyžadujeme $\rho\in\L^1(0,\infty)$, tedy \uu{$s>-1$}. Navíc máme $\lambda=-\alpha,\; \frac{\rho}{p} = \frac{1}{x} \implies \rho=\frac{p}{x},\;\rho = x^se^{-x}$.
+
+Dostali jsme tedy rovnici
+\begin{equation}
+    \boxed{\big(-\underbrace{x^{s+1}e^{-x}}_{p} y'\big)'=(-\alpha)\underbrace{x^se^{-x}}_{\rho}y\:,}
+    \label{eq:SAT}
+\end{equation}
+jejíž řešení řeší GRR. Je podstatné si uvědomit, že pracujeme na prostoru $L_\rho^2(0,\infty)=L_{x^se^{-x}}^2(0,\infty),\;s>-1$
+
+\item Budeme hledat řešení GRR ve tvaru řady. K tomu však musíme učinit násedující úvahy.
+    \begin{itemize}
+        \item  Pro $x=0$ má GRR degenerovaná řešení, je potřeba ji vyšetřovat separátně na $(-\infty,0)$ a na $(0,\infty)$.
+        \item Můžeme předpokládat, že tato dvě separátní řešení bude možné \uv{slepit} v bodě $x=0$ tak, že vznikne řešení na nějakém $(-K,K)\subset \R$. Pokud hledáme řešení GRR ve třídě takovýchto \uv{slepitelných} řešení, lze je hledat i ve tvaru Taylorovy řady se středem v nule. S tím rizikem, že řešení v tomto tvaru nenajdeme, což by nás dovedlo k závěru, že úloha žádná \uv{slepitelná} řešení ve tvaru řady nemá.
+    \end{itemize}
+Za této podmínky položíme $y\eqqcolon \sum\limits_{n=0}^\infty c_nx^n$ a dosazením do GRR dostaneme
+\begin{align*}
+    \sum\limits_{n=2}^\infty c_nn(n-1)x^{n-2}x + (s+1)\sum\limits_{n=1}^\infty c_n nx^{n-1}-\sum\limits_{n=1}^\infty c_nnx^n-\alpha\sum\limits_{n=0}^\infty c_nx^n&=0\\
+    \sum\limits_{n=1}^\infty c_{n+1}(n+1)nx^x + \sum\limits_{n=0}^\infty (s+1)c_{n+1} (n+1)x^n-\sum\limits_{n=1}^\infty c_nnx^n-\sum\limits_{n=0}^\infty c_n\alpha x^n&=0
+\end{align*}
+Nyní srovnejme koeficienty:
+\begin{align*}
+    x^0:\quad (s+1)c_1=c_0\alpha \implies c_1=c_0\frac{\alpha}{s+1} \quad &\text{(pro }s\neq-1,\dots\text{)}\\
+    \text{pro }n>1\text{ máme } x^n:\quad c_{n+1}\left[(n+1)n+(s+1)(n+1) \right] = c_n&(n+\alpha) \\
+    c_{n+1}=c_n&\frac{n+\alpha}{(n+1)(s+n+1)} \quad(s\neq-2,-3,\dots)\:,
+\end{align*}
+přičemž získaný rekurentní vztah je platný i pro $n=0$. Protože každý násobek řešení GRR je zase jejím řešením, lze BÚNO volit základní řešení pro $c_0=1$. Dostáváme, že koeficienty řady, která definuje řešení, by musely mít tvar
+\begin{align*}
+    c_0&=1\\
+    c_{n+1}&=\frac{n+\alpha}{n+s+1}\frac{c_n}{n+1}\:,\quad \text{pro } n=0,1,2,\dots; s\neq-1,-2,\dots \:.
+\end{align*}
+
+Ještě však musíme ukázat, že řada s takto danými koeficienty $c_0,\;c_1$ někde konverguje. Protože řady s koeficienty tohoto typu tvoří jednu velmi důležitou třídu řad, věnujeme jim následující intermezzo.
+
+
+\end{enumerate}
+
+
+\newpage
+\hrulefill\\
+\uu{Intermezzo: Hypergeometrické řady}
+
+\begin{definition}[Hypergeometrická řada]
+    Hypergeometrickou řadou nazveme mocninnou řadu tvaru
+    $$\sum\limits_{n=0}^\infty c_nx^n,$$
+    pro koeficienty splňující
+    \begin{itemize}
+        \item $\exists$ polynomy $P,Q$ s koeficienty u nejvyšší mocniny rovnými 1, $\st P=p\geq0$, $\st Q=q\geq0$, $Q$ nemá kořeny mezi $\N\cup\{0\}$,
+        \item $\frac{c_{n+1}}{c_n}=\frac{P(n)}{Q(n)}\frac{1}{n+1}\:,\quad n=0,1,2,\dots\:;\; c_0=1$
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Pro $P(n)=Q(n)(n+1)$ máme $\frac{c_{n+1}}{c_n}=1$, $\left|\frac{c_{n+1}x^{n+1}}{c_nx^n}\right|=|x|$, tedy geometrickou řadu s kvocientem $x$. Člen $\frac{1}{n+1}$ je zde jen z historických důvodů.
+\end{remark}
+Rozložme nyní $P$ a $W$ na kořenové činitele v $\C$ a dostaneme
+\begin{equation}
+    \frac{c_{n+1}}{c_n} = \frac{(a_1+n)(a_2+n)\dots(a_p+n)}{(b_1+n)(b_2+n)\dots(b_q+n)}\frac{1}{n+1}\:.    
+    \label{eq:koeficienty}
+\end{equation}
+Pro tuto situaci se zavádí tzv. \uv{Identický zápis hypergeometrické řady}
+$$\sum\limits_{n=9}^\infty c_nxx^n = {}_pF_q[a_1,\dots,a_p;b_1,\dots,b_q](x).$$
+Z rovnice \ref{eq:koeficienty} ihned vidíme:
+\begin{itemize}
+    \item $p<q+1\implies \left|\frac{c_{n+1}}{c_n}\right| \rightarrow 0\implies R=+\infty\implies \sum c_nx^n$ definuje holomorfní ($\mathcal{C}^\infty$) fci na celém $\C$.
+    \item $p=q+1\implies \left|\frac{c_{n+1}}{c_n}\right| \rightarrow 1\implies R=1\implies \sum c_nx^n$ definuje holomorfní ($\mathcal{C}^\infty$) funkci na $\mathcal{U}^2(0)$.
+    \item $p>q+1\implies \left|\frac{c_{n+1}}{c_n}\right| \rightarrow \infty\implies R=0$, což nedefinuje žádnou diferencovatelnou funkci.
+\end{itemize}
+\begin{definition}[Pochhammerův symbol]
+    Pro $a\in\C$ definujme 
+    \begin{align*}
+        (a)_0 \coloneqq 1\:,\quad   (a)_n\coloneqq \underbrace{a(a+1)\dots(a+n-1)}_{n\in\N \text{ členů}}
+    \end{align*}
+\end{definition}
+Pochhammerovu symbolu se někdy též říká \uv{Rising factorial} a užívá se i značení $\langle a\rangle_n$. Budeme ho číst \uv{$a$ Pochhammer $n$}, případně \uv{$a$ dole $n$}. Nakonec si ještě všimněte, že např. $(1)_n=n!$, nebo $(a)_n=\frac{\Gamma(a+n)}{\Gamma(a)}$.
+
+S tímto značením přepíšeme rovnici \ref{eq:koeficienty}
+\begin{align*}
+    c_n &= \frac{(a_1+n-1)(a_2+n-1)\dots(a_p+n-1)}{(b_1+n-1)(b_2+n-1)\dots(b_q+n-1)}\frac{1}{n}c_{n-1} \\
+    &=  \frac{[(a_1+n-1)(a_2+n-2)]\dots[(a_p+n-1)(a_p+n-2)]}{\underbrace{[(b_1+n-1)(b_2+n-2)]}_{\text{dalšími kroky jde k }(b_1+n-1)\dots(b_1) = (b_1)n}\dots[(b_q+n-1)(b_q+n-2)]}\underbrace{\frac{1}{n}\frac{1}{n-1}}_{\text{jde k }\frac{1}{n!}} c_{n-2} = \\
+    &\frac{(a_1)_n\dots(a_p)_n}{(b_1)_n\dots(b_q)_n}\frac{1}{n!}\underbrace{c_0}_{=1} = \frac{\prod\limits_{j=1}^p(a_j)_n}{\prod\limits_{k=1}^q(b_k)_n}\frac{1}{n!}\:.
+\end{align*}
+Tím jsme se dostali k \uu{explicitnímu vyjádření hypergeometrické řady}
+$$\boxed{{}_pF_q[a_1,\dots,a_p;b_1,\dots,b_q](x) = \sum\limits_{n=0}^\infty \frac{\prod\limits_{j=1}^p(a_j)_n}{\prod\limits_{k=1}^q(b_k)_n}\frac{x^n}{n!}}$$
+
+
+Důvod přidání onoho historického členu $\frac{1}{n+1}$ vyniká v hypergeometrické řadě ${}_0F_0[;](x)$. Ta je dle předchozího závěru rovna
+$${}_0F_0[;](x)=\sum\limits_{n=0}^\infty\frac{x^n}{n!}=e^x$$
+
+\Priklad{
+\begin{itemize}
+    
+\item  Ukažte:
+$${}_0F_0\left[;\frac{1}{2}\right]\left(- \frac{x^2}{4}\right)=\cos x.$$
+Řada vlevo má $p=0$, $q=1\implies p<q+1\implies$ řada definuje hladkou (a holomorfní) funkci v $\C$.
+
+
+\textcolor{gray}{
+Řešení:
+\begin{align*}
+    {}_0F_1\left[;\frac{1}{2}\right]\left(-\frac{x^2}{4}\right) &=\sum\limits_{n=0}^\infty\frac{1}{(1/2)_n}\frac{1}{n!}\left(-\frac{x^2}{4}\right)^n\\
+    &= \sum\limits_{n=0}^\infty(-1)^nx^{2n}   \underbrace{\frac{1}{n!4^n\frac{1}{2}\left(\frac{1}{2}+1\right) \dots \left(\frac{1}{2}+n-1\right)}}_{\frac{2^n}{n!4^n(1\cdot 3\dots(2n-1))} = \frac{1}{(2n)!}} = \sum\limits_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}
+\end{align*}
+}
+
+\item Ukažte 
+$$\frac{2x}{\sqrt{\pi}}{}_1F_1\left[\frac{1}{2};\frac{3}{2}\right]\left(-x^2\right) =\frac{1}{\sqrt{\pi}} \int\limits_0^xe^{-t^2}\d t = \erf (x)\:,$$
+přičemž řada vlevo má smysl pro $\forall x\in\C$, avšak pravá má smysl pouze pro $x\in\R$. Řadu nalevo lze tedy chápat, jako rozšíření $\erf (x)$ do komplexních čísel.
+
+\end{itemize}
+
+
+}
+
+konec intermezza. Vraťme se k GRR.
+
+
+\hrulefill
+
+
+\begin{itemize}
+    \item[3.] Řešením GRR je řada $\sum_{n=0}^\infty c_nx^n$, kde $$c_0=1\:,\quad c_{n+1} = \frac{n+\alpha}{n+s+1}\frac{1}{n+1}c_n\:,\quad n=0,1,2,\dots\:.$$
+    Jde tedy o hypergeometrickou řadu pro $p=1$, $q=1$, tj. $p<q+1$ a máme
+    $${}_1F_1\left[\alpha;\beta+1\right](x) = \sum\limits_{k=0}^\infty\frac{(\alpha)_k}{(s+1)_k}\frac{x^k}{k!}\in\mathcal{C}^\infty(\R)\:,\quad \alpha\in\C;\;s\in\C\setminus\{-1,-2,-3,\dots\}$$
+    
+${}_1F_1[\alpha,s+1](x)$ je polynomem, právě když řada vpravo obsahuje konečný počet členů, což nastane právě když $\exists n\in\N,\; (\alpha)_k=0\;\forall k>n$.
+Navíc jelikož $(\alpha)_k = \alpha(\alpha+1)\dots(\alpha+k-1)$, dostaneme pro $\alpha=-n$ ekvivalenci
+$$(\alpha)_k=0\;\Leftrightarrow\;k>n \text{ pro } n\in\N\cup\{0\}\:.$$
+\begin{definition}[Laguerrův polynom]
+    Laguerrův polynom řádu $s$ a stupně $n$ je polynom, definovaný pro $x,s\in\R$, $s>-1$, jako
+    $$\boxed{L^s_n(x)\eqqcolon \frac{(s+1)_n}{n!}{}_1F_1[-n;s+1](x) = \frac{(s+1)_n}{n!}\sum\limits_{k=0}^n\frac{(-n)_k}{(s+1)_k}\frac{x^k}{k!}\:.}$$
+\end{definition}
+
+\begin{remark}\qquad\qquad\qquad\qquad
+
+    \begin{itemize}
+        \item $L_n^s(x)$ řeší GRR $\forall n\in\N\cup\{0\}$, pokud v ní položíme $\alpha=-n$.
+        \item S odvoláním na tvar rovnice \ref{eq:SAT} provedeme následující restrikce:
+        \begin{itemize}[\textbullet]
+            \item Uvažujeme $x>0$, tj. $x\in (0,\infty)$
+            \item Uvažujeme $s\in \R$, $s>-1$, $\rho(x)=x^se^{-x}$. Pak $\rho>0$ na $(0,\infty)$, $\rho\in\mathcal{C}(0,\infty)\cap L^1(0,\infty)$, což ukazuje na oprávněnost volby $\rho$, jakožto váhy.
+            \item Uvažujeme tedy Hilbertův prostor $L^2_{x^se^{-x}}(0,\infty)$.
+            \item $\alpha=-n$, $n\in\N\cup\{0\}$.
+        \end{itemize}
+    \end{itemize}
+    Potom budeme GDD psát v samoadjungovaném tvaru (rovnice \ref{eq:SAT})
+    $$\map Ty = \eta \rho y\:,$$
+    kde $\map Ty=-(py')'$, $p(x)=x^{s+1}e^{-x}$.
+    
+    \boxed{\begin{aligned}
+    &\text{Potom } n=0,1,2,\dots \text{ jsou vlastní čísla } \map T \text{ s vahou } \rho \text{(na }L_\rho^2(0,\infty)\text{) a jim odpovídající vlastní funkce jsou}\\
+    &\text{ Laguerrovy polynomy }L_n^s.
+    \end{aligned}}
+    
+    \item Podle výpočtu provedeného dříve (viz úvahy za rovnicí \ref{eq:ortogonalita}) tvoří Laguerrovy polynomy (pro pevní $s>-1$ a pro $n\in\N\cup\{0\})$ OG systém polynomů v $L^2_{x^se^{-x}}(0,\infty$. Existuje tedy rekurentní vzorec pro jejich vygenerování (odvodíme dále).
+    \item Laguerrovy polynomy jsou navíc \uu{úplným} systémem, tj. každou funkci z $L^2_{x^se^{-x}}(0,\infty)$ lze napsat ve tvaru $\sum_{n=0}^\infty c_nL_n^s(x)$. Důkaz je nad rámec těchto skript a lze nalézt např. v \textsc{Čihák a kol}: MA pro fyziky V. (Věta 31, str 196).
+\end{remark}
+
+\end{itemize}
+
+\subsection{Některé důležité vlastnosti Laguerrových polynomů}
+
+\subsubsection{Tzv. explicitní vyjádření}
+Platí 
+\begin{equation}
+    \boxed{L^s_n(x) = \frac{1}{n!} x^{-s} e^x \left(x^{s+n} e^{-x}\right)^{(x)}}
+    \label{eq:explicit}
+\end{equation}
+Z toho plyne, že
+\begin{align*}
+L^s_0(x)&=x^{-s}e^xx^se^x=1\\
+L^s_1(x) &= x^{-s}e^x(x^{s+1}e^{-x})' = x^{-s}e^x(s+1)x^se^{-x}+x^{-s}e^xx^{s+1}(-e^{-x}) = (s+1)-x \text{ atd.}
+\end{align*}
+
+Dalším využití explicitního vyjádření \ref{eq:explicit} se nabízí při výpočtech integrálů typu
+$\int\limits_0^\infty L_n^s(x)f(x)\d x\:,$
+protože umožňuje použití metody per-partes.
+\begin{proof}
+    Důkaz vyjádření \ref{eq:explicit} začneme úpravou GRR
+    \begin{align*}
+        xy''+(s+1-x)y'-\alpha y&=0 \\
+        \left(s^{s+1}e^{-x}y'\right)' &=\alpha x^se^{-x}y\:,  \text{ označme rovnost jako }\GRR(y,s+1,\alpha)\:.
+    \end{align*}
+    Derivací dostaneme
+    \begin{align*}
+        xy'''+y''+(s+1-x)y''-y'-\alpha y'&=0\\
+        xy'''+(s+2-x)y''-(\alpha+1)y'&=0\:, \text{ rovnost označme: } \GRR(y',s+2,\alpha+1)\:.
+    \end{align*}
+\end{proof}
+$n-1$ derivacemi tak dostaneme
+$$\GRR(y^{(n-1)},s+n,\alpha+n-1) \equiv \underbrace{\left(x^{s+n}e^{-x}y^{(n)}\right)'}_{\eqqcolon V_n} = (\alpha+n-1)\underbrace{x^{s+n-1}e^{-x}y^{(n-1)}}_{V_{n-1}}\:,$$
+tedy $V_n'=(\alpha+m-1)V_{n-1}$ a dalším derivováním máme
+$$V_n''=(\alpha+m-1)V_{n-1}' = (\alpha+n-1)(\alpha+n-2)V_{n-2}.$$
+Postupně pak máme
+$$V_n^{(n)}=(\alpha)_nV_0 = (\alpha)_nx^se^{-x}y\:,$$
+z čehož máme
+$$\left(x^{s+n}e^{-x}y^{(n)}\right)^{(n)} = (\alpha)_nx^se^{-x}y$$
+a dosazením $\alpha\coloneqq -n$ dostaneme
+\begin{equation}
+    y = \frac{1}{(-n)_n}x^{-s}e^x\left(x^{s+n}e^{-x}y^{(n)}\right)^{(n)}\:.
+    \label{eq:B}
+\end{equation}
+Pokud je $\alpha=-n$ řešením $L^s_n$, což je polynom stupně $n$. Jeho $n-$tá derivace je tedy konstanta, $(L_n^s)^{(n)}=a_n n!$, kde $a_n$ značí koeficient u $x^n$. Polynom lze zapsat řadou
+$$L_n^s(x) = \frac{(s+1)_n}{n!}\sum\limits_{k=0}^n\frac{(-n)_l}{(s+1)_k}\frac{x^k}{k!}\:,$$
+tedy $a_n = \frac{(s+1)_n}{n!}\frac{(-n)_n}{(s+1)_n}\frac{1}{n!}$, proto $(L_n^s)^{(n)} = \frac{(-n)_n}{n!}$.
+
+Dosazením do rovnice \ref{eq:B} máme
+\begin{align*}
+    L_n^s(x)&=\frac{1}{(-n)_n}x^{-s}e^x\left(x^{s+n}e^{-x}\frac{(-n)_n}{n!}\right)^{(n)}
+\end{align*}
+\begin{equation}
+    L^s_n(x) =\frac{1}{n!}x^{-s}e^x\left(x^{s+n}e^{-x}\right)^{(n)}
+    \label{eq:C_dukazend}
+\end{equation}
+
+
+\subsubsection{Rekurentní vzorec pro $L^s_n(x)$}
+Vyjdeme z rovnice \ref{eq:C_dukazend}
+$$L_n^s(x)=\frac{1}{n!}x^{-s}e^x\underbrace{\left(x^{s+n}e^{-x}\right)^{(n)}}_{\eqqcolon E_n}\:.$$
+Pak přímým derivováním dostaneme
+\begin{equation}
+    E_{n+1} = \left( \left(x^{s+n+1}e^{-x}\right)'\right)^{(n)}= (s+n+1)\underbrace{\left(x^{s+n}e^{-x}\right)^{(n)}}_{E_n} - \underbrace{\left(x^{s+n+1}e^{-x}\right)^{(n)}}_{\eqqcolon I_n}\:.
+    \label{eq:D_Enp1}
+\end{equation}
+Našim cílem je nyní vyjádřit $I_n$ pomocí $E_n$.
+\begin{align*}
+    I_n &= \left(x x^{x+n}e^{-x}\right)^{(n)} = \sum\limits_{k=0}^n\binom{n}{k} x^{(k)}(x^{s+n}e^{-x})^{(n-k)} = \big/\text{je nenulové jen pro }k\in\{0,1\}\big/ \\
+    &= x\left(x^{s+n}e^{-x}\right)^{(n)} + n\left(x^{s+n}e^{-x}\right)^{(n-1)} = xE_n+ n \underbrace{(x^{s+n}e^{-x})^{(n-1)}}_{I_{n-1}}\:,
+\end{align*}
+tj. $I_n = xE_n+n I_{n-1}$.
+
+Vezmeme-li navíc \ref{eq:D_Enp1} pro $n-1$, tedy $E_n=(s+n)E_{n-1}-I_{n-1}$, dostaneme $$I_n = xE_n + n(s+n)E_{n-1}-n E_n\:.$$ 
+Tuto rovnici dosadíme do \ref{eq:D_Enp1}, čímž dostaneme
+\begin{align*}
+    E_{n+1} &= (s+n+1)E_n - xE_n-n(x+n)E_{n-1} + nE_n\\
+    x E_n &= (s+2n+1)E_n-E_{n+1} - n(s+n)E_{n-1} \quad \Big/\cdot \frac{1}{n!}x^{-s}e^x\\
+    \Aboxed{ xL_n^s(x) &= (s+2n+1)L_n^s(x) - (n+1)L^s_{n+1}(x)-(s+n)L_{n-1}(x)\:,}
+\end{align*}
+což je hledaný rekurentní vzorec. Ze znalosti prvních dvou členů ($L_0^s=1$, $L_1^s=(s+1)-x$) lze vygenerovat všechna $K_n^s$.
+
+
+\subsubsection{Normy}
+Z dřívějška víme
+$$\norm{\varphi_{n+1}}_{2,\rho}^2 = \frac{B_{n+1}}{A_n}\norm{\varphi_n}_{2,\rho}^2\:, \quad n=1,2,\dots\:,$$
+pokud  $$y\varphi_n = A_n\varphi_{n+1}+C_n\varphi_n+B_n\varphi_{n-1}\:.$$
+Zde máme $A_n=-(n+1)$, $B_n=-(s+n)$, tedy
+$$\norm{L_{n+1}}_{2,\rho}^2 = \frac{s+n+1}{n+1}\norm{L_n^0}_{2,\rho}^2\:, \quad
+ n=1,2,3,\dots\:.$$
+ Máme $\norm{L_0^s}_{2,\rho}^2 = \int\limits_0^\infty 1\cdot x^se^{-x}=\Gamma(s+1)$.
+ \begin{align*}
+     \norm{L_1^s}_{2,\rho}^2 = \int\limits_0^\infty\left((s+1)-x\right)^2x^se^{-x} &= (s+1)^2\Gamma(s+1)-2(s+1)\Gamma(s+2)+\Gamma(s+3)\\
+     &=(s+1)\Gamma(s+2)-2(s+1)\Gamma(s+2)+\Gamma(s+3)\\
+     &=\Gamma(s+3)-(s+1)\Gamma(s+2)\\
+     &=(s+2)\Gamma(s+2)-(s+1)\Gamma(s+2) = \Gamma(s+2)
+ \end{align*}
+a rekurencí
+\begin{align*}
+    \norm{L_n^s}_{2,\rho}^2=\frac{s+n}{n}\frac{s+n-1}{n-1}\dots \frac{s+2}{2}\underbrace{\norm{L_1^s}_{2,\rho}^2}_{\Gamma(s+2)}=\frac{1}{n!}\Gamma(s+n+1) \text{ , což platí i pro }n\in\{0,1\}\\
+    \Aboxed{\norm{L_n^s}_{2,\rho}^2=\frac{1}{n!}\Gamma(s+n+1)\quad \forall n=0,1,2\dots}
+\end{align*}
+
+
+\subsubsection{Tzv. vytvořující funkce}
+\begin{definition}[Vytvořující funkce]
+    Vytvořující funkcí pro daný systém $\{\varphi_n\}_{n=0}^\infty,\; \varphi=\varphi_n(t)$, nazvu takovou funkci $F=F(x,t)$, která je analytická v okolí $t=0$ (pro všechna pevná $x$) a jejíž rozvoj do Taylorovy řady podle $t$ v $t\in\mathcal{U}(0)$ generuje koeficienty $\varphi_n(x)$. Tedy
+    $$F(x,t)=\sum\limits_{n=0}^\infty\varphi_n(x)t^n\:.$$
+\end{definition}
+
+Zde tedy hledáme takovou $F$, pro kterou $F(x,t)=\sum\limits_{n=0}^\infty L_n^s(x)t^n$. 
+
+Budeme postupovat tak, že rozvineme vhodnou funkci $f\in L_\rho^2(0,\infty)$ s parametrem $t$ do řady v Laguerových polynomech. Tím dostaneme řadu typu $\sum_{n=0}^\infty c_n(t)L_n^s(x)$ a budeme směřovat k tomu, aby $c_n\approx t^n$.
+
+Teorie říká, že pokud $f\in L^2_{x^se^{-x}}(0,\infty)$ a $L_n^s(x)$ je úplný v $K^2_{x^se^{-x}}(0,\infty)$, tak z obecné teorie Fourierových řad plyne, že $\exists c_n\in\C$ tvaru
+$$c_n=\frac{1}{\norm{L_n^s}_{2,\rho}^2} \innerprod{f}{L_n^s}_{2,\rho}\:,\text{ že } f=\sum c_nL_n^s\:,$$ 
+přičemž rovnost u sumy je myšlena v $L_{x^se^{-x}}(0,\infty)$.
+
+Budeme rozvíjet funkci $e^{-ax}$ (poté budeme hledat $a=a(t)$).
+
+\uu{První krok} spočívá v nalezení podmínky pro $a\in\R$, kdy je $e^{-ax}\in L^2_{x^se^{-x}}(0,\infty)$, tj kdy 
+\begin{align*}
+    \int\limits_0^\infty(e^{-ax})^2x^se^{-x}\d x &<\infty \\
+    \int\limits_0^\infty x^se^{-(2a+1)x}\d x<\infty \text{ pro } s>-1 \text{, pokud }2a+1>0 \Leftrightarrow a>-\frac{1}{2}\:.
+\end{align*}
+Pro toto $a$ spočteme
+\begin{align*}
+    c_n&=\frac{1}{\norm{L_n^s}_{2,\rho}^2}\int\limits_0^\infty e^{-ax}x^se^{-x}L_n^s(x)\d x = \big/\text{explicitní vyjádření }L_n^s\big/ \\
+    &=\frac{n!}{\Gamma(s+n+1)}\int\limits_0^\infty e^{-ax}x^se^{-x}\left(\frac{1}{n!}x^{-s}e^x(x^{s+n}e^{-x})^{(n)}\right)\d x\\
+    &=\frac{1}{\Gamma(s+n+1)}\int\limits_0^\infty (e^{-ax}x^{s+n}e^{-x})^{(n)}\d x = \big/n\times\text{ per partes, hraniční členy jsou nulové}\big/\\
+    &=\frac{a^n}{\Gamma(s+n+1}\int\limits_0^\infty \underbrace{e^{-ax}x^{s+n}e^{-x}}_{(a+1)x = y}\d x \\
+    &=\frac{a^n}{\Gamma(s+n+1)}\int\limits_0^\infty e^{-y}\left(\frac{y}{a+1}\right)^{s+n}\frac{1}{a+1}\d y \\
+    &=\frac{a^n}{\Gamma(s+n+1}\frac{1}{(a+1)^{s+n+1}}\Gamma(s+n+1)=\frac{1}{(a+1)^{s+1}}\left(\frac{a}{a+1}\right)^n\:.
+\end{align*}
+Odtud dostáváme
+\begin{equation}
+    \boxed{e^{-ax}\overset{\text{s.v.}}{=}\frac{1}{(a+1)^{s+1}}\sum\limits_{n=0}^\infty \left(\frac{a}{a+1}\right)^n L_n^s(x)\:,\quad a>-\frac{1}{2}\:.
+}
+\label{eq:rada_e^-ax}
+\end{equation}
+
+\begin{remark}
+\begin{itemize}
+    \item Obecně platí rovnost ve smyslu prostoru, ve kterém byla odvozena, tj v $L^2_{x^se^{-x}}(0,\infty)$, neboli skorovšude (s.v.). Pokud jsou však na obou stranách spojité funkce (např řada vpravo konverguje alespoň lokálně stejnoměrně v $\R$, platí rovnost ve všech $x\in\R$.
+    \item Dosazením $a=1$ do rovnice \ref{eq:rada_e^-ax} vypadnou všechny členy pro $n\geq1$ a dostaneme $1=L_0^s(x)$.
+    \item Pro $a=1$ dá rovnice \ref{eq:rada_e^-ax}
+    $$e^{-x}=\frac{1}{2^{s+1}}\sum\limits_{n=0}^\infty\frac{L_n^s(x)}{2^n}\:,$$
+    speciálně pro $s=0$ máme 
+    $$e^{-x}=\sum\limits_{n=0}^\infty \frac{L_n^0(x)}{2^{n+1}}\:.$$
+\end{itemize}
+\end{remark}
+
+
+
+\uu{Druhý krok} je sestavení vytvořující funkce.
+
+Položme $t=\frac{a}{a+1}$ ($\Leftrightarrow a=\frac{t}{1-t}$) v rovnici \ref{eq:rada_e^-ax}. Derivace tohoto výrazu $\frac{\d t}{\d a}=\frac{1}{(a+1)^2}>0$ je prostá. Platí $a>-\frac{1}{2}$ právě pro $t\in(-1,1)$. Úpravou rovnice \ref{eq:rada_e^-ax} pak máme 
+\begin{align}
+(a+1)^{s+1}e^{-ax}&=\sum\limits_{n=0}^\infty L_n^s(x)\left(\frac{a}{a+1}\right)^n \quad \Big/n\rightarrow t \\
+\underbrace{\frac{1}{(1-t)^{s+1}}e^{-\frac{tx}{1-t}}}_{\text{vytvoř. fce pro Laguerrovy p.}}&=\sum\limits_{n=0}^\infty L_n^s(x) t^n\:,\quad t\in(-1,1)\:,
+\end{align}
+V tabulce \uv{Ortogonální systémy polynomů} v dodatku jsou uvedeny Laguerrovy, hermitovy, Legendreovy, Čebyševovy a Gegenbauerovy systémy polynomů. Vždy uvádíme generující funkci, vyjádření řadou, explicitní tvar, rekurentní vztah a velikosti norem, vytvořující funkci a zejména prostor, ve kterém tvoří bázi.
+
+
+

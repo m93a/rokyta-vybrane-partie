@@ -1,21 +1,38 @@
 \section{Kompaktní operátory}
 
+Z minulých kapitol víme, že pro \emph{lineární} operátor mezi Banachovými prostory $\map T: X \to Y$ platí: 
+$$\map T \text{ je spojitý}\;\Leftrightarrow\;\map T \text{ je omezený},$$
+píšeme $\map T\in \lin(X,Y)$. Dále budeme využívat definice $\lin(X)\coloneqq \lin(X,X)$. 
+
+Připomeňme, že $\map T(\text{omezená množina})=\text{omez. množina}$. Tento výrok tedy pro lineární operátory charakterizuje spojitost, jinými slovy $\forall A\subset{X}$ omezená, je $\map T(A)$ omezená v $Y$.
+
 \begin{definition}[Kompaktní operátor]
-Nechť $X,Y$ jsou Banachovy prostory, $\map T: X \mapsto Y$ je lineární operátor. Řekneme, že $\map K$ je kompaktní, jestliže pro každou omezenou množinu $A \subset X$ platí, že $\overline{\map K(A)} \subset Y$ je kompatkní množina. Množinu všech kompaktních operátorů zapisujeme jako $\comp(X,Y)$ a zavádíme $\comp(X) := \comp(X,X)$.
+Nechť $X,Y$ jsou Banachovy prostory, $\map K: X \to Y$ je lineární operátor. Řekneme, že $\map K$ je kompaktní, jestliže pro každou omezenou množinu $A \subset X$ platí, že $\overline{\map K(A)} \subset Y$ je kompatkní množina. Množinu všech kompaktních operátorů zapisujeme jako $\comp(X,Y)$ a zavádíme $\comp(X) \coloneqq \comp(X,X)$.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\qquad
 \begin{enumerate}
-    \item Platí, že $\comp(X,Y) \subset \lin(X,Y)$. Je-li totiž $A \subset X$ omezená, pak $\overline{\map K(A)} \subset Y$ je kompaktní a podle nutné podmínky kompaktnosti musí být $\overline{\map T(A)} $ omezená a uzavřená množina.
-    \item Připomeňme, že omezenost a uzavřenost nejsou v nekonečné dimenzi postačující podmínky pro kompaktnost. V konečné dimenzi tomu tak ovšem je.
+    \item $\comp(X,Y) \subset \lin(X,Y)$. Je-li totiž $A \subset X$ omezená, pak $\overline{\map K(A)} \subset Y$ je kompaktní a podle nutné podmínky kompaktnosti musí být $\overline{\map K(A)} $ omezená a uzavřená množina, tedy i $\overline{\map K(A)}\supseteq \map K(A)$ je omezená.
+    \item Připomeňme, že omezenost a uzavřenost jsou postačující podmínky pro kompaktnost pouze v konečnědimenzionálním normovaném lineárním prostoru (NLP).
+    \item Pro kompaktní množiny můžeme používat Weierstrassovské vybírání podposloupností, čehož dále využijeme.
 \end{enumerate}
 \end{remark}
-Pro kompaktní množiny můžeme používat weierstrassovské vybírání podposloupnosti.
+
+\subsubsection{Charakterizace operátoru pomocí posloupností}
+Pro $\map T\in \lin(X,Y)$ jsme měli:
+$$\begin{array}{l}
+     \text{spojitost: }x_n\rightarrow x\;\Rightarrow \; \map Tx_n\rightarrow \map Tx\\
+\text{omezenost: }\{x_n\}\text{ je omezená}\;\Rightarrow \;\{\map T x_n\} \text{ je omezená}
+\end{array}$$ 
+Charakterizaci kompaktnosti raději shrneme do věty.
+
 \begin{theorem}[O charakterizaci kompaktního operátoru pomocí posloupnosti]
-Operátor $\map K :X \mapsto Y$ je kompaktní právě tehdy, když pro každou omezenou posloupnost $\sequence {x_n}{n} \subset X$ existuje vybraná podposloupnost $\sequence{x_{n_k}}{k} $ a prvek $y \in Y$ takové, že $\map K ( x_{n_k}) \rightarrow y $.
+Operátor $\map K :X \to Y$ je kompaktní právě tehdy, když pro každou omezenou posloupnost $\sequence {x_n}{n} \subset X$ existuje vybraná podposloupnost $\sequence{x_{n_k}}{k} $ a prvek $y \in Y$ takový, že $\map K ( x_{n_k}) \rightarrow y $.
 \end{theorem}
 
-V následujícím budeme diskutovat tuto úvahu: pokud by celý prostor $Y$ měl vlastnost, že z každé omezené posloupnosti v $Y$ se dá vybrat konvergentní podposloupnost, pak by platilo \begin{align*}
+\begin{proof}[Úkaz:]\qquad
+
+Pokud by celý prostor $Y$ měl vlastnost, že z každé omezené posloupnosti v $Y$ se dá vybrat konvergentní podposloupnost, pak by platilo \begin{align*}
     \lin(X,Y) = \comp (X,Y) \:.
 \end{align*}
 Tuto úvahu zdůvodníme následovně. Stačí ukázat, že 
@@ -23,93 +40,152 @@ Tuto úvahu zdůvodníme následovně. Stačí ukázat, že
     \lin(X,Y) \subset \comp (X,Y) \:,
 \end{align*}
 opačnou implikaci jsme již vyřešili. Buď tedy $\map T \in \lin(X,Y)$ a $\sequence{x_n}{n} \subset X$ omezená posloupnost.
-Díky spojitosti $\map T$ je posloupnost $ \sequence{ \map T x_n}{n}$ omezená. Pokud bychom zaručili, že z každé takové posloupnosti už můžeme vybrat konvergentní podposloupnost, dokázali bychom tím kompaktnost každého spojitého operátoru. Takovou vlastnost jistě nemůže mít každý metrický prostor. Na počest Bolzanovy-Weierstrassovy věty platné v $\R$ ji nazveme \uv{B-W vlastností}.
+Díky spojitosti $\map T$ je posloupnost $ \sequence{ \map T x_n}{n}$ omezená. Pokud bychom zaručili, že z každé takové posloupnosti už můžeme vybrat konvergentní podposloupnost, dokázali bychom tím kompaktnost každého spojitého operátoru. Takovou vlastnost jistě nemůže mít každý metrický prostor. Na počest Bolzanovy-Weierstrassovy věty platné v $\R$ ji nazveme \emph{B-W vlastností}.
+\end{proof}
 
 \begin{lemma}[O nutné podmínce pro B-W vlastnost]
-Nechť $Y$ je Banachův prostor. Pak $Y$ má B-W vlastnost právě tehdy, když má konečnou dimenzi.
+Nechť $Y$ je Banachův prostor. Pak 
+$$Y\text{ má B-W vlastnost}\;\Leftrightarrow\;\dim Y<\infty.$$
 \end{lemma}
-\begin{proof}[Náznak důkazu:]
-\uv{$\Leftarrow$} Na $\R$ můžeme používat Bolzanovu-Weierstrassovu větu z prvního semestru. V prostoru $\R^N$ můžeme provést postupné výběry po složkách. Nyní v každém konečnědimenzionálním prostoru $Y$ můžeme najít bázi a každému prvku $y \in Y$ přiřadit $n$-tici souřadnic vzhledem k této bázi. 
 
-\uv{$\Rightarrow$} Nechť je $Y$ nekonečnědimenzionální. Zvolme $y_1 \in Y$ a poté indukcí vybíráme prvky $y_{k+1} \in Y$ tak, aby vzdálenost prvku $y_{k+1}$ od prvku $y_k$ byla větší nebo rovna jedné. Po přechodu k libovolné posloupnosti dostaneme stále posloupnost, která má prvky vzdálené od sebe více než o jedničku a proto nemůže splňovat B-C podmínku.
+\begin{proof}[Úkaz:]\qquad
+
+\uv{$\Leftarrow$} Na $\R$ můžeme používat Bolzanovu-Weierstrassovu větu z prvního semestru. V prostoru $\R^n$ provedeme postupné výběry po složkách. Nyní jelikož $\dim X=n \in\N$, můžeme najít bázi a každému prvku $x \in X$ přiřadit $n$-tici souřadnic vzhledem k této bázi. 
+
+\uv{$\Rightarrow$} Je-li $\dim Y=\infty$, zvolíme $y_1 \in Y$ a poté indukcí vybíráme prvky $y_{k+1} \in Y$ tak, aby vzdálenost prvku $y_{k+1}$ od prvku $y_k$ byla větší nebo rovna jedné. Po přechodu k libovolné posloupnosti dostaneme stále posloupnost, která má prvky vzdálené od sebe více než o jedničku a proto nemůže splňovat B-C podmínku.
 \end{proof}
 
 \begin{lemma}[O kompaktnosti identity] \label{3.kompaktnost identity}
-Nechť $Y$ je konečněrozměrný Banachův prostor. Pak má $Y$ B-W vlastnost právě tehdy, jestliže je $\map{Id} : Y \mapsto Y$ kompaktní operátor.
+Pro Banachův prostor $X$ v dané normě platí:
+$$\map{Id} : X \to X \text{ je kompaktní}\;\Leftrightarrow\;X \text{ má B-W vlastnost}.$$
 \end{lemma}
 \begin{proof}
 Zřejmé.
 \end{proof}
 
-Z předchozích dvou lemmat ovšem dostáváme poměrně překvapivé zjištění: v nekonečnědimenzionálních prostorech není identita kompaktní operátor.
+Z předchozích dvou lemmat plyne zajímavé zjištění, že \uu{v nekonečné dimenzi není identita kompaktní operátor}. Obecně tedy máme:
+$$\map{\Id}\in\lin(X) \text{ je kompaktní }\Leftrightarrow\;\; \dim X<\infty.$$
+
 
 \begin{remark}
-V teorii parciálních diferenciálních rovnic se uplatňuje proces \uv{kompaktního vnoření} jednoho prostoru do druhého. V uvedené situaci uvažujeme dva prostory $ X \subset Y$, ovšem opatřené různými normami $\norm{\cdot}_X, \norm{\cdot}_Y$. Zobrazení $\map{Id} : X \mapsto Y$ v takovém případě může být kompaktní. Je to ovšem způsobeno právě růzností norem, které na nekonečnědimenzionálních prostorech nejsou ekvivalentní.
+V teorii parciálních diferenciálních rovnic se uplatňuje proces \uv{kompaktního vnoření} jednoho prostoru do druhého. V uvedené situaci uvažujeme dva prostory $ X \subset Y$, ovšem opatřené různými normami $\norm{\cdot}_X, \norm{\cdot}_Y$. Zobrazení $\map{\Id} : X \to Y$ v takovém případě může být kompaktní. Je to ovšem způsobeno právě růzností norem, které na nekonečnědimenzionálních prostorech nejsou ekvivalentní.
 
 Příkladem takového procesu může být tzv. Rellichova věta:
 
 Nechť $\Omega \subset \R^n$ je otevřená omezená množina s hladkou hranicí. Definujme Sobolevův prostor \begin{align*}
-    W^{1,2}(\Omega) := \left \lbrace f: \Omega \mapsto \R : \norm{f}_{W^{1,2}} := \left[ \int_\Omega \left( |f|^2 + |\nabla f|^2 \right) \d x \right]^{1/2} < + \infty \right \rbrace \:.
+    W^{1,2}(\Omega) := \left \lbrace f: \Omega \to \R : \norm{f}_{W^{1,2}} := \left[ \int_\Omega \left( |f|^2 + |\nabla f|^2 \right) \d x \right]^{1/2} < + \infty \right \rbrace \:.
 \end{align*}
-Pak platí $W^{1,2}(\Omega) \subset L^2(\Omega)$ a navíc $\map{Id} : W^{1,2}(\Omega) \mapsto L^2(\Omega)$ je kompaktní operátor.
+Pak je $W^{1,2}(\Omega) \subset L^2(\Omega)$ a navíc $\map{\Id} : W^{1,2}(\Omega) \to L^2(\Omega)$ je kompaktní operátor.
 
-Praktické použití této věty je právě ve vybírání konvergentní podposloupnosti v $L^2$ z omezené posloupnosti v $W^{1,2}$.
+Praktické použití této věty spočívá právě ve vybírání konvergentní podposloupnosti v $L^2$ z omezené posloupnosti v~prostoru $W^{1,2}$.
 \end{remark}
 
 \subsection{Vlastnosti kompaktních operátorů}
-V tomto oddíle formulujeme sedm klíčových vlastností, které značně zjednodušují problematiku spektrální analýzy pro kompaktní operátory.
+V této podkapitole formulujeme sedm klíčových vlastností, které značně zjednodušují problematiku spektrální analýzy pro kompaktní operátory.
 
-\begin{lemma}[O skládání spojitého a kompaktního operátoru] \label{3.skladani}
-Nechť $X$ je Banachův, $\map S \in \lin (X)$ a $\map K \in \comp(X)$. Pak jsou operátory $ \map S \circ \map K$ a $\map K \circ \map S$ kompaktní.
+\begin{lemma}
+    $\dim Y<\infty \;\Rightarrow\; \lin(X,Y)=\comp(X,Y)$
+\end{lemma}
+\begin{proof}
+$A\subset X$ je omezená$\;\xRightarrow{\map T\in \lin(X,Y)}\;\map T(A)$ je omezená$\;\Rightarrow\; \overline{\map T(A)}$ je omezená a uzavřená v $Y\;\xRightarrow{\dim Y<\infty} \; \overline{\map T(A)}$ je kompaktní.
+\end{proof}
+
+Důsledkem tohoto lemmatu je $T\in\lin(X),\;\dim X=\infty,\;\dim \mathcal{R}(T)<\infty\;\Rightarrow T\in\comp(X)$.
+
+\begin{lemma}\label{3.skladani}
+$\map S \in \lin (X)$, $\map K \in \comp{(X)} \;\Rightarrow \map S \circ \map K\in\comp {(X)}$, $\map K \circ \map S\in\comp{(X)}$.
 \end{lemma}
 
 \begin{proof}
-Zvolme omezenou posloupnost $\sequence{x_n}{n} \subset X$. Pak posloupnost $\sequence{\map S x_n}{n}$ je omezená a díky kompaktnosti $\map K$ můžeme z posloupnosti $\sequence{(\map K \circ \map S) x_n}{n}$ vybrat konvergentní podposloupnost, proto je $\map K \circ \map S$ kompaktní. Dále, z  posloupnosti $\sequence{\map K x_n}{n}$ můžeme vybrat konvergentní $\sequence{\map K x_{n_k}}{k}$ a díky spojitosti operátoru $\map S$ je i podposloupnost $\sequence{(\map S \circ \map K) x_{n_k}}{k}$ konvergentní, proto je $\map S \circ \map K$ kompaktní.
+Zvolme omezenou posloupnost $\sequence{x_n}{n} \subset X$. Pak $\sequence{\map S x_n}{n}$ je omezená a díky kompaktnosti $\map K$ můžeme z~posloupnosti $\sequence{(\map K \circ \map S) x_n}{n}$ vybrat konvergentní podposloupnost, proto je $\map K \circ \map S$ kompaktní. Dále, z~posloupnosti $\sequence{\map K x_n}{n}$ můžeme vybrat konvergentní $\sequence{\map K x_{n_k}}{k}$ a díky spojitosti operátoru $\map S$ je i~podposloupnost $\sequence{(\map S \circ \map K) x_{n_k}}{k}$ konvergentní, proto je $\map S \circ \map K$ kompaktní.
 
 \end{proof}
 
-\begin{lemma}[O příslušnosti nuly do spektra kompaktního operátoru]
-Nechť $X$ je nekonečnědimenzionální Banachův prostor, $\map K \in \comp(X)$. Pak číslo $0$ náleží spektru $\Sp(\map K)$.
+\begin{lemma}%[O příslušnosti nuly do spektra kompaktního operátoru]
+$\map K\in\comp(X)\; \dim X=\infty \;\Rightarrow 0\in\Sp(\map K)$
 \end{lemma}
 
 \begin{proof}
-Předpokládejme, že $0$ nepatří do $\Sp(\map K)$. Pak podle Věty XY existuje inverzní operátor $ \map K^{-1} \in \lin(X)$. Pak ale díky Lemmatu o skládání kompaktního a spojitého operátoru (Lemma \ref{3.skladani}) dostáváme, že $\map{Id} = \map K \circ \map K^{-1}$ je kompaktní operátor. To je ovšem ve sporu s tvrzením o kompaktnosti identity (Lemma \ref{3.kompaktnost identity}).
+$0\notin\Sp(\map K) \;\Rightarrow \exists \map K^{-1} \in \lin(X)$. Pak dle Lemmatu \ref{3.skladani} dostáváme, že 
+$$\underset{\in \comp}{\map K} \circ \underset{\in \lin}{\map K^{-1}} \underset{\Rightarrow}{=} \underset{\in \comp}{\map{\Id}},$$
+přičemž kompaktnost identity je ve sporu s Lemmatem \ref{3.kompaktnost identity}.
 \end{proof}
 
-\begin{lemma}[O uzavřenosti obrazu kompaktního operátoru a Fredholmova alternativa]
-Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$. Pak \begin{enumerate}
-    \item Obor hodnot operátoru $\mathcal{R}(\map K - \lambda \map{Id})$ je uzavřená množina.
-    \item $\map K$ je na (tj. platí $\mathcal{R}(\map K - \lambda \map{Id} )=X$) právě tehdy, když je $\map K - \lambda \map{Id}$ prostý.
+\begin{lemma}%[O uzavřenosti obrazu kompaktního operátoru a Fredholmova alternativa]
+$\map K \in \comp(X),\; \lambda \neq 0$. Pak 
+\begin{enumerate}
+    \item $\mathcal{R}(\map K - \lambda \map{\Id})$ je uzavřená množina. (viz \textsc{Lukeš 5.17})
+    \item $\map K$ je na (tj. $\mathcal{R}(\map K - \lambda \map{Id} )=X$) $\Leftrightarrow \map K - \lambda \map{\Id}$ je prostý (viz Lukež 5.27).
 \end{enumerate}
 \end{lemma}
 \begin{remark}
-Druhé části předchozího lemmatu se říká "Fredholmova alternativa v nekonečné dimenzi".
+Druhé části předchozího lemmatu se říká \uv{Fredholmova alternativa v nekonečné dimenzi}.
 \end{remark}
 
-Dosavadní výsledky nám umožňují zjednodušit spektrální tabulku pro kompaktní operátory. DŮSLEDKY, TABULKA, DOPSAT.
-
-\begin{lemma}[O nenulových prvcích spektra kompaktního operátoru]
-Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor a $\lambda \neq 0$ je prvkem $\Sp(\map K)$. Pak \begin{enumerate}
-    \item $\lambda$ je vlastní číslo,
-    \item $\mathrm{dim} \,(\map K - \lambda \map{Id} ) < + \infty$,
-    \item Prostor všech vektorů příslušejících vlastnímu číslu $\lambda$ , $\Ker (\map K - \lambda \map{Id} )$ je uzavřený podprostor $X$.
+Pro  $\map K\in \comp(X)$, $\lambda\neq 0$ můžeme na základě nově nabytých znalostí upravit spektrální tabulku. Konkrétně jsme zjistili, že
+\begin{enumerate}
+    \item[a)] nemůže nastat situace $\mathcal{R}(\map K_\lambda)$ a $\overline{\mathcal{R}(\map K_\lambda)}=X$
+    \item[b)] $\map K_\lambda$ je prostý $\Leftrightarrow \;\map K_\lambda$ je na.
 \end{enumerate}
+Máme tedy
+
+\begin{table}[h!]
+    \centering
+    \begin{tabu}{c||c|c|c}
+  &$\mathcal{R}(\map K_\lambda)=X$ & $\mathcal{R}(\map K_\lambda)\neq X$, $\overline{\mathcal{R}(\map K_\lambda)}=X$     &  $\overline{\mathcal{R}(\map K_\lambda)}\neq X$ \\\hline\hline
+  
+  $\map K_\lambda$ je prostý, $\map K_\lambda^{-1}$ je spojitý     & $\lambda$ je regulární & \strike{|[0pt]c|}{}  & \strike{|[0pt]c|}{b)} \\\hline 
+  
+  $\map K_\lambda$ je prostý, $\map K_\lambda^{-1}$ není spojitý    & \strike{|[0pt]c|}{}     & \strike{|[0pt]c|}{}   & \strike{|[0pt]c|}{b)}\\ \hline
+   
+   $\map K_\lambda$ není prostý  & \strike{|[0pt]c|}{b)} & \strike{|[0pt]c|}{a)} & $\lambda\in \SpP$ (je vl. číslo) 
+    \end{tabu}
+\end{table}
+
+\uu{Shrnutí:}
+\begin{itemize}
+    \item $0$ je vždy ve spektru kompaktního operátoru. Je jediným prvkem spektra, který nemusí být vlastním číslem.
+    \item Všechny nenulové prvky spektra už jsou vlastní čísla.
+\end{itemize}
+
+
+\begin{lemma}%[O nenulových prvcích spektra kompaktního operátoru]
+$\map K \in \comp(X)$, $\lambda \neq 0\in \Sp(\map K)$. Pak \begin{itemize}
+    \item $\lambda$ je vlastní číslo,
+    \item $\dim(\map K - \lambda \map{\Id} ) < + \infty$,
+    \item $\Ker (\map K - \lambda \map{\Id} )$ je prostor všech vl. vektorů příslušných vl. číslu $\lambda$ a je uzavřeným podprostorem $X$.
+\end{itemize}
 \end{lemma}
 
+\begin{proof}
+viz. \textsc{Lukeš 5.15}
+\end{proof}
+
 \begin{definition}[Násobnost vlastního čísla]
-Číslo $\mathrm{dim} \, \Ker (\map K - \lambda \map{Id} )$ nazýváme násobností vlastního čísla $\lambda$.
+Číslo $\dim \, \Ker (\map K - \lambda \map{\Id} )\in\N$ nazýváme násobností vlastního čísla $\lambda\in\SpP(\map K)$.
 \end{definition}
 
-Podle předchozí věty tedy platí, že každé nenulové vlastní číslo má konečnou násobnost - dimenze prostoru vlastních vektorů, které přísluší jednomu nenulovému vlastnímu číslu, je konečná.
+Dle předchozího lemmatu víme, že \uu{každé nenulové vlastní číslo má konečnou násobnost} - dimenze prostoru generovaného vlastními vektory, příslušejících jednomu nenulovému vlastnímu číslu, je konečná.
 
-\begin{lemma}[O hromadných bodech spektra kompaktního operátoru]
-Nechť $X$ je Banachův prostor, $\map K \in \comp(X)$ je kompaktní operátor. Pak je pro každé $\varepsilon>0$ množina \begin{align*}
-    \Sp(\map K) \cap \left \lbrace \lambda \in \C : |\lambda| > \varepsilon \right \rbrace
-\end{align*}
-konečná.
+\begin{lemma}%[O hromadných bodech spektra kompaktního operátoru]
+$\map K \in \comp(X)$. Pak $\forall\varepsilon>0$ je množina 
+    $\Sp(\map K) \cap \left \lbrace \lambda \in \C : |\lambda| > \varepsilon \right \rbrace$ konečná.
+\end{lemma}
+Důsledkem toho je, že spektrum kompaktního operátoru je nejvýše spočetné. Navíc má-li spektrum kompaktního operátoru hromadný bod, pak jím může být pouze $0$.
+
+\begin{lemma}
+Mějme posloupnost Banachových prostorů $\{X_n\}_{n=1}^\infty$ takovou, že
+\begin{itemize}
+    \item $ \dim X_n<\dim X_{n+1}<\infty$ 
+    \item $X_n\subset X_{n+1}$.
+\end{itemize}
+Dále definujme operátor $\map K\in\lin(X,X_n)=\comp(X,X_n),\;\;\map K_n: X\to X_n\subset X$, pro nějž $\exists  \; T\coloneqq \lim\limits_{n\rightarrow \infty} \map K_n$, což je operátor definovaný v $\lin(X)$. Pak je $\map K\in \comp(X)$.
+
 \end{lemma}
 
 \begin{corollary}
-Spektrum kompaktního operátoru je vždy nejvýše spočetné. Má-li spektrum hromadný bod, může jím být pouze číslo nula.
+Pro platnost tohoto lemmatu není podstatné, zda $\lim X_n= X$, či $\lim X_n\neq X$.
 \end{corollary}
+
+
 \pagebreak
